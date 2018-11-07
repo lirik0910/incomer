@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 /resources/assets/manager/node_modules
+/resources/assets/manager/.env

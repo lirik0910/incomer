@@ -14,4 +14,13 @@ class ContentType extends Model
     {
         return $this->hasMany(Content::class);
     }
+
+    /*
+     * Get content fields collections model
+     * @return
+     */
+    public function contentFieldCollections()
+    {
+        return $this->hasMany(ContentFieldsCollection::class);
+    }
 }
