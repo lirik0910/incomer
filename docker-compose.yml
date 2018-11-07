@@ -48,10 +48,10 @@ services:
   database:
     image: postgres:10.5-alpine
     environment:
-    - POSTGRES_PASSWORD=root
-    - POSTGRES_DB=event_manager
+    - POSTGRES_PASSWORD=secret
+    - POSTGRES_DB=homestead
     ports:
-    - 5432:5432
+      - 5432:5432
     restart: always
 
   # Redis
