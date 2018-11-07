@@ -32,7 +32,7 @@ Route::get('/profile/{number}', 'PageController@userProfile');
 
 Route::get('/wiki/{url}', 'PageController@wikiPage');
 
+Auth::routes();
 
-
-
-
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
