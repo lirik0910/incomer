@@ -18,6 +18,11 @@ use Illuminate\Http\Request;
 //});
 
 
+//Route::post('register', 'Manager\AuthController@register');
+Route::post('login', 'Manager\AuthController@login');
+
+
 Route::resource('person', 'Manager\PersonController')->only([
     'index', 'show', 'store', 'update', 'destroy',
-]);;
+])->middleware('auth:api');
+
