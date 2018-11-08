@@ -9,14 +9,15 @@ block main
 
 	div.container
 		div.wrap
-			div.aticles-wrap
-				include ../../components/TopArticles/index
-				include ../../components/PopularArticles/index
-			div.news-wrap
-				include ../../components/MainNews/index
-		div.sidebar-wrap
-			include ../../components/VideoPreviews/index
-			include ../../components/CompaniesRating/index
+			div.main-wrap
+				div.aticles-wrap
+					include ../../components/TopArticles/index
+					include ../../components/PopularArticles/index
+				div.news-wrap
+					include ../../components/MainNews/index
+			div.sidebar-wrap
+				include ../../components/VideoPreviews/index
+				include ../../components/CompaniesRating/index
 	
 	include ../../components/Footer/index
 

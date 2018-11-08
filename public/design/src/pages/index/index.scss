@@ -71,16 +71,21 @@ a, button, input {
 }
 
 .container {
-    max-width: 1372px;
-	// max-width: 1272px;
+    // max-width: 1372px;
+	max-width: 1272px;
 	margin: 0 auto;
-	padding: 0 50px;
+	// padding: 0 50px;
     // font-size: 0;
 }
 
 .wrap {
+    font-size: 0;
+}
+
+.main-wrap {
     // width: calc(75% - 24px);
-    width: 75%;
+    // width: 75%;
+    width: 948px;
     display: inline-block;
     // margin-right: 24px;
 }
@@ -99,12 +104,11 @@ a, button, input {
 .sidebar-wrap {
     display: flex;
     flex-direction: column;
-    // width: calc(25% - 24px);
-    width: calc(25% - 28px);
     vertical-align: top;
     display: inline-flex;
     padding-top: 72px;
     margin-left: 24px;
+    width: 300px;
 }
 
 .logo {

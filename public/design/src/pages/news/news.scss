@@ -4,12 +4,6 @@
 @import '../../components/Header/style.scss';
 @import '../../components/News/style.scss';
 @import '../../components/RelatedNews/style.scss';
-// @import '../../components/Auth/style.scss';
-// @import '../../components/TopArticles/style.scss';
-// @import '../../components/PopularArticles/style.scss';
-// @import '../../components/VideoPreviews/style.scss';
-// @import '../../components/CompaniesRating/style.scss';
-// @import '../../components/MainNews/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 
@@ -77,6 +71,10 @@ a, button, input {
 	padding: 0 50px;
 }
 
+.wrap {
+    font-size: 0;
+}
+
 .logo {
     padding: 12px 12px 12px 0;
     text-decoration: none;
@@ -90,7 +88,7 @@ a, button, input {
 .views,
 .comments {        
     font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
-    margin: 15px 24px 0 25px;
+    margin: 12px 24px 0 24px;
     position: relative;
     display: inline-block;
     &:before {

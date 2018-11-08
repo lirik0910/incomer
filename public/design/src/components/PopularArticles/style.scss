@@ -2,7 +2,7 @@
 @import '../../pages/mixins.scss';
 
 .popular {
-	width: calc(100% / 3);
+	width: 300px;
 	background-color: $light-color;
 	border-radius: 12px;
 	padding: 25px;
@@ -42,7 +42,7 @@
 	}
 	&__text {
 		font-weight: 500;
-		// font-size: 16px;
+		font-size: 16px;
 		line-height: 1.5;
 	}
 }
