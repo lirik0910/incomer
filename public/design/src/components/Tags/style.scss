@@ -1,0 +1,40 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+
+.tag {
+	// width: 75%;
+	// font-size: 16px;
+	// display: inline-block;
+	font-size: 14px;
+	font-weight: 500;
+	margin: 18px 0 24px;
+	&__list {
+
+	}
+	&__item {
+		display: inline-block;
+		&:not(:last-of-type) {
+			margin-right: 12px;
+		}
+	}
+	&__link {
+		display: inline-block;
+		padding: 8px 12px;
+		background-color: $light-color;
+		border-radius: 15px;
+		text-shadow: 0 6px 12px rgba(0, 0, 0, 0.03);
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		@include transition(background-color);
+		&:before {
+			content: '#';
+			display: inline-block;
+			margin-right: 5px;
+		}
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: rgba(36, 36, 36, 0.1);
+		}
+	}
+}

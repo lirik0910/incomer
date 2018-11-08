@@ -7,6 +7,7 @@ export default class Auth extends Base {
         	_authPopup: $('.auth__popup'),
         	_authTab: $('.auth__tab'),
         	_authContent: $('.auth__content'),
+        	_authTabContent: $('.auth__tab-content'),
         	_authTabsList: $('.auth__tabs-list'),
         	_authInput: $('.auth__input'),
         	_authClose: $('.auth__close'),
@@ -40,21 +41,22 @@ export default class Auth extends Base {
 		this.els._authTab.removeClass('auth__tab--active');
 		$(e.currentTarget).addClass('auth__tab--active');
 
-		// slide effect  
-		this.els._authContent.stop().animate({'left':-(id*slider_width)+'px'}, 300);
-
 		// block's height
-		if ($('.auth__tab:nth-of-type(2)').hasClass('auth__tab--active')) {
-			if ($('.auth__tab-content:first-of-type').height() < 
-				$('.auth__tab-content:nth-of-type(2)').height()) {
-				$('.auth__content').height($('.auth__tab-content:nth-of-type(2)').height())
+		if (this.els._authTab.eq(1).hasClass('auth__tab--active')) {
+			if (this.els._authTabContent.eq(0).height() < 
+				this.els._authTabContent.eq(1).height()) {
+				this.els._authContent.height(this.els._authTabContent.eq(1).height())
 			}
+			// slide effect
+			this.els._authContent.stop().animate({'left':-(id*slider_width)-10+'px'}, 300);
 		}
-		if ($('.auth__tab:nth-of-type(1)').hasClass('auth__tab--active')) {
-			if ($('.auth__tab-content:first-of-type').height() < 
-				$('.auth__tab-content:nth-of-type(2)').height()) {
-				$('.auth__content').height($('.auth__tab-content:nth-of-type(1)').height())
+		if (this.els._authTab.eq(0).hasClass('auth__tab--active')) {
+			if (this.els._authTabContent.eq(0).height() < 
+				this.els._authTabContent.eq(1).height()) {
+				this.els._authContent.height(this.els._authTabContent.eq(0).height())
 			}
+			// slide effect
+			this.els._authContent.stop().animate({'left':'0px'}, 300);
 		}
 	}
 
