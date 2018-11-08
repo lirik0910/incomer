@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Person\PersonRepository;
+use App\Repositories\Person\PersonEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Repositories
+        $this->app->singleton(PersonRepository::class, PersonEloquent::class);
+
     }
 }
