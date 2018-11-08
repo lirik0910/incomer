@@ -20,20 +20,27 @@ class CreateVideosTable extends Migration
 
             $table->increments('id');
             $table->integer('categoryId', false, true)
-                ->nullable(true);
+                ->nullable(true)
+                ->comment('Category ID');
             $table->string('title', 255)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('Video title');
             $table->string('description', 255)
-                ->nullable(true);
+                ->nullable(true)
+                ->comment('Video description');
             $table->string('link', 255)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('Link to video');
             $table->integer('views')
                 ->default(0)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('Count of views on site');
             $table->boolean('onIndex')
-                ->default(false);
+                ->default(false)
+                ->comment('Publishing on index page');
             $table->integer('creatorId', false, true)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('User creator on site ID');
             $table->timestamps();
 
             $table->unique(['title', 'link']);

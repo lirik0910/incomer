@@ -20,9 +20,11 @@ class CreateVideoNewsCollectionsTable extends Migration
 
             $table->increments('id');
             $table->integer('videoId')
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('Video ID');
             $table->integer('newsId')
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('News ID');
             $table->timestamps();
 
             $table->index(['videoId', 'newsId']);

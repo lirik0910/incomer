@@ -20,9 +20,11 @@ class CreateImageNewsCollectionsTable extends Migration
 
             $table->increments('id');
             $table->integer('imageId')
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('Image ID');
             $table->integer('newsId')
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('News ID');
             $table->timestamps();
 
             $table->index(['imageId', 'newsId']);

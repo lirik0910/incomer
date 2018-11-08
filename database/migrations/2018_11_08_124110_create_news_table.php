@@ -20,28 +20,39 @@ class CreateNewsTable extends Migration
 
             $table->increments('id');
             $table->integer('categoryId', false, true)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('Category ID');
             $table->integer('relatedId', false, true)
-                ->nullable(true);
+                ->nullable(true)
+                ->comment('Related news ID');
             $table->string('title', 255)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('News title');
             $table->string('description', 255)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('News description');
             $table->string('introtext', 255)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('News introtext');
             $table->integer('views', false)
                 ->nullable(false)
-                ->default(0);
+                ->default(0)
+                ->comment('Count of views');
             $table->boolean('onIndex')
-                ->default(false);
+                ->default(false)
+                ->comment('Publishing on index page');
             $table->integer('indexPosition', false)
-                ->nullable(true);
+                ->nullable(true)
+                ->comment('Position on index page');
             $table->integer('creatorId', false, true)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('User creator ID');
             $table->integer('editorId', false, true)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('User editor ID');
             $table->integer('publisherId', false, true)
-                ->nullable(false);
+                ->nullable(false)
+                ->comment('User publisher ID');
             $table->timestamps();
 
 
