@@ -5,6 +5,7 @@
 </head>
 
 <body>
+
 <div id="root__container" class="root__container">
     @include('base.header')
     @yield('content')
