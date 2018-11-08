@@ -1,6 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '{your-app-id}',
+                cookie     : true,
+                xfbml      : true,
+                version    : '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
+    <script type="text/javascript">
+        VK.init({apiId: 6745230});
+    </script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -50,6 +75,13 @@
                                 </div>
                             </div>
                         </div>
+                        <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                        <a href="{{ url('/auth/vk') }}" class="btn btn-vk"><i class="fa fa-vk"></i>VKontakte</a>
+                        {{--<!-- VK Widget -->--}}
+                        {{--<div id="vk_auth">VK</div>--}}
+                        {{--<script type="text/javascript">--}}
+                            {{--VK.Widgets.Auth("vk_auth", {"authUrl":"/dev/Login"});--}}
+                        {{--</script>--}}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -68,4 +100,5 @@
         </div>
     </div>
 </div>
+
 @endsection
