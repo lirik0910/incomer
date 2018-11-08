@@ -17,4 +17,10 @@ class Person extends Model
         return $this->belongsTo('App\Model\PersonType', 'typeId');
     }
 
+    public function fields()
+    {
+        return $this->hasMany('App\Model\PersonFieldContent', 'personId');
+    }
+
+
 }

@@ -25,7 +25,7 @@ class PersonEloquent implements PersonRepository
 
     public function get($id)
     {
-        $item = $this->model->with('type')->find($id);
+        $item = $this->model->with(['type', 'fields.field_type'])->find($id);
         if(!$item) throw new \Exception('Person not found');
         return $item;
     }
