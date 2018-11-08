@@ -6,6 +6,8 @@
       margin-right: 10px; }
     .social__item:first-of-type .social__link svg {
       height: 34px; }
+    .social__item:nth-of-type(3) .social__link svg {
+      height: 25px; }
   .social__link {
     display: inline-block;
     position: relative;
@@ -826,6 +828,8 @@
       margin-right: 10px; }
     .social__item:first-of-type .social__link svg {
       height: 34px; }
+    .social__item:nth-of-type(3) .social__link svg {
+      height: 25px; }
   .social__link {
     display: inline-block;
     position: relative;
