@@ -1,0 +1,31 @@
+ul.social
+	li.social__item
+		a.social__link(href='#')
+			include ../../../img/facebook.svg
+	li.social__item
+		a.social__link(href='#')
+			include ../../../img/vkontakte.svg
+	li.social__item
+		a.social__link(href='#')
+			include ../../../img/google.svg
+			//- include ../../../img/twitter.svg
+
+
+
+
+
+
+
+//- mixin social(href, img)
+//- 	if href != undefined && img != undefined
+//- 		li.social__item
+//- 			a.social__link(href=href)
+//- 				svg
+//- 					use(xlink:href='#' + img style='fill: #252525;')
+//- 					//- use(xlink:href='#' + img style='fill: #252525;' id='use1')
+
+
+//- ul.social__list
+//- 	+social('#', 'facebook')
+//- 	+social('#', 'vkontakte')
+//- 	+social('#', 'twitter')

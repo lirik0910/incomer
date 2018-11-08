@@ -36,3 +36,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+
+
+Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
+
+Route::get('auth/vk', 'Auth\AuthController@redirectToVK');
+Route::get('auth/vk/callback', 'Auth\AuthController@handleVKCallback');

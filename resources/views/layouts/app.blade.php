@@ -5,10 +5,12 @@
 </head>
 
 <body>
+
 <div id="root__container" class="root__container">
     @include('base.header')
     @yield('content')
     @include('base.footer')
 </div>
+<script type="text/javascript" src="/js/common.js"></script><script type="text/javascript" src="/js/index.js"></script></body>
 </body>
 </html>

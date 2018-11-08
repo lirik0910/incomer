@@ -1,0 +1,61 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+
+.social{
+	padding: 0;
+	// margin-top: 20px;
+	&__item {
+		display: inline-block;
+		&:not(:last-of-type) {
+			margin-right: 10px;
+		}
+		&:first-of-type {
+			.social__link {
+				svg {
+					height: 34px;
+				}
+			}
+		}
+		&:nth-of-type(3) {
+			.social__link {
+				svg {
+					height: 25px;
+				}
+			}
+		}
+	}
+	&__link {
+		display: inline-block;
+		position: relative;
+		background-color: $main-light-grey-color;
+		border-radius: 50%;
+		width: 48px;
+		height: 48px;
+		overflow: hidden;
+		@include transition(background-color);
+		&:hover {
+			background-color: $lighter-blue;
+			svg path {
+				fill: $light-color;
+			}
+		}
+		&:focus,
+		&:active {
+			background-color: $darker-blue;
+			svg path {
+				fill: $light-color;
+			}
+		}
+		svg {
+			height: 32px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			path {
+				fill: $dark-grey-color;
+				@include transition(background-color);
+			}
+		}
+	}
+}

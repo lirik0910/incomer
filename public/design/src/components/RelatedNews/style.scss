@@ -1,0 +1,60 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+@import '../../pages/extensions.scss';
+
+.related {
+	font-weight: 500;
+	margin: 36px 0 36px 24px;
+	// width: 25%;
+	display: inline-block;
+	vertical-align: top;
+	// width: 302px;
+	width: 300px;
+	&__title {
+		font-size: 20px;
+		letter-spacing: 0.3px;
+		text-align: center;
+		font-weight: 900;
+		margin-bottom: 24px;
+	}
+	&__link {
+		@extend %card;
+		display: block;
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		&--square {
+			@extend %square;
+		}
+		&:not(:last-of-type) {
+			margin-bottom: 24px;
+		}
+	}
+	&__article {
+
+	}
+	&__pic {
+		position: relative;
+		height: 160px;
+		// height: 180px;
+		overflow: hidden;
+		border-radius: 12px 12px 0 0;
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			min-width: 100%;
+			min-height: 100%;
+		}
+	}
+	&__text {
+		line-height: 1.5;
+		font-size: 16px;
+		@extend %preview-text;
+		p {
+			&:not(:last-of-type) {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}

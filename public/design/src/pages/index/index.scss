@@ -1,0 +1,159 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+@import '../../components/Header/style.scss';
+// @import '../../components/Auth/style.scss';
+@import '../../components/TopArticles/style.scss';
+@import '../../components/PopularArticles/style.scss';
+@import '../../components/VideoPreviews/style.scss';
+@import '../../components/CompaniesRating/style.scss';
+@import '../../components/MainNews/style.scss';
+@import '../../components/Footer/style.scss';
+@import '../../components/Socials/style.scss';
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-900.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-900.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-700.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-700.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-500.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-500.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-300.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-300.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-100.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-100.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    // font: 300 16px 'Museo Sans Cyrl', Arial, sans-serif;
+	font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+    font-weight: 300;
+	font-size: 16px;
+	background-color: $main-light-grey-color;
+    color: $main-dark-grey-color;
+}
+
+a, button, input {
+    outline: none;
+}
+
+.container {
+    // max-width: 1372px;
+	max-width: 1272px;
+	margin: 0 auto;
+	// padding: 0 50px;
+    // font-size: 0;
+}
+
+.wrap {
+    font-size: 0;
+}
+
+.main-wrap {
+    // width: calc(75% - 24px);
+    // width: 75%;
+    width: 948px;
+    display: inline-block;
+    // margin-right: 24px;
+}
+
+.aticles-wrap {
+    display: flex;
+    vertical-align: top;
+    display: inline-flex;
+    padding-top: 72px;
+}
+
+.news-wrap {
+
+}
+
+.sidebar-wrap {
+    display: flex;
+    flex-direction: column;
+    vertical-align: top;
+    display: inline-flex;
+    padding-top: 72px;
+    margin-left: 24px;
+    width: 300px;
+}
+
+.logo {
+    padding: 12px 12px 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    svg {
+        width: 110px;
+        display: inline-block;
+    }
+}
+
+.block__title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.views,
+.comments {        
+    font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
+    margin: 15px 24px 0 25px;
+    position: relative;
+    display: inline-block;
+    &:before {
+        content: '';
+        background-repeat: no-repeat;
+        background-size: 20px;
+        position: absolute;
+        left: -25px;
+        top: calc(50% - 2px);
+        transform: translate(0, -50%);
+        width: 20px;
+        height: 19px;
+    }
+}
+
+.views {
+    &:before {
+        background-image: url('../../../img/eye@2x.png');
+    }
+}
+
+.comments {
+    &:before {
+        background-image: url('../../../img/comment@2x.png');
+    }
+}
