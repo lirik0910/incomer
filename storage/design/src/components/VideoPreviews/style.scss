@@ -1,0 +1,89 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+
+.preview {
+	&__list {
+
+	}
+	&__item {
+		list-style-type: none;
+		background-color: #000;
+		border-radius: 12px;
+		overflow: hidden;
+		&:not(:last-of-type) {
+			margin-bottom: 24px;
+		}
+	}
+	&__link {
+		border-radius: 12px;
+		display: block;
+		position: relative;
+		height: 170px;
+		&:hover {
+			.preview__img {
+				opacity: 0.8;
+				transition: transform 8s linear;
+				transform: translate(-50%, -50%) scale(1.2);
+			}
+			.preview__btn {
+				background-color: $default-blue;
+				svg {
+					fill: $light-color;
+				}
+			}
+		}
+		&:focus,
+		&:active {
+			.preview__img {
+				opacity: 0.8;
+			}
+			.preview__btn {
+				background-color: $darker-blue;
+			}
+		}
+	}
+	&__img {
+		position: absolute;
+	    min-height: 100%;
+	    min-width: 100%;
+	    left: 50%;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	    @include transition(opacity);
+	    opacity: 0.6;
+	}
+	&__text {
+		font-size: 16px;
+		line-height: 1.5;
+	    font-weight: 700;
+	    color: $light-color;
+	    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.42);
+	    padding: 0 20px 20px 20px;
+		position: absolute;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    text-align: center;
+	}
+	&__btn {
+		width: 60px;
+		height: 60px;
+		background-color: $light-color;
+		border: none;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+		box-shadow: 0px 6px 18px 0px rgba(0, 0, 0, 0.24);
+		@include transition(background-color);
+		svg {
+			width: 25px;
+			height: 25px;
+			margin-left: 6px;
+    		margin-top: 6px;
+    		@include transition(fill);
+		}
+	}
+}

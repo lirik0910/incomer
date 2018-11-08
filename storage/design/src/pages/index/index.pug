@@ -1,0 +1,23 @@
+extends ../base
+block title
+	| incomer
+block main
+	
+	//- include ../../components/Socials/index
+	include ../../components/Header/index
+	include ../../components/Auth/index
+
+	div.container
+		div.wrap
+			div.aticles-wrap
+				include ../../components/TopArticles/index
+				include ../../components/PopularArticles/index
+			div.news-wrap
+				include ../../components/MainNews/index
+		div.sidebar-wrap
+			include ../../components/VideoPreviews/index
+			include ../../components/CompaniesRating/index
+	
+	include ../../components/Footer/index
+
+	include ../../../img/sprite-socials.svg

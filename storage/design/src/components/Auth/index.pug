@@ -1,0 +1,71 @@
+div.auth
+	form.auth__popup
+		button.auth__close
+			include ../../../img/close.svg
+		ul.auth__tabs-list
+			li.auth__tab.auth__tab--active(data-id='1') Вход
+			li.auth__tab(data-id='2') Регистрация
+		div.auth__content-wrap
+			div.auth__content
+				div.auth__tab-content
+					div.auth__field
+						span.auth__placeholder Электронная почта
+						input.auth__input(type='email')
+					
+					div.auth__field.auth__pass
+						span.auth__placeholder Пароль
+						input.auth__input(type='password')
+						a.auth__pass-btn(href='#')
+							include ../../../img/eye.svg
+					button.auth__submit Войти в аккаунт
+					button.auth__restore Восстановить пароль
+					p.auth__text Войти при помощи социальной сети:
+
+					include ../Socials/index
+					
+					//- ul.social__list
+					//- 	+social('#', 'facebook')
+					//- 	+social('#', 'vkontakte')
+					//- 	+social('#', 'twitter')
+
+					//- ul.social
+					//- 	li.social__item
+					//- 		a.social__link(href='#')
+					//- 			include ../../../img/facebook.svg
+					//- 	li.social__item
+					//- 		a.social__link(href='#')
+					//- 			include ../../../img/vkontakte.svg
+					//- 	li.social__item
+					//- 		a.social__link(href='#')
+					//- 			include ../../../img/twitter.svg
+
+				div.auth__tab-content
+					div.auth__field
+						span.auth__placeholder Электронная почта
+						input.auth__input(type='email')
+					div.auth__field.auth__pass
+						span.auth__placeholder Пароль
+						input.auth__input(type='password')
+						a.auth__pass-btn(href='#')
+							include ../../../img/eye.svg
+					button.auth__submit Войти в аккаунт
+					button.auth__restore Восстановить пароль
+					p.auth__text Войти при помощи социальной сети:
+					
+					include ../Socials/index
+					
+					//- ul.social__list
+					//- 	+social('#', 'facebook')
+					//- 	+social('#', 'vkontakte')
+					//- 	+social('#', 'twitter')
+
+					//- ul.social
+					//- 	li.social__item
+					//- 		a.social__link(href='#')
+					//- 			include ../../../img/facebook.svg
+					//- 	li.social__item
+					//- 		a.social__link(href='#')
+					//- 			include ../../../img/vkontakte.svg
+					//- 	li.social__item
+					//- 		a.social__link(href='#')
+					//- 			include ../../../img/twitter.svg

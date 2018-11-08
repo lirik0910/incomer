@@ -1,0 +1,113 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+
+.rating {
+	margin-top: 24px;
+	background-color: $light-color;
+	border-radius: 12px;
+	padding: 25px;
+	font-size: 12px;
+	font-weight: 500;
+	&__term-list {
+		margin-bottom: 30px;
+	}
+	&__term {
+		display: inline-block;
+
+	}
+	&__term-link {
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		padding: 8px 12px;
+		display: inline-block;
+		border-radius: 20px;
+		transition: background-color .3s ease-in-out, color .3s ease-in-out;
+		&--active {
+			background-color: $default-blue;
+			color: $light-color;
+		}
+		&:hover {
+			background-color: $default-blue;
+			color: $light-color;
+		}
+		&:focus,
+		&:active {
+			background-color: $darker-blue;
+			color: $light-color;
+		}
+	}
+	&__table {
+		width: 100%;
+		border-collapse: collapse;
+		display: none;
+		&--active {
+			// display: block;
+			display: inline-table;
+		}
+	}
+	&__table-row {
+		&:not(:first-of-type) {
+			@include transition(background-color);
+			&:hover {
+				background-color: $main-light-grey-color;
+			}
+		}
+	}
+	&__table-header {
+		color: rgba(36, 36, 36, .6);
+		padding: 7px 5px 7px 0;
+		&:nth-of-type(1) {
+			padding-left: 5px;
+			text-align: left;
+			width: 13%;
+		}
+		&:nth-of-type(2) {
+			text-align: left;
+			width: 39%;
+		}
+		&:nth-of-type(3) {
+			text-align: right;
+			width: 25%;
+		}
+		&:nth-of-type(4) {
+			text-align: right;
+			width: 23%;
+		}
+	}
+	&__table-cell {
+		padding: 7px 5px 7px 0;
+		&:nth-of-type(1) {
+			padding-left: 5px;
+			text-align: left;
+			color: rgba(36, 36, 36, .6);
+		}
+		&:nth-of-type(2) {
+			text-align: left;
+		}
+		&:nth-of-type(3) {
+			text-align: right;
+		}
+		&:nth-of-type(4) {
+			text-align: right;
+		}
+		&:not(:nth-of-type(1)) {
+			font-weight: 700;
+		}
+	}
+	&__full-list {
+		text-decoration: none;
+		display: block;
+		text-align: center;
+		padding: 8px 12px;
+		margin-top: 25px;
+		border-radius: 20px;
+		background-color: $default-blue;
+		color: $light-color;
+		@include transition(background-color);
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $darker-blue;
+		}
+	}
+}
