@@ -10,6 +10,7 @@
 	// width: 75%;
 	width: calc(100% - 330px);
 	display: inline-block;
+	vertical-align: top;
 	&__title {
 		font-size: 34px;
 		letter-spacing: 0.2px;

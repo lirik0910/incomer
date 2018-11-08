@@ -2,9 +2,8 @@
 @import '../mixins.scss';
 
 @import '../../components/Header/style.scss';
-@import '../../components/News/style.scss';
-@import '../../components/RelatedNews/style.scss';
-// @import '../../components/Auth/style.scss';
+@import '../../components/CompanyInfo/style.scss';
+@import '../../components/Chart/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 
@@ -70,8 +69,6 @@ a, button, input {
     max-width: 1372px;
 	margin: 0 auto;
 	padding: 0 50px;
-    display: flex;
-    justify-content: space-between;
 }
 
 .logo {
@@ -82,4 +79,8 @@ a, button, input {
         width: 110px;
         display: inline-block;
     }
+}
+
+.wrap {
+    font-size: 0;
 }
