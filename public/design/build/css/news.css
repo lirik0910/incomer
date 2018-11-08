@@ -56,17 +56,21 @@
     transform: translate(-50%, -50%); }
   .auth__close {
     position: absolute;
-    width: 20px;
-    right: -12px;
-    top: -42px;
-    background-color: transparent;
-    border: none;
+    right: -40px;
+    top: -40px;
+    width: 40px;
+    height: 40px;
+    transform: scale(1.2);
     cursor: pointer;
-    transition: transform 0.3s ease-in-out; }
-    .auth__close:hover {
+    background-color: transparent;
+    border: none; }
+    .auth__close:hover svg {
       transform: scale(1.2); }
     .auth__close svg {
-      padding: 15px; }
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      transition: transform 0.3s ease-in-out; }
       .auth__close svg line {
         stroke: #fff; }
   .auth__tabs-list {
@@ -102,6 +106,8 @@
     vertical-align: top; }
     .auth__tab-content--active {
       display: block; }
+    .auth__tab-content:nth-of-type(2) {
+      margin-left: 10px; }
   .auth__field {
     position: relative;
     margin-bottom: 24px; }
@@ -456,7 +462,7 @@
   border-radius: 12px;
   padding: 45px 36px 66px;
   margin: 36px 0;
-  width: calc(100% - 330px);
+  width: 948px;
   display: inline-block;
   vertical-align: top; }
   .news__title {
@@ -519,7 +525,7 @@
   margin: 36px 0 36px 24px;
   display: inline-block;
   vertical-align: top;
-  width: 302px; }
+  width: 300px; }
   .related__title {
     font-size: 20px;
     letter-spacing: 0.3px;
@@ -530,13 +536,6 @@
     display: block;
     text-decoration: none;
     color: #252525; }
-    .related__link--square {
-      /* width: 300px;
-			&:before {
-				content: "";
-			    			display: block;
-			    			padding-top: 100%;
-			} */ }
     .related__link:not(:last-of-type) {
       margin-bottom: 24px; }
   .related__pic {
@@ -552,7 +551,8 @@
       min-width: 100%;
       min-height: 100%; }
   .related__text {
-    line-height: 1.5; }
+    line-height: 1.5;
+    font-size: 16px; }
     .related__text p:not(:last-of-type) {
       margin-bottom: 30px; }
 
@@ -665,9 +665,11 @@ a, button, input {
   outline: none; }
 
 .container {
-  max-width: 1372px;
-  margin: 0 auto;
-  padding: 0 50px; }
+  max-width: 1272px;
+  margin: 0 auto; }
+
+.wrap {
+  font-size: 0; }
 
 .logo {
   padding: 12px 12px 12px 0;
@@ -680,7 +682,7 @@ a, button, input {
 .views,
 .comments {
   font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
-  margin: 15px 24px 0 25px;
+  margin: 12px 24px 0 24px;
   position: relative;
   display: inline-block; }
   .views:before,

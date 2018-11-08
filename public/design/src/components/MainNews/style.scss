@@ -3,16 +3,13 @@
 @import '../../pages/extensions.scss';
 
 .news {
-	// font-size: 16px;
+	font-size: 16px;
 	// line-height: 1.5;
 	line-height: 24px;
 	&__row {
 		margin-top: 24px;
 		display: flex;
 		justify-content: space-between;
-		&:last-of-type {
-			padding-bottom: 72px;
-		}
 	}
 	&__link {
 		text-decoration: none;

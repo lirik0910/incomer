@@ -2,7 +2,8 @@
 @import '../../pages/mixins.scss';
 
 .top {
-	width: calc(100% / 3 * 2);
+	// width: calc(100% / 3 * 2);
+	width: 624px;
 	margin-right: 24px;
 	& > .top__link {
 		height: calc(50% - 12px);

@@ -56,17 +56,21 @@
     transform: translate(-50%, -50%); }
   .auth__close {
     position: absolute;
-    width: 20px;
-    right: -12px;
-    top: -42px;
-    background-color: transparent;
-    border: none;
+    right: -40px;
+    top: -40px;
+    width: 40px;
+    height: 40px;
+    transform: scale(1.2);
     cursor: pointer;
-    transition: transform 0.3s ease-in-out; }
-    .auth__close:hover {
+    background-color: transparent;
+    border: none; }
+    .auth__close:hover svg {
       transform: scale(1.2); }
     .auth__close svg {
-      padding: 15px; }
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      transition: transform 0.3s ease-in-out; }
       .auth__close svg line {
         stroke: #fff; }
   .auth__tabs-list {
@@ -102,6 +106,8 @@
     vertical-align: top; }
     .auth__tab-content--active {
       display: block; }
+    .auth__tab-content:nth-of-type(2) {
+      margin-left: 10px; }
   .auth__field {
     position: relative;
     margin-bottom: 24px; }
@@ -463,7 +469,8 @@
     padding: 24px 14px;
     display: flex;
     justify-content: space-between;
-    align-items: center; }
+    align-items: center;
+    margin-bottom: 24px; }
   .info__pic img {
     max-width: 60px;
     max-height: 60px; }
@@ -511,6 +518,28 @@
     transition: background-color 0.3s ease-in-out; }
     .info__tab-link--active, .info__tab-link:hover, .info__tab-link:focus, .info__tab-link:active {
       background-color: #ededed; }
+  .info__tab-content {
+    margin-top: 24px;
+    display: none; }
+    .info__tab-content--active {
+      display: block; }
+  .info__caption {
+    margin-bottom: 8px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    color: rgba(36, 36, 36, 0.6); }
+  .info__description {
+    margin-bottom: 21px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    font-weight: 700; }
+    .info__description a {
+      text-decoration: none;
+      color: #5435d1;
+      transition: color 0.3s ease-in-out; }
+      .info__description a:hover, .info__description a:focus, .info__description a:active {
+        color: #381fb6; }
 
 .svs {
   width: 75%;
@@ -626,9 +655,8 @@ a, button, input {
   outline: none; }
 
 .container {
-  max-width: 1372px;
-  margin: 0 auto;
-  padding: 0 50px; }
+  max-width: 1272px;
+  margin: 0 auto; }
 
 .logo {
   padding: 12px 12px 12px 0;
@@ -639,4 +667,5 @@ a, button, input {
     display: inline-block; }
 
 .wrap {
-  font-size: 0; }
+  font-size: 0;
+  margin: 24px 0 160px; }

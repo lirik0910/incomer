@@ -87,6 +87,7 @@ export default class Header extends Base {
 	}
 
 	searchFilter(e) {
+		e.preventDefault();
 		this.els._searchCategoryLink.removeClass('search__category-link--active')
 		$(e.currentTarget).addClass('search__category-link--active')
 		this.els._searchInfoList.removeClass('search__info-list--active');
