@@ -93,7 +93,8 @@
   .auth__content {
     position: relative;
     left: 0px;
-    white-space: nowrap; }
+    white-space: nowrap;
+    transition: height 0.3s ease-in-out; }
   .auth__tab-content {
     transition: all 0.3s ease-in-out;
     display: inline-block;

@@ -77,6 +77,7 @@
 		position: relative;
 	    left: 0px;   
 	    white-space: nowrap;
+	    @include transition(height);
 	}
 	&__tab-content {
 		@include transition(all);
