@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContentFieldsTable extends Migration
+class CreateVideoNewsCollectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateContentFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('content_fields', function (Blueprint $table) {
+        Schema::create('video_news_collections', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->string('title', 255)
-                ->nullable(false)
-                ->comment('Content field title');
-            $table->mediumText('description')
-                ->comment('Content field description');
+            $table->integer('videoId')
+                ->nullable(false);
+            $table->integer('newsId')
+                ->nullable(false);
             $table->timestamps();
+
+            $table->index(['videoId', 'newsId']);
         });
     }
 
@@ -35,6 +36,6 @@ class CreateContentFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content_fields');
+        Schema::dropIfExists('video_news_collections');
     }
 }

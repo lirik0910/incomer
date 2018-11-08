@@ -4,15 +4,15 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class News extends Model
 {
     /*
-     * Get news models
+     * Get category model
      * @return boolean
      */
-    public function news()
+    public function category()
     {
-        return $this->hasMany(News::class);
+        return $this->belongsTo(Category::class);
     }
 
     /*
@@ -21,7 +21,7 @@ class Category extends Model
     */
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasManyThrough(Video::class, VideoNewsCollection::class);
     }
 
     /*
@@ -30,6 +30,6 @@ class Category extends Model
     */
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasManyThrough(Image::class, ImageNewsCollection::class);
     }
 }
