@@ -43,7 +43,6 @@ export default class Auth extends Base {
 		// slide effect  
 		this.els._authContent.stop().animate({'left':-(id*slider_width)+'px'}, 300);
 
-
 		// block's height
 		if ($('.auth__tab:nth-of-type(2)').hasClass('auth__tab--active')) {
 			if ($('.auth__tab-content:first-of-type').height() < 

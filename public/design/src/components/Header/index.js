@@ -50,7 +50,7 @@ export default class Header extends Base {
 			this.els._authPopup.fadeIn();
 			this.els._auth.fadeIn();
 		}
-		
+
 		if ($('.auth__tab-content:first-of-type').height() < 
 			$('.auth__tab-content:nth-of-type(2)').height()) {
 			$('.auth__content').height($('.auth__tab-content:first-of-type').height())

@@ -40,17 +40,14 @@ div.auth
 					//- 			include ../../../img/twitter.svg
 
 				div.auth__tab-content
-					div.auth__field
-						span.auth__placeholder Имя
-						input.auth__input(type='text')
-							
-					div.auth__field
-						span.auth__placeholder Фамилия
-						input.auth__input(type='text')
 
 					div.auth__field
 						span.auth__placeholder Электронная почта
 						input.auth__input(type='email')
+							
+					div.auth__field
+						span.auth__placeholder Логин
+						input.auth__input(type='text')
 
 					div.auth__field.auth__pass
 						span.auth__placeholder Пароль
@@ -58,10 +55,8 @@ div.auth
 						a.auth__pass-btn(href='#')
 							include ../../../img/eye.svg
 
-					div.auth__field.auth__pass
-						span.auth__placeholder Подтверждение пароля
-						input.auth__input(type='password')
-						a.auth__pass-btn(href='#')
-							include ../../../img/eye.svg
+					button.auth__submit Зарегистрироваться
+					//- p.auth__text Зарегистрироваться через социальные сети:
+					p.auth__text Зарегистрироваться через:
 
-					button.auth__submit Зарегестрироваться
+					include ../Socials/index
