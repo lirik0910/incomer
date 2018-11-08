@@ -91,6 +91,8 @@
     position: relative;
     left: 0px;
     white-space: nowrap; }
+    .auth__content:nth-of-type {
+      text-align: center; }
   .auth__tab-content {
     transition: all 0.3s ease-in-out;
     display: inline-block;

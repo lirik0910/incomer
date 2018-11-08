@@ -76,6 +76,9 @@
 		position: relative;
 	    left: 0px;   
 	    white-space: nowrap;
+	    &:nth-of-type {
+	    	text-align: center;
+	    }
 	}
 	&__tab-content {
 		@include transition(all);
