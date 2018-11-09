@@ -50,6 +50,8 @@
 	&__text {
 		line-height: 1.5;
 		font-size: 16px;
+		// font-weight: 700;
+		// padding: 18px 24px 24px 24px;
 		@extend %preview-text;
 		p {
 			&:not(:last-of-type) {

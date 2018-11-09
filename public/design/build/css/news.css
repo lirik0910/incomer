@@ -106,6 +106,8 @@
     vertical-align: top; }
     .auth__tab-content--active {
       display: block; }
+    .auth__tab-content:nth-of-type(2) {
+      margin-left: 10px; }
   .auth__field {
     position: relative;
     margin-bottom: 24px; }
@@ -663,9 +665,8 @@ a, button, input {
   outline: none; }
 
 .container {
-  max-width: 1372px;
-  margin: 0 auto;
-  padding: 0 50px; }
+  max-width: 1272px;
+  margin: 0 auto; }
 
 .wrap {
   font-size: 0; }

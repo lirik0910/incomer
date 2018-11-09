@@ -94,7 +94,7 @@
 			display: block;
 		}
 	    &:nth-of-type(2) {
-	    	// text-align: center;
+	    	margin-left: 10px;
 	    }
 	}
 	&__field {
@@ -121,6 +121,7 @@
 		background-color: $light-grey-color;
 		border-radius: 12px;
 		width: 100%;
+		// width: 99%;
 		border: none;
 		font: 700 16px 'Museo Sans Cyrl', Arial, sans-serif;
 		color: $dark-grey-color;

@@ -10,11 +10,51 @@ div.info
 			span 314.86
 
 	div.info__detail
-		div
-			ul.info__tabs
-				li.info__tab-item
-					a.info__tab-link(href='#').info__tab-link--active Сводка
-				li.info__tab-item
-					a.info__tab-link(href='#') Биография
+		ul.info__tabs
+			li.info__tab-item
+				a.info__tab-link.info__tab-link--active(href='#') Сводка
+			li.info__tab-item
+				a.info__tab-link(href='#') Биография
 
-		div
+		div.info__tabs-content
+			div.info__tab-content.info__tab-content--active
+				div.info__brief
+					p.info__caption Основание
+					div.info__description 
+						p 23 мая 2003
+
+					p.info__caption Отрасль
+					div.info__description 
+						p Автомобилестроение 
+						p Солнечная энергетика
+
+					p.info__caption Рыночная капитализация
+					div.info__description 
+						p $53.708.000.000
+
+					p.info__caption Акции в обращении
+					div.info__description 
+						p 170.583.344
+
+				div.info__contact
+					p.info__caption Юридический адрес
+					div.info__description 
+						p Palo Alto, CA 94304–1317, United States
+
+					p.info__caption Телефон
+					div.info__description 
+						p +1–650–681–50–00
+
+					p.info__caption Факс
+					div.info__description 
+						p 302–655–50–49
+
+					p.info__caption Веб-сайт
+					div.info__description 
+						a(href='#') tesla.com
+
+			div.info__tab-content
+				div.info__brief
+					p.info__caption Основание
+					div.info__description 
+						p 23 мая 2003

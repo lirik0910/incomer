@@ -2,6 +2,7 @@
 @import '../mixins.scss';
 
 @import '../../components/Header/style.scss';
+@import '../../components/Tags/style.scss';
 // @import '../../components/Auth/style.scss';
 @import '../../components/TopArticles/style.scss';
 @import '../../components/PopularArticles/style.scss';
@@ -80,6 +81,8 @@ a, button, input {
 
 .wrap {
     font-size: 0;
+    // margin: 72px 0;
+    margin-bottom: 72px;
 }
 
 .main-wrap {
@@ -94,7 +97,7 @@ a, button, input {
     display: flex;
     vertical-align: top;
     display: inline-flex;
-    padding-top: 72px;
+    // padding-top: 72px;
 }
 
 .news-wrap {
@@ -106,7 +109,7 @@ a, button, input {
     flex-direction: column;
     vertical-align: top;
     display: inline-flex;
-    padding-top: 72px;
+    // padding-top: 72px;
     margin-left: 24px;
     width: 300px;
 }

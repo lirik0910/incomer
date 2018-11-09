@@ -26,6 +26,7 @@ class CreatePersonsTable extends Migration
                 ->nullable(false)
                 ->comment('Person name/title');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
