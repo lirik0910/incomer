@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,26 +18,37 @@ Route::pattern('id', '[0-9]+');
 Route::post('login', 'Manager\AuthController@login');
 
 
-Route::middleware(['auth:api'])->group(function () {
+Route::namespace('Manager')->middleware(['auth:api'])->group(function () {
 
-    Route::get('person', 'Manager\PersonController@index');
-    Route::get('person/{id}', 'Manager\PersonController@show');
+    // Persons routes
+    Route::prefix('person')->group(function () {
 
-    Route::post('person', 'Manager\PersonController@store');
+        Route::get('', 'PersonController@index')->middleware('can:listPerson');
+        Route::get('/{id}', 'PersonController@show')->middleware('can:readPerson');
 
-    Route::put('person/restore/{id}', 'Manager\PersonController@restore');
-    Route::put('person/{id}', 'Manager\PersonController@update');
+        Route::post('', 'PersonController@store')->middleware('can:createPerson');
 
-    Route::delete('person/trash/{id}', 'Manager\PersonController@trash');
-    Route::delete('person/{id}', 'Manager\PersonController@destroy');
+        Route::put('/restore/{id}', 'PersonController@restore')->middleware('can:restorePerson');
+        Route::put('/{id}', 'PersonController@update')->middleware('can:updatePerson');
+
+        Route::delete('/trash/{id}', 'PersonController@trash')->middleware('can:trashPerson');
+        Route::delete('/{id}', 'PersonController@destroy')->middleware('can:deletePerson');
+    });
 
 
-//    Route::resource('person', 'Manager\PersonController')
-//        ->only(['index', 'show', 'store', 'update', 'destroy']);
+    // Users routes
+    Route::prefix('user')->group(function () {
 
+        Route::get('', 'UserController@index')->middleware('can:listUser');
+        Route::get('/{id}', 'UserController@show')->middleware('can:readUser');
 
-    Route::resource('user', 'Manager\UserController')
-        ->only(['index', 'show', 'store', 'update', 'destroy']);
+        Route::post('', 'UserController@store')->middleware('can:createUser');
+
+        Route::put('/{id}', 'UserController@update')->middleware('can:updateUser');
+
+        Route::delete('/{id}', 'UserController@destroy')->middleware('can:deleteUser');
+    });
+
 
 
 

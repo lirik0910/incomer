@@ -29,15 +29,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function roles() {
+        return $this->belongsToMany('App\Model\Role', 'users_roles', 'role_id', 'user_id');
+    }
+
     public function addNewFacebookUser($input)
     {
         $check = static::where('facebook_id', $input['facebook_id'])->first();
 
-
         if (is_null($check)) {
             return static::create($input);
         }
-
 
         return $check;
     }
@@ -46,11 +48,9 @@ class User extends Authenticatable
     {
         $check = static::where('vk_id', $input['vk_id'])->first();
 
-
         if (is_null($check)) {
             return static::create($input);
         }
-
 
         return $check;
     }
