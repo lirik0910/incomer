@@ -1,8 +1,53 @@
 @import '../../pages/variables.scss';
 @import '../../pages/mixins.scss';
 
-.svs {
-	width: 75%;
+@import '../../../node_modules/chartist/dist/scss/chartist.scss';
+// @import 'chartist/dist/scss/chartist.scss';
+// @import "_my-chartist-settings.scss";
+
+.chart {
+	@extend %card;
+	width: 948px;
+	// height: 500px;
+	height: 200px;
 	font-size: 16px;
-	display: inline-block;
+	margin-bottom: 24px;
+	canvas {
+		border: 1px solid #000;
+	}
+
+	svg {
+		path.ct-line {
+			stroke: $default-blue;
+			stroke-width: 2px;
+		}
+		line.ct-point {
+			stroke: $default-blue;
+		}
+	// 	@include ct-chart-grid()
+	}
 }
+
+/* 
+.line {
+    fill: none;
+    stroke: #ffab00;
+    stroke-width: 3;
+}
+  
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+Style the dots by assigning a fill and stroke
+.dot {
+    fill: #ffab00;
+    stroke: #fff;
+}
+  
+  .focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+ */

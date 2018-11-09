@@ -1,60 +1,169 @@
-div.info
-	div.info__main
-		div.info__pic
-			img(src='img/tesla.png')
-		div.info__text
-			p.info__title Tesla
-			p.info__subtitle NOSDAQ: TSLA
-		div.info__stock.info__stock--increase
-			include ../../../img/chevron.svg
-			span 314.86
+div.news
+	div.news__wrap
+		p.news__title Новости о компании
+		ul.news__sources
+			li.news__source
+				a.news__source-link.news__source-link--active(href='#') В интернете
+			li.news__source
+				a.news__source-link(href='#') Incomer Finance
+	
+	div.news__tabs
+		div.news__tab.news__tab--active
+			div.news__day
+				p.news__date Сегодня, 4 ноября
+				ul.news__list
+					a.news__link(href='#')
+						span.news__time 14:35
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 14:30
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 13:29
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 13:12
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 12:01
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:51
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 11:36
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 11:09
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:08
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:02
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 09:48
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 09:42
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+			
+			div.news__day
+				p.news__date Вчера, 3 ноября
+				ul.news__list
+					a.news__link(href='#')
+						span.news__time 14:35
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 14:30
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 13:29
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 13:12
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 12:01
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:51
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 11:36
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 11:09
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:08
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:02
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 09:48
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 09:42
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+			button.news__continue Показать ещё
 
-	div.info__detail
-		ul.info__tabs
-			li.info__tab-item
-				a.info__tab-link.info__tab-link--active(href='#') Сводка
-			li.info__tab-item
-				a.info__tab-link(href='#') Биография
-
-		div.info__tabs-content
-			div.info__tab-content.info__tab-content--active
-				div.info__brief
-					p.info__caption Основание
-					div.info__description 
-						p 23 мая 2003
-
-					p.info__caption Отрасль
-					div.info__description 
-						p Автомобилестроение 
-						p Солнечная энергетика
-
-					p.info__caption Рыночная капитализация
-					div.info__description 
-						p $53.708.000.000
-
-					p.info__caption Акции в обращении
-					div.info__description 
-						p 170.583.344
-
-				div.info__contact
-					p.info__caption Юридический адрес
-					div.info__description 
-						p Palo Alto, CA 94304–1317, United States
-
-					p.info__caption Телефон
-					div.info__description 
-						p +1–650–681–50–00
-
-					p.info__caption Факс
-					div.info__description 
-						p 302–655–50–49
-
-					p.info__caption Веб-сайт
-					div.info__description 
-						a(href='#') tesla.com
-
-			div.info__tab-content
-				div.info__brief
-					p.info__caption Основание
-					div.info__description 
-						p 23 мая 2003
+		div.news__tab
+			div.news__day
+				p.news__date Сегодня, 4 ноября
+				ul.news__list
+					a.news__link(href='#')
+						span.news__time 14:35
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 14:30
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 13:29
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 13:12
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 12:01
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:51
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 11:36
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 11:09
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:08
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+					a.news__link(href='#')
+						span.news__time 11:02
+						p.news__content В Госдуме пообещали крипторублю судьбу традиционных денег
+						span.news__site forbes.ru
+					a.news__link(href='#')
+						span.news__time 09:48
+						p.news__content Вы могли это пропустить: падение объема торгов и подъем крипторынка
+						span.news__site lenta.ru
+					a.news__link(href='#')
+						span.news__time 09:42
+						p.news__content Производство Tesla 3 достигло 6.000 единиц в сутки
+						span.news__site rbc.ru
+			button.news__continue Показать ещё
