@@ -533,13 +533,19 @@
     margin-bottom: 21px;
     font-size: 14px;
     letter-spacing: 0.4px;
-    font-weight: 700; }
+    font-weight: 700;
+    color: #3a3a3a; }
     .info__description a {
       text-decoration: none;
       color: #5435d1;
       transition: color 0.3s ease-in-out; }
       .info__description a:hover, .info__description a:focus, .info__description a:active {
         color: #381fb6; }
+  .info__contact-title {
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    font-size: 18px;
+    margin: 36px 0 12px; }
 
 .svs {
   width: 75%;
