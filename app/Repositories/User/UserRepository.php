@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Repositories\Person;
+namespace App\Repositories\User;
 
-interface PersonRepository
+interface UserRepository
 {
     public function all(array $params);
 
@@ -14,10 +14,4 @@ interface PersonRepository
     public function update($id, array $data);
 
     public function delete($id);
-
-    public function restore($id);
-
-    public function trash($id);
-
-    public function trashAll();
 }

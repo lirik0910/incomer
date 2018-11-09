@@ -12,17 +12,34 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
+// ID must be only numeric
+Route::pattern('id', '[0-9]+');
 
-//Route::post('register', 'Manager\AuthController@register');
 Route::post('login', 'Manager\AuthController@login');
 
 
-Route::resource('person', 'Manager\PersonController')->only([
-    'index', 'show', 'store', 'update', 'destroy',
-])->middleware('auth:api');
+Route::middleware(['auth:api'])->group(function () {
 
+    Route::get('person', 'Manager\PersonController@index');
+    Route::get('person/{id}', 'Manager\PersonController@show');
+
+    Route::post('person', 'Manager\PersonController@store');
+
+    Route::put('person/restore/{id}', 'Manager\PersonController@restore');
+    Route::put('person/{id}', 'Manager\PersonController@update');
+
+    Route::delete('person/trash/{id}', 'Manager\PersonController@trash');
+    Route::delete('person/{id}', 'Manager\PersonController@destroy');
+
+
+//    Route::resource('person', 'Manager\PersonController')
+//        ->only(['index', 'show', 'store', 'update', 'destroy']);
+
+
+    Route::resource('user', 'Manager\UserController')
+        ->only(['index', 'show', 'store', 'update', 'destroy']);
+
+
+
+});
