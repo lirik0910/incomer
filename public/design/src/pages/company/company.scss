@@ -4,6 +4,7 @@
 @import '../../components/Header/style.scss';
 @import '../../components/CompanyInfo/style.scss';
 @import '../../components/Chart/style.scss';
+@import '../../components/CompanyNews/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 
@@ -39,13 +40,13 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Museo Sans Cyrl';
     src: url('../../../fonts/MuseoSansCyrl-100.woff2') format('woff2'),
          url('../../../fonts/MuseoSansCyrl-100.woff') format('woff');
     font-weight: 100;
     font-style: normal;
-}
+} */
 
 * {
     box-sizing: border-box;
@@ -83,4 +84,10 @@ a, button, input {
 .wrap {
     font-size: 0;
     margin: 24px 0 160px;
+}
+
+.main-wrap {
+    width: 948px;
+    display: inline-block;
+    vertical-align: top;
 }
