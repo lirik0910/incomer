@@ -3,7 +3,8 @@
 @import '../../pages/extensions.scss';
 
 .info {
-	width: calc(25% - 24px);
+	// width: calc(25% - 24px);
+	width: 300px;
 	margin-right: 24px;
 	font-size: 16px;
 	display: inline-block;
@@ -110,6 +111,7 @@
 		font-size: 14px;
 		letter-spacing: 0.4px;
 		font-weight: 700;
+		color: $dark-grey-color;
 		a {
 			text-decoration: none;
 			color: $default-blue;
@@ -123,5 +125,11 @@
 	}
 	&__contact {
 
+	}
+	&__contact-title {
+		font-weight: 900;
+		letter-spacing: 0.2px;
+		font-size: 18px;
+		margin: 36px 0 12px;
 	}
 }

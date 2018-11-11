@@ -1,0 +1,122 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+// @import '../../pages/extensions.scss';
+
+.news {
+	@extend %card;
+	padding: 24px;
+	&__wrap {
+ 		border-bottom: 1px solid $light-grey-color;
+ 		padding-bottom: 24px;
+	}
+	.block-title {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&__sources {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&__source {
+		display: inline-block;
+		font-size: 12px;
+		letter-spacing: 0.3px;
+		font-weight: 500;
+		&:not(:last-of-type) {
+			margin-right: 4px;
+		}
+ 	}
+ 	&__source-link {
+ 		text-decoration: none;
+ 		padding: 6px 12px;
+ 		border-radius: 15px;
+ 		color: $main-dark-grey-color;
+ 		transition: color .3s ease-in-out, background-color .3s ease-in-out;
+		&--active,
+		&:hover,
+		&:focus,
+		&:active {
+ 			color: $light-color;
+			background-color: $default-blue;
+		}
+ 	}
+ 	&__tabs {
+
+ 	}
+ 	&__tab {
+ 		display: none;
+ 		&--active {
+			display: block;
+ 		}
+ 	}
+ 	&__day {
+ 		padding: 24px 0;
+ 		&:last-of-type {
+ 			border-bottom: 1px solid $light-grey-color;
+ 		}
+ 	}
+	&__date {
+		font-weight: 900;
+		font-size: 18px;
+		letter-spacing: 0.2px;
+		// margin: 24px 0;
+		margin-bottom: 24px;
+	}
+	&__list {
+		font-size: 0;
+	}
+	&__link {
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		display: block;
+		border-radius: 12px;
+		@include transition(background-color);
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $main-light-grey-color;
+		}
+	}
+	&__time {
+		width: 10%;
+		padding-left: 10px;
+	}
+	&__site {
+		width: 15%;
+		padding-right: 10px;
+	}
+	&__content {
+		width: 75%;
+		font-size: 16px;
+		font-weight: 700;
+		padding: 0 10px;
+	}
+	&__time, &__site {
+		font-size: 12px;
+		font-weight: 500;
+		color: rgba(36, 36, 36, 0.6);
+	}
+	&__time, &__site, &__content {
+		line-height: 36px;
+		letter-spacing: 0.2px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	&__continue {
+		background-color: $default-blue;
+		padding: 8px 24px;
+		border: none;
+		border-radius: 18px;
+		color: $light-color;
+		cursor: pointer;
+		font: 700 16px'Museo Sans Cyrl', Arial, sans-serif;
+		display: block;
+    	margin: 24px auto 0;
+		@include transition(background-color);
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $darker-blue;
+		}
+	}
+}

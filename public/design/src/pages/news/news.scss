@@ -39,13 +39,13 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Museo Sans Cyrl';
     src: url('../../../fonts/MuseoSansCyrl-100.woff2') format('woff2'),
          url('../../../fonts/MuseoSansCyrl-100.woff') format('woff');
     font-weight: 100;
     font-style: normal;
-}
+} */
 
 * {
     box-sizing: border-box;
@@ -102,16 +102,31 @@ a, button, input {
         width: 20px;
         height: 19px;
     }
+    &--light {
+        opacity: 0.6;
+        // margin: 0;
+        width: 16px;
+        height: 16px;
+        // margin: 0 24px;
+    }
 }
 
 .views {
     &:before {
         background-image: url('../../../img/eye@2x.png');
     }
+    &--light {
+        // margin-right: 30px;
+        margin: 0 40px 0 24px;
+    }
 }
 
 .comments {
     &:before {
         background-image: url('../../../img/comment@2x.png');
+    }
+    &--light {
+        margin-top: 0;
+        margin-right: 0;
     }
 }

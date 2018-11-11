@@ -19,14 +19,23 @@ class PersonEloquent implements PersonRepository
         $page = $params['page'] ?? 1;
         $limit = $params['limit'] ?? 10;
 
-        $items = $this->model->with('type')->limit($limit)->offset(($page - 1) * $limit);
+        $items = $this->model
+            ->withTrashed()
+            ->with(['type', 'fields.field_type'])
+            ->limit($limit)
+            ->offset(($page - 1) * $limit);
+
         return $items->get();
     }
 
     public function get($id)
     {
-        $item = $this->model->with(['type', 'fields.field_type'])->find($id);
-        if(!$item) throw new \Exception('Person not found');
+        $item = $this->model
+            ->withTrashed()
+            ->with(['type', 'fields.field_type'])
+            ->find($id);
+
+        if (!$item) throw new \Exception('Person not found');
         return $item;
     }
 
@@ -39,7 +48,7 @@ class PersonEloquent implements PersonRepository
     public function update($id, array $data)
     {
         $item = $this->model->find($id);
-        if(!$item) throw new \Exception('Person not found');
+        if (!$item) throw new \Exception('Person not found');
         $item->update($data);
         return $this->get($id);
 
@@ -47,10 +56,30 @@ class PersonEloquent implements PersonRepository
 
     public function delete($id)
     {
-        $product = $this->model->find($id);
-        if ($product === NULL) return false;
+        $item = $this->model->find($id);
+        if ($item === NULL) return false;
 
-        return $product->delete();
+        return $item->delete();
     }
 
+    public function restore($id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->restore();
+    }
+
+    public function trash($id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->forceDelete();
+    }
+
+    public function trashAll()
+    {
+        return $this->model->history()->forceDelete();
+    }
 }

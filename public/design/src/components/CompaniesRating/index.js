@@ -16,8 +16,8 @@ export default class CompaniesRating extends Base {
 
 	ratingFilter(e) {
 		e.preventDefault();
-		this.els._ratingTermLink.removeClass('rating__term-link--active')
-		$(e.currentTarget).addClass('rating__term-link--active')
+		this.els._ratingTermLink.removeClass('rating__term-link--active');
+		$(e.currentTarget).addClass('rating__term-link--active');
 		this.els._ratingTable.removeClass('rating__table--active');
 		this.els._ratingTable
 			.eq($(e.currentTarget).parent().index())

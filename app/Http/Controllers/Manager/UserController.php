@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PersonCreate;
-use App\Http\Requests\PersonUpdate;
-use App\Repositories\Person\PersonRepository;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Repositories\User\UserRepository;
 use Illuminate\Http\Request;
 
-class PersonController extends Controller
+class USerController extends Controller
 {
     private $model;
 
-    public function __construct(PersonRepository $model)
+    public function __construct(UserRepository $model)
     {
         $this->model = $model;
     }
@@ -29,11 +29,13 @@ class PersonController extends Controller
         }
     }
 
-    public function store(PersonCreate $request)
+    public function store(UserCreateRequest $request)
     {
         try {
-            $data = $request->only(['name', 'typeId']);
+            $data = $request->only(['username', 'password', 'email', 'first_name', 'last_name', 'phone', 'country']);
+            $data['type'] = 'manager';
             $res = $this->model->create($data);
+            $res->createToken('MyApp');
 
             return response()->json($res);
         } catch (\Exception $e) {
@@ -52,10 +54,10 @@ class PersonController extends Controller
         }
     }
 
-    public function update(PersonUpdate $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['name', 'typeId']);
+            $data = $request->only(['password', 'username', 'first_name', 'last_name', 'phone', 'country']);
             $res = $this->model->update($id, $data);
 
             return response()->json($res);
@@ -74,30 +76,4 @@ class PersonController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
-
-    public function restore($id)
-    {
-        try {
-            $res = $this->model->restore($id);
-
-            return response()->json($res);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-    }
-
-    public function trash($id)
-    {
-        try {
-            $res = $this->model->trash($id);
-
-            return response()->json($res);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-    }
-
-
-
-
 }

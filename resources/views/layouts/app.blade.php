@@ -8,6 +8,7 @@
 
 <div id="root__container" class="root__container">
     @include('base.header')
+    @include('components.auth')
     @yield('content')
     @include('base.footer')
 </div>
