@@ -9,15 +9,13 @@
  		border-bottom: 1px solid $light-grey-color;
  		padding-bottom: 24px;
 	}
-	&__title {
-		font-size: 20px;
-		letter-spacing: 0.2px;
-		font-weight: 900;
-		margin-right: 30px;
+	.block-title {
 		display: inline-block;
+		vertical-align: middle;
 	}
 	&__sources {
 		display: inline-block;
+		vertical-align: middle;
 	}
 	&__source {
 		display: inline-block;
@@ -32,6 +30,7 @@
  		text-decoration: none;
  		padding: 6px 12px;
  		border-radius: 15px;
+ 		color: $main-dark-grey-color;
  		transition: color .3s ease-in-out, background-color .3s ease-in-out;
 		&--active,
 		&:hover,
