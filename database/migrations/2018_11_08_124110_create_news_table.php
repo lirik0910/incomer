@@ -53,6 +53,10 @@ class CreateNewsTable extends Migration
             $table->integer('publisherId', false, true)
                 ->nullable(false)
                 ->comment('User publisher ID');
+            $table->boolean('published')
+                ->nullable(false)
+                ->default(false)
+                ->comment('Published status');
             $table->timestamps();
 
 

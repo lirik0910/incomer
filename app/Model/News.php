@@ -32,4 +32,13 @@ class News extends Model
     {
         return $this->hasManyThrough(Image::class, ImageNewsCollection::class);
     }
+
+    /*
+     * Get comments models
+     * @return boolean
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }
