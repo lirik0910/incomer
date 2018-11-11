@@ -44,8 +44,17 @@ class AuthController extends Controller
             'password' => request('password')
         ])) {
             $user = Auth::user();
-            $success['access_token'] = $user->createToken('MyApp')->accessToken;
-            return response()->json( $success, 200);
+            $roles = $user->with(['roles.actions'])->first()['roles'];
+            $allow = [];
+
+            foreach ($roles as $role) {
+                foreach ($role['actions'] as $a){
+                    $allow[] = $a['title'];
+                }
+            }
+
+            $res['access_token'] = $user->createToken('MyApp',$allow)->accessToken;
+            return response()->json( $res, 200);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
