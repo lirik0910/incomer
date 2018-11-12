@@ -49,6 +49,33 @@ Route::namespace('Manager')->middleware(['auth:api'])->group(function () {
         Route::delete('/{id}', 'UserController@destroy')->middleware('scope:deleteUser');
     });
 
+    // Images routes
+    Route::prefix('image')->group(function () {
+
+        Route::get('', 'ImageController@index')->middleware('scope:listImage');
+        Route::get('/{id}', 'ImageController@show')->middleware('scope:readImage');
+
+        Route::post('', 'ImageController@store')->middleware('scope:createImage');
+
+        Route::put('/{id}', 'ImageController@update')->middleware('scope:updateImage');
+
+        Route::delete('/{id}', 'ImageController@destroy')->middleware('scope:deleteImage');
+    });
+
+    // Videos routes
+    Route::prefix('video')->group(function () {
+
+        Route::get('', 'VideoController@index')->middleware('scope:listVideo');
+        Route::get('/{id}', 'VideoController@show')->middleware('scope:readVideo');
+
+        Route::post('', 'VideoController@store')->middleware('scope:createVideo');
+
+        Route::put('/{id}', 'VideoController@update')->middleware('scope:updateVideo');
+
+        Route::delete('/{id}', 'VideoController@destroy')->middleware('scope:deleteVideo');
+    });
+
+
 
 
 

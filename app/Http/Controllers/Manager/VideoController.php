@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
-use App\Repositories\User\UserRepository;
+use App\Http\Requests\VideoCreateRequest;
+use App\Http\Requests\VideoUpdateRequest;
+use App\Repositories\Video\VideoRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class USerController extends Controller
+class VideoController extends Controller
 {
     private $model;
 
-    public function __construct(UserRepository $model)
+    public function __construct(VideoRepository $model)
     {
         $this->model = $model;
     }
@@ -29,14 +30,13 @@ class USerController extends Controller
         }
     }
 
-    public function store(UserCreateRequest $request)
+    public function store(VideoCreateRequest $request)
     {
         try {
-            $data = $request->only(['username', 'password', 'email', 'first_name', 'last_name', 'phone', 'country', 'type']);
-            $data['type'] = !empty($data['type']) ? $data['type'] : 'manager';
+            $data = $request->only(['title', 'description', 'url']);
+            $data['creator_id'] = Auth::user()->id;
 
             $res = $this->model->create($data);
-            $res->createToken('MyApp');
 
             return response()->json($res);
         } catch (\Exception $e) {
@@ -55,10 +55,12 @@ class USerController extends Controller
         }
     }
 
-    public function update(UserUpdateRequest $request, $id)
+    public function update(VideoUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['password', 'username', 'first_name', 'last_name', 'phone', 'country']);
+            $data = $request->only(['title', 'description', 'url']);
+
+
             $res = $this->model->update($id, $data);
 
             return response()->json($res);
