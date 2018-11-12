@@ -29,9 +29,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles() {
-        return $this->belongsToMany('App\Model\Role', 'users_roles', 'role_id', 'user_id');
-    }
 
     public function addNewFacebookUser($input)
     {

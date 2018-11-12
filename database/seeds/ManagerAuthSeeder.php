@@ -16,7 +16,7 @@ class ManagerAuthSeeder extends Seeder
         $userId = DB::table('users')->insertGetId([
             'email' => 'admin@admin.com',
             'password' => Hash::make('secret'),
-            'type' => 'manager',
+            'type' => 'admin',
         ]);
 
 
