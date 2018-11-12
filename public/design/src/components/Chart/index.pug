@@ -1,15 +1,36 @@
 div.chart
-	//- p.news__title Новости о компании
-	//- canvas#myChart(width="400" height="400")
-	//- canvas#chart
+	p.block-title О Tesla в цифрах
+	div.chart__filters
+		ul.chart__filter-list
+			li.chart__filter-item
+				a.chart__filter-link.chart__filter-link--active(href='#') Стоимость акций
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Капитализация
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Доходность
 
-	//- svg(width="300px" height="150px")
-	//- 	rect(x="20" y="20" width="20px" height="20" rx="5" ry="5")
-	//- 	rect(x="60" y="20" width="20px" height="20" rx="5" ry="5")
-	//- 	rect(x="100" y="20" width="20px" height="20" rx="5" ry="5")
+		ul.chart__filter-list.chart__filter-list--term
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Минута
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Час
+			li.chart__filter-item
+				a.chart__filter-link.chart__filter-link--active(href='#') День
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Неделя
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Месяц
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Квартал
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Год
+			li.chart__filter-item
+				a.chart__filter-link.chart__filter-link(href='#') Все время
 
 
-	div.ct-chart.ct-perfect-fourth
+
+	//- div.ct-chart.ct-perfect-fourth
+	div.ct-chart
 
 
 	//- svg(viewBox="0 0 500 100").chart
