@@ -1,5 +1,4 @@
 import Base from '../../Base.js';
-import Auth from '../../components/Auth/index';
 
 export default class Header extends Base {
 	initDOMElements(e) {
@@ -23,7 +22,6 @@ export default class Header extends Base {
     }
 
 	onDOMReady(e) {
-		new Auth();
 		this.els._searchBtn.click((e) => this.searchAnimation(e));
 		this.els._headerProfileWrap.click(() => this.loginProfile());
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));

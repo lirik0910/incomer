@@ -53,7 +53,7 @@ class AuthController extends Controller
                 }
             }
 
-            $res['access_token'] = $user->createToken('MyApp',$allow)->accessToken;
+            $res['access_token'] = $user->createToken('MyApp',array_unique($allow))->accessToken;
             return response()->json( $res, 200);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);

@@ -1,0 +1,78 @@
+@import '../../pages/variables.scss';
+@import '../../pages/mixins.scss';
+@import '../../pages/extensions.scss';
+
+.profile {
+	font-size: 0;
+	&__info {
+		@extend %card; 
+		font-size: 14px;
+		width: 300px;
+		margin-right: 24px;
+		display: inline-block;
+		padding: 0 24px 24px 24px;
+	}
+	&__name {
+
+	}
+	&__role {
+
+	}
+	&__menu-list {
+		border-top: 1px solid $main-light-grey-color;
+		border-bottom: 1px solid $main-light-grey-color;
+		// padding: 0 24px 24px 14px;
+	}
+	&__menu-item {
+		// display: inline-block;
+		display: block;
+		&:first-of-type {
+			margin-top: 12px;
+		}
+		&:last-of-type {
+			margin-bottom: 12px;
+		}
+	}
+	&__menu-link,
+	&__exit {
+		// display: inline-block;
+		display: block;
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		padding: 12px 12px 12px 10px;
+		letter-spacing: 0.2px;
+		font-weight: 500;
+		border-radius: 12px;
+		&:hover,
+		&:focus
+		&:active {
+			background-color: rgba(36, 36, 36, 0.05);
+		}
+	}
+	/* &__exit {
+		
+	} */
+
+
+
+
+
+
+
+	
+	/* &__title {
+		font-weight: 900;
+	    font-size: 20px;
+	    letter-spacing: 0.2px;
+	    margin-bottom: 36px;
+	} */
+
+
+
+
+	/* &__detail {
+		font-size: 14px;
+		width: 732px;
+		display: inline-block;
+	} */
+}

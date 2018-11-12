@@ -3,9 +3,7 @@
 
 @import '../../components/Header/style.scss';
 @import '../../components/Auth/style.scss';
-@import '../../components/CompanyInfo/style.scss';
-@import '../../components/Chart/style.scss';
-@import '../../components/CompanyNews/style.scss';
+@import '../../components/UserProfile/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 
@@ -82,7 +80,14 @@ a, button, input {
     }
 }
 
-.wrap {
+/* .block__title {
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    margin-bottom: 36px;
+} */
+
+/* .wrap {
     font-size: 0;
     margin: 24px 0 160px;
 }
@@ -98,4 +103,4 @@ a, button, input {
     letter-spacing: 0.2px;
     font-weight: 900;
     margin-right: 30px;
-}
+} */
