@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <!-- <h1>Index WTF?!</h1> -->
     <div class="container">
       <div class="tag">
         <ul class="tag__list">
