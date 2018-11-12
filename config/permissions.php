@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'permissions' => [
+    'actions' => [
         'listPerson' => 'Description for listPerson',
         'readPerson' => 'Description for readPerson',
         'createPerson' => 'Description for createPerson',
@@ -19,9 +19,19 @@ return [
 
     'roles' => [
         'admin' => [
-            'listPerson', 'readPerson', 'createPerson', 'restorePerson',
-            'updatePerson', 'trashPerson', 'deletePerson',
-            'listUser', 'readUser', 'createUser', 'updateUser', 'deleteUser'
+            'listPerson',
+            'readPerson',
+            'createPerson',
+            'restorePerson',
+            'updatePerson',
+            'trashPerson',
+            'deletePerson',
+
+            'listUser',
+            'readUser',
+            'createUser',
+            'updateUser',
+            'deleteUser',
         ],
         'manager' => [
             'listPerson', 'readPerson', 'createPerson', 'restorePerson',

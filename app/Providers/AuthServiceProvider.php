@@ -27,15 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        $data = DB::table('actions')->get();
-        $actions = [];
-        foreach ($data as $action){
-            $actions[$action->title] = $action->description;
-        }
-
-        Passport::tokensCan($actions);
-
-        //routes for manager authentication
+        Passport::tokensCan(config('permissions.actions'));
         Passport::routes();
+
     }
 }
