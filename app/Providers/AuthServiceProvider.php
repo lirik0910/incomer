@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
@@ -26,21 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::tokensCan([
-            'listPerson' => 'listPerson description',
-            'readPerson' => 'readPerson description',
-            'createPerson' => 'createPerson description',
-            'restorePerson' => 'restorePerson description',
-            'updatePerson' => 'updatePerson description',
-            'trashPerson' => 'trashPerson description',
-            'deletePerson' => 'deletePerson description',
+        $data = DB::table('actions')->get();
+        $actions = [];
+        foreach ($data as $action){
+            $actions[$action->title] = $action->description;
+        }
 
-            'listUser' => 'listUser description',
-            'readUser' => 'readUser description',
-            'createUser' => 'createUser description',
-            'updateUser' => 'updateUser description',
-            'deleteUser' => 'deleteUser description',
-        ]);
+        Passport::tokensCan($actions);
 
         //routes for manager authentication
         Passport::routes();
