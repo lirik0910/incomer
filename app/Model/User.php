@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'facebook_id', 'vk_id', 'type', 'username'
+        'first_name', 'last_name', 'email', 'password', 'facebook_id', 'vk_id', 'google_id', 'type', 'username'
     ];
 
     /**
@@ -32,7 +32,9 @@ class User extends Authenticatable
 
     public function addNewFacebookUser($input)
     {
-        $check = static::where('facebook_id', $input['facebook_id'])->first();
+        $check = static::where('facebook_id', $input['facebook_id'])
+            ->orWhere('email', $input['email'])
+            ->first();
 
         if (is_null($check)) {
             return static::create($input);
@@ -43,7 +45,9 @@ class User extends Authenticatable
 
     public function addNewVKontakteUser($input)
     {
-        $check = static::where('vk_id', $input['vk_id'])->first();
+        $check = static::where('vk_id', $input['vk_id'])
+            ->orWhere('email', $input['email'])
+            ->first();
 
         if (is_null($check)) {
             return static::create($input);
@@ -51,4 +55,19 @@ class User extends Authenticatable
 
         return $check;
     }
+
+    public function addNewGoogleUser($input)
+    {
+        $check = static::where('google_id', $input['google_id'])
+            ->orWhere('email', $input['email'])
+            ->first();
+
+        if (is_null($check)) {
+            return static::create($input);
+        }
+
+        return $check;
+    }
+
+
 }

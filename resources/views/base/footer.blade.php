@@ -4,7 +4,7 @@
 <ul class="social">
   <li class="social__item"><a class="social__link" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>facebook</title><path id="Facebook" d="M12.89,18.86V12.48H15L15.35,10H12.89V8.4c0-.72.2-1.21,1.23-1.21h1.32V5a17.56,17.56,0,0,0-1.92-.1,3,3,0,0,0-3.2,3.29V10H8.17v2.49h2.15v6.38Z"/></svg></a></li>
   <li class="social__item"><a class="social__link" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill-rule:evenodd; stroke: transparent}</style></defs><title>vkontakte</title><path id="Vkontakte" class="cls-1" d="M20.59,7.38c.12-.42,0-.72-.6-.72H18a.84.84,0,0,0-.85.55,16.87,16.87,0,0,1-2.42,4c-.46.46-.67.6-.92.6s-.31-.14-.31-.56V7.38c0-.5-.14-.72-.56-.72H9.86a.47.47,0,0,0-.5.45c0,.47.71.58.79,1.92v2.9c0,.63-.12.75-.37.75-.67,0-2.29-2.45-3.25-5.26-.19-.54-.38-.76-.89-.76h-2c-.57,0-.68.26-.68.55,0,.52.67,3.11,3.11,6.53a7.66,7.66,0,0,0,6,3.6c1.26,0,1.41-.28,1.41-.76V14.81c0-.56.12-.67.52-.67s.79.14,2,1.27c1.33,1.34,1.55,1.93,2.3,1.93h2c.57,0,.85-.28.68-.83a8.22,8.22,0,0,0-1.66-2.31c-.46-.54-1.14-1.13-1.35-1.42s-.21-.54,0-.87c0,0,2.4-3.38,2.65-4.53"/></svg></a></li>
-  <li class="social__item"><a class="social__link" href="#"><?xml version="1.0" encoding="iso-8859-1"?>
+  <li class="social__item"><a class="social__link" href="#">
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

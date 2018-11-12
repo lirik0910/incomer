@@ -18,7 +18,7 @@ Route::prefix('manager')->group(function () {
 
 });
 
-Route::get('/', 'PageController@index');
+Route::get('/', 'PageController@index')->name('home');
 
 Route::get('news/{url}', 'PageController@oneNews');
 
@@ -34,7 +34,6 @@ Route::get('/wiki/{url}', 'PageController@wikiPage');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
 
@@ -43,3 +42,6 @@ Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback
 
 Route::get('auth/vk', 'Auth\AuthController@redirectToVK');
 Route::get('auth/vk/callback', 'Auth\AuthController@handleVKCallback');
+
+Route::get('auth/google', 'Auth\AuthController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone', 255)->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('vk_id')->nullable();
+            $table->string('google_id')->nullable();
             $table->string('type')
                 ->default('user')
                 ->comment('Type of user (user or manager)');
