@@ -138,7 +138,7 @@ export default class Chart extends Base {
 				break;
 			case 'Все время':
 				// this.createChart(data.allTime)
-				this.createChart(data.month)
+				this.createChart(data.year)
 				break;
 			default:
 				this.createChart(data.day)

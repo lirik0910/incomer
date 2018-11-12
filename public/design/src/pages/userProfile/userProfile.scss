@@ -2,8 +2,8 @@
 @import '../mixins.scss';
 
 @import '../../components/Header/style.scss';
-@import '../../components/News/style.scss';
-@import '../../components/RelatedNews/style.scss';
+@import '../../components/Auth/style.scss';
+@import '../../components/UserProfile/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 
@@ -68,11 +68,6 @@ a, button, input {
 .container {
     max-width: 1272px;
 	margin: 0 auto;
-	// padding: 0 50px;
-}
-
-.wrap {
-    font-size: 0;
 }
 
 .logo {
@@ -85,48 +80,27 @@ a, button, input {
     }
 }
 
-.views,
-.comments {        
-    font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
-    margin: 12px 24px 0 24px;
-    position: relative;
+/* .block__title {
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    margin-bottom: 36px;
+} */
+
+/* .wrap {
+    font-size: 0;
+    margin: 24px 0 160px;
+}
+
+.main-wrap {
+    width: 948px;
     display: inline-block;
-    &:before {
-        content: '';
-        background-repeat: no-repeat;
-        background-size: 20px;
-        position: absolute;
-        left: -25px;
-        top: calc(50% - 2px);
-        transform: translate(0, -50%);
-        width: 20px;
-        height: 19px;
-    }
-    &--light {
-        opacity: 0.6;
-        // margin: 0;
-        width: 16px;
-        height: 16px;
-        // margin: 0 24px;
-    }
+    vertical-align: top;
 }
 
-.views {
-    &:before {
-        background-image: url('../../../img/eye@2x.png');
-    }
-    &--light {
-        // margin-right: 30px;
-        margin: 0 40px 0 24px;
-    }
-}
-
-.comments {
-    &:before {
-        background-image: url('../../../img/comment@2x.png');
-    }
-    &--light {
-        margin-top: 0;
-        margin-right: 0;
-    }
-}
+.block-title {
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    font-weight: 900;
+    margin-right: 30px;
+} */
