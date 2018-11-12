@@ -15,6 +15,18 @@ return [
         'createUser' => 'Description for createUser',
         'updateUser' => 'Description for updateUser',
         'deleteUser' => 'Description for deleteUser',
+
+        'listImage' => 'Description for listImage',
+        'readImage' => 'Description for readImage',
+        'createImage' => 'Description for createImage',
+        'updateImage' => 'Description for updateImage',
+        'deleteImage' => 'Description for deleteImage',
+
+        'listVideo' => 'Description for listVideo',
+        'readVideo' => 'Description for readVideo',
+        'createVideo' => 'Description for createVideo',
+        'updateVideo' => 'Description for updateVideo',
+        'deleteVideo' => 'Description for deleteVideo',
     ],
 
     'roles' => [
@@ -32,16 +44,26 @@ return [
             'createUser',
             'updateUser',
             'deleteUser',
+
+            'listImage',
+            'readImage',
+            'createImage',
+            'updateImage',
+            'deleteImage',
+
+            'listVideo',
+            'readVideo',
+            'createVideo',
+            'updateVideo',
+            'deleteVideo',
         ],
         'manager' => [
-            'listPerson', 'readPerson', 'createPerson', 'restorePerson',
-            'updatePerson', 'trashPerson', 'deletePerson',
-            'listUser', 'readUser', 'createUser', 'updateUser', 'deleteUser'
+
+            'listPerson',
         ],
         'editor' => [
-            'listPerson', 'readPerson', 'createPerson', 'restorePerson',
-            'updatePerson', 'trashPerson', 'deletePerson',
-            'listUser', 'readUser', 'createUser', 'updateUser', 'deleteUser'
+            'listPerson',
+
         ]
     ],
 ];
