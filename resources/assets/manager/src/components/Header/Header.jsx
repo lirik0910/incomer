@@ -1,16 +1,17 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
-export default withStyles(({ Palette }) => ({
+import Panel from 'components/Panel';
+
+export default withStyles(() => ({
 	root: {
-		height: 30,
+		padding: 0,
 		gridArea: 'header',
 		display: 'flex',
-		alignItems: 'center',
-		backgroundColor: Palette.default
+		alignItems: 'center'
 	}
 }))(({ classes, children = [] }) => (
-	<div className={classes.root}>
+	<Panel className={classes.root}>
 		{children}
-	</div>
+	</Panel>
 ));

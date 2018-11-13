@@ -9,5 +9,7 @@ export default withStyles({
 		gridArea: 'users-filters'
 	}
 })(({ classes = {}, children = [] }) => (
-	<Panel className={classes.root}>{children}</Panel>
+	<div className={classes.root}>
+		<Panel>{children}</Panel>
+	</div>
 ));

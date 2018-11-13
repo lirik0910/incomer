@@ -1,25 +1,11 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
-export default withStyles(({ Button, Palette }) => ({
-	defaultType: Button['default'],
-	processType: Button['process'],
-	tabType: Button['tab'],
-	symbolType: Button['symbol'],
-	linkType: Button['link'],
-	minType: Button['min'],
-
-	defaultColor: {
-		color: Palette['default']
-	},
-
-	primaryColor: {
-		color: Palette['primary']
-	}
+export default withStyles(({ Button }) => ({
+	...Button
 }))(({ 
 	text = 'button', 
 	variant = 'default',
-	color = 'default',
 	className = '', 
 	classes, 
 	theme,
@@ -29,7 +15,7 @@ export default withStyles(({ Button, Palette }) => ({
 	<button 
 		{...properties}
 		ref={getRef}
-		className={classes[color +'Color'] +' '+ classes[variant +'Type'] +' '+ className}>
+		className={classes[variant] +' '+ className}>
 
 		{text}
 	</button>

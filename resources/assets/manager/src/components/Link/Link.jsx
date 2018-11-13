@@ -2,33 +2,11 @@ import React from 'react';
 import withStyles from 'react-jss';
 import { Link } from 'react-router-dom';
 
-export default withStyles(({ Button, Palette }) => ({
-	defaultType: Button['default'],
-	processType: Button['process'],
-	tabType: Button['tab'],
-	symbolType: Button['symbol'],
-	linkType: Button['link'],
-	minType: Button['min'],
-
-	defaultColor: {
-		color: Palette['default']
-	},
-
-	primaryColor: {
-		color: Palette['primary']
-	},
-
-	auxType: { 
-		...Button['default'],
-
-		'&:hover': {
-			color: Palette['aux']
-		}
-	}
+export default withStyles(({ Link }) => ({
+	...Link
 }))(({ 
 	text, 
 	variant = 'default',
-	color = 'default',
 	children = [],
 	className = '', 
 	classes, 
@@ -36,9 +14,8 @@ export default withStyles(({ Button, Palette }) => ({
 	getRef = () => {},
 	...properties 
 }) => (
-	<Link {...properties}
-		ref={getRef}
-		className={classes[color +'Color'] +' '+ classes[variant +'Type'] +' '+ className}>
+	<Link {...properties} ref={getRef}
+		className={classes[variant] +' '+ className}>
 
 		{text || children}
 	</Link>

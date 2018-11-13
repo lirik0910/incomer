@@ -1,12 +1,21 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
+import Link from 'components/Link';
 import Panel from 'components/Panel';
 import Table from 'components/Table';
 import TableHeader from 'components/TableHeader';
 import TableRow from 'components/TableRow';
 import Button from 'components/Button';
 import PageLoadingProcess from 'components/PageLoadingProcess';
+import Pagination from 'components/Pagination';
+import Typography from 'components/Typography';
+
+import { 
+	submitForm,
+	deleteSelectedRows, 
+	copySelectedRows
+} from './logic/index';
 
 import httpfetch from 'httpfetch.js';
 import { defineQueryProps } from 'url.js';
@@ -14,47 +23,97 @@ import { defineQueryProps } from 'url.js';
 const styles = () => ({
 	root: {
 		margin: 12,
-		gridArea: 'users-table'
+		gridArea: 'users-table',
+		'& table': {
+			marginBottom: 56
+		}
+	},
+	pagePaginationButtons: {
+		position: 'absolute',
+		bottom: 12,
+		left: 12
+	},
+	pagePaginationInfo: {
+		position: 'absolute',
+		bottom: 12,
+		right: 12
 	}
 });
 
 class UsersListTable extends React.PureComponent {
 
 	state = {
-		...defineQueryProps(),
-		date: [],
-		total: 0,
-		dataLoadingFlag: true,
-		catchedErrorMessage: ''
+		...{ ...defineQueryProps(), limit: 10, page: 0 },
+		
+		/**
+		 * Data on users who will be in the table
+		 * Данные по пользователям, которые будут в таблице
+		 * @type {Array}
+		 */
+		data: [
+		// EXAMPLE OF ONE LINE OBJECT
+		// ПРИМЕР ОБЪЕКТА ОДНОЙ СТРОКИ
+		{
+			id: 1,
+			name: 'name',
+			surname: 'surname',
+			email: 'name.surname@email.com',
+			role: 'admin',
+			created_at: '05-10-2018 13:47:28',
+			comments_count: 2332,
+			reposted_news_count: 37326
+		}
+		],
+		total: 20,
+		removeItemId: 0,
+		dataLoadingFlag: false,
 	}
 
 	componentDidMount = () => {
-		httpfetch('https://jsonplaceholder.typicode.com/todos/1')
+		const { displayFetchErrorMessage = () => {} } = this.props;
+		httpfetch('/users', 'GET', {}, window.location.search.substr(1))
 			.then(({ data, total = 0 }) => this.setState({
 				dataLoadingFlag: false,
 				total,
 				data
 			}))
-			.catch((err) => this.setState({ 
-				catchedErrorMessage: err.message 
-			}));
+			.catch((err) => {
+				displayFetchErrorMessage(err.message);
+				setTimeout(() => {
+					displayFetchErrorMessage('');
+				}, 2600);
+			});
+
+		document.addEventListener('CloseDeleteDialog', this.closeDeleteDialog);
+		document.addEventListener('CopySelectedItems', copySelectedRows(this));
+		document.addEventListener('DeleteSelectedItems', deleteSelectedRows(this));
 	}
 
+	componentWillUnmount = () => {
+		document.removeEventListener('CloseDeleteDialog', this.closeDeleteDialog);
+		document.removeEventListener('CopySelectedItems', copySelectedRows(this));
+		document.removeEventListener('DeleteSelectedItems', deleteSelectedRows(this));
+	}
+
+	selectedRowsIdsArray = [];
+
 	render = () => {
-		const { classes } = this.props;
-		const { data = [], sort = '', direction = '', dataLoadingFlag, offset = 0, limit = 20 } = this.state;
+		const { classes, deleteItems = () => {} } = this.props;
+		const { data = [], sort = '', direction = '', dataLoadingFlag, page = 0, limit = 20, total = 0 } = this.state;
 
 		return <Panel className={classes.root}>
 			{dataLoadingFlag && <PageLoadingProcess />}
 
-			<Table className={classes.table}>
+			<Table>
 				<TableHeader columns={[
-					<input type="checkbox" />,
+					<input type="checkbox"
+						onChange={this.selectAllRows} />,
 					<React.Fragment>
-						Name
+						<Typography 
+							variant="simple"
+							text="Name" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'name' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -66,10 +125,11 @@ class UsersListTable extends React.PureComponent {
 								''} />
 					</React.Fragment>,
 					<React.Fragment>
-						Surname
+						<Typography 
+							variant="simple"
+							text="Surname" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'surname' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -81,10 +141,11 @@ class UsersListTable extends React.PureComponent {
 								''} />
 					</React.Fragment>,
 					<React.Fragment>
-						Email
+						<Typography 
+							variant="simple"
+							text="Email" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'email' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -96,10 +157,11 @@ class UsersListTable extends React.PureComponent {
 								''} />
 					</React.Fragment>,
 					<React.Fragment>
-						Role
+						<Typography 
+							variant="simple"
+							text="Role" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'role' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -111,10 +173,11 @@ class UsersListTable extends React.PureComponent {
 								''} />
 					</React.Fragment>,
 					<React.Fragment>
-						Created at
+						<Typography 
+							variant="simple"
+							text="Created at" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'created_at' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -126,10 +189,11 @@ class UsersListTable extends React.PureComponent {
 								''} />
 					</React.Fragment>,
 					<React.Fragment>
-						Comments
+						<Typography 
+							variant="simple"
+							text="Comments" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'comments_count' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -141,10 +205,11 @@ class UsersListTable extends React.PureComponent {
 								''} />
 					</React.Fragment>,
 					<React.Fragment>
-						Reposted news
+						<Typography 
+							variant="simple"
+							text="Reposted news" />
 						<Button
-							variant="min"
-							color="primary"
+							variant="icon"
 							text={<span 
 								className={sort === 'reposted_news_count' && direction === 'asc' ?
 									'fa fa-sort-up' : 
@@ -155,7 +220,9 @@ class UsersListTable extends React.PureComponent {
 								'active' :
 								''} />
 					</React.Fragment>,
-					'Actions'
+					<Typography 
+						variant="simple"
+						text="Actions" />
 				]} />
 
 				<tbody>
@@ -163,30 +230,144 @@ class UsersListTable extends React.PureComponent {
 					<TableRow
 						key={i}
 						columns={[
-							<input type="checkbox" />,
+							<input type="checkbox"
+								className="row-users-table-checkbox"
+								onChange={this.selectOneRow}
+								data-row-item-id={row.id} />,
 							row.name,
 							row.surname,
 							row.email,
 							row.role,
 							row.created_at,
 							row.comments_count,
-							row.reposted_news_count
+							row.reposted_news_count,
+							<React.Fragment>
+								<Link to={'/user/'+ row.id}>
+									<i className="fa fa-edit"></i>
+								</Link>
+
+								<Button
+									variant="icon"
+									text={<i className="fa fa-close"></i>}
+									onClick={() => this.setState({
+										removeItemId: row.id
+									}, () => deleteItems(row))} />
+							</React.Fragment>
 						]} />
 				))}
 				</tbody>
 			</Table>
+
+			{limit < total && <div className={classes.pagePaginationButtons}>
+				<Pagination
+					limit={limit}
+					total={total}
+					page={page}
+					onClick={this.switchPage} />
+			</div>}
+
+			<Typography
+				text={`Showing rows ${page} to ${limit - (limit - total)} of ${total}`}
+				className={classes.pagePaginationInfo} />
+
+			<form 
+				id="users-data-fetch-form"
+				onSubmit={submitForm(this)}>
+				<button 
+					type="submit"
+					style={{ display: 'none' }}
+					id="users-data-fetch-submit">
+				</button>
+			</form>
+
+			<input type="hidden"
+				name="sort_column"
+				form="users-data-fetch-form"
+				value={sort} />
+			<input type="hidden"
+				name="sort_direction"
+				form="users-data-fetch-form"
+				value={direction} />
+			<input type="hidden"
+				name="page"
+				form="users-data-fetch-form"
+				value={page} />
+			<input type="hidden"
+				name="limit"
+				form="users-data-fetch-form"
+				value={limit} />
 		</Panel>
 	}
 
-	sortUsers = (sort = '') => () => {
-		const { direction } = this.state;
+	selectOneRow = (e) => {
+		const { selectedRows } = this.props;
+		let index = 0;
+
+		(index = this.selectedRowsIdsArray.indexOf(e.target.dataset['rowItemId'])) > -1 ?
+			this.selectedRowsIdsArray.splice(index, 1) : 
+			this.selectedRowsIdsArray.push(e.target.dataset['rowItemId']);
+
+		this.selectedRowsIdsArray.length > 0 ?
+			selectedRows(true) :
+			selectedRows(false);
+	}
+
+	/**
+	 * Выделить все строки
+	 * @param {Object} e
+	 */
+	selectAllRows = (e) => {
+		const { selectedRows = () => {} } = this.props;
+		const collections = document.getElementsByClassName('row-users-table-checkbox');
+		
+		this.selectedRowsIdsArray = [];
+		for (let i in collections) {
+			collections[i].type && (() => {
+				collections[i].checked = e.target.checked;
+				e.target.checked && this.selectedRowsIdsArray.push(collections[i].dataset['rowItemId'])
+			})();
+		}
+		selectedRows(e.target.checked);
+	}
+
+	/**
+	 * Sort data by column
+	 * Сортировка данных по определенной колонке
+	 * @param {String} newSortColumn - Название колонки
+	 * @param {String} newSortColumn - Column name
+	 * @return {Function}
+	 */
+	sortUsers = (newSortColumn = '') => () => {
+		const { direction, sort } = this.state;
 
 		this.setState({
-			sort,
-			direction: direction === 'desc' ?
-				'asc' :
-				'desc'
+			sort: newSortColumn,
+			direction: sort !== newSortColumn ? 'asc' : 
+				direction === 'desc' ?
+					'asc' :
+					'desc'
+		}, () => {
+			document.getElementById('users-data-fetch-submit').click();
 		});
+	}
+
+	/**
+	 * Switch current table page for paggination
+	 * @param {Number} page
+	 * @param {Boolean} flag
+	 * @return {Function}
+	 */
+	switchPage = (page = 0, flag = true) => (e) => {
+		if (flag) {
+			this.setState({ page }, () => {
+				document.getElementById('users-data-fetch-submit').click();
+			});
+		}
+	}
+
+	closeDeleteDialog = () => {
+		const { deleteItems = () => {} } = this.props;
+		this.setState({ removeItemId: 0 }, () => deleteItems({}));
 	}
 }
 

@@ -1,31 +1,19 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
-export default withStyles(({ Typography, Palette }) => ({
-	defaultType: Typography['default'],
-	titleType: Typography['title'],
-
-	defaultColor: {
-		color: Palette['default']
-	},
-
-	primaryColor: {
-		color: Palette['primary']
-	}
+export default withStyles(({ Typography }) => ({
+	...Typography
 }))(({ 
 	text = 'text', 
 	variant = 'default',
-	color = 'default',
 	className = '', 
 	classes, 
 	theme,
 	getRef = () => {},
 	...properties 
 }) => (
-	<span 
-		{...properties}
-		ref={getRef}
-		className={classes[color +'Color'] +' '+ classes[variant +'Type'] +' '+ className}>
+	<span {...properties} ref={getRef}
+		className={classes[variant] +' '+ className}>
 
 		{text}
 	</span>
