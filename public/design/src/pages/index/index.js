@@ -10,6 +10,7 @@ import Auth from '../../components/Auth/index';
 import CompaniesRating from '../../components/CompaniesRating/index';
 // import MainNews from '../../components/MainNews/index';
 import Footer from '../../components/Footer/index';
+import Modal from '../../components/Modal/index';
 
 new Base().call(() => {
 	new Header();
@@ -20,4 +21,5 @@ new Base().call(() => {
 	new CompaniesRating();
 	// new MainNews();
 	new Footer();
+	new Modal();
 });

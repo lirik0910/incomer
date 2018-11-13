@@ -1,7 +1,9 @@
 div.profile
 	div.profile__info
-		p.profile__name
-		p.profile__role
+		div.profile__photo
+			img(src='img/photo-dark.jpg', alt='user-photo')
+		p.profile__name Example User 78
+		p.profile__role Читатель
 		ul.profile__menu-list
 			li.profile__menu-item
 				a.profile__menu-link(href="#") Настройки профиля
@@ -15,8 +17,92 @@ div.profile
 				a.profile__menu-link(href="#") Рассылки
 		a.profile__exit(href='#') Выйти
 
-	//- div.profile__detail
-	//- 	p.profile__title Личная информация
-	//- 	input(type="text")
-	//- 	input(type="text")
-	//- 	input(type="text")
+	div.profile__detail
+		div.profile__detail-block.profile__detail-block--personal
+			p.profile__title Личная информация
+			fieldset.profile__fieldset.profile__fieldset--fullname
+				legend Ф.И.О
+				div.profile__field
+					span.profile__placeholder Фамилия
+					input.profile__input(type='text')
+				div.profile__field
+					span.profile__placeholder Имя
+					input.profile__input(type='text')
+				div.profile__field
+					span.profile__placeholder Отчество
+					input.profile__input(type='text')
+			fieldset.profile__fieldset.profile__fieldset--birthday
+				legend Дата рождения
+				div.profile__field
+					span.profile__placeholder День
+					select.profile__select
+						option(value='' selected)
+						option(value='1') 1
+						option(value='2') 2
+						option(value='3') 3
+						option(value='4') 4
+				div.profile__field
+					span.profile__placeholder Месяц
+					select.profile__select
+						option(value='' selected)
+						option(value='1') Январь
+						option(value='2') Февраль
+						option(value='3') Март
+						option(value='4') Апрель
+				div.profile__field
+					span.profile__placeholder Год
+					select.profile__select
+						option(value='' selected)
+						option(value='2018') 2018
+						option(value='2017') 2017
+						option(value='2016') 2016
+						option(value='2015') 2015
+			fieldset.profile__fieldset.profile__fieldset--living
+				legend Место проживания
+				div.profile__field
+					span.profile__placeholder Страна
+					select.profile__select
+						option(value='' selected)
+						option(value='1') Украина
+						option(value='2') Россия
+						option(value='3') Беларусь
+						option(value='4') Греция
+				div.profile__field
+					span.profile__placeholder Город
+					select.profile__select
+						option(value='' selected)
+						option(value='1') Киев
+						option(value='2') Мариуполь
+						option(value='3') Керч
+						option(value='4') Полтава
+			a.profile__btn(href='#') Сохранить изменения
+
+		div.profile__detail-block.profile__detail-block--settings
+			p.profile__title Настройки профиля
+			fieldset.profile__fieldset
+				legend Смена электронной почты
+				div.profile__field
+					span.profile__placeholder Новый адрес электронной почты
+					input.profile__input(type='email')
+				div.profile__field
+					span.profile__placeholder Пароль
+					input.profile__input(type='password')
+					a.profile__pass-btn(href='#')
+						include ../../../img/eye.svg
+				div.profile__notice
+					p.profile__notice-header Внимание!
+					p.profile__notice-content При смене электронной почты для следующего входа будет использоваться уже новый адрес.
+				a.profile__btn(href='#') Сменить email
+			fieldset.profile__fieldset
+				legend Смена электронной почты
+				div.profile__field
+					span.profile__placeholder Старый пароль
+					input.profile__input(type='password')
+					a.profile__pass-btn(href='#')
+						include ../../../img/eye.svg
+				div.profile__field
+					span.profile__placeholder Новый пароль
+					input.profile__input(type='password')
+					a.profile__pass-btn(href='#')
+						include ../../../img/eye.svg
+				a.profile__btn(href='#') Сменить email

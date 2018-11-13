@@ -1,11 +1,13 @@
 @import '../variables.scss';
 @import '../mixins.scss';
+@import '../../pages/extensions.scss';
 
 @import '../../components/Header/style.scss';
 @import '../../components/Auth/style.scss';
 @import '../../components/UserProfile/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
+@import '../../components/Modal/style.scss';
 
 @font-face {
     font-family: 'Museo Sans Cyrl';
@@ -68,6 +70,10 @@ a, button, input {
 .container {
     max-width: 1272px;
 	margin: 0 auto;
+}
+
+body > .container {
+    text-align: center;
 }
 
 .logo {
