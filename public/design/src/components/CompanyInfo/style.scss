@@ -132,4 +132,14 @@
 		font-size: 18px;
 		margin: 36px 0 12px;
 	}
+	&__text {
+		font-size: 14px; 
+		line-height: 24px;
+		font-weight: 500;
+		p {
+			&:not(:last-of-type) {
+				margin-bottom: 12px;
+			}
+		}
+	}
 }
