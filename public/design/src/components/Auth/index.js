@@ -201,7 +201,7 @@ export default class Auth extends Base {
 				});
             },
             success: function(data) {
-                if (data.auth) {
+                if (data.succes) {
                 	this.els._authPopup.slideUp();
 					this.els._auth.fadeOut();
                 	this.els._headerProfileTitle.text(data.user.email);
