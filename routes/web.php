@@ -36,7 +36,6 @@ Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
-
 Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
 
