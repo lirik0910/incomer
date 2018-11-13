@@ -10,7 +10,7 @@
             <span class="comments comments--light">67</span>
           </div>
           <div class="post__pic">
-          	<img src="img/photo-dark.jpg">
+          	<img src="{{ url('img/photo-dark.jpg')  }} ">
           </div>
           <div class="post__text">
             <p>Баскетбольный клуб «Мариуполь» обыграл «Нико Баскет» из Николаева со счетом 97:90. Об этом на Facebook сообщил начальник учебно-спортивного отдела управления молодежи и спорта Георгий Федоренко.</p>
@@ -25,7 +25,7 @@
             <p>«Прекрасная победа МБК "Мариуполь", которая подтвердила высокий класс мариупольского баскетбола на национальном уровне», - отметил Георгий Федоренко.</p>
             <p>Теперь же появилась возможность также заполнить интерактивную форму заявления, указав свои персональные данные. После обработки информации онлайн-сервис сгенерирует соответствующую форму с QR-кодом, который уже на месте считает сотрудник ГМСУ, и информация попадет в базу данных. Сотрудникам ведомства нужно будет лишь сверить правильность внесенных данных. </p>
             <a class="post__preview-link" href="#">
-              <img class="post__preview-img" src="img/raccoon.jpg" alt="news-video-preview">
+              <img class="post__preview-img" src="/img/raccoon.jpg" alt="news-video-preview">
               <button class="post__preview-btn">
 				<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 viewBox="0 0 415.346 415.346" style="enable-background:new 0 0 415.346 415.346;" xml:space="preserve">
@@ -43,7 +43,7 @@
           <a class="related__link related__link--square" href="#">
             <article class="related__article">
               <div class="related__pic">
-                <img src="img/photo-light.jpg">
+                <img src="/img/photo-light.jpg">
               </div>
               <div class="related__text">
                 <p>Facebook презентовал своё первое электронное устройство</p>
@@ -55,7 +55,7 @@
           <a class="related__link related__link--square" href="#">
             <article class="related__article">
               <div class="related__pic">
-              	<img src="img/photo-dark.jpg">
+              	<img src="/img/photo-dark.jpg">
               </div>
               <div class="related__text">
                 <p>Facebook презентовал своё первое электронное устройство</p>
@@ -67,7 +67,7 @@
           <a class="related__link related__link--square" href="#">
             <article class="related__article">
               <div class="related__pic">
-              	<img src="img/photo-light.jpg">
+              	<img src="/img/photo-light.jpg">
               </div>
               <div class="related__text">
                 <p>Facebook презентовал своё первое электронное устройство</p>

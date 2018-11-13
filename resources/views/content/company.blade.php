@@ -5,7 +5,7 @@
         <div class="info">
           <div class="info__main">
             <div class="info__pic">
-              <img src="img/tesla.png">
+              <img src="/img/tesla.png">
             </div>
             <div class="info__text">
               <p class="info__title">Tesla</p>
