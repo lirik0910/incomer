@@ -14,7 +14,7 @@
         <div class="main-wrap">
           <div class="aticles-wrap">
             <div class="top">
-              <a class="top__link" href="news.html">
+              <a class="top__link" href="{{ url('/news/35') }}">
                 <article class="top__article top__article--right"> 
                   <div class="top__article-pic">
                   	<img src="img/man2.png">

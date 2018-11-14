@@ -56,6 +56,12 @@ return [
             'createVideo',
             'updateVideo',
             'deleteVideo',
+
+            'listNews',
+            'readNews',
+            'createNews',
+            'updateNews',
+            'deleteNews',
         ],
         'manager' => [
 

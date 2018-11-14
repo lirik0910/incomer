@@ -75,7 +75,18 @@ Route::namespace('Manager')->middleware(['auth:api'])->group(function () {
         Route::delete('/{id}', 'VideoController@destroy')->middleware('scope:deleteVideo');
     });
 
+    // News routes
+    Route::prefix('news')->group(function () {
 
+        Route::get('', 'NewsController@index')->middleware('scope:listNews');
+        Route::get('/{id}', 'NewsController@show')->middleware('scope:readNews');
+
+        Route::post('', 'NewsController@store')->middleware('scope:createNews');
+
+        Route::put('/{id}', 'NewsController@update')->middleware('scope:updateNews');
+
+        Route::delete('/{id}', 'NewsController@destroy')->middleware('scope:deleteNews');
+    });
 
 
 

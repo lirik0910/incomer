@@ -10,6 +10,8 @@ use App\Repositories\User\UserEloquent;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Video\VideoEloquent;
 use App\Repositories\Video\VideoRepository;
+use App\Repositories\News\NewsEloquent;
+use App\Repositories\News\NewsRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(UserRepository::class, UserEloquent::class);
         $this->app->singleton(ImageRepository::class, ImageEloquent::class);
         $this->app->singleton(VideoRepository::class, VideoEloquent::class);
+        $this->app->singleton(NewsRepository::class, NewsEloquent::class);
 
     }
 }

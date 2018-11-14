@@ -31,10 +31,10 @@ class NewsController extends Controller
         }
     }
 
-    public function create(NewsCreate $request)
+    public function store(NewsCreate $request)
     {
         try {
-            $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition']);
+            $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos']);
             $data['creatorId'] = Auth::user()->id;
 
             $result = $this->model->create($data);
@@ -93,7 +93,7 @@ class NewsController extends Controller
         }
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         try {
             $result = $this->model->delete($id);
