@@ -10,14 +10,14 @@ div.auth
 				div.auth__tab-content
 					div.auth__field
 						span.auth__placeholder Электронная почта
-						input.auth__input(type='email')
+						input.auth__input(type='email' required)#login-email
 					
 					div.auth__field.auth__pass
 						span.auth__placeholder Пароль
-						input.auth__input(type='password')
+						input.auth__input(type='password' required)#login-password
 						a.auth__pass-btn(href='#')
 							include ../../../img/eye.svg
-					button.auth__submit Войти в аккаунт
+					button.auth__submit(disabled)#login-send Войти в аккаунт
 					button.auth__restore Восстановить пароль
 					p.auth__text Войти при помощи социальной сети:
 
@@ -43,19 +43,19 @@ div.auth
 
 					div.auth__field
 						span.auth__placeholder Электронная почта
-						input.auth__input(type='email')
+						input.auth__input(type='email')#register-email
 							
 					div.auth__field
 						span.auth__placeholder Логин
-						input.auth__input(type='text')
+						input.auth__input(type='text')#register-login
 
 					div.auth__field.auth__pass
 						span.auth__placeholder Пароль
-						input.auth__input(type='password')
+						input.auth__input(type='password')#register-password
 						a.auth__pass-btn(href='#')
 							include ../../../img/eye.svg
 
-					button.auth__submit Зарегистрироваться
+					button.auth__submit(disabled)#register-send Зарегистрироваться
 					//- p.auth__text Зарегистрироваться через социальные сети:
 					p.auth__text Зарегистрироваться через:
 

@@ -7,6 +7,7 @@ import Auth from '../../components/Auth/index';
 // import Post from '../../components/Post/index';
 import RelatedNews from '../../components/RelatedNews/index';
 import Footer from '../../components/Footer/index';
+import Modal from '../../components/Modal/index';
 
 new Base().call(() => {
 	new Header();
@@ -14,4 +15,5 @@ new Base().call(() => {
 	// new Post();
 	new RelatedNews();
 	new Footer();
+	new Modal();
 });

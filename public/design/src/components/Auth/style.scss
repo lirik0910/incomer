@@ -121,7 +121,6 @@
 		background-color: $light-grey-color;
 		border-radius: 12px;
 		width: 100%;
-		// width: 99%;
 		border: none;
 		font: 700 16px 'Museo Sans Cyrl', Arial, sans-serif;
 		color: $dark-grey-color;
@@ -173,6 +172,9 @@
 		&:focus,
 		&:active {
 			background-color: $darker-blue;
+		}
+		&:disabled {
+			cursor: not-allowed;
 		}
 	}
 	&__restore {

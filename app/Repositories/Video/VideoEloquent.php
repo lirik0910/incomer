@@ -25,12 +25,15 @@ class VideoEloquent implements VideoRepository
     public function get($id)
     {
         $item = $this->model->find($id);
-        if(!$item) throw new \Exception('Video not found');
+        if (!$item) throw new \Exception('Video not found');
         return $item;
     }
 
     public function create(array $data)
     {
+        if ($this->model->where(['link' => $data['link']])->first()) {
+            throw new \Exception('Video already exists');
+        }
         $item = $this->model->create($data);
         return $this->get($item['id']);
     }
@@ -38,7 +41,7 @@ class VideoEloquent implements VideoRepository
     public function update($id, array $data)
     {
         $item = $this->model->find($id);
-        if(!$item) throw new \Exception('Video not found');
+        if (!$item) throw new \Exception('Video not found');
 
         $item->update($data);
         return $this->get($id);

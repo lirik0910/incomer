@@ -32,16 +32,21 @@ Route::get('/profile/{number}', 'PageController@userProfile');
 
 Route::get('/wiki/{url}', 'PageController@wikiPage');
 
-Auth::routes();
-
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
 
-Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
-Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
+Route::prefix('auth')->group(function () {
 
-Route::get('auth/vk', 'Auth\AuthController@redirectToVK');
-Route::get('auth/vk/callback', 'Auth\AuthController@handleVKCallback');
+    Auth::routes();
 
-Route::get('auth/google', 'Auth\AuthController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+    Route::get('facebook', 'Auth\AuthController@redirectToFacebook');
+    Route::get('google', 'Auth\AuthController@redirectToGoogle');
+    Route::get('vk', 'Auth\AuthController@redirectToVK');
+
+    Route::get('facebook/callback', 'Auth\AuthController@handleFacebookCallback');
+    Route::get('google/callback', 'Auth\AuthController@handleGoogleCallback');
+    Route::get('vk/callback', 'Auth\AuthController@handleVKCallback');
+
+});
+

@@ -26,7 +26,7 @@ class VideoUpdateRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'string',
-            'url' => 'string|max:255'
+            'link' => 'string|max:255'
         ];
     }
 }

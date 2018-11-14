@@ -108,7 +108,7 @@
 		stroke-dasharray: 1093;
 		stroke-dashoffset: 1093;
 		stroke: $default-blue;
-		animation: animationChartPath 0.5s linear both;
+		animation: animationChartPath 0.5s 0.2s linear both;
 	}
 	@keyframes animationChartPath {
 		to {

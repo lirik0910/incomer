@@ -1,30 +1,50 @@
-@import '../../pages/variables.scss';
-@import '../../pages/mixins.scss';
-@import '../../pages/extensions.scss';
-
 .profile {
+	margin: 36px 0;
 	font-size: 0;
 	&__info {
 		@extend %card; 
+		text-align: left;
 		font-size: 14px;
 		width: 300px;
 		margin-right: 24px;
 		display: inline-block;
-		padding: 0 24px 24px 24px;
+		vertical-align: top;
+		padding: 24px;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 6px 12px 0 rgba(0, 0, 0, 0.03);
+		position: relative;
+	}
+	&__photo {
+		width: 84px;
+		height: 84px;
+		overflow: hidden;
+		border-radius: 50%;
+		position: absolute;
+		top: -12px;
+		left: 24px;
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
 	}
 	&__name {
-
+		font-size: 16px;
+		font-weight: 700;
+		padding-left: 10px;
+		margin-top: 66px;
 	}
 	&__role {
-
+		font-size: 12px;
+		font-weight: 500;
+		padding-left: 10px;
+		margin: 5px 0 24px;
 	}
 	&__menu-list {
 		border-top: 1px solid $main-light-grey-color;
 		border-bottom: 1px solid $main-light-grey-color;
-		// padding: 0 24px 24px 14px;
 	}
 	&__menu-item {
-		// display: inline-block;
 		display: block;
 		&:first-of-type {
 			margin-top: 12px;
@@ -35,7 +55,6 @@
 	}
 	&__menu-link,
 	&__exit {
-		// display: inline-block;
 		display: block;
 		text-decoration: none;
 		color: $main-dark-grey-color;
@@ -49,9 +68,9 @@
 			background-color: rgba(36, 36, 36, 0.05);
 		}
 	}
-	/* &__exit {
-		
-	} */
+	&__exit {
+		margin-top: 12px;
+	}
 
 
 
@@ -60,19 +79,220 @@
 
 
 	
-	/* &__title {
+
+
+
+
+	&__detail {
+		text-align: left;
+		font-size: 14px;
+		width: 732px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	&__detail-block {
+		@extend %card;
+		padding: 24px;
+		&:not(:last-of-type) {
+			margin-bottom: 24px;
+		}
+		&--personal {
+			.profile__fieldset {
+				&:last-of-type {
+					padding-bottom: 36px;
+					border-bottom: 1px solid rgba(237, 237, 237, 0.6);
+					margin-bottom: 18px;
+				}
+			}
+		}
+		&--settings {
+			.profile__title {
+				padding-bottom: 18px;
+				border-bottom: 1px solid rgba(237, 237, 237, 0.6);
+			}
+			.profile__fieldset {
+				&:not(:last-of-type) {
+					padding-bottom: 36px;
+					border-bottom: 1px solid rgba(237, 237, 237, 0.6);
+				}
+			}
+			.profile__field {
+				width: 300px;
+				display: block;
+				&:not(:last-of-type) {
+					margin-bottom: 12px;
+				}
+			}
+			.profile__input {
+				width: 100%;
+			}
+			.profile__btn {
+				margin-top: 12px;
+			}
+		}
+	}
+	&__title {
 		font-weight: 900;
 	    font-size: 20px;
 	    letter-spacing: 0.2px;
 	    margin-bottom: 36px;
-	} */
-
-
-
-
-	/* &__detail {
-		font-size: 14px;
-		width: 732px;
+	}
+	&__fieldset {
+		font-size: 0;
+		border: none;
+		margin-bottom: 30px;
+		legend {
+			font-size: 16px;
+			font-weight: 700;
+			letter-spacing: 0.2px;
+			margin: 0 0 6px 12px;
+		}
+		&--fullname,
+		&--living {
+			.profile__field {
+				width: calc(100% / 3 - 8px);
+				display: inline-block;
+				&:not(:last-of-type) {
+					margin-right: 12px;
+				}
+			}
+			.profile__input {
+				width: 100%;
+			}
+		}
+		&--birthday {
+			.profile__field {
+				&:not(:last-of-type) {
+					margin-right: 12px;
+				}
+				&:nth-of-type(2) {
+					.profile__select {
+						min-width: 150px;
+					}
+				}
+			}
+		}
+		&--living {
+			.profile__select {
+				min-width: auto;
+				width: 100%;
+			}
+		}
+	}
+	&__field {
+		position: relative;
 		display: inline-block;
-	} */
+	}
+	&__placeholder {
+		pointer-events: none;
+		position: absolute;
+		left: 12px;
+		top: 50%;
+		transform: translate(0, -50%);
+		font-size: 14px;
+		font-weight: 500;
+		letter-spacing: 0.2px;
+		color: rgba(36, 36, 36, 0.6);
+		z-index: 1;
+		@include transition(all);
+		&--active {
+			top: 12px;
+			font-size: 12px;
+			color: $default-blue;
+		}
+	}
+	&__input {
+		padding: 22px 12px 8px;
+		background-color: $main-light-grey-color;
+		border-radius: 6px;
+		// border-radius: 12px;
+		border: none;
+		font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
+		color: $dark-grey-color;
+	}
+	&__select {
+		outline: none;
+		padding: 15px 12px;
+		border-radius: 6px;
+		border: none;
+		color: rgba(36, 36, 36, 0.6);
+		font: 500 14px 'Museo Sans Cyrl', Arial, sans-serif;
+		letter-spacing: 0.2px;
+		min-width: 120px;
+		vertical-align: middle;
+		cursor: pointer;
+		background: url('../../../img/chevron.png') 90% / 15px no-repeat $main-light-grey-color;
+		-webkit-appearance: none;
+  		   -moz-appearance: none;
+  			    appearance: none;
+		option {
+			&:first-of-type {
+				display: none;
+			}
+			// &:checked {
+			// }
+		}
+		&--filled {
+			font-weight: 700;
+			padding: 22px 12px 8px;
+			color: $dark-grey-color;
+		}
+	}
+	&__btn {
+		background-color: $default-blue;
+		border-radius: 18px;
+		padding: 8px 16px;
+		text-decoration: none;
+		color: $light-color;
+		font-size: 16px;
+		font-weight: 700;
+		letter-spacing: 0.2px;
+		display: inline-block;
+		@include transition(background-color);
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $darker-blue;
+		}
+	}
+	&__pass-btn {
+		position: absolute;
+		width: 20px;
+		right: 10px;
+    	top: 50%;
+    	transform: translate(0, -50%);
+    	font-size: 0;
+    	padding: 10px 0;
+		svg {
+			opacity: 0.2;
+    		.cls-3 {
+    			stroke: $dark-grey-color;
+    		}
+    		path:last-of-type {
+    			fill: $dark-grey-color;
+    		}
+    	}
+	}
+	&__notice {
+		font-size: 12px;
+		letter-spacing: 0.2px;
+		padding-left: 12px;
+		max-width: 300px;
+	}
+	&__notice-header {
+		font-weight: 700;
+		font-size: 14px;
+	}
+	&__notice-content {
+		font-weight: 500;
+		line-height: 18px;
+	}
 }
+
+/* .personal,
+.settings {
+	@extend %card;
+	padding: 24px;
+}
+
+.personal {} */
