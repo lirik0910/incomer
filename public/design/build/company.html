@@ -184,12 +184,12 @@
       <div class="auth__content">
         <div class="auth__tab-content">
           <div class="auth__field"><span class="auth__placeholder">Электронная почта</span>
-            <input class="auth__input" type="email">
+            <input class="auth__input" type="email" required id="login-email">
           </div>
           <div class="auth__field auth__pass"><span class="auth__placeholder">Пароль</span>
-            <input class="auth__input" type="password"><a class="auth__pass-btn" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-3,.cls-2{fill:none;}.cls-3{stroke:#000;stroke-miterlimit:10;stroke-width:2px;}</style></defs><title>eye</title><path class="cls-3" d="M14,4h1a1,1,0,0,1,1,1V6A10,10,0,0,1,6,16H5a1,1,0,0,1-1-1V14A10,10,0,0,1,14,4Z" transform="translate(10 -4.14) rotate(45)"/><path d="M10,8a2,2,0,1,1-2,2,2,2,0,0,1,2-2m0-1a3,3,0,1,0,3,3,3,3,0,0,0-3-3Z"/><rect class="cls-2" width="20" height="20"/></svg></a>
+            <input class="auth__input" type="password" required id="login-password"><a class="auth__pass-btn" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-3,.cls-2{fill:none;}.cls-3{stroke:#000;stroke-miterlimit:10;stroke-width:2px;}</style></defs><title>eye</title><path class="cls-3" d="M14,4h1a1,1,0,0,1,1,1V6A10,10,0,0,1,6,16H5a1,1,0,0,1-1-1V14A10,10,0,0,1,14,4Z" transform="translate(10 -4.14) rotate(45)"/><path d="M10,8a2,2,0,1,1-2,2,2,2,0,0,1,2-2m0-1a3,3,0,1,0,3,3,3,3,0,0,0-3-3Z"/><rect class="cls-2" width="20" height="20"/></svg></a>
           </div>
-          <button class="auth__submit">Войти в аккаунт</button>
+          <button class="auth__submit" disabled id="login-send">Войти в аккаунт</button>
           <button class="auth__restore">Восстановить пароль</button>
           <p class="auth__text">Войти при помощи социальной сети:</p>
 <ul class="social">
@@ -218,15 +218,15 @@
         </div>
         <div class="auth__tab-content">
           <div class="auth__field"><span class="auth__placeholder">Электронная почта</span>
-            <input class="auth__input" type="email">
+            <input class="auth__input" type="email" id="register-email">
           </div>
           <div class="auth__field"><span class="auth__placeholder">Логин</span>
-            <input class="auth__input" type="text">
+            <input class="auth__input" type="text" id="register-login">
           </div>
           <div class="auth__field auth__pass"><span class="auth__placeholder">Пароль</span>
-            <input class="auth__input" type="password"><a class="auth__pass-btn" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-3,.cls-2{fill:none;}.cls-3{stroke:#000;stroke-miterlimit:10;stroke-width:2px;}</style></defs><title>eye</title><path class="cls-3" d="M14,4h1a1,1,0,0,1,1,1V6A10,10,0,0,1,6,16H5a1,1,0,0,1-1-1V14A10,10,0,0,1,14,4Z" transform="translate(10 -4.14) rotate(45)"/><path d="M10,8a2,2,0,1,1-2,2,2,2,0,0,1,2-2m0-1a3,3,0,1,0,3,3,3,3,0,0,0-3-3Z"/><rect class="cls-2" width="20" height="20"/></svg></a>
+            <input class="auth__input" type="password" id="register-password"><a class="auth__pass-btn" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-3,.cls-2{fill:none;}.cls-3{stroke:#000;stroke-miterlimit:10;stroke-width:2px;}</style></defs><title>eye</title><path class="cls-3" d="M14,4h1a1,1,0,0,1,1,1V6A10,10,0,0,1,6,16H5a1,1,0,0,1-1-1V14A10,10,0,0,1,14,4Z" transform="translate(10 -4.14) rotate(45)"/><path d="M10,8a2,2,0,1,1-2,2,2,2,0,0,1,2-2m0-1a3,3,0,1,0,3,3,3,3,0,0,0-3-3Z"/><rect class="cls-2" width="20" height="20"/></svg></a>
           </div>
-          <button class="auth__submit">Зарегистрироваться</button>
+          <button class="auth__submit" disabled id="register-send">Зарегистрироваться</button>
           <p class="auth__text">Зарегистрироваться через:</p>
 <ul class="social">
   <li class="social__item"><a class="social__link" href="#"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>facebook</title><path id="Facebook" d="M12.89,18.86V12.48H15L15.35,10H12.89V8.4c0-.72.2-1.21,1.23-1.21h1.32V5a17.56,17.56,0,0,0-1.92-.1,3,3,0,0,0-3.2,3.29V10H8.17v2.49h2.15v6.38Z"/></svg></a></li>
@@ -312,11 +312,10 @@
         </div>
       </div>
       <div class="info__tab-content">
-        <div class="info__brief">
-          <p class="info__caption">Основание</p>
-          <div class="info__description"> 
-            <p>23 мая 2003</p>
-          </div>
+        <div class="info__text">
+          <p>Tesla (читается Тэ́сла, ранее Tesla Motors) — американская компания, производитель электромобилей и (через свой филиал SolarCity) решений для хранения электрической энергии.</p>
+          <p>Компания была основана в июле 2003 года Мартином Эберхардом[en] и Марком Тарпеннингом[en], но сама компания считает Илона Маска, Джеффри Брайана Штробеля и Иэна Райта почти её сооснователями.</p>
+          <p>Названа в честь всемирно известного электротехника и физика Николы Теслы.</p>
         </div>
       </div>
     </div>
@@ -458,5 +457,14 @@
     </div>
   </div>
 </footer>
+<div class="modal">
+  <div class="modal__content">
+    <div class="modal__header"></div>
+    <div class="modal__body"></div>
+    <div class="modal__footer">
+      <button class="modal__btn modal__btn--approve">OK</button>
+    </div>
+  </div>
+</div>
   <script type="text/javascript" src="js/common.js"></script><script type="text/javascript" src="js/company.js"></script></body>
 </html>

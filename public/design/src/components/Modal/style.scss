@@ -1,0 +1,81 @@
+.modal {
+	display: none;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, .6);
+	&__content {
+		color: $main-dark-grey-color;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 20;
+		width: 400px;
+		border-radius: 12px;
+		background-color: $light-color;
+	}
+	&__header,
+	&__body,
+	&__footer {
+		padding: 20px;
+	}
+	&__header {
+		border-bottom: 1px solid #eee;
+		text-transform: uppercase;
+		font-weight: 700;
+		max-height: 100px;
+	    overflow: hidden;
+	    font-weight: 700;
+	}
+	&__body {
+		max-height: 400px;
+	    overflow: hidden;
+	    font-weight: 500;
+	}
+	&__footer {
+		border-top: 1px solid #eee;
+		text-transform: uppercase;
+		text-align: right;
+	}
+	&__btn {
+		width: 100px;
+		padding: 8px 15px;
+		display: inline-block;
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		font-weight: 700;
+		cursor: pointer;
+		transition: color .3s ease-in-out, background-color .3s ease-in-out;
+		&:active,
+		&:focus,
+		&:hover {
+			background-color: transparent;
+			&.modal__btn--approve,
+			&.modal__btn--cancel {
+				color: $main-dark-grey-color;
+			}
+		}
+		&--approve {
+			background-color: $default-blue;
+			border: 1px solid $default-blue;
+			color: $light-color;
+		}
+		&--cancel {
+			background-color: $main-dark-grey-color;
+			border: 1px solid $main-dark-grey-color;
+			color: $light-color;
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.modal {
+		&__content {
+			width: 90%;
+		}
+	}
+}

@@ -15,6 +15,13 @@ export default class Auth extends Base {
         	_authRestore: $('.auth__restore'),
         	_passwordInput: $('.auth__pass .auth__input'),
         	_passwordToggler: $('.auth__pass-btn'),
+        	_loginEmail: $('#login-email'),
+        	_loginPassword: $('#login-password'),
+        	_loginSend: $('#login-send'),
+        	_registerEmail: $('#register-email'),
+        	_registerLogin: $('#register-login'),
+        	_registerPassword: $('#register-password'),
+        	_registerSend: $('#register-send'),
         	_headerProfile: $('.header__profile'),
         	_headerProfileTitle: $('.header__profile-title')
         }
@@ -27,8 +34,11 @@ export default class Auth extends Base {
 		this.els._authInput.focusout((e) => this.focusoutInputAnimation(e));
 		this.els._authClose.click((e) => this.closePopup(e));
 		this.els._auth.click((e) => this.closePopupByLosingFocus(e));
-		this.els._authSubmit.click((e) => this.authSubmit(e));
+		this.els._loginSend.click((e) => this.authSubmit(e));
+		this.els._registerSend.click((e) => this.registerSubmit(e));
 		this.els._authRestore.click((e) => this.authRestore(e));
+		$('#login-email, #login-password').on('input', (e) => this.loginFilling(e))
+		$('#register-email, #register-login, #register-password').on('input', (e) => this.registerFilling(e))
 	}
 
 	tabNavigation(e) {
@@ -97,13 +107,114 @@ export default class Auth extends Base {
 
 	authSubmit(e) {
 		e.preventDefault();
-		this.els._authPopup.slideUp();
+		var data = {};		
+
+		data.type = 'login';
+		if (this.els._loginEmail.val() !== undefined) data.email = this.els._loginEmail.val();
+		if (this.els._loginPassword.val() !== undefined) data.password = this.els._loginPassword.val();
+
+		/*this.els._authPopup.slideUp();
 		this.els._auth.fadeOut();
 		this.els._headerProfileTitle.text('exampleuser@gmail.com');
-		this.els._headerProfile.addClass('header__profile--login');
+		this.els._headerProfile.addClass('header__profile--login');*/
+
+		$.ajax({
+            url: 'ajax/formcontacts',
+            method: "POST",
+            dataType: "json",
+            data: data,
+            // beforeSend: function() { 
+                
+            // },
+            // complete: function() {
+                
+            // },
+            error: function(error) {
+            	// $('html').css({ 'overflow': 'hidden' });
+				$('.modal__header').text('Ошибка');
+				$('.modal__body').text(error.statusText);
+				$('.modal').fadeIn('400', function() {
+					$('.modal__content').slideDown();
+				});
+            },
+            success: function(data) {
+                if (data.auth) {
+                	this.els._authPopup.slideUp();
+					this.els._auth.fadeOut();
+                	this.els._headerProfileTitle.text(data.user.email);
+					this.els._headerProfile.addClass('header__profile--login');
+                } 
+                else {
+                	$('.modal__header').text('Ошибка');
+                    $('.modal__body').text('Извините, попробуйте позже');
+                }
+
+                this.els._loginEmail.val('');
+                this.els._loginPassword.val('');
+            }
+        })
 	}
 
 	authRestore(e) {
 		e.preventDefault();
+	}
+
+	loginFilling(e) {
+        if (this.els._loginEmail.val() !== '' && this.els._loginPassword.val() !== '')
+        	this.els._loginSend.removeAttr('disabled');
+        else this.els._loginSend.attr('disabled', true);
+	}
+
+	registerFilling(e) {
+        if (this.els._registerEmail.val() !== '' &&
+        	this.els._registerLogin.val() !== '' &&
+        	this.els._registerPassword.val() !== '')
+        	this.els._registerSend.removeAttr('disabled');
+        else this.els._registerSend.attr('disabled', true);
+	}
+
+	registerSubmit(e) {
+		e.preventDefault();
+		var data = {};		
+
+		data.type = 'register';
+		if (this.els._registerEmail.val() !== undefined) 
+			data.email = this.els._registerEmail.val();
+		if (this.els._registerLogin.val() !== undefined) 
+			data.login = this.els._registerLogin.val();
+		if (this.els._registerPassword.val() !== undefined) 
+			data.password = this.els._registerPassword.val();
+
+		console.log(data)
+
+		$.ajax({
+            url: 'ajax/formcontacts',
+            method: 'POST',
+            dataType: 'json',
+            data: data,
+
+            error: function(error) {
+				$('.modal__header').text('Ошибка');
+				$('.modal__body').text(error.statusText);
+				$('.modal').fadeIn('400', function() {
+					$('.modal__content').slideDown();
+				});
+            },
+            success: function(data) {
+                if (data.succes) {
+                	this.els._authPopup.slideUp();
+					this.els._auth.fadeOut();
+                	this.els._headerProfileTitle.text(data.user.email);
+					this.els._headerProfile.addClass('header__profile--login');
+                } 
+                else {
+                	$('.modal__header').text('Ошибка');
+                    $('.modal__body').text('Извините, попробуйте позже');
+                }
+
+                this.els._loginEmail.val('');
+                this.els._loginPassword.val('');
+            }
+        })
 	}
 }
