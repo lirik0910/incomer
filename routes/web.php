@@ -36,11 +36,15 @@ Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
-Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
-Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
+Route::prefix('auth')->group(function () {
+    Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
+    Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
 
-Route::get('auth/vk', 'Auth\AuthController@redirectToVK');
-Route::get('auth/vk/callback', 'Auth\AuthController@handleVKCallback');
+    Route::get('auth/vk', 'Auth\AuthController@redirectToVK');
+    Route::get('auth/vk/callback', 'Auth\AuthController@handleVKCallback');
 
-Route::get('auth/google', 'Auth\AuthController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
+    Route::get('auth/google', 'Auth\AuthController@redirectToGoogle');
+    Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
+
+});
+
