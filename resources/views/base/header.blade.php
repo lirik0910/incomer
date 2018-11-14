@@ -218,7 +218,7 @@
                         <li class="header__profile-item"><a class="header__profile-link" href="#">Мой профиль</a>
                         </li>
                         <li class="header__profile-item"><a class="header__profile-link" href="#">Настройки</a></li>
-                        <li class="header__profile-item"><a class="header__profile-link" href="/logout">Выход</a></li>
+                        <li class="header__profile-item"><a class="header__profile-link" href="/auth/logout">Выход</a></li>
                     </ul>
                 </div>
             </div>

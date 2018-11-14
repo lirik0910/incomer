@@ -1,3 +1,4 @@
+<?php if(!isset($view)) $view = 'index'; ?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -12,9 +13,8 @@
         @yield('content')
         @include('base.footer')
     </div>
-    <script type="text/javascript" src="{{ asset('/design/build/js/common.js') }}"></script>
-    <?php if(!isset($view)) $view = 'index'; ?>
     <link rel="stylesheet" href="{{ asset('/design/build/css/' . strtolower($view) . '.css') }}">
+    <script type="text/javascript" src="{{ asset('/design/build/js/common.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/design/build/js/' . strtolower($view) . '.js') }}"></script>
 </body>
 </html>

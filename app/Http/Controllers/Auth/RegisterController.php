@@ -86,6 +86,7 @@ class RegisterController extends Controller
 
         if ($request->ajax()) {
             $res['success'] = !$this->registered($request, $user);
+            $res['user'] = $user;
 
             return response()->json($res);
         } else {

@@ -56,9 +56,9 @@ export default class Header extends Base {
 	}
 
 	logoutProfile(e) {
-		e.preventDefault();
-		this.els._headerProfileTitle.text('Авторизоваться');
-		this.els._headerProfile.removeClass('header__profile--login');
+		// e.preventDefault();
+		// this.els._headerProfileTitle.text('Авторизоваться');
+		// this.els._headerProfile.removeClass('header__profile--login');
 	}
 
 	getSearchResult(e) {

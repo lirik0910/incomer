@@ -26,7 +26,7 @@ class VideoCreateRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'string',
-            'url' => 'required|string|max:255'
+            'link' => 'required|string|max:255'
         ];
     }
 }
