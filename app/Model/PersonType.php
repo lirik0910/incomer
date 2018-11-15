@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PersonType extends Model
 {
-    //
+    public function fields()
+    {
+        return $this->hasMany('App\Model\PersonTypeField', 'typeId');
+    }
 }

@@ -1,0 +1,104 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+@import '../extensions.scss';
+
+@import '../../components/Header/style.scss';
+@import '../../components/Auth/style.scss';
+@import '../../components/CompaniesList/style.scss';
+// @import '../../components/CompanyInfo/style.scss';
+// @import '../../components/Chart/style.scss';
+// @import '../../components/CompanyNews/style.scss';
+@import '../../components/Footer/style.scss';
+@import '../../components/Socials/style.scss';
+@import '../../components/Modal/style.scss';
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-900.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-900.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-700.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-700.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-500.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-500.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-300.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-300.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-100.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-100.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+} */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    background-color: $main-light-grey-color;
+    color: $main-dark-grey-color;
+}
+
+a, button, input {
+    outline: none;
+}
+
+.container {
+    max-width: 1272px;
+	margin: 0 auto;
+}
+
+.logo {
+    padding: 12px 12px 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    svg {
+        width: 110px;
+        display: inline-block;
+    }
+}
+/* 
+.wrap {
+    font-size: 0;
+    margin: 24px 0 160px;
+}
+
+.main-wrap {
+    width: 948px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.block-title {
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    font-weight: 900;
+    margin-right: 30px;
+} */

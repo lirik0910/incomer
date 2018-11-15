@@ -11,6 +11,29 @@ class PersonTypeFieldsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $persons = [
+            'company' => [
+                'symbol', 'title', 'logo', 'state', 'price', 'change', 'exchange',
+                'founding_date', 'industry', 'description', 'market_capitalization',
+                'shares_in_circulation', 'address', 'phone', 'fax', 'website'
+            ],
+        ];
+
+
+        foreach ($persons as $person => $fields) {
+            $data = [];
+            $personId = DB::table('person_types')->where(['title' => $person])->first()->id;
+
+            foreach ($fields as $field) {
+                $data[] = [
+                    'typeId' => $personId,
+                    'title' => $field,
+                ];
+            }
+
+            DB::table('person_type_fields')->insert($data);
+        }
+
+
     }
 }

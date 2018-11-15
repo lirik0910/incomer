@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Manager;
 
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\NewsCreate;
-use App\Http\Requests\NewsUpdate;
+use App\Http\Requests\NewsCreateRequest;
+use App\Http\Requests\NewsUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\News\NewsRepository;
@@ -31,7 +31,7 @@ class NewsController extends Controller
         }
     }
 
-    public function store(NewsCreate $request)
+    public function create(NewsCreateRequest $request)
     {
         try {
             $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos', 'tags']);
@@ -56,7 +56,7 @@ class NewsController extends Controller
         }
     }
 
-    public function update(NewsUpdate $request, $id)
+    public function update(NewsUpdateRequest $request, $id)
     {
         try {
             $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'published', 'images', 'videos', 'tags']);
