@@ -1,0 +1,160 @@
+.companies {
+	width: 948px;
+	&__sort {
+		margin: 24px 0 12px 24px;
+	}
+	&__sort-title {
+		vertical-align: middle;
+		margin-right: 12px;
+		letter-spacing: 0.2px;
+		font-size: 12px;
+		font-weight: 500;
+	}
+	&__sort-list {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&__sort-item {
+		display: inline-block;
+	}
+	&__sort-link {
+		display: inline-block;
+		text-decoration: none;
+		background-color: $light-color;
+		letter-spacing: 0.2px;
+		font-size: 12px;
+		font-weight: 700;
+		color: $main-dark-grey-color;
+		border-radius: 15px;
+		padding: 8px 12px;
+		transition: color .3s ease-in-out, background-color .3s ease-in-out;
+		&--active,
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $default-blue;
+			color: $light-color;
+		}
+	}
+	&__catalog {
+
+	}
+	&__list {
+
+	}
+	&__item {
+		@extend %card;
+		list-style-type: none;
+		padding: 12px 24px;
+		margin-bottom: 12px;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 6px 12px 0 rgba(0, 0, 0, 0.03);
+		// &:last-of-type {
+		// 	margin-bottom: 24px;
+		// }
+	}
+	&__link {
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		display: flex;
+    	align-items: center;
+	}
+	&__info {
+		display: flex;
+    	align-items: center;
+    	padding-right: 24px;
+    	width: 270px;
+	}
+	&__img {
+		width: 78px;
+		height: 72px;
+		position: relative;
+		overflow: hidden;
+		border-radius: 6px;
+		border: 1px solid #ededed;
+		margin-right: 12px;
+		// max-height: 72px;
+		img {
+			// width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	&__title {
+		display: block;
+		font-size: 20px;
+		font-weight: 700;
+		letter-spacing: 0.2px;
+		margin-bottom: 8px;
+	}
+	&__subtitle {
+		display: block;
+		font-size: 12px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.3px;
+	}
+	&__stock {
+		border-left: 1px solid #ededed;
+		border-right: 1px solid #ededed;
+		padding: 0 24px;
+		width: 170px;
+	}
+	&__stock-description {
+		display: block;
+		color: rgba(36, 36, 36, 0.6);
+		font-size: 12px;
+		letter-spacing: 0.3px;
+		font-weight: 500;
+		margin-bottom: 3px;
+		&:not(:first-of-type) {
+			margin-top: 6px;
+		}
+	}
+	&__stock-value {
+		display: block;
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: 0.4px;
+	}
+	&__visualisation {
+		padding-left: 24px;
+		width: 440px;
+	}
+	&__chart {
+		width: 335px;
+	}
+	&__rating {
+		display: flex;
+    	align-items: center;
+    	width: 105px;
+		svg {
+			transform: rotate(-90deg);
+			height: 15px;
+		}
+		&--increase {
+			svg {
+				path {
+					stroke: #20a735;
+					// stroke: #77c249;
+				}
+			}
+		}
+		&--reduce {
+			svg {
+				transform: rotate(90deg);
+				path {
+					stroke: #c25149;
+				}
+			}
+		}
+	}
+	&__rating-value {
+		font-size: 18px;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		margin-left: 5px;
+	}
+}

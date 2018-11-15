@@ -1,0 +1,19 @@
+extends ../base
+block title
+	| incomer
+block main
+	
+	include ../../components/Header/index
+	include ../../components/Auth/index
+
+	div.container
+		include ../../components/CompaniesList/index
+		//- div.wrap
+			//- include ../../components/CompanyInfo/index
+			//- div.main-wrap
+			//- 	include ../../components/Chart/index
+			//- 	include ../../components/CompanyNews/index
+	
+	include ../../components/Footer/index
+
+	include ../../components/Modal/index
