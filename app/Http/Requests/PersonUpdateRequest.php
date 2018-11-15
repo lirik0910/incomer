@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NewsCreate extends FormRequest
+class PersonUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class NewsCreate extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'string|max:255',
+            'typeId' => 'integer',
+            'fields' => 'json',
+
         ];
     }
 }

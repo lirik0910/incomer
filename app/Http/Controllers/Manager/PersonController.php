@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PersonCreate;
-use App\Http\Requests\PersonUpdate;
+use App\Http\Requests\PersonCreateRequest;
+use App\Http\Requests\PersonUpdateRequest;
 use App\Repositories\Person\PersonRepository;
 use Illuminate\Http\Request;
 
@@ -29,10 +29,10 @@ class PersonController extends Controller
         }
     }
 
-    public function store(PersonCreate $request)
+    public function store(PersonCreateRequest $request)
     {
         try {
-            $data = $request->only(['name', 'typeId']);
+            $data = $request->only(['name', 'typeId', 'fields']);
             $res = $this->model->create($data);
 
             return response()->json($res);
@@ -52,10 +52,10 @@ class PersonController extends Controller
         }
     }
 
-    public function update(PersonUpdate $request, $id)
+    public function update(PersonUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['name', 'typeId']);
+            $data = $request->only(['name', 'typeId', 'fields']);
             $res = $this->model->update($id, $data);
 
             return response()->json($res);

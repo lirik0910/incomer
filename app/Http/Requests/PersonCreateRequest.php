@@ -1,10 +1,10 @@
 <?php
 
-
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 
-class NewsUpdate
+class PersonCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class NewsUpdate
     public function rules()
     {
         return [
-            'title' => 'string|max:255',
-            'categoryId' => 'integer',
-            'relatedId' => 'integer',
+            'name' => 'required|string|max:255',
+            'typeId' => 'required|integer',
+            'fields' => 'json',
         ];
     }
 }
