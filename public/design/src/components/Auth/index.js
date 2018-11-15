@@ -53,7 +53,7 @@ export default class Auth extends Base {
 
 		// block's height
 		if (this.els._authTab.eq(1).hasClass('auth__tab--active')) {
-			if (this.els._authTabContent.eq(0).height() < 
+			if (this.els._authTabContent.eq(0).height() <
 				this.els._authTabContent.eq(1).height()) {
 				this.els._authContent.height(this.els._authTabContent.eq(1).height())
 			}
@@ -61,7 +61,7 @@ export default class Auth extends Base {
 			this.els._authContent.stop().animate({'left':-(id*slider_width)-10+'px'}, 300);
 		}
 		if (this.els._authTab.eq(0).hasClass('auth__tab--active')) {
-			if (this.els._authTabContent.eq(0).height() < 
+			if (this.els._authTabContent.eq(0).height() <
 				this.els._authTabContent.eq(1).height()) {
 				this.els._authContent.height(this.els._authTabContent.eq(0).height())
 			}
@@ -94,12 +94,12 @@ export default class Auth extends Base {
 	}
 
 	closePopupByLosingFocus(e) {
-		if ( 
+		if (
 			// checks if descendants was clicked
-           	this.els._authPopup.has(e.target).length == 0 
+           	this.els._authPopup.has(e.target).length == 0
            	&&
            	// checks if the element itself was clicked
-           	!this.els._authPopup.is(e.target) 
+           	!this.els._authPopup.is(e.target)
 		) {
 			this.els._auth.fadeOut();
 		}
@@ -107,7 +107,7 @@ export default class Auth extends Base {
 
 	authSubmit(e) {
 		e.preventDefault();
-		var data = {};		
+		var data = {};
 
 		data.type = 'login';
 		if (this.els._loginEmail.val() !== undefined) data.email = this.els._loginEmail.val();
@@ -119,40 +119,33 @@ export default class Auth extends Base {
 		this.els._headerProfile.addClass('header__profile--login');*/
 
 		$.ajax({
-            url: 'ajax/formcontacts',
+            url: '/auth/login',
             method: "POST",
             dataType: "json",
             data: data,
-            // beforeSend: function() { 
-                
-            // },
-            // complete: function() {
-                
-            // },
-            error: function(error) {
-            	// $('html').css({ 'overflow': 'hidden' });
-				$('.modal__header').text('Ошибка');
-				$('.modal__body').text(error.statusText);
-				$('.modal').fadeIn('400', function() {
-					$('.modal__content').slideDown();
-				});
-            },
-            success: function(data) {
-                if (data.auth) {
-                	this.els._authPopup.slideUp();
-					this.els._auth.fadeOut();
-                	this.els._headerProfileTitle.text(data.user.email);
-					this.els._headerProfile.addClass('header__profile--login');
-                } 
-                else {
-                	$('.modal__header').text('Ошибка');
-                    $('.modal__body').text('Извините, попробуйте позже');
-                }
 
-                this.els._loginEmail.val('');
-                this.els._loginPassword.val('');
+        }).done( (data) => {
+            if (data.auth) {
+                this.els._authPopup.slideUp();
+                this.els._auth.fadeOut();
+                this.els._headerProfileTitle.text(data.user.email);
+                this.els._headerProfile.addClass('header__profile--login');
             }
-        })
+            else {
+                $('.modal__header').text('Ошибка');
+                $('.modal__body').text('Извините, попробуйте позже');
+            }
+
+            this.els._loginEmail.val('');
+            this.els._loginPassword.val('');
+        }).fail(function (e) {
+            // $('html').css({ 'overflow': 'hidden' });
+            $('.modal__header').text('Ошибка');
+            $('.modal__body').text(error.statusText);
+            $('.modal').fadeIn('400', function() {
+                $('.modal__content').slideDown();
+            });
+        });
 	}
 
 	authRestore(e) {
@@ -175,46 +168,43 @@ export default class Auth extends Base {
 
 	registerSubmit(e) {
 		e.preventDefault();
-		var data = {};		
+		var data = {};
 
 		data.type = 'register';
-		if (this.els._registerEmail.val() !== undefined) 
+		if (this.els._registerEmail.val() !== undefined)
 			data.email = this.els._registerEmail.val();
-		if (this.els._registerLogin.val() !== undefined) 
-			data.login = this.els._registerLogin.val();
-		if (this.els._registerPassword.val() !== undefined) 
+		if (this.els._registerLogin.val() !== undefined)
+			data.username = this.els._registerLogin.val();
+		if (this.els._registerPassword.val() !== undefined)
 			data.password = this.els._registerPassword.val();
 
 		console.log(data)
 
 		$.ajax({
-            url: 'ajax/formcontacts',
+            url: '/auth/register',
             method: 'POST',
             dataType: 'json',
             data: data,
-
-            error: function(error) {
-				$('.modal__header').text('Ошибка');
-				$('.modal__body').text(error.statusText);
-				$('.modal').fadeIn('400', function() {
-					$('.modal__content').slideDown();
-				});
-            },
-            success: function(data) {
-                if (data.succes) {
-                	this.els._authPopup.slideUp();
-					this.els._auth.fadeOut();
-                	this.els._headerProfileTitle.text(data.user.email);
-					this.els._headerProfile.addClass('header__profile--login');
-                } 
-                else {
-                	$('.modal__header').text('Ошибка');
-                    $('.modal__body').text('Извините, попробуйте позже');
-                }
-
-                this.els._loginEmail.val('');
-                this.els._loginPassword.val('');
+        }).done((data) => {
+            if (data.success) {
+                this.els._authPopup.slideUp();
+                this.els._auth.fadeOut();
+                this.els._headerProfileTitle.text(data.user.email);
+                this.els._headerProfile.addClass('header__profile--login');
             }
+            else {
+                $('.modal__header').text('Ошибка');
+                $('.modal__body').text('Извините, попробуйте позже');
+            }
+
+            this.els._loginEmail.val('');
+            this.els._loginPassword.val('');
+        }).fail((e) => {
+            $('.modal__header').text('Ошибка');
+            $('.modal__body').text(error.statusText);
+            $('.modal').fadeIn('400', function() {
+                $('.modal__content').slideDown();
+            });
         })
 	}
 }

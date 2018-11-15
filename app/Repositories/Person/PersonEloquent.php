@@ -3,15 +3,21 @@
 namespace App\Repositories\Person;
 
 use App\Model\Person;
+use App\Model\PersonFieldContent;
+use App\Model\PersonType;
+use App\Model\PersonTypeField;
 use App\Repositories\Person\PersonRepository;
 
 class PersonEloquent implements PersonRepository
 {
     private $model;
+    private $fields;
+    private $type;
 
-    public function __construct(Person $model)
+    public function __construct(Person $model, PersonFieldContent $fields)
     {
         $this->model = $model;
+        $this->fields = $fields;
     }
 
     public function all(array $params)
@@ -41,7 +47,15 @@ class PersonEloquent implements PersonRepository
 
     public function create(array $data)
     {
+        $fields = json_decode($data['fields'], true);
+        unset($data['fields']);
+
         $item = $this->model->create($data);
+        foreach ($fields as $key => $field){
+            $fields[$key]['personId'] = $item['id'];
+        }
+        $this->fields->insert($fields);
+
         return $this->get($item['id']);
     }
 
@@ -50,6 +64,16 @@ class PersonEloquent implements PersonRepository
         $item = $this->model->find($id);
         if (!$item) throw new \Exception('Person not found');
         $item->update($data);
+
+        $fields = json_decode($data['fields'], true);
+        unset($data['fields']);
+
+        foreach ($fields as $field){
+            $this->fields
+                ->where(['personId' => $id, 'fieldId' => $field['fieldId']])
+                ->update(['value' => $field['value']]);
+        }
+
         return $this->get($id);
 
     }

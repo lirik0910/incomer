@@ -33,8 +33,8 @@ class VideoController extends Controller
     public function store(VideoCreateRequest $request)
     {
         try {
-            $data = $request->only(['title', 'description', 'url']);
-            $data['creator_id'] = Auth::user()->id;
+            $data = $request->only(['title', 'description', 'link', 'categoryId', 'onIndex']);
+            $data['creatorId'] = Auth::user()->id;
 
             $res = $this->model->create($data);
 
@@ -58,8 +58,7 @@ class VideoController extends Controller
     public function update(VideoUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['title', 'description', 'url']);
-
+            $data = $request->only(['title', 'description', 'link', 'categoryId', 'onIndex']);
 
             $res = $this->model->update($id, $data);
 

@@ -33,10 +33,10 @@ class ImageController extends Controller
     public function store(ImageCreateRequest $request)
     {
         try {
-            $data = $request->only(['title', 'description']);
-
-            $data['creator_id'] = Auth::user()->id;
-            $data['url'] = basename($request->file('image')->store('public/images'));
+            $data = $request->only(['title', 'description', 'path', 'categoryId']);
+            $data['path'] = $data['path'] ?? '/';
+            $data['creatorId'] = Auth::user()->id;
+            $data['url'] = basename($request->file('image')->store('public/images'.$data['path']));
 
             $res = $this->model->create($data);
 
@@ -60,9 +60,11 @@ class ImageController extends Controller
     public function update(ImageUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['title', 'description']);
+            $item = $this->model->get($id);
+
+            $data = $request->only(['title', 'description', 'category_id']);
             if($request->file('image')){
-                $data['url'] = basename($request->file('image')->store('public/images'));
+                $data['url'] = basename($request->file('image')->store('public/images'.$item['path']));
             }
 
             $res = $this->model->update($id, $data);

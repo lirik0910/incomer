@@ -26,7 +26,7 @@ class CreatePersonTypeFieldsTable extends Migration
                 ->nullable(false)
                 ->comment('Field title');
             $table->string('description', 255)
-                ->nullable(false)
+                ->nullable(true)
                 ->comment('Field description');
 
             $table->timestamps();
