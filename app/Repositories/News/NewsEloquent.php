@@ -5,6 +5,7 @@ namespace App\Repositories\News;
 use App\Model\News;
 use App\Model\ImageNewsCollection;
 use App\Model\VideoNewsCollection;
+use App\Model\TagNewsCollection;
 use App\Repositories\News\NewsRepository;
 
 class NewsEloquent implements NewsRepository
@@ -27,7 +28,7 @@ class NewsEloquent implements NewsRepository
 
     public function one($id)
     {
-        $news = $this->model->with(['category', 'videos', 'images', 'comments'])->find($id);
+        $news = $this->model->with(['category', 'videos', 'images', 'comments', 'tags'])->find($id);
 
         if (!$news){
             throw new \Exception('News was not found');
@@ -40,8 +41,9 @@ class NewsEloquent implements NewsRepository
     {
         $images = $data['images'];
         $videos = $data['videos'];
+        $tags = $data['tags'];
 
-        unset($data['images'], $data['videos']);
+        unset($data['images'], $data['videos'], $data['tags']);
 
         $news = $this->model->create($data);
 
@@ -67,6 +69,17 @@ class NewsEloquent implements NewsRepository
             }
         }
 
+        if(isset($tags) && !empty($tags)){
+            foreach($tags as $tag){
+                $data = [
+                    'tagId' => (int)$tag,
+                    'newsId' => (int)$news['id']
+                ];
+
+                TagNewsCollection::create($data);
+            }
+        }
+
         return $this->one($news['id']);
     }
 
@@ -74,16 +87,17 @@ class NewsEloquent implements NewsRepository
     {
         $news = $this->model->find($id);
 
-        $images = $data['images'];
-        $videos = $data['videos'];
-
-        unset($data['images'], $data['videos']);
-
-        $news->update($data);
-
         if (!$news){
             throw new \Exception('News was not found');
         }
+
+        $images = $data['images'];
+        $videos = $data['videos'];
+        $tags = $data['tags'];
+
+        unset($data['images'], $data['videos'], $data['tags']);
+
+        $news->update($data);
 
         if(isset($images) && !empty($images)){
             foreach($images as $image){
@@ -111,6 +125,21 @@ class NewsEloquent implements NewsRepository
                     ];
 
                     VideoNewsCollection::create($data);
+                }
+            }
+        }
+
+        if(isset($tags) && !empty($tags)){
+            foreach($tags as $tag){
+
+                $item = TagNewsCollection::where(['newsId'=> $id, 'tagId' => (int)$tag])->first();
+                if(!$item){
+                    $data = [
+                        'tagId' => (int)$tag,
+                        'newsId' => (int)$news['id']
+                    ];
+
+                    TagNewsCollection::create($data);
                 }
             }
         }

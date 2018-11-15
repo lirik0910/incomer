@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\NewsCreate;
-use App\Http\Requests\NewsUpdate;
 use Illuminate\Http\Request;
+use App\Repositories\Tag\TagRepository;
 use App\Http\Controllers\Controller;
-use App\Repositories\News\NewsRepository;
+use App\Http\Requests\TagCreateRequest;
+use App\Http\Requests\TagUpdateRequest;
 
-
-class NewsController extends Controller
+class TagController extends Controller
 {
     private $model;
 
-    public function __construct(NewsRepository $model)
+    public function __construct(TagRepository $model)
     {
         $this->model = $model;
     }
@@ -31,11 +29,22 @@ class NewsController extends Controller
         }
     }
 
-    public function store(NewsCreate $request)
+    public function forContent(Request $request)
     {
         try {
-            $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos', 'tags']);
-            $data['creatorId'] = Auth::user()->id;
+            $params['string'] = $request->only(['tagVal']);
+            $result = $this->model->all($params);
+
+            return response()->json($result);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function store(TagCreateRequest $request)
+    {
+        try {
+            $data = $request->only(['personId', 'value']);
 
             $result = $this->model->create($data);
 
@@ -56,34 +65,10 @@ class NewsController extends Controller
         }
     }
 
-    public function update(NewsUpdate $request, $id)
+    public function update(TagUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'published', 'images', 'videos', 'tags']);
-            $data['editorId'] = Auth::user()->id;
-
-            if($data['published']){
-                $data['publisherId'] = $data['editorId'];
-            }
-
-            $result = $this->model->update($id, $data);
-
-            return response()->json($result);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-    }
-
-    public function updateView($id)
-    {
-        try {
-            $news = $this->model->one($id);
-
-            if(!$news){
-                return false;
-            }
-
-            $data['views'] = (int)$news['views'] + 1;
+            $data = $request->only(['personId', 'value']);
 
             $result = $this->model->update($id, $data);
 

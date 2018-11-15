@@ -25,5 +25,12 @@ class Person extends Model
         return $this->hasMany('App\Model\PersonFieldContent', 'personId');
     }
 
-
+    /*
+     * Get tags models
+     * @return boolean
+     */
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
 }
