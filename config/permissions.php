@@ -27,6 +27,12 @@ return [
         'createVideo' => 'Description for createVideo',
         'updateVideo' => 'Description for updateVideo',
         'deleteVideo' => 'Description for deleteVideo',
+
+        'listNews' => 'Description for listNews',
+        'readNews' => 'Description for readNews',
+        'createNews' => 'Description for createNews',
+        'updateNews' => 'Description for updateNews',
+        'deleteNews' => 'Description for deleteNews',
     ],
 
     'roles' => [
