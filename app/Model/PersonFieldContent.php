@@ -8,6 +8,6 @@ class PersonFieldContent extends Model
 {
     public function field_type()
     {
-        return $this->belongsTo('App\Model\PersonTypeField', 'fieldId');
+        return $this->belongsTo('App\Model\PersonTypeField', 'field_id');
     }
 }

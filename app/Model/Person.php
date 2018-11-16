@@ -12,17 +12,17 @@ class Person extends Model
     protected $table = 'persons';
 
     protected $fillable=[
-        'name', 'typeId'
+        'name', 'type_id'
     ];
 
     public function type()
     {
-        return $this->belongsTo('App\Model\PersonType', 'typeId');
+        return $this->belongsTo('App\Model\PersonType', 'type_id');
     }
 
     public function fields()
     {
-        return $this->hasMany('App\Model\PersonFieldContent', 'personId');
+        return $this->hasMany('App\Model\PersonFieldContent', 'person_id');
     }
 
     /*

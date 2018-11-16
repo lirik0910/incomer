@@ -26,7 +26,7 @@ class PersonTypeFieldsTableSeeder extends Seeder
 
             foreach ($fields as $field) {
                 $data[] = [
-                    'typeId' => $personId,
+                    'type_id' => $personId,
                     'title' => $field,
                 ];
             }
