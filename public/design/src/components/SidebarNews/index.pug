@@ -1,4 +1,25 @@
-div.related
+mixin sidebarNews(link, img, content, views, comments)
+	a.sidebar-news__link.sidebar-news__link--square(href=href)
+		article.sidebar-news__article
+			div.sidebar-news__pic
+				img(src=img)
+			div.sidebar-news__text
+				p #{content}
+				span.views #{views}
+				span.comments #{comments}
+
+
+	
+
+
+
+
+
+
+
+
+
+//- div.related
 	p.related__title Похожие новости 
 	a.related__link.related__link--square(href='#')
 		article.related__article

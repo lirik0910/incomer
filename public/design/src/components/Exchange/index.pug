@@ -1,0 +1,22 @@
+form.exchange
+	p.exchange__title Обмен криптовалют
+	fieldset.exchange__fieldset
+		div.exchange__field
+			span.exchange__placeholder сколько отдаю
+			input(type='number' required).exchange__input
+		div.exchange__field.exchange__field--select
+			select.exchange__select
+				option(value='btc') BTC
+				option(value='usd') USD
+				option(value='hrn') HRN
+	fieldset.exchange__fieldset
+		div.exchange__field
+			span.exchange__placeholder сколько получу
+			input(type='number' required).exchange__input
+		div.exchange__field.exchange__field--select
+			select.exchange__select
+				option(value='btc') BTC
+				option(value='usd' selected) USD
+				option(value='hrn') HRN
+	button.exchange__btn Обменять
+	p.exchange__text Показан самый выгодный курс

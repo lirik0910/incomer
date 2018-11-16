@@ -16,3 +16,25 @@
 	padding: 18px 24px 24px 24px;
 	font-weight: 700;
 }
+
+%title {
+	font-weight: 900;
+    font-size: 20px;
+}
+
+%btn {
+	background-color: $default-blue;
+	border: none;
+	border-radius: 20px;
+	color: $light-color;
+	font-weight: 700;
+	letter-spacing: 0.2px;
+	cursor: pointer;
+	padding: 8px 24px;
+	@include transition(background-color);
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $darker-blue;
+	}
+}

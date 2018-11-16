@@ -7,6 +7,8 @@ export default class UserProfile extends Base {
         	_profileSelect: $('.profile__select'),
         	_profileSelectOption: $('.profile__select option'),
         	_passwordToggler: $('.profile__pass-btn'),
+        	_profileSelectCountry: $('#country'),
+        	_profileSelectCity: $('#city')
         }
     }
 
@@ -17,6 +19,7 @@ export default class UserProfile extends Base {
 		this.els._profileSelect.focusout((e) => this.focusoutInputAnimation(e));
 		this.els._profileSelect.change((e) => this.selectOption(e));
 		this.els._passwordToggler.click((e) => this.togglePasswordVisibility(e));
+		this.els._profileSelectCountry.change((e) => this.toggleSelectVisibility(e));
 	}
 
 	focusinInputAnimation(e) {
@@ -41,5 +44,13 @@ export default class UserProfile extends Base {
 		e.preventDefault();
 		var togglerValue = $(e.currentTarget).prev().attr('type') === 'password' ? 'text' : 'password';
 		$(e.currentTarget).prev().prop('type', togglerValue);
+	}
+
+	toggleSelectVisibility(e) {
+		if ($($(e.currentTarget.children[0])).is(':selected')) {
+			this.els._profileSelectCity.parent().addClass('profile__field--block');
+		} else {
+			this.els._profileSelectCity.parent().removeClass('profile__field--block');
+		}
 	}
 }

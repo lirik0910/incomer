@@ -1,4 +1,9 @@
-div.tag
+mixin tag(href, content)
+	li.tag__item
+			a.tag__link(href=href) #{content}
+	
+
+//- div.tag
 	ul.tag__list
 		li.tag__item
 			a.tag__link(href='#') Газовый скандал

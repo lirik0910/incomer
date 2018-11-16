@@ -197,8 +197,9 @@ export default class Auth extends Base {
                 $('.modal__body').text('Извините, попробуйте позже');
             }
 
-            this.els._loginEmail.val('');
-            this.els._loginPassword.val('');
+            this.els._registerEmail.val('');
+            this.els._registerLogin.val('');
+            this.els._registerPassword.val('');
         }).fail((e) => {
             $('.modal__header').text('Ошибка');
             $('.modal__body').text(error.statusText);

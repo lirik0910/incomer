@@ -9,7 +9,13 @@ block main
 	div.container
 		div.wrap
 			include ../../components/Post/index
-			include ../../components/RelatedNews/index
+			include ../../components/SidebarNews/index
+			div.sidebar-news
+				p.sidebar-news__title Похожие новости 
+				+sidebarNews('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)
+				+sidebarNews('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)
+				+sidebarNews('#', 'img/photo-dark.jpg', 'Он презентовал своё первое электронное устройство', 904, 537)
+				+sidebarNews('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)
 		
 	
 	include ../../components/Footer/index

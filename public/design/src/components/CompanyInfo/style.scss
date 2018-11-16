@@ -1,7 +1,3 @@
-@import '../../pages/variables.scss';
-@import '../../pages/mixins.scss';
-@import '../../pages/extensions.scss';
-
 .info {
 	// width: calc(25% - 24px);
 	width: 300px;
@@ -24,7 +20,6 @@
 		}
 	}
 	&__text {
-		font-weight: 500;
 		margin: 0 5px;
 	}
 	&__title {
@@ -73,7 +68,6 @@
 	&__tab-link {
 		display: inline-block;
 		padding: 5px 12px;
-		font-weight: 500;
 		font-size: 12px;
 		text-decoration: none;
 		color: $main-dark-grey-color;
@@ -103,7 +97,6 @@
 		margin-bottom: 8px;
 		font-size: 12px;
 		letter-spacing: 0.3px;
-		font-weight: 500;
 		color: rgba(36, 36, 36, 0.6);
 	}
 	&__description {
@@ -135,7 +128,6 @@
 	&__text {
 		font-size: 14px; 
 		line-height: 24px;
-		font-weight: 500;
 		p {
 			&:not(:last-of-type) {
 				margin-bottom: 12px;
