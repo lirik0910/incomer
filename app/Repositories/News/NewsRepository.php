@@ -15,4 +15,10 @@ interface NewsRepository
     public function create(array $data);
 
     public function delete($id);
+
+    public function restore($id);
+
+    public function trash($id);
+
+    public function trashAll();
 }

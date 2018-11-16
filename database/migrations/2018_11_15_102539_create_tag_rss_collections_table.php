@@ -19,15 +19,15 @@ class CreateTagRssCollectionsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('tagId')
+            $table->integer('tag_id')
                 ->nullable(false)
                 ->comment('Tag ID');
-            $table->integer('rssId')
+            $table->integer('rss_id')
                 ->nullable(false)
                 ->comment('Rss ID');
             $table->timestamps();
 
-            $table->index(['tagId', 'rssId']);
+            $table->index(['tag_id', 'rss_id']);
         });
     }
 

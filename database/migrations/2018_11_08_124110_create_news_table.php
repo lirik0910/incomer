@@ -19,16 +19,16 @@ class CreateNewsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('categoryId', false, true)
+            $table->integer('category_id', false, true)
                 ->nullable(false)
                 ->comment('Category ID');
-            $table->integer('relatedId', false, true)
+            $table->integer('related_id', false, true)
                 ->nullable(true)
                 ->comment('Related news ID');
-            $table->string('title', 255)
+            $table->string('title', 500)
                 ->nullable(false)
                 ->comment('News title');
-            $table->string('description', 255)
+            $table->text('description')
                 ->nullable(false)
                 ->comment('News description');
             $table->string('introtext', 255)
@@ -44,13 +44,13 @@ class CreateNewsTable extends Migration
             $table->integer('indexPosition', false)
                 ->nullable(true)
                 ->comment('Position on index page');
-            $table->integer('creatorId', false, true)
+            $table->integer('creator_id', false, true)
                 ->nullable(false)
                 ->comment('User creator ID');
-            $table->integer('editorId', false, true)
+            $table->integer('editor_id', false, true)
                 ->nullable(false)
                 ->comment('User editor ID');
-            $table->integer('publisherId', false, true)
+            $table->integer('publisher_id', false, true)
                 ->nullable(false)
                 ->comment('User publisher ID');
             $table->boolean('published')
@@ -58,10 +58,11 @@ class CreateNewsTable extends Migration
                 ->default(false)
                 ->comment('Published status');
             $table->timestamps();
+            $table->softDeletes();
 
 
             $table->unique('title');
-            $table->index(['categoryId', 'relatedId', 'creatorId', 'editorId', 'publisherId']);
+            $table->index(['category_id', 'related_id', 'creator_id', 'editor_id', 'publisher_id']);
         });
     }
 

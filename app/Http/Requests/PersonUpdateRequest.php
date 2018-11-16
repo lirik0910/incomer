@@ -25,7 +25,7 @@ class PersonUpdateRequest extends FormRequest
     {
         return [
             'name' => 'string|max:255',
-            'typeId' => 'integer',
+            'type_id' => 'integer',
             'fields' => 'json',
 
         ];

@@ -25,6 +25,9 @@ class CreateCategoriesTable extends Migration
             $table->mediumText('description')
                 ->comment('Category description');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->unique('title');
         });
     }
 

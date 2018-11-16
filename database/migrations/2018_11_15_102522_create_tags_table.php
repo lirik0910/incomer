@@ -19,13 +19,17 @@ class CreateTagsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('personId')
+            $table->integer('person_id')
                 ->nullable(false)
                 ->comment('Tag person ID');
             $table->string('value', 255)
                 ->nullable(false)
                 ->comment('Tag value');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['person_id']);
+            $table->unique(['value']);
         });
     }
 

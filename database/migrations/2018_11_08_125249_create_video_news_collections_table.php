@@ -19,15 +19,15 @@ class CreateVideoNewsCollectionsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('videoId')
+            $table->integer('video_id')
                 ->nullable(false)
                 ->comment('Video ID');
-            $table->integer('newsId')
+            $table->integer('news_id')
                 ->nullable(false)
                 ->comment('News ID');
             $table->timestamps();
 
-            $table->index(['videoId', 'newsId']);
+            $table->index(['video_id', 'news_id']);
         });
     }
 

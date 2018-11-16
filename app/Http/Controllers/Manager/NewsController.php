@@ -34,8 +34,8 @@ class NewsController extends Controller
     public function create(NewsCreateRequest $request)
     {
         try {
-            $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos', 'tags']);
-            $data['creatorId'] = Auth::user()->id;
+            $data = $request->only(['category_id', 'related_id', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos', 'tags']);
+            $data['creator_id'] = Auth::user()->id;
 
             $result = $this->model->create($data);
 
@@ -59,11 +59,11 @@ class NewsController extends Controller
     public function update(NewsUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['categoryId', 'relatedId', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'published', 'images', 'videos', 'tags']);
-            $data['editorId'] = Auth::user()->id;
+            $data = $request->only(['category_id', 'related_id', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'published', 'images', 'videos', 'tags']);
+            $data['editor_id'] = Auth::user()->id;
 
             if($data['published']){
-                $data['publisherId'] = $data['editorId'];
+                $data['publisher_id'] = $data['editor_id'];
             }
 
             $result = $this->model->update($id, $data);
@@ -99,6 +99,28 @@ class NewsController extends Controller
             $result = $this->model->delete($id);
 
             return response()->json($result);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function restore($id)
+    {
+        try {
+            $res = $this->model->restore($id);
+
+            return response()->json($res);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function trash($id)
+    {
+        try {
+            $res = $this->model->trash($id);
+
+            return response()->json($res);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }

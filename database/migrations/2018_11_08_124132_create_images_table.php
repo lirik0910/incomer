@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('categoryId', false, true)
+            $table->integer('category_id', false, true)
                 ->nullable(true)
                 ->comment('Category ID');
             $table->string('title', 255)
@@ -34,13 +34,13 @@ class CreateImagesTable extends Migration
             $table->string('url', 255)
                 ->nullable(false)
                 ->comment('Image url');
-            $table->integer('creatorId', false, true)
+            $table->integer('creator_id', false, true)
                 ->nullable(false)
                 ->comment('User creator ID');
             $table->timestamps();
 
             $table->unique(['title', 'path', 'url']);
-            $table->index('categoryId');
+            $table->index(['category_id', 'creator_id']);
         });
     }
 

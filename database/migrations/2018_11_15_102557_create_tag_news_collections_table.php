@@ -19,15 +19,15 @@ class CreateTagNewsCollectionsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('tagId')
+            $table->integer('tag_id')
                 ->nullable(false)
                 ->comment('Tag ID');
-            $table->integer('newsId')
+            $table->integer('news_id')
                 ->nullable(false)
                 ->comment('News ID');
             $table->timestamps();
 
-            $table->index(['tagId', 'newsId']);
+            $table->index(['tag_id', 'news_id']);
         });
     }
 

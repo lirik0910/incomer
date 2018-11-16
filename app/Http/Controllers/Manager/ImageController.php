@@ -33,9 +33,9 @@ class ImageController extends Controller
     public function store(ImageCreateRequest $request)
     {
         try {
-            $data = $request->only(['title', 'description', 'path', 'categoryId']);
+            $data = $request->only(['title', 'description', 'path', 'category_id']);
             $data['path'] = $data['path'] ?? '/';
-            $data['creatorId'] = Auth::user()->id;
+            $data['creator_id'] = Auth::user()->id;
             $data['url'] = basename($request->file('image')->store('public/images'.$data['path']));
 
             $res = $this->model->create($data);
