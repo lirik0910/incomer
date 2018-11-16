@@ -26,8 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $actions = array_unique(array_collapse(config('permissions.roles')));
 
-        Passport::tokensCan(config('permissions.actions'));
+        Passport::tokensCan(array_fill_keys($actions,''));
         Passport::routes();
 
     }
