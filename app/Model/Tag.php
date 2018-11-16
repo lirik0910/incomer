@@ -12,7 +12,7 @@ class Tag extends Model
     protected $table = 'tags';
 
     protected $fillable=[
-        'personId', 'value'
+        'person_id', 'value'
     ];
 
     /*
