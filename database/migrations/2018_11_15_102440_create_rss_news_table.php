@@ -19,6 +19,10 @@ class CreateRssNewsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
+            $table->string('guid', 255)
+                ->unique()
+                ->nullable(false)
+                ->comment('Global news id');
             $table->string('title', 255)
                 ->nullable(false)
                 ->comment('Rss news title');
@@ -28,6 +32,9 @@ class CreateRssNewsTable extends Migration
             $table->string('source', 255)
                 ->nullable(false)
                 ->comment('Source name');
+            $table->datetime('pub_date')
+                ->nullable(false)
+                ->comment('Date of publication');
             $table->timestamps();
         });
     }
