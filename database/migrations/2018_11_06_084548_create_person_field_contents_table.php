@@ -19,16 +19,18 @@ class CreatePersonFieldContentsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('fieldId')
+            $table->integer('field_id')
                 ->nullable(false)
                 ->comment('Person type field ID');
-            $table->integer('personId')
+            $table->integer('person_id')
                 ->nullable(false)
                 ->comment('Person ID');
             $table->string('value')
                 ->nullable(true)
                 ->comment('Field content value');
             $table->timestamps();
+
+            $table->index(['person_id', 'field_id']);
         });
     }
 

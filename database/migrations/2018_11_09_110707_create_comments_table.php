@@ -19,16 +19,16 @@ class CreateCommentsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('parentId')
+            $table->integer('parent_id')
                 ->nullable(true)
                 ->comment('Parent comment ID');
-            $table->integer('contentId')
+            $table->integer('commentable_id')
                 ->nullable(false)
                 ->comment('Commentable content ID');
-            $table->integer('creatorId')
+            $table->integer('creator_id')
                 ->nullable(false)
                 ->comment('User creator ID');
-            $table->integer('editorId')
+            $table->integer('editor_id')
                 ->nullable(true)
                 ->comment('User editor ID');
             $table->string('value', 255)
@@ -38,6 +38,8 @@ class CreateCommentsTable extends Migration
                 ->nullable(false)
                 ->comment('Type of commentable content');
             $table->timestamps();
+
+            $table->index(['parent_id', 'commentable_id', 'creator_id', 'editor_id', 'commentable_type']);
         });
     }
 

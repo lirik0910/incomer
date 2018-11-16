@@ -50,8 +50,8 @@ class NewsEloquent implements NewsRepository
         if(isset($images) && !empty($images)){
             foreach($images as $image){
                 $data = [
-                    'imageId' => (int)$image,
-                    'newsId' => (int)$news['id']
+                    'image_id' => (int)$image,
+                    'news_id' => (int)$news['id']
                 ];
 
                 ImageNewsCollection::create($data);
@@ -61,8 +61,8 @@ class NewsEloquent implements NewsRepository
         if(isset($videos) && !empty($videos)){
             foreach($videos as $video){
                 $data = [
-                    'videoId' => (int)$video,
-                    'newsId' => (int)$news['id']
+                    'video_id' => (int)$video,
+                    'news_id' => (int)$news['id']
                 ];
 
                 ImageNewsCollection::create($data);
@@ -72,8 +72,8 @@ class NewsEloquent implements NewsRepository
         if(isset($tags) && !empty($tags)){
             foreach($tags as $tag){
                 $data = [
-                    'tagId' => (int)$tag,
-                    'newsId' => (int)$news['id']
+                    'tag_id' => (int)$tag,
+                    'news_id' => (int)$news['id']
                 ];
 
                 TagNewsCollection::create($data);
@@ -102,11 +102,11 @@ class NewsEloquent implements NewsRepository
         if(isset($images) && !empty($images)){
             foreach($images as $image){
 
-                $item = ImageNewsCollection::where(['newsId'=> $id, 'imageId' => (int)$image])->first();
+                $item = ImageNewsCollection::where(['news_id'=> $id, 'image_id' => (int)$image])->first();
                 if(!$item){
                     $data = [
-                        'imageId' => (int)$image,
-                        'newsId' => (int)$news['id']
+                        'image_id' => (int)$image,
+                        'news_id' => (int)$news['id']
                     ];
 
                     ImageNewsCollection::create($data);
@@ -117,11 +117,11 @@ class NewsEloquent implements NewsRepository
         if(isset($videos) && !empty($videos)){
             foreach($videos as $video){
 
-                $item = VideoNewsCollection::where(['newsId'=> $id, 'videoId' => (int)$video])->first();
+                $item = VideoNewsCollection::where(['news_id'=> $id, 'video_id' => (int)$video])->first();
                 if(!$item){
                     $data = [
-                        'videoId' => (int)$video,
-                        'newsId' => (int)$news['id']
+                        'video_id' => (int)$video,
+                        'news_id' => (int)$news['id']
                     ];
 
                     VideoNewsCollection::create($data);
@@ -132,11 +132,11 @@ class NewsEloquent implements NewsRepository
         if(isset($tags) && !empty($tags)){
             foreach($tags as $tag){
 
-                $item = TagNewsCollection::where(['newsId'=> $id, 'tagId' => (int)$tag])->first();
+                $item = TagNewsCollection::where(['news_id'=> $id, 'tag_id' => (int)$tag])->first();
                 if(!$item){
                     $data = [
-                        'tagId' => (int)$tag,
-                        'newsId' => (int)$news['id']
+                        'tag_id' => (int)$tag,
+                        'news_id' => (int)$news['id']
                     ];
 
                     TagNewsCollection::create($data);

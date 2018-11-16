@@ -19,7 +19,7 @@ class CreatePersonsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('typeId')
+            $table->integer('type_id')
                 ->nullable(false)
                 ->comment('Person type ID');
             $table->string('name', 255)
@@ -27,6 +27,9 @@ class CreatePersonsTable extends Migration
                 ->comment('Person name/title');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique('name');
+            $table->index(['type_id']);
         });
     }
 

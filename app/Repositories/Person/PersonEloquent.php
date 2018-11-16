@@ -52,7 +52,7 @@ class PersonEloquent implements PersonRepository
 
         $item = $this->model->create($data);
         foreach ($fields as $key => $field){
-            $fields[$key]['personId'] = $item['id'];
+            $fields[$key]['person_id'] = $item['id'];
         }
         $this->fields->insert($fields);
 
@@ -70,7 +70,7 @@ class PersonEloquent implements PersonRepository
 
         foreach ($fields as $field){
             $this->fields
-                ->where(['personId' => $id, 'fieldId' => $field['fieldId']])
+                ->where(['person_id' => $id, 'field_id' => $field['field_id']])
                 ->update(['value' => $field['value']]);
         }
 

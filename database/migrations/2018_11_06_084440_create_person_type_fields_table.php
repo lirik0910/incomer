@@ -19,7 +19,7 @@ class CreatePersonTypeFieldsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('typeId', false, true)
+            $table->integer('type_id', false, true)
                 ->nullable(false)
                 ->comment('Person type ID');
             $table->string('title', 255)
@@ -30,6 +30,9 @@ class CreatePersonTypeFieldsTable extends Migration
                 ->comment('Field description');
 
             $table->timestamps();
+
+            $table->unique('title');
+            $table->index(['type_id']);
         });
     }
 

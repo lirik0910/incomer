@@ -25,7 +25,7 @@ class PersonCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'typeId' => 'required|integer',
+            'type_id' => 'required|integer',
             'fields' => 'json',
         ];
     }

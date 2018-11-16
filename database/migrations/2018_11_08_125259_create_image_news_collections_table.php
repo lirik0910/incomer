@@ -19,15 +19,15 @@ class CreateImageNewsCollectionsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('imageId')
+            $table->integer('image_id')
                 ->nullable(false)
                 ->comment('Image ID');
-            $table->integer('newsId')
+            $table->integer('news_id')
                 ->nullable(false)
                 ->comment('News ID');
             $table->timestamps();
 
-            $table->index(['imageId', 'newsId']);
+            $table->index(['image_id', 'news_id']);
         });
     }
 

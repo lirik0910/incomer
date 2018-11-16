@@ -26,6 +26,9 @@ class CreatePersonTypesTable extends Migration
                 ->nullable(true)
                 ->comment('Person type description');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->unique('title');
         });
     }
 

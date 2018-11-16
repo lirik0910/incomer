@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('categoryId', false, true)
+            $table->integer('category_id', false, true)
                 ->nullable(true)
                 ->comment('Category ID');
             $table->string('title', 255)
@@ -38,13 +38,13 @@ class CreateVideosTable extends Migration
             $table->boolean('onIndex')
                 ->default(false)
                 ->comment('Publishing on index page');
-            $table->integer('creatorId', false, true)
+            $table->integer('creator_id', false, true)
                 ->nullable(false)
                 ->comment('User creator on site ID');
             $table->timestamps();
 
             $table->unique(['title', 'link']);
-            $table->index('categoryId');
+            $table->index(['category_id', 'creator_id']);
         });
     }
 

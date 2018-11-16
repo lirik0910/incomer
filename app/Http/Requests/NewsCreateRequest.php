@@ -24,7 +24,15 @@ class NewsCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:400',
+            'category_id' => 'required|integer',
+            'related_id' => 'integer',
+            'description' => 'required|string',
+            'introtext' => 'required|string|max:500',
+            'videos' => 'json',
+            'images' => 'json',
+            'tags' => 'json',
+
         ];
     }
 }

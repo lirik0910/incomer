@@ -24,9 +24,14 @@ class NewsUpdateRequest
     public function rules()
     {
         return [
-            'title' => 'string|max:255',
-            'categoryId' => 'integer',
-            'relatedId' => 'integer',
+            'title' => 'required|string|max:400',
+            'category_id' => 'required|integer',
+            'related_id' => 'integer',
+            'description' => 'required|string',
+            'introtext' => 'required|string|max:500',
+            'videos' => 'json',
+            'images' => 'json',
+            'tags' => 'json',
         ];
     }
 }
