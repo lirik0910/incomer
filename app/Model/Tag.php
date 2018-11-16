@@ -15,14 +15,7 @@ class Tag extends Model
         'person_id', 'value'
     ];
 
-    /*
-     * Get Rss news models
-     * @return boolean
-     */
-    public function rss()
-    {
-        return $this->hasManyThrough(RssNews::class, TagRssCollection::class);
-    }
+
 
     /*
     * Get news models
