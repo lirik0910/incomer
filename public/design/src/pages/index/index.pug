@@ -8,7 +8,16 @@ block main
 	include ../../components/Auth/index
 
 	div.container
+		
 		include ../../components/Tags/index
+		div.tag
+			ul.tag__list
+				+tag('#', 'Газовый скандал')
+				+tag('#', 'elections-scandal')
+				+tag('#', 'Тим Кук')
+				+tag('#', 'Facebook')
+				+tag('#', 'Apple')
+
 		div.wrap
 			div.main-wrap
 				div.aticles-wrap

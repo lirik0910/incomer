@@ -3,11 +3,13 @@ div.companies
 		span.companies__sort-title Тип сортировки:
 		ul.companies__sort-list
 			li.companies__sort-item 
-				a.companies__sort-link.companies__sort-link--active(href='#' data-sort-value='title' data-sort-type='origin') Алфавит
+				a.companies__sort-link(href='#' data-sort-value='original-order' data-sort-type='original-order') Алфавит
 			li.companies__sort-item 
-				a.companies__sort-link(href='#' data-sort-value='rating' data-sort-type='origin') Рейтинг
+				a.companies__sort-link.companies__sort-link--active(href='#' data-sort-value='title' data-sort-type='original-order') Алфавит
 			li.companies__sort-item 
-				a.companies__sort-link(href='#' data-sort-value='capitalization' data-sort-type='origin') Капитализация
+				a.companies__sort-link(href='#' data-sort-value='rating' data-sort-type='original-order') Рейтинг
+			li.companies__sort-item 
+				a.companies__sort-link(href='#' data-sort-value='capitalization' data-sort-type='original-order') Капитализация
 	div.companies__catalog
 		ul.companies__list
 			li.companies__item

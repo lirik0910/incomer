@@ -1,9 +1,4 @@
-@import '../../pages/variables.scss';
-@import '../../pages/mixins.scss';
-@import '../../pages/extensions.scss';
-
-.related {
-	font-weight: 500;
+.sidebar-news {
 	margin: 36px 0 36px 24px;
 	// width: 25%;
 	display: inline-block;
@@ -50,8 +45,6 @@
 	&__text {
 		line-height: 1.5;
 		font-size: 16px;
-		// font-weight: 700;
-		// padding: 18px 24px 24px 24px;
 		@extend %preview-text;
 		p {
 			&:not(:last-of-type) {
