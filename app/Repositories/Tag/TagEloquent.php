@@ -72,4 +72,25 @@ class TagEloquent implements TagRepository
 
         return $res->delete();
     }
+
+    public function restore($id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->restore();
+    }
+
+    public function trash($id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->forceDelete();
+    }
+
+    public function trashAll()
+    {
+        return $this->model->history()->forceDelete();
+    }
 }
