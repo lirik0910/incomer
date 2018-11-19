@@ -9,6 +9,7 @@ mixin card(href, img, content, views, comments)
 						block
 					else 
 						p #{content}
-				div.card__statistic
-					span.views #{views}
-					span.comments #{comments}
+				if views && comments
+					div.card__statistic
+						span.views #{views}
+						span.comments #{comments}

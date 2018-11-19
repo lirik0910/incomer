@@ -2,7 +2,7 @@
 	// width: calc(100% / 3 * 2);
 	width: 624px;
 	margin-right: 24px;
-	& > .top__link {
+	/*& > .top__link {
 		height: calc(50% - 12px);
 		.top__article {
 			height: 100%;
@@ -146,5 +146,90 @@
 	.views,
 	.comments {
 		margin: 15px 24px 0 25px;
+	} */
+
+	&__article-wrap {
+		margin-top: 24px;
+	}
+	.card {
+		&__content {
+			z-index: 1;
+		}
+		&--large {
+			height: 240px;
+			.card__content {
+				padding: 24px;
+			}
+		}
+		&--square {
+			display: inline-block;
+			font-size: 16px;
+			height: 240px;
+			vertical-align: top;
+			&:not(:last-of-type) {
+				margin-right: 24px;
+			}
+			&.card--post {
+				overflow: visible;
+				.card__pic {
+					height: 120px;
+					overflow: visible;
+					img {
+						top: auto;
+						transform: translate(0, 0);
+						min-width: auto;
+						min-height: auto;
+					    bottom: 0;
+					    left: -10px;
+					    height: 105%;
+					}
+				}
+				.card__content {
+					padding-top: 0;
+				}
+			}
+			&.card--interview {
+				overflow: visible;
+				.card__article {
+					display: flex;
+					flex-direction: row-reverse;
+					height: 100%;
+				}
+				.card__content {
+					width: 70%;
+					height: 100%;
+				}
+				.card__pic {
+					width: 30%;
+					height: 100%;
+					overflow: visible;
+					img {
+						left: auto;
+						top: auto;
+						transform: translate(0, 0);
+						min-width: auto;
+						min-height: auto;
+					    bottom: 0;
+					    right: 0;
+					    height: 105%;
+					}
+				}
+				.card__subtitle {
+					margin-bottom: 18px;
+				}
+				.card__name {
+					font-size: 22px;
+					line-height: 30px;
+					letter-spacing: 0.3px;
+					font-weight: 700;
+				}
+				.card__position {
+					font-size: 14px;
+					line-height: 24px;
+					letter-spacing: 0.53px;
+					margin-top: 6px;
+				}
+			}
+		}
 	}
 }

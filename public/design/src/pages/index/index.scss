@@ -55,9 +55,10 @@
 }
 
 .block__title {
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 25px;
+    @extend %title;
+    // font-weight: 700;
+    // font-size: 20px;
+    margin-bottom: 24px;
 }
 
 .news {
