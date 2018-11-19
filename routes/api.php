@@ -18,7 +18,9 @@ Route::pattern('id', '[0-9]+');
 Route::post('login', 'Manager\AuthController@login');
 
 
-Route::namespace('Manager')->middleware(['auth:api'])->group(function () {
+Route::namespace('Manager')
+    ->middleware(['auth:api'])
+    ->group(function () {
 
     // Persons routes
     Route::prefix('person')->group(function () {

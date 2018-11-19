@@ -16,16 +16,20 @@ class CreateChartsTable extends Migration
         Schema::create('charts', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->integer('person_id');
+
             $table->date('date');
+            $table->time('minute');
 
-            $table->float('open', 8, 3);
-            $table->float('high', 8, 3);
-            $table->float('low', 8, 3);
-            $table->float('close', 8, 3);
-            $table->integer('volume');
+            $table->float('open', 8, 3)->nullable();
+            $table->float('high', 8, 3)->nullable();
+            $table->float('low', 8, 3)->nullable();
+            $table->float('close', 8, 3)->nullable();
+            $table->integer('volume')->nullable();
 
+            $table->float('average', 8, 3)->nullable();
 
-            $table->float('average', 8, 3);
+            $table->unique(['person_id', 'date', 'minute']);
 
             $table->timestamps();
         });

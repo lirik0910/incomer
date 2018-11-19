@@ -15,7 +15,7 @@
                         <input class="auth__input" type="password" required id="login-password"><a class="auth__pass-btn" href="#">@include('svg.eye')</a>
                     </div>
                     <button class="auth__submit" disabled id="login-send">Войти в аккаунт</button>
-                    <button class="auth__restore">Восстановить пароль</button>
+                    {{--<button class="auth__restore">Восстановить пароль</button>--}}
                     <p class="auth__text">Войти при помощи социальной сети:</p>
                     <ul class="social">
                         <li class="social__item"><a class="social__link" href="/auth/facebook">@include('svg.facebook')</a></li>

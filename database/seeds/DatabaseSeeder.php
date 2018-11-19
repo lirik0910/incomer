@@ -15,6 +15,11 @@ class DatabaseSeeder extends Seeder
              PersonTypesSeeder::class,
              ManagerAuthSeeder::class,
              PersonTypeFieldsTableSeeder::class,
+             CategoriesTableSeeder::class,
+             SectionsTableSeeder::class,
+             PersonsTableSeeder::class,
+             TagsTableSeeder::class,
+             NewsTableSeeder::class,
          ]);
     }
 }
