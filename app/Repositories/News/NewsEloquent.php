@@ -22,13 +22,13 @@ class NewsEloquent implements NewsRepository
         $page = $params['page'] ?? 1;
         $limit = $params['limit'] ?? 10;
 
-        $news = $this->model->with('category')->withCount('comments')->limit($limit)->offset(($page - 1) * $limit);
+        $news = $this->model->with('category', 'section')->withCount('comments')->limit($limit)->offset(($page - 1) * $limit);
         return $news->get();
     }
 
     public function one(int $id)
     {
-        $news = $this->model->with(['category', 'videos', 'images', 'comments', 'tags'])->find($id);
+        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->find($id);
 
         if (!$news){
             throw new \Exception('News was not found');
@@ -44,7 +44,7 @@ class NewsEloquent implements NewsRepository
         $tags = isset($data['tags']) ?? '';
 
         unset($data['images'], $data['videos'], $data['tags']);
-//var_dump($data); die;
+
         $news = $this->model->create($data);
 
         if(isset($images) && !empty($images)){
@@ -96,6 +96,11 @@ class NewsEloquent implements NewsRepository
         $tags = isset($data['tags']) ?? '';
 
         unset($data['images'], $data['videos'], $data['tags']);
+
+        if($data['published'] && !$news->published){
+            $data['publisher_id'] = $data['editor_id'];
+            $data['publish_date'] = now();
+        }
 
         $news->update($data);
 

@@ -35,10 +35,13 @@ class NewsController extends Controller
     {
         try {
             //var_dump($request); die;
-            $data = $request->only(['category_id', 'related_id', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos', 'tags']);
+            $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'description', 'introtext', 'on_index_top', 'index_top_position', 'published', 'hot', 'images', 'videos', 'tags']);
             $data['creator_id'] = Auth::user()->id;
 
-            //var_dump($data['creator_id']); die;
+            if($data['pubished']){
+                $data['publish_date'] = now();
+                $data['publisher_id'] = $data['creator_id'];
+            }
 
             $result = $this->model->create($data);
 
@@ -62,13 +65,9 @@ class NewsController extends Controller
     public function update(NewsUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['category_id', 'related_id', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'published', 'images', 'videos', 'tags']);
+            $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'description', 'introtext', 'on_index_top', 'index_top_position', 'hot', 'published', 'images', 'videos', 'tags']);
             $data['editor_id'] = Auth::user()->id;
 
-            if($data['published']){
-                $data['publisher_id'] = $data['editor_id'];
-            }
-var_dump('rfgbgdn'); die;
             $result = $this->model->update($id, $data);
 
             return response()->json($result);

@@ -41,14 +41,16 @@ class CreateNewsTable extends Migration
                 ->nullable(false)
                 ->default(0)
                 ->comment('Count of views');
-            $table->boolean('onIndexTop')
+            $table->boolean('on_index_top')
                 ->default(false)
+                ->nullable(false)
                 ->comment('Publishing on index page top');
-            $table->integer('indexTopPosition', false)
+            $table->string('index_top_position', 50)
                 ->nullable(true)
                 ->comment('Position on index page');
             $table->boolean('hot')
                 ->default(false)
+                ->nullable(false)
                 ->comment('Hot news on index');
             $table->integer('creator_id', false, true)
                 ->nullable(false)
@@ -59,6 +61,9 @@ class CreateNewsTable extends Migration
             $table->integer('publisher_id', false, true)
                 ->nullable(true)
                 ->comment('User publisher ID');
+            $table->dateTime('publish_date')
+                ->nullable(true)
+                ->comment('Publish date');
             $table->boolean('published')
                 ->nullable(false)
                 ->default(false)
@@ -67,7 +72,7 @@ class CreateNewsTable extends Migration
             $table->softDeletes();
 
 
-            $table->unique(['title', 'indexTopPosition']);
+            $table->unique(['title', 'index_top_position']);
             $table->index(['category_id', 'section_id', 'related_id', 'creator_id', 'editor_id', 'publisher_id']);
         });
     }

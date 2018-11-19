@@ -11,6 +11,22 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        /*
+         * Add news categories
+         */
+        App\Model\Category::create([
+            'title' => 'Компании',
+            'description' => 'Новости о компаниях',
+        ]);
+
+        App\Model\Category::create([
+            'title' => 'Блокчейн',
+            'description' => 'Новости, связанные с блокчейн',
+        ]);
+
+        App\Model\Category::create([
+            'title' => 'Криптовалюты',
+            'description' => 'Новости о криптовалютах',
+        ]);
     }
 }
