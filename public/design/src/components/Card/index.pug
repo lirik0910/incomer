@@ -1,0 +1,14 @@
+mixin card(href, img, content, views, comments)
+	a.card(href=href)&attributes(attributes)
+		article.card__article
+			div.card__pic
+				img(src=img)
+			div.card__content
+				div.card__text
+					if block
+						block
+					else 
+						p #{content}
+				div.card__statistic
+					span.views #{views}
+					span.comments #{comments}

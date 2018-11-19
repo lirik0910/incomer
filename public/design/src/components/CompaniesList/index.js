@@ -5,8 +5,7 @@ import Isotope from 'isotope-layout';
 export default class CompaniesList extends Base {
 	initDOMElements(e) {
         this.els = {
-        	// _companiesSortList : $('.companies__sort-list'),
-        	_companiesSortLink : $('.companies__sort-link'),
+        	_companiesSortLink : $('.companies__sort-link')
         }
     }
 
@@ -39,18 +38,17 @@ export default class CompaniesList extends Base {
 			sortType = $(e.currentTarget).attr('data-sort-type');
 
 		switch(sortType) {
-			case 'origin': 
+			case 'original-order': 
 				iso.arrange({ sortBy: sortValue, sortAscending : true });
 				break;
 			case 'asc': 
 				iso.arrange({ sortBy: sortValue, sortAscending : false });
 				break;
 			case 'desc': 
-				iso.arrange({ sortBy: 'origin' });
+				iso.arrange({ sortBy: 'original-order' });
 				break;
 			default:
-				iso.arrange({ sortBy: 'origin' });
-				// iso.arrange({ sortBy: sortValue });
+				iso.arrange({ sortBy: 'original-order' });
 				break;
 		}
 
@@ -60,17 +58,17 @@ export default class CompaniesList extends Base {
 
 	dataAttrToggling(e) {
 		switch($(e.currentTarget).attr('data-sort-type')) {
-			case 'origin': 
+			case 'original-order': 
 				$(e.currentTarget).attr({'data-sort-type': 'asc'});
 				break;
 			case 'asc': 
 				$(e.currentTarget).attr({'data-sort-type': 'desc'});
 				break;
 			case 'desc': 
-				$(e.currentTarget).attr({'data-sort-type': 'origin'});
+				$(e.currentTarget).attr({'data-sort-type': 'original-order'});
 				break;
 			default: 
-				$(e.currentTarget).attr({'data-sort-type': 'origin'});
+				$(e.currentTarget).attr({'data-sort-type': 'original-order'});
 				break;
 		}
 	}

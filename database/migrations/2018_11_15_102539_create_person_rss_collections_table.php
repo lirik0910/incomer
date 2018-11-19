@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagRssCollectionsTable extends Migration
+class CreatePersonRssCollectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateTagRssCollectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag_rss_collections', function (Blueprint $table) {
+        Schema::create('person_rss_collections', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->integer('tag_id')
+            $table->integer('person_id')
                 ->nullable(false)
-                ->comment('Tag ID');
+                ->comment('Person ID');
             $table->integer('rss_id')
                 ->nullable(false)
                 ->comment('Rss ID');
             $table->timestamps();
 
-            $table->index(['tag_id', 'rss_id']);
+            $table->unique(['person_id', 'rss_id']);
         });
     }
 
@@ -38,6 +38,6 @@ class CreateTagRssCollectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag_rss_collections');
+        Schema::dropIfExists('person_rss_collections');
     }
 }

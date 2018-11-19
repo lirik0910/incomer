@@ -1,0 +1,36 @@
+//- mixin mixin_a
+  p Yeah, mixin A!
+
+//- mixin mixin_b(mixMeIn)
+  p Yeah, mixin B!
+  +#{mixMeIn}  
+
+//- +mixin_b('mixin_a')
+
+
+
+
+
+//- include ../../components/Card/index	
+//- mixin strip(title, href, linkContent, count)
+//- 	section.strip
+//- 		div.container
+//- 			div.strip__header
+//- 				p.strip__title #{title}
+//- 				a.strip__more(href=href) #{linkContent}
+//- 			div.strip__content
+//- 				- var n = 0;
+//- 				while n < count
+//- 					p hello
+//- 					n++
+
+
+
+		
+		
+
+		//- +card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)
+		//- +card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)
+		//- +card('#', 'img/photo-dark.jpg', 'Он презентовал своё первое электронное устройство', 904, 537)
+		//- +card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)
+

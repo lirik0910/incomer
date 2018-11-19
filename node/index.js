@@ -1,16 +1,10 @@
 require('dotenv').config();
-
 const cron = require('node-cron');
 const Parser = require('rss-parser');
-const {Client} = require('pg');
-
+const Database = require('./postgre');
+const db = new Database();
 const parser = new Parser();
-const db = new Client();
 
-db.connect();
-
-
-const companies = ["tsla", "msft", "aapl"];
 const sources = [
     {
         title: 'yahoo.finance',
@@ -19,36 +13,38 @@ const sources = [
 ];
 
 
-cron.schedule('* * * * *', (async () => {
+cron.schedule('* * * * *', updateRss);
+// (async () => await updateRss())();
+
+async function updateRss() {
+
+    try{
+        const feed = await getFeed();
+        console.log(feed);
+        const result = await db.addNews(feed);
+    }catch (e) {
+        console.log(e);
+    }
+    console.log('success');
+}
+
+
+
+async function getFeed(){
     const requests = [];
-    companies.forEach((tag) => {
+    const companies =  await db.getCompanies();
+
+    companies.forEach(({id, symbol}) => {
         sources.forEach((source) => {
-            const url = source.url.replace('{{company}}', tag);
-            requests.push({url, tag});
+            const url = source.url.replace('{{company}}', symbol);
+            requests.push({url, symbol, person_id: id});
         })
     });
 
-    const feed = await Promise.all(requests.map(async ({url, tag}) => {
+    return await Promise.all(requests.map(async ({url, symbol, person_id}) => {
         const {items} = await parser.parseURL(url);
-        return {items, tag};
+        return {items, symbol, person_id};
     }));
-
-    const newsQuery = `
-          INSERT INTO rss_news (guid, title, link, pub_date, source)
-          VALUES ($1, $2, $3, $4, 'yahoo.finance')
-          ON CONFLICT (guid)
-           DO UPDATE SET 
-             title = $2, 
-             link  = $3;
-        `;
-
-    const result = await Promise.all(feed.map(async (i) => {
-        const data = i.items.map((i) => [i.guid, i.title, i.link, i.pubDate]);
-        return Promise.all(data.map(async (values) => await db.query({text: newsQuery, values})));
-    }));
-
-}));
-
-
+}
 
 

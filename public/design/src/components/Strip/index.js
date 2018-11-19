@@ -1,13 +1,13 @@
 import Base from '../../Base.js';
 
-export default class MainNews extends Base {
+export default class Strip extends Base {
 	initDOMElements(e) {
         this.els = {
-        	// _headerNav: $('.header__nav'),
+        	// _headerNav: $('.header__nav')
         }
     }
 
 	onDOMReady(e) {
-
+		
 	}
 }

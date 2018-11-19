@@ -33,4 +33,13 @@ class Person extends Model
     {
         return $this->hasMany(Tag::class);
     }
+
+    /*
+ * Get Rss news models
+ * @return boolean
+ */
+    public function rss()
+    {
+        return $this->hasManyThrough(RssNews::class, PersonRssCollection::class);
+    }
 }

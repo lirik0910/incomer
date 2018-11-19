@@ -1,0 +1,134 @@
+extends ../base
+block title
+	| incomer
+block main
+	
+	include ../../components/Header/index
+	include ../../components/Auth/index
+
+	div.container
+		div.summary
+			include ../../components/Tags/index
+			div.tag
+				ul.tag__list
+					+tag('#', 'Bitcoin')
+					+tag('#', 'Ethereum')
+					+tag('#', 'MYRIG')
+					+tag('#', 'ASIC')
+					+tag('#', 'GPU майнинг')
+					+tag('#', 'AMD')
+
+			div.cost
+				ul.cost__list
+					li.cost__item 
+						span Bitcoin
+						span $6.8281,50
+					li.cost__item 
+						span Ethereum 
+						span $1.4917,28
+					li.cost__item 
+						span Zcash 
+						span $809,91
+
+			div.sort
+				ul.sort__list
+					li.sort__item
+						a.sort__link(href='#')
+							include ../../../img/view-list.svg
+					li.sort__item
+						a.sort__link.sort__link--active(href='#')
+							include ../../../img/view-thumbs.svg
+
+		include ../../components/Card/index	
+
+		section.main-news
+			div.row
+				+card('#', 'img/man2.png', 'Tesla покупает 50% акций Bitmain на сумму $2 млрд', 1034, 537)(class='card--large')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				div.faq
+					p.faq__title ЧАВО для чайников
+					ul.faq__list
+						li.faq__item
+							a.faq__link(href='#') Что такое криптовалюта? 
+						li.faq__item
+							a.faq__link(href='#') Где и как ее хранить?
+						li.faq__item
+							a.faq__link(href='#') Как и где купить? 
+						li.faq__item
+							a.faq__link(href='#') Как на этом заработать? 
+						li.faq__item
+							a.faq__link(href='#') Где потратить? 
+			div.row
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				include ../../components/Exchange/index	
+
+
+	
+
+	//- include ../../components/Strip/index
+
+	//- div
+	//- 	+strip('Bitcoin', '#', 'Больше новостей о Bitcoin', 4)
+	//- 	+strip('MYRIG', '#', 'Больше новостей от MYRIG', 8)
+
+
+
+	section.strip
+		div.container
+			div.strip__header
+				p.strip__title Bitcoin
+				a.strip__more(href='#') Больше новостей о Bitcoin
+			div.strip__content
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+
+			//- +card('#', 'img/photo-dark.jpg', 904, 537)
+				p block info 1
+				p block info 2
+			//- +card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--long')
+
+	section.strip.strip--dark
+		div.container
+			div.strip__header
+				p.strip__title MYRIG
+				a.strip__more(href='#') Больше новостей о Bitcoin
+			div.strip__content
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+			div.strip__content
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+
+	section.strip
+		div.container
+			div.strip__header
+				p.strip__title Ethereum
+				a.strip__more(href='#') Больше новостей о Ethereum
+			div.strip__content
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+
+	section.strip
+		div.container
+			div.strip__header
+				p.strip__title Майнинг на GPU
+				a.strip__more(href='#') Больше новостей о майнинге на GPU
+			div.strip__content
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 904, 537)(class='card--square-full-img')
+
+	include ../../components/Footer/index
+
+	include ../../components/Modal/index

@@ -1,8 +1,3 @@
-@import '../../pages/variables.scss';
-@import '../../pages/mixins.scss';
-
-@import '../Socials/style.scss';
-
 .auth {
 	position: fixed;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -108,7 +103,6 @@
 		top: 50%;
 		transform: translate(0, -50%);
 		font-size: 16px;
-		font-weight: 500;
 		@include transition(all);
 		&--active {
 			top: 12px;
@@ -198,7 +192,6 @@
 		}
 	}
 	&__text {
-		// margin-top: 54px;
 		margin: 54px 0 20px;
 		font-weight: 700;
 		font-size: 16px;

@@ -24,7 +24,9 @@ const common = merge([
             'post': PATHS.src + '/pages/post/post.js',
             'company': PATHS.src + '/pages/company/company.js',
             'companies': PATHS.src + '/pages/companies/companies.js',
-            'userProfile': PATHS.src + '/pages/userProfile/userProfile.js'
+            'userProfile': PATHS.src + '/pages/userProfile/userProfile.js',
+            'cryptocurrency': PATHS.src + '/pages/cryptocurrency/cryptocurrency.js',
+            'blockchain': PATHS.src + '/pages/blockchain/blockchain.js'
         },
         output: {
             path: PATHS.build,
@@ -55,6 +57,16 @@ const common = merge([
                 filename: 'userProfile.html',
                 chunks: ['userProfile', 'common'],
                 template: PATHS.src + '/pages/userProfile/userProfile.pug'
+            }),
+            new HtmlWebpackPlugin({
+                filename: 'cryptocurrency.html',
+                chunks: ['cryptocurrency', 'common'],
+                template: PATHS.src + '/pages/cryptocurrency/cryptocurrency.pug'
+            }),
+            new HtmlWebpackPlugin({
+                filename: 'blockchain.html',
+                chunks: ['blockchain', 'common'],
+                template: PATHS.src + '/pages/blockchain/blockchain.pug'
             }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common'
