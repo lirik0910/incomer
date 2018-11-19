@@ -119,7 +119,13 @@ export default class Chart extends Base {
 				],
 				color: '#5435d1',
 	            pointStart: Date.UTC(2010, 0, 1),
-	            pointInterval: 24 * 3600 * 1000
+	            pointInterval: 24 * 3600 * 1000,
+
+	            // lineWidth: 4,
+		        marker: {
+		            lineWidth: 2,
+		            radius: 6
+		        }
 	        }]
 		});
 
