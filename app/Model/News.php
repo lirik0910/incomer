@@ -25,6 +25,15 @@ class News extends Model
     }
 
     /*
+    * Get section model
+    * @return boolean
+    */
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    /*
     * Get videos models
     * @return boolean
     */
