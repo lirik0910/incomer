@@ -8,7 +8,6 @@ import Auth from '../../components/Auth/index';
 // import PopularArticles from '../../components/PopularArticles/index';
 // import VideoPreviews from '../../components/VideoPreviews/index';
 import CompaniesRating from '../../components/CompaniesRating/index';
-// import MainNews from '../../components/MainNews/index';
 import Footer from '../../components/Footer/index';
 import Modal from '../../components/Modal/index';
 
@@ -19,7 +18,6 @@ new Base().call(() => {
 	// new PopularArticles();
 	// new VideoPreviews();
 	new CompaniesRating();
-	// new MainNews();
 	new Footer();
 	new Modal();
 });

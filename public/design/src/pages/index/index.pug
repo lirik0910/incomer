@@ -8,7 +8,7 @@ block main
 	include ../../components/Auth/index
 
 	div.container
-		
+
 		include ../../components/Tags/index
 		div.tag
 			ul.tag__list
@@ -24,7 +24,24 @@ block main
 					include ../../components/TopArticles/index
 					include ../../components/PopularArticles/index
 				div.news-wrap
-					include ../../components/MainNews/index
+					include ../../components/Card/index
+
+					div.news
+						div.row
+							+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--long-full-img')
+							+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--long-full-img')
+						div.row
+							+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+							+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+							+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+						div.row
+							+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--long-full-img')
+							+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--long-full-img')
+
+
+
+
+
 			div.sidebar-wrap
 				include ../../components/VideoPreviews/index
 				include ../../components/CompaniesRating/index

@@ -6,6 +6,7 @@
 @import '../../components/Header/style.scss';
 @import '../../components/Auth/style.scss';
 @import '../../components/Post/style.scss';
+@import '../../components/Card/style.scss';
 @import '../../components/SidebarNews/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
@@ -25,45 +26,40 @@
     }
 }
 
-.views,
-.comments {        
-    font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
-    margin: 12px 24px 0 24px;
-    position: relative;
+.sidebar-news {
+    margin: 36px 0 36px 24px;
     display: inline-block;
-    &:before {
-        content: '';
-        background-repeat: no-repeat;
-        background-size: 20px;
-        position: absolute;
-        left: -25px;
-        top: calc(50% - 2px);
-        transform: translate(0, -50%);
-        width: 20px;
-        height: 19px;
+    vertical-align: top;
+    width: 300px;
+    &__title {
+        @extend %title;
+        // font-size: 20px;
+        letter-spacing: 0.3px;
+        text-align: center;
+        // font-weight: 900;
+        margin-bottom: 24px;
     }
-    &--light {
-        opacity: 0.6;
-        width: 16px;
-        height: 16px;
-    }
-}
-
-.views {
-    &:before {
-        background-image: url('../../../img/eye@2x.png');
-    }
-    &--light {
-        margin: 0 40px 0 24px;
+    .card {
+        font-size: 16px;
+        &:not(:last-of-type) {
+            margin-bottom: 24px;
+        }
     }
 }
 
-.comments {
-    &:before {
-        background-image: url('../../../img/comment@2x.png');
+.related {
+    padding: 76px 0 60px;
+    background-color: #e2e2e2;
+    &__title {
+        font-weight: 900;
+        font-size: 28px;
+        letter-spacing: 0.28px;
+        margin-bottom: 18px;
     }
-    &--light {
-        margin-top: 0;
-        margin-right: 0;
+    .card {
+        display: inline-block;
+        &:not(:last-of-type) {
+            margin-right: 24px;
+        }
     }
 }
