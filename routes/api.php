@@ -77,17 +77,33 @@ Route::namespace('Manager')->middleware(['auth:api'])->group(function () {
 
     // News routes
     Route::prefix('news')->group(function () {
-
         Route::get('', 'NewsController@index')->middleware('scope:listNews');
         Route::get('/{id}', 'NewsController@show')->middleware('scope:readNews');
 
+        Route::get('/create/tags', 'TagController@forContent')->middleware('scope:filterListTag');
+
         Route::post('', 'NewsController@store')->middleware('scope:createNews');
 
+        Route::put('/restore/{id}', 'NewsController@restore')->middleware('scope:restoreNews');
         Route::put('/{id}', 'NewsController@update')->middleware('scope:updateNews');
 
+        Route::delete('/trash/{id}', 'NewsController@trash')->middleware('scope:trashNews');
         Route::delete('/{id}', 'NewsController@destroy')->middleware('scope:deleteNews');
     });
 
+    // Tags routes
+    Route::prefix('tags')->group(function () {
 
+        Route::get('', 'TagController@index')->middleware('scope:listTag');
+        Route::get('/{id}', 'TagController@show')->middleware('scope:readTag');
+
+        Route::post('', 'TagController@store')->middleware('scope:createTag');
+
+        Route::put('/restore/{id}', 'TagController@restore')->middleware('scope:restoreTag');
+        Route::put('/{id}', 'TagController@update')->middleware('scope:updateTag');
+
+        Route::delete('/trash/{id}', 'TagController@trash')->middleware('scope:trashTag');
+        Route::delete('/{id}', 'TagController@destroy')->middleware('scope:deleteTag');
+    });
 
 });

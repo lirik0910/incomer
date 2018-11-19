@@ -26,7 +26,7 @@ class NewsEloquent implements NewsRepository
         return $news->get();
     }
 
-    public function one($id)
+    public function one(int $id)
     {
         $news = $this->model->with(['category', 'videos', 'images', 'comments', 'tags'])->find($id);
 
@@ -39,12 +39,12 @@ class NewsEloquent implements NewsRepository
 
     public function create(array $data)
     {
-        $images = $data['images'];
-        $videos = $data['videos'];
-        $tags = $data['tags'];
+        $images = isset($data['images']) ?? '';
+        $videos = isset($data['videos']) ?? '';
+        $tags = isset($data['tags']) ?? '';
 
         unset($data['images'], $data['videos'], $data['tags']);
-
+//var_dump($data); die;
         $news = $this->model->create($data);
 
         if(isset($images) && !empty($images)){
@@ -83,7 +83,7 @@ class NewsEloquent implements NewsRepository
         return $this->one($news['id']);
     }
 
-    public function update($id, array $data)
+    public function update(int $id, array $data)
     {
         $news = $this->model->find($id);
 
@@ -91,9 +91,9 @@ class NewsEloquent implements NewsRepository
             throw new \Exception('News was not found');
         }
 
-        $images = $data['images'];
-        $videos = $data['videos'];
-        $tags = $data['tags'];
+        $images = isset($data['images']) ?? '';
+        $videos = isset($data['videos']) ?? '';
+        $tags = isset($data['tags']) ?? '';
 
         unset($data['images'], $data['videos'], $data['tags']);
 
@@ -147,8 +147,9 @@ class NewsEloquent implements NewsRepository
         return $this->one($id);
     }
 
-    public function delete($id)
+    public function delete(int $id)
     {
+
         $news = $this->model->find($id);
 
         if (!$news){
@@ -156,5 +157,26 @@ class NewsEloquent implements NewsRepository
         }
 
         return $news->delete();
+    }
+
+    public function restore(int $id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->restore();
+    }
+
+    public function trash(int $id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->forceDelete();
+    }
+
+    public function trashAll()
+    {
+        return $this->model->history()->forceDelete();
     }
 }
