@@ -146,6 +146,14 @@
 		padding: 18px 24px 24px 24px;
 		font-weight: 700;
 	}
+	&__subtitle {
+		font-size: 14px;
+		line-height: 24px;
+		letter-spacing: 0.6px;
+		text-transform: uppercase;
+		color: rgba(0, 0, 0, 0.6);
+		// color: rgba(255, 255, 255, 0.6);
+	}
 	&__statistic {
 		margin-top: 12px;
 	}

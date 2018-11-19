@@ -1,4 +1,43 @@
 div.top
+
+	include ../../components/Card/index
+	+card('#', 'img/man2.png', '', 1034, 537)(class='card--large')
+		p.card__subtitle Cрочно в номер!
+		p Tesla покупает 50% акций Bitmain на сумму $2 млрд
+	
+	div.top__article-wrap
+
+		+card('#', 'img/car.png', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square card--post')
+		+card('#', 'img/man.png', '')(class='card--square card--interview')
+			p.card__subtitle Интервью
+			p.card__name Владимир Ястржембский
+			p.card__position AB–Invest, CEO
+
+
+
+		//- a.top__link.top__link--half(href='post.html')
+		//- 	article.top__article.top__article--bottom
+		//- 		div.top__article-pic
+		//- 			img(src='img/car.png')
+		//- 		div.top__article-text
+		//- 			p.top__article-title Apple презентовала новые продукты на конференции WWDC 2018
+		//- 			span.views 904
+		//- 			span.comments 308
+		
+		//- a.top__link.top__link--half(href='post.html')
+		//- 	article.top__article.top__article--left
+		//- 		div.top__article-text
+		//- 			span.top__article-subtitle Интервью
+		//- 			p.top__article-name Василий Долгопрудный
+		//- 			span.top__article-position AV-Invest, CEO
+		//- 		div.top__article-pic
+		//- 			img(src='img/man.png')
+
+
+
+
+
+//- div.top
 	a.top__link(href='post.html')
 		article.top__article.top__article--right 
 			div.top__article-pic
