@@ -8,8 +8,8 @@
                 </li>
                 <li class="header__nav-item"><a class="header__nav-link" href="#">Блокчейн</a></li>
                 <li class="header__nav-item"><a class="header__nav-link" href="#">Криптовалюты</a></li>
-                <li class="header__nav-item"><a class="header__nav-link" href="#">Прогнозы</a></li>
-                <li class="header__nav-item"><a class="header__nav-link" href="#">Треш</a></li>
+                <!--<li class="header__nav-item"><a class="header__nav-link" href="#">Прогнозы</a></li>
+                <li class="header__nav-item"><a class="header__nav-link" href="#">Треш</a></li>-->
             </ul>
         </nav>
         <div class="header__wrap">
