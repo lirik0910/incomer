@@ -12,7 +12,7 @@ class News extends Model
     protected $table = 'news';
 
     protected $fillable=[
-        'category_id', 'related_id', 'creator_id', 'title', 'description', 'introtext', 'on_index', 'index_position', 'editor_id', 'publisher_id'
+        'category_id', 'section_id', 'related_id', 'creator_id', 'title', 'description', 'introtext', 'on_index_top', 'index_top_position', 'editor_id', 'publisher_id'
     ];
 
     /*
