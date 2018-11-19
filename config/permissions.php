@@ -34,6 +34,17 @@ return [
             'createNews',
             'updateNews',
             'deleteNews',
+            'restoreNews',
+            'trashNews',
+
+            'listTag',
+            'filterListTag',
+            'readTag',
+            'createTag',
+            'updateTag',
+            'deleteTag',
+            'restoreTag',
+            'trashTag',
         ],
         'manager' => [
 

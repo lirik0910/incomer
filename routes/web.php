@@ -11,13 +11,6 @@
 |
 */
 
-Route::prefix('manager')->group(function () {
-    //return view('content/manager');
-    Route::post('/news/create', 'ContentController@create');
-    Route::get('/media/', 'ContentController@create');
-
-});
-
 Route::get('/', 'PageController@index')->name('home');
 
 Route::get('news/{url}', 'PageController@oneNews');

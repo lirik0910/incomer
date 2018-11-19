@@ -25,6 +25,9 @@ class CreateNewsTable extends Migration
             $table->integer('related_id', false, true)
                 ->nullable(true)
                 ->comment('Related news ID');
+            $table->integer('section_id')
+                ->nullable(true)
+                ->comment('Category section ID');
             $table->string('title', 500)
                 ->nullable(false)
                 ->comment('News title');
@@ -38,20 +41,23 @@ class CreateNewsTable extends Migration
                 ->nullable(false)
                 ->default(0)
                 ->comment('Count of views');
-            $table->boolean('onIndex')
+            $table->boolean('onIndexTop')
                 ->default(false)
-                ->comment('Publishing on index page');
-            $table->integer('indexPosition', false)
+                ->comment('Publishing on index page top');
+            $table->integer('indexTopPosition', false)
                 ->nullable(true)
                 ->comment('Position on index page');
+            $table->boolean('hot')
+                ->default(false)
+                ->comment('Hot news on index');
             $table->integer('creator_id', false, true)
                 ->nullable(false)
                 ->comment('User creator ID');
             $table->integer('editor_id', false, true)
-                ->nullable(false)
+                ->nullable(true)
                 ->comment('User editor ID');
             $table->integer('publisher_id', false, true)
-                ->nullable(false)
+                ->nullable(true)
                 ->comment('User publisher ID');
             $table->boolean('published')
                 ->nullable(false)
@@ -61,8 +67,8 @@ class CreateNewsTable extends Migration
             $table->softDeletes();
 
 
-            $table->unique('title');
-            $table->index(['category_id', 'related_id', 'creator_id', 'editor_id', 'publisher_id']);
+            $table->unique(['title', 'indexTopPosition']);
+            $table->index(['category_id', 'section_id', 'related_id', 'creator_id', 'editor_id', 'publisher_id']);
         });
     }
 

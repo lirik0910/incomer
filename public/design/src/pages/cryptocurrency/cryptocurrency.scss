@@ -89,13 +89,15 @@
 }
 
 .summary {
-	// display: flex;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	.tag {
 		display: inline-block;
 	}
 	.cost {
 		display: inline-block;
-		margin-left: 36px;
+		// margin-left: 36px;
 		&__item {
 			display: inline-block;
 			font-weight: 900;
@@ -107,6 +109,39 @@
 			span {
 				&:not(:last-of-type) {
 					margin-right: 10px;
+				}
+			}
+		}
+	}
+	.sort {
+		display: inline-block;
+		&__list {
+
+		}
+		&__item {
+			display: inline-block;
+			&:not(:last-of-type) {
+				margin-right: 12px;
+			}
+		}
+		&__link {
+			text-decoration: none;
+			display: inline-block;
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			background-color: $light-color;
+			padding: 7px;
+			svg {
+				line {
+					stroke: rgba(0, 0, 0, 0.4);
+				}
+			}
+			&--active {
+				svg {
+					line {
+						stroke: #000000;
+					}
 				}
 			}
 		}

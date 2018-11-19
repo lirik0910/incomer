@@ -31,11 +31,14 @@ class NewsController extends Controller
         }
     }
 
-    public function create(NewsCreateRequest $request)
+    public function store(NewsCreateRequest $request)
     {
         try {
+            //var_dump($request); die;
             $data = $request->only(['category_id', 'related_id', 'title', 'description', 'introtext', 'onIndex', 'indexPosition', 'images', 'videos', 'tags']);
             $data['creator_id'] = Auth::user()->id;
+
+            //var_dump($data['creator_id']); die;
 
             $result = $this->model->create($data);
 
@@ -65,7 +68,7 @@ class NewsController extends Controller
             if($data['published']){
                 $data['publisher_id'] = $data['editor_id'];
             }
-
+var_dump('rfgbgdn'); die;
             $result = $this->model->update($id, $data);
 
             return response()->json($result);

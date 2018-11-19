@@ -1,0 +1,123 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+@import '../extensions.scss';
+@import '../main.scss';
+
+@import '../../components/Header/style.scss';
+@import '../../components/Auth/style.scss';
+@import '../../components/Tags/style.scss';
+@import '../../components/Card/style.scss';
+// @import '../../components/CompanyInfo/style.scss';
+// @import '../../components/Chart/style.scss';
+// @import '../../components/CompanyNews/style.scss';
+@import '../../components/Footer/style.scss';
+@import '../../components/Socials/style.scss';
+@import '../../components/Modal/style.scss';
+
+.logo {
+    padding: 12px 12px 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    svg {
+        width: 110px;
+        display: inline-block;
+    }
+}
+
+.summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // .tag {
+    //     display: inline-block;
+    // }
+    .sort {
+        display: inline-block;
+        &__list {
+
+        }
+        &__item {
+            display: inline-block;
+            &:not(:last-of-type) {
+                margin-right: 12px;
+            }
+        }
+        &__link {
+            text-decoration: none;
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: $light-color;
+            padding: 7px;
+            svg {
+                line {
+                    stroke: rgba(0, 0, 0, 0.4);
+                }
+            }
+            &--active {
+                svg {
+                    line {
+                        stroke: #000000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main-news {
+    .row {
+        &:not(:first-of-type) {
+            margin-top: 24px;
+        }
+    }
+    .card {
+        display: inline-block;
+        &:not(:last-of-type) {
+            margin-right: 24px;
+        }
+        &--large {
+            background-color: #121212;
+            color: $light-color;
+            .card__subtitle {
+                color: rgba(255, 255, 255, 0.6);
+            }
+            .views {
+                &:before {
+                    background-image: url('../../../img/eye-light.png');
+                }
+            }
+            .comments {
+                &:before {
+                    background-image: url('../../../img/comment-light.png');
+                }
+            }
+        }
+    }
+    .more {
+        @extend %btn;
+        font-size: 16px;
+        display: block;
+        margin: 24px auto 168px;
+    }
+}
+
+/* 
+.wrap {
+    font-size: 0;
+    margin: 24px 0 160px;
+}
+
+.main-wrap {
+    width: 948px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.block-title {
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    font-weight: 900;
+    margin-right: 30px;
+} */

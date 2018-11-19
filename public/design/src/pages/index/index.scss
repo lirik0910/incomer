@@ -10,7 +10,7 @@
 @import '../../components/PopularArticles/style.scss';
 @import '../../components/VideoPreviews/style.scss';
 @import '../../components/CompaniesRating/style.scss';
-@import '../../components/MainNews/style.scss';
+@import '../../components/Card/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 @import '../../components/Modal/style.scss';
@@ -55,38 +55,18 @@
 }
 
 .block__title {
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 25px;
+    @extend %title;
+    // font-weight: 700;
+    // font-size: 20px;
+    margin-bottom: 24px;
 }
 
-.views,
-.comments {        
-    font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
-    margin: 15px 24px 0 25px;
-    position: relative;
-    display: inline-block;
-    &:before {
-        content: '';
-        background-repeat: no-repeat;
-        background-size: 20px;
-        position: absolute;
-        left: -25px;
-        top: calc(50% - 2px);
-        transform: translate(0, -50%);
-        width: 20px;
-        height: 19px;
-    }
-}
-
-.views {
-    &:before {
-        background-image: url('../../../img/eye@2x.png');
-    }
-}
-
-.comments {
-    &:before {
-        background-image: url('../../../img/comment@2x.png');
+.news {
+    font-size: 16px;
+    line-height: 24px;
+    .row {
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
     }
 }
