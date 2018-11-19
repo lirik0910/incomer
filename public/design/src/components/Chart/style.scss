@@ -43,8 +43,63 @@
 			color: $light-color;
 		} 
 	}
-	.ct-chart {
+	#diagram {
+		.highcharts-tick,
+		.highcharts-credits {
+		    display: none;
+		}
+		.highcharts-tooltip {
+			font: 900 10px 'Museo Sans Cyrl';
+		}
+		.highcharts-axis-labels {
+			text {
+				font-size: 10px !important;
+				font-family: 'Museo Sans Cyrl';
+				letter-spacing: 0.2px;
+			}
+		}
+		.highcharts-axis.highcharts-yaxis {
+			// display: none;
+		}
+		.highcharts-point-hover {
+
+		}
+		.highcharts-exporting-group {
+			display: none;
+		}
+		// .highcharts-5mbmonx-0 {
+		// 	overflow: visible;
+		// }
+	}
+
+
+
+	/* .ct-chart {
 		position: relative;
+	}
+	.axis {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 1px;
+		height: 1px;
+		background-color: green;
+		&:before {
+			content: '';
+			width: 500px;
+			height: 1px;
+			border-top: 1px dotted #000;
+			display: block;
+			border-color: $default-blue;
+		}
+		&:after {
+			content: '';
+			width: 5px;
+			height: 500px;
+			border-left: 1px dotted #000;
+			display: block;
+			border-color: $default-blue;
+		}
 	}
 	svg {
 		.ct-grid {
@@ -57,7 +112,7 @@
 				span {
 					position: absolute;
 					left: -50%;
-    				top: 0;
+	    				top: 0;
 				}
 				.ct-label.ct-horizontal.ct-end {
 					justify-content: center;
@@ -87,7 +142,7 @@
 	.chartist-tooltip.tooltip-show {
 		opacity: 1; 
 	}
-
+	
 	.chartist-tooltip {
 		position: absolute;
 		display: inline-block;
@@ -110,5 +165,5 @@
 		to {
 			stroke-dashoffset: 0;
 		}
-	}
+	} */
 }

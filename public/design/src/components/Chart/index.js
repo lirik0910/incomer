@@ -2,6 +2,12 @@ import Base from '../../Base.js';
 import Chartist from 'chartist';
 // import Tooltip from 'chartist-plugin-tooltips';
 import tooltip from 'chartist-plugin-tooltips';
+
+import Highcharts from 'highcharts';
+// Load the exporting module.
+import Exporting from 'highcharts/modules/exporting';
+// Initialize exporting module.
+Exporting(Highcharts);
 // import * as d3 from 'd3';
 
 export default class Chart extends Base {
@@ -55,10 +61,78 @@ export default class Chart extends Base {
 			allTime: {}
 		}
 
-		this.createChart(data.day);
+		// this.createChart(data.day);
 		// this.els._chartFilterLinkTerm.click((e) => this.filterChart(e, data));
-		this.els._chartFilterListTerm.on('click', 'a:not(.chart__filter-link--active)', 
-			(e) => this.filterChart(e, data));
+		// this.els._chartFilterListTerm.on('click', 'a:not(.chart__filter-link--active)', 
+		// 	(e) => this.filterChart(e, data));
+
+
+
+
+
+
+
+
+		Highcharts.chart('diagram', {
+			title: false,
+			legend: false,
+			tooltip: {
+				backgroundColor: null,
+				borderWidth: 0,
+				shadow: false,
+		        formatter: function () {
+		            var result = '$';
+              		result += this.y;
+		            return result;
+		        },
+		        positioner: function(boxWidth, boxHeight, point) {
+					return {
+					    x: point.plotX+20,
+					    y: point.plotY+20
+					};
+        		}
+		    },
+			xAxis: {
+	            tickInterval: 24 * 3600 * 1000, // one day
+	            type: 'datetime',
+	            crosshair: {
+					dashStyle: 'dot',
+					color: '#5435d1'
+				}
+				// categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	        },
+
+	        yAxis: {
+	        	title: false,
+				crosshair: {
+					dashStyle: 'dot',
+					color: '#5435d1'
+				}
+			},
+
+	        series: [{
+	        	// lineWidth: 2,
+	            data: [
+	            	315, 272, 234, 289, 300,
+					215, 172, 224, 109, 150,
+					215, 232, 314.86
+				],
+				color: '#5435d1',
+	            pointStart: Date.UTC(2010, 0, 1),
+	            pointInterval: 24 * 3600 * 1000
+	        }]
+		});
+
+
+
+
+
+		// minutes * seconds * milliseconds: 30 * 60 * 1000
+		// hours * seconds * milliseconds: 24 * 3600 * 1000
+
+
+
+
 	}
 
 	createChart(data) {
@@ -73,11 +147,11 @@ export default class Chart extends Base {
 			low: 0,
 			lineSmooth: false,
 			fullWidth: true,
-			axisY: {
+			/*axisY: {
 				offset: 0,
 			    // showGrid: false,
 			    showLabel: false
-			  },
+			  },*/
 			plugins: [
 				Chartist.plugins.tooltip({
 					currency: '$',
@@ -104,8 +178,8 @@ export default class Chart extends Base {
 				});
 		    	data.element.replace(circle);
 			}
-		    $($('.ct-vertical')).css({ 'opacity': 0 });
-		    $($('.ct-vertical')[0]).css({ 'opacity': 1 });
+		    // $($('.ct-vertical')).css({ 'opacity': 0 });
+		    // $($('.ct-vertical')[0]).css({ 'opacity': 1 });
 		});
 	}
 
