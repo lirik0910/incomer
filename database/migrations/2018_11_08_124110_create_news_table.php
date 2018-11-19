@@ -48,10 +48,10 @@ class CreateNewsTable extends Migration
                 ->nullable(false)
                 ->comment('User creator ID');
             $table->integer('editor_id', false, true)
-                ->nullable(false)
+                ->nullable(true)
                 ->comment('User editor ID');
             $table->integer('publisher_id', false, true)
-                ->nullable(false)
+                ->nullable(true)
                 ->comment('User publisher ID');
             $table->boolean('published')
                 ->nullable(false)

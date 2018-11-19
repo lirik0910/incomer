@@ -8,17 +8,17 @@ interface NewsRepository
 {
     public function all(array $params);
 
-    public function one($id);
+    public function one(int $id);
 
-    public function update($id, array $data);
+    public function update(int $id, array $data);
 
     public function create(array $data);
 
-    public function delete($id);
+    public function delete(int $id);
 
-    public function restore($id);
+    public function restore(int $id);
 
-    public function trash($id);
+    public function trash(int $id);
 
     public function trashAll();
 }

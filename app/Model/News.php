@@ -12,7 +12,7 @@ class News extends Model
     protected $table = 'news';
 
     protected $fillable=[
-        'category_id', 'related_id', 'title', 'description', 'introtext', 'on_index', 'index_position', 'editor_id', 'publisher_id'
+        'category_id', 'related_id', 'creator_id', 'title', 'description', 'introtext', 'on_index', 'index_position', 'editor_id', 'publisher_id'
     ];
 
     /*
@@ -30,7 +30,7 @@ class News extends Model
     */
     public function videos()
     {
-        return $this->hasManyThrough(Video::class, VideoNewsCollection::class);
+        return $this->belongsToMany(Video::class, 'video_news_collections');
     }
 
     /*
@@ -39,7 +39,7 @@ class News extends Model
     */
     public function images()
     {
-        return $this->hasManyThrough(Image::class, ImageNewsCollection::class);
+        return $this->belongsToMany(Image::class, 'image_news_collections');
     }
 
     /*
@@ -57,6 +57,6 @@ class News extends Model
     */
     public function tags()
     {
-        return $this->hasManyThrough(Tag::class, TagNewsCollection::class);
+        return $this->belongsToMany(Tag::class, 'tag_news_collections');
     }
 }
