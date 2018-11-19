@@ -14,10 +14,10 @@ const sources = [
 const db = new Database();
 
 
-module.exports = async function updateCharts() {
+module.exports = async function updateCharts(type = 'day') {
 
     try {
-        const data = await getCharts();
+        const data = await getCharts(type);
         const result = await db.addChart(data);
         console.log(result);
         console.log('Charts updated');
@@ -26,14 +26,13 @@ module.exports = async function updateCharts() {
     }
 };
 
-async function getCharts() {
+async function getCharts(type) {
     const requests = [];
     const companies = await db.getCompanies();
     companies.forEach(({id, symbol}) => {
-        sources.forEach((source) => {
-            const url = source.url.replace('{{company}}', symbol);
-            requests.push({url, symbol, person_id: id});
-        })
+        const source = type === 'day' ? sources[1]: sources[0];
+        const url = source.url.replace('{{company}}', symbol);
+        requests.push({url, symbol, person_id: id});
     });
 
     return await Promise.all(requests.map(async ({url, symbol, person_id}) => {

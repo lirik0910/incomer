@@ -19,7 +19,7 @@ class CreateChartsTable extends Migration
             $table->integer('person_id');
 
             $table->date('date');
-            $table->time('minute')->nullable();
+            $table->time('minute');
 
             $table->float('open', 8, 3)->nullable();
             $table->float('high', 8, 3)->nullable();
@@ -28,6 +28,8 @@ class CreateChartsTable extends Migration
             $table->integer('volume')->nullable();
 
             $table->float('average', 8, 3)->nullable();
+
+            $table->unique(['person_id', 'date', 'minute']);
 
             $table->timestamps();
         });

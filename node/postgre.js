@@ -65,11 +65,11 @@ class Database {
 
     async addChart(charts) {
         return Promise.all(charts.map(async (chart) => {
-            const query = this.chartQuery + chart.items.map((i) => {
+            let query = this.chartQuery + chart.items.map((i) => {
                 return ` (
                 ${chart.person_id},
                  '${i.date}',
-                 ${i.minute ? ("'"+i.minute+"'" ): null},
+                 ${i.minute ? ("'"+i.minute+"'" ): "'00:00:00'"},
                  ${i.open || null},
                  ${i.high || null},
                  ${i.low || null},
@@ -77,8 +77,11 @@ class Database {
                  ${i.volume || null},
                  ${i.average || null})`
             }).join(',');
+
+            query += `ON CONFLICT (person_id, date, minute) DO NOTHING`;
+
             console.log(query);
-            await this.db.query('truncate charts');
+            // await this.db.query('truncate charts');
             return await this.db.query(query);
         }));
 

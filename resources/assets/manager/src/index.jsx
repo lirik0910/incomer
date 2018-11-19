@@ -68,6 +68,14 @@ render (<ThemeProvider theme={theme}>
 					loading: () => <PageLoadingProcess />
 				})} />
 
+            <Route
+                exact
+                path="/news"
+                component={Loadable({
+                    loader: () => import('routes/NewsListContainer/index'),
+                    loading: () => <PageLoadingProcess />
+                })} />
+
 			<Route
 				exact
 				path="/pages"
