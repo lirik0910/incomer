@@ -1,20 +1,18 @@
 import Base from '../../Base.js';
-import Chartist from 'chartist';
-// import Tooltip from 'chartist-plugin-tooltips';
-import tooltip from 'chartist-plugin-tooltips';
+// import Chartist from 'chartist';
+// import tooltip from 'chartist-plugin-tooltips';
 
 import Highcharts from 'highcharts';
 // Load the exporting module.
 import Exporting from 'highcharts/modules/exporting';
 // Initialize exporting module.
 Exporting(Highcharts);
-// import * as d3 from 'd3';
 
 export default class Chart extends Base {
 	initDOMElements(e) {
         this.els = {
-        	_chartFilterListTerm: $('.chart__filter-list--term'),
-        	_chartFilterLinkTerm: $('.chart__filter-list--term .chart__filter-link')
+        	_chartFilterListTerm: $('.chart__filter--term'),
+        	_chartFilterLinkTerm: $('.chart__filter--term .chart__filter-link')
         }
     }
 
@@ -70,10 +68,74 @@ export default class Chart extends Base {
 
 
 
-
-
-
 		Highcharts.chart('diagram', {
+
+			chart: {
+		        height: 170
+		    },
+			title: false,
+			legend: false,
+			tooltip: {
+				backgroundColor: null,
+				borderWidth: 0,
+				shadow: false,
+		        formatter: function () {
+		            var result = '$';
+              		result += this.y;
+		            return result;
+		        },
+		        positioner: function(boxWidth, boxHeight, point) {
+					return {
+					    x: point.plotX + 20,
+					    y: point.plotY + 20
+					};
+        		}
+		    },
+			yAxis: {
+	        	title: false,
+				crosshair: {
+					dashStyle: 'dot',
+					color: '#5435d1'
+				},
+				gridLineWidth: 0,
+			},
+		    xAxis: {
+		        type: 'datetime',
+		        tickInterval: 2 * 3600 * 1000,
+		        dateTimeLabelFormats: {
+		            // day: '%e',
+		            day: '%H:%M',
+		        },
+		        crosshair: {
+					dashStyle: 'dot',
+					color: '#5435d1'
+				},
+				gridLineWidth: 1,
+		    },
+		    series: [{
+		        data: [
+	            	315, 272, 234, 289, 300,
+					215, 172, 224, 109, 150,
+					215, 232, 314.86
+				],
+				color: '#5435d1',
+				pointStart: Date.UTC(2018, 0, 1),
+		        pointInterval: 2 * 3600 * 1000,
+		        marker: {
+		            lineWidth: 2,
+		            radius: 4
+		        },
+		        states: {
+	                hover: false
+	            }
+		    }]
+		});
+
+
+		/*Highcharts.chart('diagram', {
+			chart: {
+		        height: 170
+		    },
 			title: false,
 			legend: false,
 			tooltip: {
@@ -98,7 +160,8 @@ export default class Chart extends Base {
 	            crosshair: {
 					dashStyle: 'dot',
 					color: '#5435d1'
-				}
+				},
+				gridLineWidth: 1,
 				// categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 	        },
 
@@ -107,11 +170,11 @@ export default class Chart extends Base {
 				crosshair: {
 					dashStyle: 'dot',
 					color: '#5435d1'
-				}
+				},
+				gridLineWidth: 0,
 			},
 
 	        series: [{
-	        	// lineWidth: 2,
 	            data: [
 	            	315, 272, 234, 289, 300,
 					215, 172, 224, 109, 150,
@@ -120,14 +183,18 @@ export default class Chart extends Base {
 				color: '#5435d1',
 	            pointStart: Date.UTC(2010, 0, 1),
 	            pointInterval: 24 * 3600 * 1000,
+	            // pointInterval: 3600 * 1000, // one hour
 
-	            // lineWidth: 4,
 		        marker: {
 		            lineWidth: 2,
-		            radius: 6
-		        }
+		            radius: 4
+		        },
+
+		        states: {
+	                hover: false
+	            }
 	        }]
-		});
+		});*/
 
 
 
@@ -135,6 +202,7 @@ export default class Chart extends Base {
 
 		// minutes * seconds * milliseconds: 30 * 60 * 1000
 		// hours * seconds * milliseconds: 24 * 3600 * 1000
+		// pointInterval: 3600 * 1000 // one hour
 
 
 

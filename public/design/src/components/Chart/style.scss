@@ -1,7 +1,7 @@
 @import '../../pages/variables.scss';
 @import '../../pages/mixins.scss';
 
-@import '../../../node_modules/chartist/dist/scss/chartist.scss';
+// @import '../../../node_modules/chartist/dist/scss/chartist.scss';
 
 .chart {
 	@extend %card;
@@ -13,14 +13,14 @@
 	padding: 24px;
 	.block-title {
 		margin-bottom: 24px;
-	}
-	&__filters {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 36px;
-	}
-	&__filter-list {
 		display: inline-block;
+	}
+	&__filter {
+		display: inline-block;
+		&--term {
+			display: block;
+			margin-top: 18px;
+		}
 	}
 	&__filter-item {
 		display: inline-block;
