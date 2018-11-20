@@ -152,15 +152,24 @@
 	}
 	&__visualisation {
 		padding-left: 24px;
-		width: 440px;
+		width: 465px;
+		// width: 440px;
+		pointer-events: none;
 	}
 	&__chart {
 		width: 335px;
+		display: inline-block;
+		vertical-align: middle;
+		// &[id^=chart-] {
+			
+		// }
 	}
 	&__rating {
-		display: flex;
-    	align-items: center;
-    	width: 105px;
+		// display: flex;
+  //   	align-items: center;
+  //   	width: 105px;
+		display: inline-block;
+		vertical-align: middle;
 		svg {
 			transform: rotate(-90deg);
 			height: 15px;
@@ -193,5 +202,13 @@
 		font-size: 16px;
 		display: block;
 		margin: 24px auto 66px;
+	}
+
+	.highcharts-tick,
+	.highcharts-credits {
+	    display: none;
+	}
+	.highcharts-exporting-group {
+		display: none;
 	}
 }
