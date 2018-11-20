@@ -87,8 +87,8 @@ export default class Chart extends Base {
 		        },
 		        positioner: function(boxWidth, boxHeight, point) {
 					return {
-					    x: point.plotX+20,
-					    y: point.plotY+20
+					    x: point.plotX + 20,
+					    y: point.plotY + 20
 					};
         		}
 		    },
