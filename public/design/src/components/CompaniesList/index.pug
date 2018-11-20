@@ -3,13 +3,19 @@ div.companies
 		span.companies__sort-title Тип сортировки:
 		ul.companies__sort-list
 			li.companies__sort-item 
-				a.companies__sort-link(href='#' data-sort-value='original-order' data-sort-type='original-order') Алфавит
+				a.companies__sort-link(href='#' data-sort-value='original-order' data-sort-type='original-order') Origin
 			li.companies__sort-item 
-				a.companies__sort-link.companies__sort-link--active(href='#' data-sort-value='title' data-sort-type='original-order') Алфавит
+				a.companies__sort-link(href='#' data-sort-value='title' data-sort-type='original-order') 
+					span Алфавит 
+					include ../../../img/arrow.svg
 			li.companies__sort-item 
-				a.companies__sort-link(href='#' data-sort-value='rating' data-sort-type='original-order') Рейтинг
+				a.companies__sort-link(href='#' data-sort-value='rating' data-sort-type='original-order') 
+					span Рейтинг
+					include ../../../img/arrow.svg
 			li.companies__sort-item 
-				a.companies__sort-link(href='#' data-sort-value='capitalization' data-sort-type='original-order') Капитализация
+				a.companies__sort-link(href='#' data-sort-value='capitalization' data-sort-type='original-order') 
+					span Капитализация
+					include ../../../img/arrow.svg
 	div.companies__catalog
 		ul.companies__list
 			li.companies__item
@@ -228,3 +234,4 @@ div.companies
 						.companies__rating.companies__rating--increase
 							include ../../../img/arrow.svg
 							span.companies__rating-value 95.15
+		button.companies__more Показать еще

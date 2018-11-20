@@ -1,5 +1,6 @@
 .companies {
 	width: 948px;
+	display: inline-block;
 	&__sort {
 		margin: 24px 0 12px 24px;
 	}
@@ -15,6 +16,9 @@
 	}
 	&__sort-item {
 		display: inline-block;
+		&:not(:last-of-type) {
+			margin-right: 12px;
+		}
 	}
 	&__sort-link {
 		display: inline-block;
@@ -34,6 +38,38 @@
 			background-color: $default-blue;
 			color: $light-color;
 		}
+		&[data-sort-value='original-order'] {
+			display: none;
+		}
+		svg {
+			height: 10px;
+			margin-left: 5px;
+			display: none;
+			path {
+				stroke: $light-color;
+				fill: $light-color;
+			}
+		}			
+		&[data-sort-type='original-order'] {
+			svg {
+				display: none;
+			}
+		}
+		&--active {
+			&[data-sort-type='asc'] {
+				svg {
+					transform: rotate(-90deg);
+				}
+			}
+			&[data-sort-type='desc'] {
+				svg {
+					transform: rotate(90deg);
+				}
+			}
+			svg {
+				display: inline-block;
+			}
+		}
 	}
 	&__catalog {
 
@@ -43,6 +79,7 @@
 	}
 	&__item {
 		@extend %card;
+		width: 100%;
 		list-style-type: none;
 		padding: 12px 24px;
 		margin-bottom: 12px;
@@ -150,5 +187,11 @@
 		font-weight: 700;
 		letter-spacing: 0.5px;
 		margin-left: 5px;
+	}
+	&__more {
+		@extend %btn;
+		font-size: 16px;
+		display: block;
+		margin: 24px auto 66px;
 	}
 }
