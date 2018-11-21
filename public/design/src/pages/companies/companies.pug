@@ -7,12 +7,15 @@ block main
 	include ../../components/Auth/index
 
 	div.container
-		include ../../components/CompaniesList/index
-		//- div.wrap
-			//- include ../../components/CompanyInfo/index
-			//- div.main-wrap
-			//- 	include ../../components/Chart/index
-			//- 	include ../../components/CompanyNews/index
+		div.wrap
+			include ../../components/CompaniesList/index
+			include ../../components/Card/index
+			div.sidebar-news
+				p.sidebar-news__title Новости компаний
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+
 	
 	include ../../components/Footer/index
 

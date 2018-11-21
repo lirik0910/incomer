@@ -1,45 +1,37 @@
 div.chart
 	p.block-title О Tesla в цифрах
-	div.chart__filters
-		ul.chart__filter-list
-			li.chart__filter-item
-				a.chart__filter-link.chart__filter-link--active(href='#') Стоимость акций
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Капитализация
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Доходность
-
-		ul.chart__filter-list.chart__filter-list--term
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Минута
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Час
-			li.chart__filter-item
-				a.chart__filter-link.chart__filter-link--active(href='#') День
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Неделя
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Месяц
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Квартал
-			li.chart__filter-item
-				a.chart__filter-link(href='#') Год
-			li.chart__filter-item
-				a.chart__filter-link.chart__filter-link(href='#') Все время
-
-
+	ul.chart__filter
+		li.chart__filter-item
+			a.chart__filter-link.chart__filter-link--active(href='#') Стоимость акций
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Капитализация
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Доходность
 
 	div#diagram
+
+	ul.chart__filter.chart__filter--term
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Минута
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Час
+		li.chart__filter-item
+			a.chart__filter-link.chart__filter-link--active(href='#') День
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Неделя
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Месяц
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Квартал
+		li.chart__filter-item
+			a.chart__filter-link(href='#') Год
+		li.chart__filter-item
+			a.chart__filter-link.chart__filter-link(href='#') Все время
+
+
+
 
 
 	//- div.ct-chart.ct-perfect-fourth
 	//- div.ct-chart
 		//- div.axis
-
-
-	//- svg(viewBox="0 0 500 100").chart
-	//- 	polyline(
-	//- 		fill="none"
-	//- 		stroke="#0074d9"
-	//- 		stroke-width="3"
-	//- 		points="0,120 20,60 40,80 60,20")

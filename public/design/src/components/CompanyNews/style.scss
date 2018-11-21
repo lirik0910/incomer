@@ -60,6 +60,9 @@
 	&__list {
 		font-size: 0;
 	}
+	&__item {
+		list-style-type: none;
+	}
 	&__link {
 		text-decoration: none;
 		color: $main-dark-grey-color;
