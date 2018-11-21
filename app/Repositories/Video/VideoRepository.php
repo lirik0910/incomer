@@ -7,6 +7,8 @@ interface VideoRepository
 {
     public function all(array $params);
 
+    public function index();
+
     public function get($id);
 
     public function create(array $data);

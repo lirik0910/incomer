@@ -28,9 +28,12 @@ class CreateNewsTable extends Migration
             $table->integer('section_id')
                 ->nullable(true)
                 ->comment('Category section ID');
-            $table->string('title', 500)
+            $table->string('title', 55)
                 ->nullable(false)
                 ->comment('News title');
+            $table->string('subtitle', 20)
+                ->nullable(true)
+                ->comment('News subtitle');
             $table->text('description')
                 ->nullable(false)
                 ->comment('News description');

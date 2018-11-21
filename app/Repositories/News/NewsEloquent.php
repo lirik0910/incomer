@@ -7,6 +7,7 @@ use App\Model\ImageNewsCollection;
 use App\Model\VideoNewsCollection;
 use App\Model\TagNewsCollection;
 use App\Repositories\News\NewsRepository;
+use Carbon\Carbon;
 
 class NewsEloquent implements NewsRepository
 {
@@ -25,6 +26,36 @@ class NewsEloquent implements NewsRepository
         $news = $this->model->with('category', 'section')->withCount('comments')->limit($limit)->offset(($page - 1) * $limit);
         return $news->get();
     }
+
+    public function hot(array $params)
+    {
+        $page = $params['page'] ?? 1;
+        $limit = $params['limit'] ?? 10;
+
+
+        $news = $this->model::where(['published' => true, 'hot' => true, 'on_index_top' => false])->with(['images'])->withCount('comments')
+            ->offset($limit * ($page - 1))
+            //->limit(4)
+            ->orderBy('created_at', 'DESC');
+            //->paginate($limit);
+
+        return $news->get();
+    }
+
+    public function current()
+    {
+        $limit = 4;
+
+        $news = $this->model::where(['published' => true, 'on_index_top' => false])->orderBy('publish_date', 'DESC')->limit($limit);
+        return $news->get();
+    }
+
+    public function top()
+    {
+        $news = $this->model::where(['published' => true, 'on_index_top' => true])->withCount('comments')->orderBy('index_top_position', 'ASC');
+        return $news->get();
+    }
+
 
     public function one(int $id)
     {
