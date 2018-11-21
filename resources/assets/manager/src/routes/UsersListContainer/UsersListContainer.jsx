@@ -85,7 +85,7 @@ class UsersListContainer extends React.PureComponent {
         currentAddRowCreatedAt: moment(),
         addNewItemFlag: false
 
-    }
+    };
 
     render = () => {
         const {displayAlert, displayDeleteSeveralRows, displayCopySeveralRows, addNewItemFlag} = this.state;
@@ -114,21 +114,6 @@ class UsersListContainer extends React.PureComponent {
                         addNewItemFlag: true
                     })}/>
 
-                <Button
-                    variant="link"
-                    color="secondary"
-                    disabled={selectedRowsIdsArray.length ?
-                        false :
-                        true}
-                    text={
-                        <React.Fragment>
-                            <i className="fa fa-copy"></i>
-                            copy users
-                        </React.Fragment>
-                    }
-                    onClick={() => this.setState({
-                        displayCopySeveralRows: true
-                    })}/>
             </div>
 
             <UsersListTable/>
@@ -201,7 +186,9 @@ class UsersListContainer extends React.PureComponent {
                             <Button
                                 variant="tab"
                                 text="OK"
-                                onClick={() => deleteSelectedRows(this)}/>
+                                onClick={() => deleteSelectedRows(this).then(() => {
+                                    document.getElementById('users-data-fetch-submit').click();
+                                })}/>
                             <Button
                                 variant="tab"
                                 text="Cancel"
@@ -241,49 +228,7 @@ class UsersListContainer extends React.PureComponent {
                         </React.Fragment>
                     }>
 
-                    <form id="users-add-form">
-
-                        <Typography
-                            variant="label"
-                            text="Логин"/>
-                        <Input
-                            type="text"
-                            name="username"
-                            placeholder="Логин"
-                        />
-
-                        <Typography
-                            variant="label"
-                            text="Email"/>
-                        <Input
-                            type="text"
-                            name="email"
-                            required={true}
-                            placeholder="Email"
-                        />
-
-                        <Typography
-                            variant="label"
-                            text="Пароль"/>
-                        <Input
-                            type="text"
-                            name="password"
-                            required={true}
-                            placeholder="Пароль"
-                        />
-
-                        <Typography
-                            variant="label"
-                            text="Тип"/>
-                        <Select
-                            name="type"
-                            options={[
-                                ['Пользователь', 'user'],
-                                ['Редактор', 'manager'],
-                                ['Администратор', 'admin'],
-                            ]}
-                        />
-                    </form>
+                    <UserEditForm/>
                 </Dialog> : ''}
 
             {displayAlert ?

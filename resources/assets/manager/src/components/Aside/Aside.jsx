@@ -38,7 +38,7 @@ class Aside extends React.Component {
                 </div>
 
                 <Link to="/dashboard" variant="anti">dashboard</Link>
-                <Link to="/users" variant="anti">users</Link>
+                <Link to="/users" variant="anti">Пользователи</Link>
                 <Link to="/pages" variant="anti">pages</Link>
                 <Link to="/media" variant="anti">media</Link>
             </div>

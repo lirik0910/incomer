@@ -85,7 +85,7 @@ class UsersListTable extends React.PureComponent {
     }
 
     componentDidMount = () => {
-        fetchData({}, window.location.search.substr(1), this);
+        document.getElementById('users-data-fetch-submit').click();
     }
 
     render = () => {
@@ -95,8 +95,7 @@ class UsersListTable extends React.PureComponent {
         return <Panel className={classes.root}>
             <Table>
                 <TableHeader columns={[
-                    <input type="checkbox"
-                           onChange={selectAllRows(this)}/>,
+                    //<input type="checkbox" onChange={selectAllRows(this)}/>,
                     <React.Fragment>
                         <Typography
                             variant="simple"
@@ -233,12 +232,12 @@ class UsersListTable extends React.PureComponent {
                 <tbody>
                 {data.map((row, i) => (
                     <TableRow
-                        key={i}
+                        key={row.id}
                         columns={[
-                            <input type="checkbox"
-                                   className="row-users-table-checkbox"
-                                   onChange={selectOneRow(this)}
-                                   data-row-item-id={row.id}/>,
+                            //<input type="checkbox"
+                            //       className="row-users-table-checkbox"
+                            //       onChange={selectOneRow(this)}
+                            //       data-row-item-id={row.id}/>,
                             row.username,
                             row.first_name,
                             row.last_name,
@@ -317,7 +316,10 @@ class UsersListTable extends React.PureComponent {
                             <Button
                                 variant="tab"
                                 text="OK"
-                                onClick={deleteOneItem(this, prepareDeleteRowID)}/>
+                                onClick={() => {
+                                    deleteOneItem(this, prepareDeleteRowID)
+                                        .then(() => {document.getElementById('users-data-fetch-submit').click()})
+                                }}/>
                             <Button
                                 variant="tab"
                                 text="Отмена"
@@ -344,8 +346,8 @@ class UsersListTable extends React.PureComponent {
                                 variant="tab"
                                 text="OK"
                                 onClick={(e) => {
-                                    editItem(this, 'users-edit-form',data[currentEditRowIndex].id)
-                                        .then(() => fetchData({}, window.location.search.substr(1), this));
+                                    editItem(this, 'users-edit-form', data[currentEditRowIndex].id)
+                                        .then(() => document.getElementById('users-data-fetch-submit').click());
                                 }}/>
                             <Button
                                 variant="tab"

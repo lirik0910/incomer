@@ -1,15 +1,14 @@
 import httpfetch from 'httpfetch.js';
 
-export default (self, id = 0) => () => {
+export default (self, id = 0) => {
 	const { userListPageLoading, userListPageErrorMessage } = self.props;
 
 	userListPageLoading(true);
-	httpfetch('/user/'+ id, 'DELETE')
+	return httpfetch('/user/'+ id, 'DELETE')
 		.then(() => {
 			userListPageLoading(false);
 			self.setState({
                 prepareDeleteRowID: 0,
-				data: [ ...self.state.data.filter((item) => item.id !== id) ]
 			});
 		})
 		.catch((err) => {

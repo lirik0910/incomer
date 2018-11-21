@@ -25,6 +25,7 @@ class UserEloquent implements UserRepository
         if(!empty($params['sort_column']) && !empty($params['sort_direction'])){
             $items = $items->orderBy($params['sort_column'], $params['sort_direction']);
         }
+        $items->orderBy('id', 'desc');
 
         return ['data' => $items->get(), 'total' => $total];
     }
