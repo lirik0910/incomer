@@ -1,45 +1,65 @@
-export default (resource = '', method = 'GET', body = {}, query = '') => {
-    let data,
-        index = 0;
-    if ((index = Object.keys(body).length) > 0) {
-        if (method.toUpperCase() !== 'POST' ) {
-            for (let i in body) {
-                query += i + '=' + body[i] + (index > 1 ? '&' : '');
-                index--;
+export default (resource = '', method = 'GET', data = {}) => {
+    method = method.toUpperCase();
+
+    const apiUrl = 'http://localhost/api';
+
+    let body,
+        content = 'multipart/form-data',
+        query = [],
+        queryString = '';
+
+
+    if (Object.keys(data).length > 0) {
+        if (method === 'GET' || method === 'DELETE') {
+            for (let key in data) {
+                query.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+            }
+            queryString = query.join('&');
+        }
+        if (method === 'POST') {
+            if (data instanceof FormData) {
+                body = data;
+            } else {
+                body = JSON.stringify(data);
+                content = 'application/json';
             }
         }
-        else {
-            data = new FormData();
-            for (let i in body) {
-                data.append(i, body[i]);
-                console.log(data);
+        if (method === 'PUT') {
+            if (data instanceof FormData) {
+                method = 'POST';
+                data.append('_method', 'put');
+                body = data;
+            } else {
+                body = JSON.stringify(data);
+                content = 'application/json';
             }
         }
     }
 
 
-    return fetch('http://localhost/api' + resource + (query ? '?' + query : ''),
+    return fetch(apiUrl + resource + (queryString ? '?' + queryString : ''),
         {
+            body,
             method,
             credentials: 'include',
             withCredentials: true,
             headers: {
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                // 'X-CSRF-Token': document.getElementById('csrf_token').content,
+                'Content-Type': content,
                 'X-Requested-With': 'XMLHttpRequest',
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+
+                // 'X-CSRF-Token': document.getElementById('csrf_token').content,
             },
-            ...data ? {body: data} : {}
         })
         .then(async (res) => {
             if (res.ok) {
-                return res.json();
+                return await res.json();
             } else {
-                if(res.status === 401) window.location.href = '/manager/login';
-                const error = await res.json();
-                throw new Error(JSON.stringify(error));
-                // return res.json();
+                if (res.status === 401) {
+                    window.location.href = '/manager/login';
+                    return;
+                }
+                throw await res.json();
             }
         })
 }
-
