@@ -156,13 +156,13 @@
 			z-index: 1;
 		}
 		&--large,
-		&--square {
-			.views {
+		&--post {
+			.views-post {
 				&:before {
 					background-image: url('../../../img/eye-light.png');
 				}
 			}
-			.comments {
+			.comments-post {
 				&:before {
 					background-image: url('../../../img/comment-light.png');
 				}

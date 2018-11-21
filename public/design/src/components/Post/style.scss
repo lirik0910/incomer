@@ -3,7 +3,7 @@
 	background-color: $light-color;
 	border-radius: 12px;
 	padding: 45px 36px 66px;
-	margin: 36px 0 60px;
+	margin: 36px 0 0;
 	// width: 75%;
 	// width: calc(100% - 330px);
 	width: 948px;
@@ -26,6 +26,13 @@
 		font-size: 14px;
 		letter-spacing: 0.6px;
 		margin-right: 48px;
+	}
+	.views-post,
+	.comments-post {
+		&--light {
+			color: #000000;
+			opacity: 0.6;
+		}
 	}
 	&__pic {
 		position: relative;
@@ -192,19 +199,10 @@
 	*/
 
 	&__comment-btn {
-		background-color: $default-blue;
+		@extend %btn;
 		padding: 12px 24px;
-		border: none;
 		border-radius: 30px;
-		color: $light-color;
 		margin-top: 54px;
-		cursor: pointer;
-		font: 700 18px'Museo Sans Cyrl', Arial, sans-serif;
-		@include transition(background-color);
-		&:hover,
-		&:focus,
-		&:active {
-			background-color: $darker-blue;
-		}
+		font: 700 16px'Museo Sans Cyrl', Arial, sans-serif;
 	}
 }
