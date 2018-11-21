@@ -44,7 +44,7 @@ class NewsEloquent implements NewsRepository
 
     public function current()
     {
-        $limit = 4;
+        $limit = 5;
 
         $news = $this->model::where(['published' => true, 'on_index_top' => false])->orderBy('publish_date', 'DESC')->limit($limit);
         return $news->get();

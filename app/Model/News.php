@@ -48,7 +48,7 @@ class News extends Model
     */
     public function images()
     {
-        return $this->belongsToMany(Image::class, 'image_news_collections');
+        return $this->belongsToMany(Image::class, 'image_news_collections')->withPivot('type');
     }
 
     /*
