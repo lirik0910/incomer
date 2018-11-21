@@ -412,7 +412,7 @@ class UsersListTable extends React.PureComponent {
 
                         <Typography
                             variant="label"
-                            text="Дата создвания"/>
+                            text="Дата регистрации"/>
                         <Input
                             variant="date"
                             name="created_at"

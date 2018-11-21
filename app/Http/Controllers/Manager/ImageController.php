@@ -35,9 +35,10 @@ class ImageController extends Controller
         try {
             $data = $request->only(['title', 'description', 'path', 'category_id']);
 
-            $data['path'] = $data['path'] ?? '/';
-            $data['creator_id'] = Auth::user()->id;//
-            $data['url'] = basename($request->file('image')->store('public/images'.$data['path']));
+            $data['path'] = $data['path'] ? ltrim(rtrim($data['path'],'/'),'/'): '';
+            $data['path'] = '/' .  $data['path'];
+            $data['creator_id'] = Auth::user()->id;
+            $data['url'] = '/storage/'.$request->file('image')->store('images'.$data['path']);
 
             $res = $this->model->create($data);
 
