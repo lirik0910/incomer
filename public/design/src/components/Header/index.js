@@ -14,6 +14,7 @@ export default class Header extends Base {
         	_searchInput: $('.header .search__input'),
         	_searchBtn: $('.header .search__btn'),
         	_searchResult: $('.header .search__results'),
+        	_searchCategory: $('.header .search__category'),
         	_searchCategoryCount: $('.header .search__category-count'),
         	_searchCategoryList: $('.header .search__category-list'),
         	_searchCategoryLink: $('.header .search__category-link'),
@@ -71,6 +72,24 @@ export default class Header extends Base {
 			this.els._searchResult.fadeOut();
 			this.els._searchInput.css({'border-radius': '20px'})
 		}
+
+
+
+
+		$.ajax({
+            url: '/search',
+            method: 'GET',
+            dataType: 'json',
+            data: $(e.currentTarget).val(),
+            // context: $(e.currentTarget).val(),
+        }).done( (data) => {
+            this.els._searchCategory.append(data)
+        }).fail(function (e) {
+            
+        });
+
+
+
 	}
 
 	checkSearchResultFilling() {

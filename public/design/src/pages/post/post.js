@@ -4,6 +4,7 @@ import Base from '../../Base.js';
 
 import Header from '../../components/Header/index';
 import Auth from '../../components/Auth/index';
+import Comments from '../../components/Comments/index';
 // import Post from '../../components/Post/index';
 // import SidebarNews from '../../components/SidebarNews/index';
 import Footer from '../../components/Footer/index';
@@ -12,6 +13,7 @@ import Modal from '../../components/Modal/index';
 new Base().call(() => {
 	new Header();
 	new Auth();
+	new Comments();
 	// new Post();
 	// new SidebarNews();
 	new Footer();

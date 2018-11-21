@@ -107,4 +107,17 @@ class PageController extends Controller
     {
         return view('content.user_profile', ['view' => 'company']);
     }
+
+    /*
+     * Get search results
+     */
+    public function search(Request $request)
+    {
+        $results = [];
+        $string = $request->only('searchText');
+
+        var_dump($string); die;
+
+        return view('components.header.search_results', ['results' => $results]);
+    }
 }

@@ -19,7 +19,7 @@ class VideosTableSeeder extends Seeder
             'description' => str_random(100),
             'link' => 'https://youtu.be/nVuHqdCj_HM',
             'creator_id' => 1,
-            'preview_url' => 'img/placeolder.png',
+            'preview_url' => 'img/placeholder.png',
             'on_index' => true,
         ]);
 
@@ -28,7 +28,7 @@ class VideosTableSeeder extends Seeder
             'description' => str_random(100),
             'link' => 'https://youtu.be/2UPi6MqT7WM',
             'creator_id' => 1,
-            'preview_url' => 'img/placeolder.png',
+            'preview_url' => 'img/placeholder.png',
             'on_index' => true,
         ]);
 
@@ -37,7 +37,7 @@ class VideosTableSeeder extends Seeder
             'description' => str_random(100),
             'link' => 'https://youtu.be/oZAaz-QgBMM',
             'creator_id' => 1,
-            'preview_url' => 'img/placeolder.png',
+            'preview_url' => 'img/placeholder.png',
             'on_index' => true,
         ]);
 
@@ -46,7 +46,7 @@ class VideosTableSeeder extends Seeder
             'description' => str_random(100),
             'link' => 'https://youtu.be/d7_QbpI8ufo',
             'creator_id' => 1,
-            'preview_url' => 'img/placeolder.png',
+            'preview_url' => 'img/placeholder.png',
             'on_index' => true,
         ]);
     }

@@ -31,6 +31,8 @@ Route::get('/profile/{number}', 'PageController@userProfile');
 
 Route::get('/wiki/{url}', 'PageController@wikiPage');
 
+Route::get('/search', 'PageController@search');
+
 
 
 Route::prefix('auth')->group(function () {
