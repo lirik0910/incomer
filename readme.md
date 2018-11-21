@@ -1,3 +1,6 @@
+Incomer
+===
+__deploy instruction__
 1) copy .env.example to .env
 1) install laravel dependecies
 `docker run --rm --interactive --tty --volume $PWD:/app composer install`
