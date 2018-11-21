@@ -31,11 +31,14 @@ class CreateVideosTable extends Migration
             $table->string('link', 255)
                 ->nullable(false)
                 ->comment('Link to video');
+            $table->string('preview_url', 255)
+                ->nullable(true)
+                ->comment('Preview image URL');
             $table->integer('views')
                 ->default(0)
                 ->nullable(false)
                 ->comment('Count of views on site');
-            $table->boolean('onIndex')
+            $table->boolean('on_index')
                 ->default(false)
                 ->comment('Publishing on index page');
             $table->integer('creator_id', false, true)

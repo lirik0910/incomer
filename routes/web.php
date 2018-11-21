@@ -20,6 +20,12 @@ Route::prefix('companies')->group(function(){
     Route::get('/{id}', 'PageController@oneCompany');
 });
 
+Route::prefix('cryptocurrencies')->group(function (){
+    Route::get('/', 'PageController@cryptocurrencies');
+});
+
+Route::get('blockchain', 'PageController@blockchain');
+
 Route::get('/personal_area', 'PageController@userArea');
 Route::get('/profile/{number}', 'PageController@userProfile');
 

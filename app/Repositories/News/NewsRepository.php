@@ -8,6 +8,12 @@ interface NewsRepository
 {
     public function all(array $params);
 
+    public function hot(array $params);
+
+    public function current();
+
+    public function top();
+
     public function one(int $id);
 
     public function update(int $id, array $data);

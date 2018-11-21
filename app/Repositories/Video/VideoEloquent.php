@@ -22,6 +22,14 @@ class VideoEloquent implements VideoRepository
         return $items->get();
     }
 
+    public function index()
+    {
+        $limit = 3;
+
+        $items = $this->model::where('on_index', true)->limit($limit);
+        return $items->get();
+    }
+
     public function get($id)
     {
         $item = $this->model->find($id);

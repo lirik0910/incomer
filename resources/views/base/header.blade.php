@@ -4,10 +4,10 @@
         </a>
         <nav class="header__nav">
             <ul class="header__nav-list">
-                <li class="header__nav-item"><a class="header__nav-link header__nav-link--active" href="#">Компании</a>
+                <li class="header__nav-item"><a class="header__nav-link @if($view === 'companies') header__nav-link--active @endif" href="{{ url('companies') }}">Компании</a>
                 </li>
-                <li class="header__nav-item"><a class="header__nav-link" href="#">Блокчейн</a></li>
-                <li class="header__nav-item"><a class="header__nav-link" href="#">Криптовалюты</a></li>
+                <li class="header__nav-item"><a class="header__nav-link @if($view === 'blockchain') header__nav-link--active @endif" href="{{ url('blockchain') }}">Блокчейн</a></li>
+                <li class="header__nav-item"><a class="header__nav-link @if($view === 'cryptocurrencies') header__nav-link--active @endif" href="{{ url('cryptocurrencies') }}">Криптовалюты</a></li>
                 <!--<li class="header__nav-item"><a class="header__nav-link" href="#">Прогнозы</a></li>
                 <li class="header__nav-item"><a class="header__nav-link" href="#">Треш</a></li>-->
             </ul>
