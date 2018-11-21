@@ -36,8 +36,9 @@ class AuthController extends Controller
 //        return response()->json(['success' => $success], 200);
 //    }
 
-    public function login()
+    public function login(Request $request)
     {
+
         if (Auth::attempt([
             'email' => request('email') ?: request('username'),
             'password' => request('password')
@@ -52,7 +53,7 @@ class AuthController extends Controller
             $res['access_token'] = $user->createToken('MyApp',$allow)->accessToken;
             return response()->json( $res, 200);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['error' => 'Auth error'], 401);
         }
     }
 

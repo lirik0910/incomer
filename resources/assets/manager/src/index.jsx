@@ -40,7 +40,7 @@ import PageLoadingProcess from 'components/PageLoadingProcess/index';
  * в зависимости от того когда это будет нужно
  */
 render (<ThemeProvider theme={theme}>
-	<BrowserRouter>
+	<BrowserRouter basename="/manager">
 		<Switch>
 
 			{/*
@@ -52,6 +52,14 @@ render (<ThemeProvider theme={theme}>
 			 * НУЖНО СКОПИРОВАТЬ КОД НИЖЕ И 
 			 * УСТАНОВИТЬ СВОИ ПАРАМЕТРЫ
 			 */}
+            <Route
+                exact
+                path="/login"
+                component={Loadable({
+                    loader: () => import('routes/LoginContainer/index'),
+                    loading: () => <PageLoadingProcess />
+                })} />
+
 			<Route
 				exact
 				path="/dashboard"

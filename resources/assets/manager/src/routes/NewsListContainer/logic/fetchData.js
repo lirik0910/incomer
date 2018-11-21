@@ -6,7 +6,7 @@ export default (dataForFetch = {}, self = {}) => {
 	}, () => {
 		self.selectedRowsIdsArray = [];
 		
-		httpfetch('/users', 'GET', dataForFetch)
+		httpfetch('http://localhost/api/news', 'GET', dataForFetch)
 			.then(({ data, total = 0 }) => self.setState({
 				dataLoadingFlag: false,
 				total,
