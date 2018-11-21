@@ -13,6 +13,7 @@ import Typography from 'components/Typography';
 
 import { 
 	submitForm,
+	fetchData,
 	deleteSelectedRows, 
 	copySelectedRows
 } from './logic/index';
@@ -71,18 +72,7 @@ class UsersListTable extends React.PureComponent {
 
 	componentDidMount = () => {
 		const { displayFetchErrorMessage = () => {} } = this.props;
-		httpfetch('/users', 'GET', {}, window.location.search.substr(1))
-			.then(({ data, total = 0 }) => this.setState({
-				dataLoadingFlag: false,
-				total,
-				data
-			}))
-			.catch((err) => {
-				displayFetchErrorMessage(err.message);
-				setTimeout(() => {
-					displayFetchErrorMessage('');
-				}, 2600);
-			});
+		fetchData({},this);
 
 		document.addEventListener('CloseDeleteDialog', this.closeDeleteDialog);
 		document.addEventListener('CopySelectedItems', copySelectedRows(this));
@@ -100,7 +90,7 @@ class UsersListTable extends React.PureComponent {
 	render = () => {
 		const { classes, deleteItems = () => {} } = this.props;
 		const { data = [], sort = '', direction = '', dataLoadingFlag, page = 0, limit = 20, total = 0 } = this.state;
-
+		console.log(data);
 		return <Panel className={classes.root}>
 			{dataLoadingFlag && <PageLoadingProcess />}
 
@@ -115,12 +105,12 @@ class UsersListTable extends React.PureComponent {
 						<Button
 							variant="icon"
 							text={<span 
-								className={sort === 'name' && direction === 'asc' ?
+								className={sort === 'username' && direction === 'asc' ?
 									'fa fa-sort-up' : 
 									'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('name')}
-							className={sort === 'name' ?
+							onClick={this.sortUsers('username')}
+							className={sort === 'username' ?
 								'active' :
 								''} />
 					</React.Fragment>,
@@ -234,8 +224,8 @@ class UsersListTable extends React.PureComponent {
 								className="row-users-table-checkbox"
 								onChange={this.selectOneRow}
 								data-row-item-id={row.id} />,
-							row.name,
-							row.surname,
+							row.username,
+							(row.first_name || '') + ' ' + (row.last_name|| ''),
 							row.email,
 							row.role,
 							row.created_at,

@@ -67,7 +67,7 @@ class NewsListTable extends React.PureComponent {
 		total: 20,
 		removeItemId: 0,
 		dataLoadingFlag: false,
-	}
+	};
 
 	componentDidMount = () => {
 		const { displayFetchErrorMessage = () => {} } = this.props;

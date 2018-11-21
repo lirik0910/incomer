@@ -49,12 +49,12 @@
 		    display: none;
 		}
 		.highcharts-tooltip {
-			font: 900 10px 'Museo Sans Cyrl';
+			font: 900 10px 'Museo Sans Cyrl', Arial, sans-serif;
 		}
 		.highcharts-axis-labels {
 			text {
 				font-size: 10px !important;
-				font-family: 'Museo Sans Cyrl';
+				font-family: 'Museo Sans Cyrl', Arial, sans-serif;
 				letter-spacing: 0.2px;
 			}
 		}

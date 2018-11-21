@@ -1,0 +1,64 @@
+div.comments
+	div.comments__strange
+		div.comments__title-wrap
+			p.comments__title Комментарии читателей
+			ul.comments__tabs
+				li.comments__tab
+					a.comments__tab-link.comments__tab-link--active(href='#') По рейтингу
+				li.comments__tab
+					a.comments__tab-link(href='#') По актуальности
+		div
+			ul.comments__list
+				li.comments__item 
+					div.comments__rating.comments__rating--high
+						span 109
+					div.comments__content
+						div.comments__info
+							a.comments__author(href='#') AlexeyIvanov
+							div.comments__date
+								span вчера
+								time 12:45
+						div.comments__text
+							p Она сказала, что приехала из Чикаго, хотя была местной, из Буффало, зарегистрировалась в отеле, поднялась на девятый этаж, вошла в туалетную комнату, закрылась, отворила окно, встала на выступ... махнула прохожим рукой...
+							p Никакого мотива; ни неразделённой любви, ни финансовых неурядиц. Ни записки. Ни разговора с любимой сестрой.
+							p Её звали Мэри Миллер.
+				li.comments__item 
+					div.comments__rating.comments__rating--high
+						span 98
+					div.comments__content
+						div.comments__info
+							a.comments__author(href='#') sergei87
+							div.comments__date
+								span позавчера
+								time 16:39
+						div.comments__text
+							p Думаю, скорее всего ей приказал внутренний голос. Когда–то в наших краях подросток, ну такой рос богомольный, негде пробы ставить, в церкви попу помогал, сам ходил на все службы от и до. Одного дня взял и поубивал отца, матерь и младшую сестру. Ему так голос в голове приказал.
+				li.comments__item 
+					div.comments__rating.comments__rating--high
+						span 64
+					div.comments__content
+						div.comments__info
+							a.comments__author(href='#') iknowdawei
+							div.comments__date
+								span сегодня
+								time 23:50
+						div.comments__text
+							p Вы хотели сказать выдержка? причем здесь экспозиция и как она может быть короткой или длинной.
+				li.comments__item 
+					div.comments__rating.comments__rating--low
+						span -50
+					div.comments__content
+						div.comments__info
+							a.comments__author(href='#') mutter
+							div.comments__date
+								span 19 января
+								time 20:47
+						div.comments__text
+							p Хрен знает, зачем этот кадр ещё и позировал, вместо того, чтобы со стыдом похоронить эту историю, чем встрять в неё навеки.
+	
+	div.comments__own
+		div.comments__title-wrap
+			p.comments__title Оставить свой комментарий
+		textarea.comments__textarea(rows=5)
+		button.comments__btn Комментировать
+
