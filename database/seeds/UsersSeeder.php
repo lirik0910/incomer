@@ -13,6 +13,9 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+
+        factory(\App\Model\User::class, 10)->create()->make();
+
 //        $user = DB::table('users')->insert([
 //            'email' => 'admin@admin.com',
 //            'password' => Hash::make('secret'),

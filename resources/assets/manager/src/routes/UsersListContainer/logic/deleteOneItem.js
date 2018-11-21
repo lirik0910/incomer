@@ -1,29 +1,26 @@
 import httpfetch from 'httpfetch.js';
 
 export default (self, id = 0) => () => {
-	self.setState({
-		dataLoadingFlag: true
-	}, () => {
-		self.selectedRowsIdsArray = [];
+	const { userListPageLoading, userListPageErrorMessage } = self.props;
 
-		httpfetch('/users/'+ id, 'DELETE')
-			.then(() => {
-				self.setState({ 
-					dataLoadingFlag: false,
-					data: [ ...self.state.data.filter((item) => item.id !== id) ]
-				});
-			})
-			.catch((err) => {
-				self.setState({
-					dataLoadingFlag: false,
-					prepareDeleteRow: {},
-					catchedErrorMessage: err.message
-				});
-				setTimeout(() => {
-					self.setState({
-						catchedErrorMessage: ''
-					});
-				}, 2600);
+	userListPageLoading(true);
+	httpfetch('/user/'+ id, 'DELETE')
+		.then(() => {
+			userListPageLoading(false);
+			self.setState({
+                prepareDeleteRowID: 0,
+				data: [ ...self.state.data.filter((item) => item.id !== id) ]
 			});
-	});
+		})
+		.catch((err) => {
+			userListPageLoading(false);
+			userListPageErrorMessage(err.message);
+			
+			self.setState({
+				prepareDeleteRowID: 0
+			});
+			setTimeout(() => {
+				userListPageErrorMessage(err.message);
+			}, 2600);
+		});
 }

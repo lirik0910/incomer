@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
              PersonsTableSeeder::class,
              TagsTableSeeder::class,
              NewsTableSeeder::class,
+             UsersSeeder::class,
              VideosTableSeeder::class,
          ]);
     }

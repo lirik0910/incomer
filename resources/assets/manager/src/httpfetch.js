@@ -2,7 +2,7 @@ export default (resource = '', method = 'GET', body = {}, query = '') => {
     let data,
         index = 0;
     if ((index = Object.keys(body).length) > 0) {
-        if (method === 'GET' || method === 'get') {
+        if (method.toUpperCase() !== 'POST' ) {
             for (let i in body) {
                 query += i + '=' + body[i] + (index > 1 ? '&' : '');
                 index--;
@@ -29,8 +29,17 @@ export default (resource = '', method = 'GET', body = {}, query = '') => {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             },
-            ...data ? { body: data } : {}
+            ...data ? {body: data} : {}
         })
-        .then((r) => r.json());
+        .then(async (res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                if(res.status === 401) window.location.href = '/manager/login';
+                const error = await res.json();
+                throw new Error(JSON.stringify(error));
+                // return res.json();
+            }
+        })
 }
 
