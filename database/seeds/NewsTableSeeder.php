@@ -20,13 +20,14 @@ class NewsTableSeeder extends Seeder
 
         App\Model\News::create([
             'category_id' => 1,
-            'title' => 'Новость номер один',
+            'title' => 'Главная новость номер один',
             'subtitle' => 'Подзаголовок',
             'description' => str_random(500),
             'introtext' => str_random(255),
             'creator_id' => 1,
             'publisher_id' => 1,
             'publish_date' => now(),
+            'published' => true,
             'hot' => false,
             'on_index_top' => true,
             'index_top_position' => 'first'
@@ -34,7 +35,7 @@ class NewsTableSeeder extends Seeder
 
         App\Model\News::create([
             'category_id' => 1,
-            'title' => 'Новость номер два',
+            'title' => 'Главная новость номер два',
             'subtitle' => 'Подзаголовок',
             'description' => str_random(500),
             'introtext' => str_random(255),
@@ -48,7 +49,7 @@ class NewsTableSeeder extends Seeder
 
         App\Model\News::create([
             'category_id' => 1,
-            'title' => 'Новость номер три',
+            'title' => 'Главная новость номер три',
             'subtitle' => 'Подзаголовок',
             'description' => str_random(500),
             'introtext' => str_random(255),

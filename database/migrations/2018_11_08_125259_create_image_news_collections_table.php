@@ -25,9 +25,12 @@ class CreateImageNewsCollectionsTable extends Migration
             $table->integer('news_id')
                 ->nullable(false)
                 ->comment('News ID');
+            $table->string('type')
+                ->nullable(false)
+                ->comment('News image type (preview etc.)');
             $table->timestamps();
 
-            $table->index(['image_id', 'news_id']);
+            $table->index(['image_id', 'news_id', 'type']);
         });
     }
 
