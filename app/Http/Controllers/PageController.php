@@ -117,9 +117,19 @@ class PageController extends Controller
         $params = $request->only('searchText');
 
         $results['news'] = $this->newsModel->search($params);
+        //$results['persons'] = ['frwg' => 2, 'vhr' => 41];
+        $all = [];
 
-        var_dump($results); die;
 
-        return view('components.header.search_results', ['results' => $results]);
+        foreach($results as $name => $result){
+            $all[$name] = $result;
+        }
+
+        $results = array_merge(['all' => $all], $results);
+
+        return view('components.header.search_results', [
+            'results' => $results,
+            'dateFormatter' => DateFormatter::class,
+        ]);
     }
 }

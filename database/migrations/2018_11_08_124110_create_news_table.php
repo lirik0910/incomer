@@ -77,6 +77,7 @@ class CreateNewsTable extends Migration
 
             $table->unique(['title', 'index_top_position']);
             $table->index(['category_id', 'section_id', 'related_id', 'creator_id', 'editor_id', 'publisher_id']);
+            //$table->index('section_id');
         });
     }
 

@@ -79,13 +79,14 @@ export default class Header extends Base {
 		$.ajax({
             url: '/search',
             method: 'GET',
-            dataType: 'json',
+            dataType: 'html',
             data: {searchText: $(e.currentTarget).val()},
             // context: $(e.currentTarget).val(),
         }).done( (data) => {
-            this.els._searchCategory.append(data)
+            console.log('done');
+            this.els._searchResult.append(data)
         }).fail(function (e) {
-            
+            console.log('bad');
         });
 
 

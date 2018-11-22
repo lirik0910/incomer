@@ -15,14 +15,14 @@
         <div class="aticles-wrap">
             <div class="top">
                 @foreach($topNews as $topItem)
-                @php
-                    $img = $topItem->images->where('pivot.type', 'top_preview')->first();
-                @endphp
+                    @php
+                        $img = $topItem->images->where('pivot.type', 'top_preview')->first();
+                    @endphp
                     @if($loop->first)
                         <a class="card card--large" href="{{ url('/news/' . $topItem->id) }}">
                             <article class="card__article">
                                 <div class="card__pic">
-                                    <img src="{{ asset('/storage/images/images_content/' . $img->url) }}">
+                                    <img src="{{ asset($img->url) }}">
                                 </div>
                                 <div class="card__content">
                                     <div class="card__text">
@@ -30,8 +30,8 @@
                                         <p>{{ $topItem->title }}</p>
                                     </div>
                                     <div class="card__statistic">
-                                        <span class="views">{{ $topItem->views }}</span>
-                                        <span class="comments">{{ $topItem->comments_count }}</span>
+                                        <span class="views-post">{{ $topItem->views }}</span>
+                                        <span class="comments-post">{{ $topItem->comments_count }}</span>
                                     </div>
                                 </div>
                             </article>
@@ -40,19 +40,22 @@
                 @endforeach
             <div class="top__article-wrap">
                 @foreach($topNews as $topItem)
+                    @php
+                        $img = $topItem->images->where('pivot.type', 'top_preview')->first();
+                    @endphp
                     @if($loop->iteration == 2)
                         <a class="card card--square card--post" href="{{ url('/news/' . $topItem->id)}}">
                             <article class="card__article">
                                 <div class="card__pic">
-                                    <img src="img/car.png">
+                                    <img src="{{ asset($img->url) }}">
                                 </div>
                                 <div class="card__content">
                                     <div class="card__text">
                                         <p>{{ $topItem->title }}</p>
                                     </div>
                                     <div class="card__statistic">
-                                        <span class="views">{{ $topItem->views }}</span>
-                                        <span class="comments">{{ $topItem->comments_count }}</span>
+                                        <span class="views-post">{{ $topItem->views }}</span>
+                                        <span class="comments-post">{{ $topItem->comments_count }}</span>
                                     </div>
                                 </div>
                             </article>
@@ -61,7 +64,7 @@
                         <a class="card card--square card--interview" href="{{ url('/news/' . $topItem->id)}}">
                             <article class="card__article">
                                 <div class="card__pic">
-                                    <img src="img/man.png">
+                                    <img src="{{ asset($img->url) }}">
                                 </div>
                                 <div class="card__content">
                                     <div class="card__text">
@@ -70,8 +73,8 @@
                                         <!--<p class="card__position">AB–Invest, CEO</p>-->
                                     </div>
                                     <div class="card__statistic">
-                                        <span class="views">{{ $topItem->views }}</span>
-                                        <span class="comments">{{ $topItem->comments_count }}</span>
+                                        <span class="views-post">{{ $topItem->views }}</span>
+                                        <span class="comments-post">{{ $topItem->comments_count }}</span>
                                     </div>
                                 </div>
                             </article>
