@@ -29,6 +29,7 @@ import PageLoadingProcess from 'components/PageLoadingProcess';
 
 import UsersListTable from './UsersListTable.jsx';
 import UsersListFilters from './UsersListFilters.jsx';
+import UserEditForm from './UsersEditForm.jsx';
 
 import {
     clearFilters,
