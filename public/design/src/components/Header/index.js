@@ -32,6 +32,23 @@ export default class Header extends Base {
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
 			(e) => this.searchFilter(e));
+
+
+
+
+		console.log(
+			this.els._searchCategoryList
+				.children()
+				.children('.search__category-link--active')
+				.index()
+				// .children()
+				// .index();
+			 // this.els._searchCategoryList
+    //         	.find('.search__category-link--active')
+    //         	.index()
+
+            // $('search__category-link').parent()
+		)
 	}
 
 	searchAnimation(e) {
@@ -72,8 +89,14 @@ export default class Header extends Base {
 			this.els._searchResult.fadeOut();
 			this.els._searchInput.css({'border-radius': '20px'})
 		}
+		
 
-
+		// console.log($('.search__category-list').children().children('.search__category-link--active').index())
+		// console.log(
+		// 	 this.els._searchCategoryList
+  //           	.find('.search__category-link--active')
+  //           	.index()
+		// )
 
 
 		$.ajax({
@@ -83,14 +106,26 @@ export default class Header extends Base {
             data: {searchText: $(e.currentTarget).val()},
         }).done( (data) => {
             console.log('done');
-            if ($('.search__info')) {
-            	$('.search__info').remove();
-            	this.els._searchResult.append(data);
+            if (this.els._searchResult.children('.search__info')) {
+            	this.els._searchResult.children('.search__info').remove();
             }
-            else {
-            	this.els._searchResult.append(data);
-            }
-        }).fail(function (e) {
+            this.els._searchResult.append(data);
+
+            this.els._searchCategoryList
+            	.find('.search__category-link--active')
+            	.index()
+
+
+
+            
+            // $('.search__category-list').children('.search__category-link--active')
+
+
+    //         this.els._searchInfoList
+				// .eq($(e.currentTarget).parent().index())
+				// .addClass('search__info-list--active');
+
+        }).fail( (e) => {
             console.log('bad');
         });
 
