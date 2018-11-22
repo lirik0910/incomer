@@ -27,13 +27,6 @@
 		border-bottom: 1px solid $main-light-grey-color;
 		padding-bottom: 18px;
     	margin-bottom: 24px;
-    	// span {
-    	// 	&:hover {
-    	// 		&+svg {
-    	// 			opacity: 0.6;
-    	// 		}
-    	// 	}
-    	// }
 	}
 	&__title {
 		@extend %title;
@@ -76,6 +69,12 @@
 		&:last-of-type {
 			padding-bottom: 0;
 		}
+		&:hover {
+			.comments__vote-up:not(.active),
+			.comments__vote-down:not(.active) {
+				opacity: 0.3;
+			}
+		}
 	}
 	&__info {
 		display: flex;
@@ -92,6 +91,12 @@
     	max-height: 16px;
     	text-decoration: none;
     	color: $main-dark-grey-color;
+    	@include transition(color);
+    	&:hover,
+    	&:focus,
+    	&:active {
+    		color: $default-blue;
+    	}
 	}
 	&__date {
 		font-size: 11px;
@@ -119,12 +124,12 @@
 	&__rating-wrap {
 		position: relative;
 		text-align: center;
-		&:hover {
-			.comments__vote-up,
-			.comments__vote-down {
-				opacity: 0.6;
-			}
-		}
+		// &:hover {
+		// 	.comments__vote-up,
+		// 	.comments__vote-down {
+		// 		opacity: 0.6;
+		// 	}
+		// }
 	}
 	&__rating {
 		width: 60px;
@@ -166,8 +171,8 @@
 			}
 		}
 		&:hover,
-		&:focus,
-		&:active {
+		/* &:focus,
+		 &:active */ {
 			svg {
 				polyline {
 					stroke: $default-blue;

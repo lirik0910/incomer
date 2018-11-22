@@ -81,10 +81,15 @@ export default class Header extends Base {
             method: 'GET',
             dataType: 'html',
             data: {searchText: $(e.currentTarget).val()},
-            // context: $(e.currentTarget).val(),
         }).done( (data) => {
             console.log('done');
-            this.els._searchResult.append(data)
+            if ($('.search__info')) {
+            	$('.search__info').remove();
+            	this.els._searchResult.append(data);
+            }
+            else {
+            	this.els._searchResult.append(data);
+            }
         }).fail(function (e) {
             console.log('bad');
         });

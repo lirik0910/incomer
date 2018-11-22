@@ -4,13 +4,13 @@ div.comments
 			p.comments__title Комментарии читателей
 			ul.comments__tabs
 				li.comments__tab
-					a.comments__tab-link.comments__tab-link--active(href='#') По рейтингу
+					a.comments__tab-link.comments__tab-link--active(href='#' data-sort-value='rating') По рейтингу
 				li.comments__tab
-					a.comments__tab-link(href='#') По актуальности
+					a.comments__tab-link(href='#' data-sort-value='relevance') По актуальности
 		div
 			ul.comments__list
 				li.comments__item 
-					div.comments__rating.comments__rating--high
+					div.comments__rating
 						div.comments__rating-wrap
 							a.comments__vote-up(href='#')
 								include ../../../img/chevron.svg
@@ -28,7 +28,7 @@ div.comments
 							p Никакого мотива; ни неразделённой любви, ни финансовых неурядиц. Ни записки. Ни разговора с любимой сестрой.
 							p Её звали Мэри Миллер.
 				li.comments__item 
-					div.comments__rating.comments__rating--high
+					div.comments__rating
 						div.comments__rating-wrap
 							a.comments__vote-up(href='#')
 								include ../../../img/chevron.svg
@@ -44,7 +44,7 @@ div.comments
 						div.comments__text
 							p Думаю, скорее всего ей приказал внутренний голос. Когда–то в наших краях подросток, ну такой рос богомольный, негде пробы ставить, в церкви попу помогал, сам ходил на все службы от и до. Одного дня взял и поубивал отца, матерь и младшую сестру. Ему так голос в голове приказал.
 				li.comments__item 
-					div.comments__rating.comments__rating--high
+					div.comments__rating
 						div.comments__rating-wrap
 							a.comments__vote-up(href='#')
 								include ../../../img/chevron.svg

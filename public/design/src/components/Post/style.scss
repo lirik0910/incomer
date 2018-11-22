@@ -51,6 +51,8 @@
 	}
 	&__text {
 		line-height: 36px;
+		padding-bottom: 36px;
+		border-bottom: 1px solid $main-light-grey-color;
 		p {
 			&:not(:last-of-type) {
 				margin-bottom: 30px;
@@ -202,7 +204,7 @@
 		@extend %btn;
 		padding: 12px 24px;
 		border-radius: 30px;
-		margin-top: 54px;
+		margin-top: 24px;
 		font: 700 16px'Museo Sans Cyrl', Arial, sans-serif;
 	}
 }
