@@ -36,19 +36,20 @@ export default class Header extends Base {
 
 
 
-		console.log(
-			this.els._searchCategoryList
-				.children()
-				.children('.search__category-link--active')
-				.index()
-				// .children()
-				// .index();
-			 // this.els._searchCategoryList
-    //         	.find('.search__category-link--active')
-    //         	.index()
+		// console.log(
+		// 	// this.els._searchCategoryList
+		// 	// 	.children()
+		// 	// 	.children('.search__category-link--active')
+		// 	// 	.index()
 
-            // $('search__category-link').parent()
-		)
+		// 		// .children()
+		// 		// .index();
+		// 	 // this.els._searchCategoryList
+  //   //         	.find('.search__category-link--active')
+  //   //         	.index()
+
+  //           // $('search__category-link').parent()
+		// )
 	}
 
 	searchAnimation(e) {
@@ -110,19 +111,14 @@ export default class Header extends Base {
             // if (this.els._searchResult.children('.search__info')) {
             // 	this.els._searchResult.children('.search__info').remove();
 
-            if (this.els._searchResult.find('.search__info')) {
-            	$('.search__info').remove();
+            if (this.els._searchResult.children('.search__info')) {
+            	this.els._searchResult.children('.search__info').remove();
             	// this.els._searchResult.append(data);
-
             }
             // else {
             // 	this.els._searchResult.append(data);
             // }
             this.els._searchResult.append(data);
-
-            this.els._searchCategoryList
-            	.find('.search__category-link--active')
-            	.index()
 
 
 
