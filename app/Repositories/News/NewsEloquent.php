@@ -68,6 +68,15 @@ class NewsEloquent implements NewsRepository
         return $news;
     }
 
+    public function search(array $params)
+    {
+        $text = $params['searchText'] ?? '';
+
+        $news = $this->model::where('title', 'LIKE', '%' . $text .'%')->orWhere('description', 'LIKE', '%' . $text .'%')->get();
+
+        return $news;
+    }
+
     public function create(array $data)
     {
         $images = isset($data['images']) ?? '';

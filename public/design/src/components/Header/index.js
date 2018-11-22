@@ -80,7 +80,7 @@ export default class Header extends Base {
             url: '/search',
             method: 'GET',
             dataType: 'json',
-            data: $(e.currentTarget).val(),
+            data: {searchText: $(e.currentTarget).val()},
             // context: $(e.currentTarget).val(),
         }).done( (data) => {
             this.els._searchCategory.append(data)

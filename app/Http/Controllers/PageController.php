@@ -87,7 +87,7 @@ class PageController extends Controller
     */
     public function oneNews(Request $request)
     {
-        return view('content.news', ['view' => 'post']);
+        return view('content.post', ['view' => 'post']);
     }
 
     /*
@@ -114,9 +114,11 @@ class PageController extends Controller
     public function search(Request $request)
     {
         $results = [];
-        $string = $request->only('searchText');
+        $params = $request->only('searchText');
 
-        var_dump($string); die;
+        $results['news'] = $this->newsModel->search($params);
+
+        var_dump($results); die;
 
         return view('components.header.search_results', ['results' => $results]);
     }
