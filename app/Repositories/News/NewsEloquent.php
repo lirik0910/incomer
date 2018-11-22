@@ -59,7 +59,7 @@ class NewsEloquent implements NewsRepository
 
     public function one(int $id)
     {
-        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->find($id);
+        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
 
         if (!$news){
             throw new \Exception('News was not found');
@@ -190,6 +190,17 @@ class NewsEloquent implements NewsRepository
         }
 
         return $this->one($id);
+    }
+
+    public function updateViews(int $id)
+    {
+        $news = $this->one($id);
+
+        $news->views = (int)$news->views + 1;
+
+        $news->save();
+
+        return $news->views;
     }
 
     public function delete(int $id)

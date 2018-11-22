@@ -51,7 +51,7 @@ class PageController extends Controller
     public function companies(Request $request)
     {
 
-        return view('content.companies', ['view' => 'index']);
+        return view('content.companies', ['view' => 'companies']);
     }
 
     /*
@@ -69,7 +69,7 @@ class PageController extends Controller
     */
     public function cryptocurrencies(Request $request)
     {
-        return view('content.cryptocurrencies', ['view' => 'company']);
+        return view('content.cryptocurrency', ['view' => 'cryptocurrency']);
     }
 
     /*
@@ -78,16 +78,30 @@ class PageController extends Controller
     */
     public function blockchain(Request $request)
     {
-        return view('content.blockchain', ['view' => 'company']);
+        return view('content.blockchain', ['view' => 'blockchain']);
     }
 
     /*
     * Get one news page
     * @param Request $request
     */
-    public function oneNews(Request $request)
+    public function oneNews(Request $request, int $id)
     {
-        return view('content.post', ['view' => 'post']);
+        $news = $this->newsModel->one($id);
+//var_dump($news->comments_count); die;
+        if (!$news){
+            throw new \Exception('News was not found');
+        }
+
+        if(!$this->newsModel->updateViews($id)){
+            throw new \Exception('Cannot update views count');
+        }
+
+        return view('content.post', [
+            'view' => 'post',
+            'item' => $news,
+            'dateFormatter' => DateFormatter::class,
+        ]);
     }
 
     /*
@@ -132,4 +146,5 @@ class PageController extends Controller
             'dateFormatter' => DateFormatter::class,
         ]);
     }
+
 }

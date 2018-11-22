@@ -29,7 +29,7 @@ class ImagesTableSeeder extends Seeder
             App\Model\Image::create([
                 'title' => $image,
                 'path' => $path,
-                'url' => 'storage/images/images_content/' . $image,
+                'url' => '/storage/images/images_content/' . $image,
                 'creator_id' => 1
             ]);
         }
