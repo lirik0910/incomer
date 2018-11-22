@@ -83,9 +83,10 @@ export default class Header extends Base {
             data: {searchText: $(e.currentTarget).val()},
         }).done( (data) => {
             console.log('done');
-            if ($('.search__info')) {
+            if (this.els._searchResult.find('.search__info')) {
             	$('.search__info').remove();
             	this.els._searchResult.append(data);
+
             }
             else {
             	this.els._searchResult.append(data);

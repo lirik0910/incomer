@@ -20,6 +20,8 @@ interface NewsRepository
 
     public function update(int $id, array $data);
 
+    public function updateViews(int $id);
+
     public function create(array $data);
 
     public function delete(int $id);
