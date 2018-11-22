@@ -34,6 +34,7 @@ export default class Header extends Base {
 			(e) => this.searchFilter(e));
 
 
+		console.log('AAAAAAAA');
 
 
 		// console.log(
