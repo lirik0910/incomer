@@ -20,7 +20,7 @@ class USerController extends Controller
     public function index(Request $request)
     {
         try {
-            $params = $request->only(['page', 'limit']);
+            $params = $request->only(['page', 'limit', 'sort_column', 'sort_direction', 'query']);
             $res = $this->model->all($params);
 
             return response()->json($res);

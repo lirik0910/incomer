@@ -223,12 +223,12 @@ export default (() => {
 		// стили для Dialog
 		Dialog: {
 			default: {
-				top: '26%',
+				top: '6%',
 				width: 400,
 				minHeight: 200,
 				zIndex: 2050,
 				left: 'calc(50% - 200px)',
-				position: 'absolute',
+				position: 'fixed',
 				backgroundColor: palette['color3']
 			},
 			alert: {
@@ -240,6 +240,13 @@ export default (() => {
 				padding: 12,
 				position: 'absolute',
 				backgroundColor: palette['color3']
+			}
+		},
+
+		Select: {
+			default: {
+				width: '100%',
+				display: 'block'
 			}
 		}
 	};

@@ -1,25 +1,25 @@
 import httpfetch from 'httpfetch.js';
 
-export default (dataForFetch = {}, self = {}) => {
-    self.setState({
-        dataLoadingFlag: true
-    }, () => {
-        self.selectedRowsIdsArray = [];
-        httpfetch('/user', 'GET', dataForFetch)
-            .then((data) => {
-                self.setState({
-                    dataLoadingFlag: false,
-                    data
-                })
-            })
-            .catch((err) => {
-                const {displayFetchErrorMessage} = self.props;
-                displayFetchErrorMessage(err.message);
-                setTimeout(() => {
-                    displayFetchErrorMessage('');
-                }, 2600);
+export default (dataForFetch = {}, query = '', self = {}) => {
+	const { userListPageLoading, userListPageSelectedRowsIDsArray } = self.props;
+	
+	userListPageSelectedRowsIDsArray([]);
+	userListPageLoading(true);
+	httpfetch('/user', 'GET', dataForFetch, query)
+		.then(({ data, total = 0 }) => {
+			userListPageLoading(false);
+			self.setState({
+				total,
+				data
+			})
+		})
+		.catch((err) => {
+			const { userListPageErrorMessage } = self.props;
+			userListPageErrorMessage(err.message);
+			setTimeout(() => {
+				userListPageErrorMessage('');
+			}, 2600);
 
-                self.setState({dataLoadingFlag: false});
-            });
-    });
+			userListPageLoading(false);
+		});
 }

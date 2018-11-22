@@ -20,7 +20,14 @@ class UserEloquent implements UserRepository
         $limit = $params['limit'] ?? 10;
 
         $items = $this->model->limit($limit)->offset(($page - 1) * $limit);
-        return $items->get();
+        $total = $this->model->count();
+
+        if(!empty($params['sort_column']) && !empty($params['sort_direction'])){
+            $items = $items->orderBy($params['sort_column'], $params['sort_direction']);
+        }
+        $items->orderBy('id', 'desc');
+
+        return ['data' => $items->get(), 'total' => $total];
     }
 
     public function get($id)
