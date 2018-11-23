@@ -12,7 +12,6 @@
 	overflow: hidden;
 	padding: 24px;
 	.block-title {
-		margin-bottom: 24px;
 		display: inline-block;
 	}
 	&__filter {
@@ -43,21 +42,54 @@
 			color: $light-color;
 		} 
 	}
-	&__tab-content {
-		line-height: 24px;
-		p {
-			&:not(:last-of-type) {
-				margin-bottom: 12px;
-			}
+	&__wrap {
+		border-bottom: 1px solid $light-grey-color;
+    	padding-bottom: 24px;
+    	margin-bottom: 36px;
+	}
+	&__tab-list {
+		display: inline-block;
+	}
+	&__tab-item {
+		display: inline-block;
+	}
+	&__tab-link {
+		color: $main-dark-grey-color;
+		text-decoration: none;
+		padding: 5px 11px;
+		font-size: 12px;
+		letter-spacing: 0.3px;
+		border-radius: 15px;
+		transition: background-color .3s ease-in-out, color .3s ease-in-out;
+		&--active,
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $default-blue;
+			color: $light-color;
 		}
-		a {
-			text-decoration: none;
-			color: $default-blue;
-			@include transition(color);
-			&:hover,
-			&:focus,
-			&:active {
-				color: $darker-blue;
+	}
+	&__tab-content {
+		display: none;
+		&--active {
+			display: block;
+		}
+		&:nth-of-type(3) {
+			p {
+				line-height: 24px;
+				&:not(:last-of-type) {
+					margin-bottom: 12px;
+				}
+			}
+			a {
+				text-decoration: none;
+				color: $default-blue;
+				@include transition(color);
+				&:hover,
+				&:focus,
+				&:active {
+					color: $darker-blue;
+				}
 			}
 		}
 	}

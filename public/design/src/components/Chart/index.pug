@@ -1,34 +1,37 @@
 div.chart
-	p.block-title О Tesla в цифрах
-	ul.chart__filter
-		li.chart__filter-item
-			a.chart__filter-link.chart__filter-link--active(href='#') Стоимость акций
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Биография
+	div.chart__wrap
+		p.block-title О Tesla в цифрах
+		ul.chart__tab-list
+			li.chart__tab-item
+				a.chart__tab-link.chart__tab-link--active(href='#') Стоимость акций
+			li.chart__tab-item
+				a.chart__tab-link(href='#') Биография
 
-	div.chart__tab-content#diagram
+	div.chart__tab-content.chart__tab-content--active
+		div#diagram
+
+		ul.chart__filter.chart__filter--term
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Минута
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Час
+			li.chart__filter-item
+				a.chart__filter-link.chart__filter-link--active(href='#') День
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Неделя
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Месяц
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Квартал
+			li.chart__filter-item
+				a.chart__filter-link(href='#') Год
+			li.chart__filter-item
+				a.chart__filter-link.chart__filter-link(href='#') Все время
+
 	div.chart__tab-content
 		p Tesla (читается Тэ́сла, ранее Tesla Motors) — американская компания, производитель электромобилей и (через свой филиал SolarCity) решений для хранения электрической энергии.
 		p Компания была основана в июле 2003 года Мартином Эберхардом и Марком Тарпеннингом, но сама компания считает Илона Маска, Джеффри Брайана Штробеля и Иэна Райта почти её сооснователями.
 		p Названа в честь всемирно известного электротехника и физика Николы Теслы.
-
-	ul.chart__filter.chart__filter--term
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Минута
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Час
-		li.chart__filter-item
-			a.chart__filter-link.chart__filter-link--active(href='#') День
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Неделя
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Месяц
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Квартал
-		li.chart__filter-item
-			a.chart__filter-link(href='#') Год
-		li.chart__filter-item
-			a.chart__filter-link.chart__filter-link(href='#') Все время
 
 
 
