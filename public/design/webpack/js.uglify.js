@@ -12,7 +12,7 @@ module.exports = function() {
                     conditionals: true,
                     evaluate: true,
                     // drop_console: false, // strips console statements
-                    drop_console: true, // strips console statements
+                    drop_console: false, // strips console statements
                     sequences: true,
                     booleans: true,
                 },
