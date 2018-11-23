@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    protected $fillable = ['category_id','title', 'description'];
+    protected $fillable = ['category_id', 'title', 'description'];
 
 
     /*

@@ -25,6 +25,15 @@ class News extends Model
     }
 
     /*
+     * Get user model
+     * @return boolean
+     */
+    public function creator()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /*
     * Get section model
     * @return boolean
     */

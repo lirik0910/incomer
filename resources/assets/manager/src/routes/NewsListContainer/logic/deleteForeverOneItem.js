@@ -3,17 +3,17 @@ import httpfetch from 'httpfetch.js';
 export default (self, id = 0) => {
 	const { newsListPageLoading, newsListPageErrorMessage } = self.props;
 
-	return httpfetch('/news/'+ id, 'DELETE')
+	return httpfetch('/news/trash/'+ id, 'DELETE')
 		.then(() => {
 			newsListPageLoading(false);
 			self.setState({
-                prepareDeleteRowID: 0,
+                prepareDeleteForeverRowID: 0,
 			});
 		})
 		.catch((err) => {
 
 			self.setState({
-				prepareDeleteRowID: 0
+				prepareDeleteForeverRowID: 0
 			});
 
 		});

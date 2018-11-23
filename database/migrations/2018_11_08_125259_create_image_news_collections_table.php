@@ -30,7 +30,7 @@ class CreateImageNewsCollectionsTable extends Migration
                 ->comment('News image type (preview etc.)');
             $table->timestamps();
 
-            $table->index(['image_id', 'news_id', 'type']);
+//            $table->index(['image_id', 'news_id', 'type']);
         });
     }
 

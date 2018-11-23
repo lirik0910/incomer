@@ -24,9 +24,10 @@ class NewsEloquent implements NewsRepository
         $limit = $params['limit'] ?? 10;
 
         $items = $this->model
-            ->with('category', 'section')
+            ->with('category', 'section', 'creator')
             ->withCount('comments')
             ->limit($limit)
+            ->withTrashed()
             ->offset(($page - 1) * $limit);
         $total = $this->model->count();
 
@@ -36,6 +37,18 @@ class NewsEloquent implements NewsRepository
                     $items = $items
                         ->join('categories', 'categories.id', '=', 'news.category_id')
                         ->orderBy('categories.title', $params['sort_direction']);
+                    break;
+
+                case 'section':
+                    $items = $items
+                        ->leftJoin('sections', 'sections.id', '=', 'news.section_id')
+                        ->orderBy('sections.title', $params['sort_direction']);
+                    break;
+
+                case 'author':
+                    $items = $items
+                        ->leftJoin('users', 'users.id', '=', 'news.creator_id')
+                        ->orderBy('users.email', $params['sort_direction']);
                     break;
 
                     
