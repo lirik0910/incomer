@@ -1,9 +1,12 @@
 <li class="preview__item">
-    <a class="preview__link" href="{{ $item->link }}" target="_blank">
-        <img class="preview__img" src="{{ asset($item->preview_url) }}" alt="video-preview">
-        <p class="preview__text">{{ $item->title }}</p>
-        <button class="preview__btn">
-            @include('svg.play')
-        </button>
-    </a>
+    <iframe
+        width="300"
+        src="{{ $item->link }}"
+        frameborder="0"
+        allow="accelerometer; picture-in-picture"
+        allowfullscreen>
+
+    </iframe>
 </li>
+
+
