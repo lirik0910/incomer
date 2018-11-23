@@ -22,6 +22,7 @@ const common = merge([
         entry: {
             'index': PATHS.src + '/pages/index/index.js',
             'post': PATHS.src + '/pages/post/post.js',
+            'content': PATHS.src + '/pages/content/content.js',
             'company': PATHS.src + '/pages/company/company.js',
             'companies': PATHS.src + '/pages/companies/companies.js',
             'userProfile': PATHS.src + '/pages/userProfile/userProfile.js',
@@ -42,6 +43,11 @@ const common = merge([
                 filename: 'post.html',
                 chunks: ['post', 'common'],
                 template: PATHS.src + '/pages/post/post.pug'
+            }),
+            new HtmlWebpackPlugin({
+                filename: 'content.html',
+                chunks: ['content', 'common'],
+                template: PATHS.src + '/pages/content/content.pug'
             }),
             new HtmlWebpackPlugin({
                 filename: 'company.html',

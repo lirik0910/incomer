@@ -17,3 +17,6 @@
         @endif
     @endif
 @endforeach
+@isset($items)
+    {{ $items->links() }}
+@endisset

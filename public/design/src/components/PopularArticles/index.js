@@ -4,10 +4,27 @@ export default class PopularArticles extends Base {
 	initDOMElements(e) {
         this.els = {
         	// _headerNav: $('.header__nav'),
+            _news: $('.news'),
+           // _moreBttn: this.els._newsWrap.find('.more'),
         }
     }
 
 	onDOMReady(e) {
-		
+	    this.els._news.find('.more').click( (e) => this.getMoreArticles(e));
 	}
+
+	getMoreArticles(e){
+	    e.preventDefault();
+
+        $.ajax({
+            url: $(e.target).attr('href'),
+            method: 'GET',
+            dataType: 'html',
+        }).done( (data) => {
+            if(this.els._news.find('.more')){
+                this.els._news.find('.more').remove();
+            }
+            this.els._news.append(data);
+        }).fail( (e) => { });
+    }
 }

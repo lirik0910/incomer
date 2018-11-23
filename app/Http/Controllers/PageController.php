@@ -29,19 +29,28 @@ class PageController extends Controller
         $params = $request->only(['page', 'searchText']);
 
         $hot = $this->newsModel->hot($params);
-        $current = $this->newsModel->current();
-        $top = $this->newsModel->top();
 
-        $videos = $this->videoModel->index();
+        if($request->ajax()){
+            return view('components.index.hot_news_list', [
+                'items' => $hot,
+                'dateFormatter' => DateFormatter::class
+            ])->render();
+        } else{
+            $current = $this->newsModel->current();
+            $top = $this->newsModel->top();
+            $videos = $this->videoModel->index();
 
-        return view('content.index', [
-            'view' => 'index',
-            'hotNews' => $hot,
-            'topNews' => $top,
-            'currentNews' => $current,
-            'videos' => $videos,
-            'dateFormatter' => DateFormatter::class
-        ]);
+            return view('content.index', [
+                'view' => 'index',
+                'hotNews' => $hot,
+                'topNews' => $top,
+                'currentNews' => $current,
+                'videos' => $videos,
+                'dateFormatter' => DateFormatter::class
+            ]);
+        }
+
+
     }
 
     /*

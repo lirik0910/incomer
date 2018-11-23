@@ -20,6 +20,7 @@ use App\Repositories\News\NewsRepository;
 use App\Repositories\Tag\TagEloquent;
 use App\Repositories\Tag\TagRepository;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::defaultSimpleView('components.common.pagination_more_button');
     }
 
     /**

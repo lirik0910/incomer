@@ -55,13 +55,15 @@ class NewsEloquent implements NewsRepository
         $limit = $params['limit'] ?? 10;
 
 
-        $news = $this->model::where(['published' => true, 'hot' => true, 'on_index_top' => false])->with(['images'])->withCount('comments')
+        $news = $this->model::where(['published' => true, 'hot' => true, 'on_index_top' => false])
+            ->with(['images'])
+            ->withCount('comments')
             ->offset($limit * ($page - 1))
             //->limit(4)
-            ->orderBy('created_at', 'DESC');
-        //->paginate($limit);
+            ->orderBy('created_at', 'DESC')
+            ->simplePaginate($limit);
 
-        return $news->get();
+        return $news;
     }
 
     public function current()
