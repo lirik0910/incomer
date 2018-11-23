@@ -38,7 +38,6 @@ class PageController extends Controller
         } else{
             $current = $this->newsModel->current();
             $top = $this->newsModel->top();
-            $hot = $this->newsModel->hot($params);
             $videos = $this->videoModel->index();
 
             return view('content.index', [
