@@ -1,3 +1,4 @@
+
 export default class Base {
 	constructor(baseDOM) {
 		this.baseDOM = {

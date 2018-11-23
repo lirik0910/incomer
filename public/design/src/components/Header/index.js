@@ -17,8 +17,7 @@ export default class Header extends Base {
         	_searchCategory: $('.header .search__category'),
         	_searchCategoryCount: $('.header .search__category-count'),
         	_searchCategoryList: $('.header .search__category-list'),
-        	_searchCategoryLink: $('.header .search__category-link'),
-        	_searchInfoList: $('.header .search__info-list')
+        	_searchCategoryLink: $('.header .search__category-link')
         }
     }
 
@@ -28,29 +27,11 @@ export default class Header extends Base {
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));
 		this.els._searchInput.on('input', (e) => this.getSearchResult(e));
 		this.checkSearchResultFilling();
-		this.baseDOM._window.click((e) => this.closeSearchByLosingFocus(e));
+		this.baseDOM._window.click((e) => this.closeSearchByClickOutside(e));
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
 			(e) => this.searchFilter(e));
-
-
-		console.log('AAAAAAAA');
-
-
-		// console.log(
-		// 	// this.els._searchCategoryList
-		// 	// 	.children()
-		// 	// 	.children('.search__category-link--active')
-		// 	// 	.index()
-
-		// 		// .children()
-		// 		// .index();
-		// 	 // this.els._searchCategoryList
-  //   //         	.find('.search__category-link--active')
-  //   //         	.index()
-
-  //           // $('search__category-link').parent()
-		// )
+		this.els._searchCategoryList.click((e) => e.preventDefault());
 	}
 
 	searchAnimation(e) {
@@ -91,15 +72,6 @@ export default class Header extends Base {
 			this.els._searchResult.fadeOut();
 			this.els._searchInput.css({'border-radius': '20px'})
 		}
-		
-
-		// console.log($('.search__category-list').children().children('.search__category-link--active').index())
-		// console.log(
-		// 	 this.els._searchCategoryList
-  //           	.find('.search__category-link--active')
-  //           	.index()
-		// )
-
 
 		$.ajax({
             url: '/search',
@@ -107,36 +79,11 @@ export default class Header extends Base {
             dataType: 'html',
             data: {searchText: $(e.currentTarget).val()},
         }).done( (data) => {
-            console.log('done');
-
-            // if (this.els._searchResult.children('.search__info')) {
-            // 	this.els._searchResult.children('.search__info').remove();
-
             if (this.els._searchResult.children('.search__info')) {
             	this.els._searchResult.children('.search__info').remove();
-            	// this.els._searchResult.append(data);
             }
-            // else {
-            // 	this.els._searchResult.append(data);
-            // }
             this.els._searchResult.append(data);
-
-
-
-            
-            // $('.search__category-list').children('.search__category-link--active')
-
-
-    //         this.els._searchInfoList
-				// .eq($(e.currentTarget).parent().index())
-				// .addClass('search__info-list--active');
-
-        }).fail( (e) => {
-            console.log('bad');
-        });
-
-
-
+        }).fail( (e) => { });
 	}
 
 	checkSearchResultFilling() {
@@ -154,13 +101,13 @@ export default class Header extends Base {
 		e.preventDefault();
 		this.els._searchCategoryLink.removeClass('search__category-link--active')
 		$(e.currentTarget).addClass('search__category-link--active')
-		this.els._searchInfoList.removeClass('search__info-list--active');
-		this.els._searchInfoList
+		$('.header .search__info-list').removeClass('search__info-list--active');
+		$('.header .search__info-list')
 			.eq($(e.currentTarget).parent().index())
 			.addClass('search__info-list--active');
 	}
 
-	closeSearchByLosingFocus(e) {
+	closeSearchByClickOutside(e) {
 		if ( 
 			// checks if descendants was clicked
            	this.els._search.has(e.target).length == 0
@@ -168,7 +115,6 @@ export default class Header extends Base {
            	// checks if the element itself was clicked
            	!this.els._search.is(e.target) 
 		) {
-			// e.preventDefault();
 			if ($('.search__input, .search__btn').hasClass('search--active')) {
 				$('.search__input, .search__btn').toggleClass('search--active');
 				this.els._headerNav.css({'opacity': 1})
