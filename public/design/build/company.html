@@ -270,7 +270,7 @@
   <div class="info__detail">
     <ul class="info__tabs">
       <li class="info__tab-item"><a class="info__tab-link info__tab-link--active" href="#">Сводка</a></li>
-      <li class="info__tab-item"><a class="info__tab-link" href="#">Биография</a></li>
+      <li class="info__tab-item"><a class="info__tab-link" href="#">Дочерние компании</a></li>
     </ul>
     <div class="info__tabs-content">
       <div class="info__tab-content info__tab-content--active">
@@ -312,10 +312,12 @@
         </div>
       </div>
       <div class="info__tab-content">
-        <div class="info__text">
-          <p>Tesla (читается Тэ́сла, ранее Tesla Motors) — американская компания, производитель электромобилей и (через свой филиал SolarCity) решений для хранения электрической энергии.</p>
-          <p>Компания была основана в июле 2003 года Мартином Эберхардом[en] и Марком Тарпеннингом[en], но сама компания считает Илона Маска, Джеффри Брайана Штробеля и Иэна Райта почти её сооснователями.</p>
-          <p>Названа в честь всемирно известного электротехника и физика Николы Теслы.</p>
+        <div class="info__content">
+          <ul class="info__filial-list">
+            <li class="info__filial-item"><a class="info__filial-link" href="#">Filial 1</a></li>
+            <li class="info__filial-item"><a class="info__filial-link" href="#">Filial 2</a></li>
+            <li class="info__filial-item"><a class="info__filial-link" href="#">Filial 3</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -323,27 +325,31 @@
 </div>
         <div class="main-wrap">
 <div class="chart">
-  <p class="block-title">О Tesla в цифрах</p>
-  <ul class="chart__filter">
-    <li class="chart__filter-item"><a class="chart__filter-link chart__filter-link--active" href="#">Стоимость акций</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Биография</a></li>
-  </ul>
-  <div class="chart__tab-content" id="diagram"></div>
+  <div class="chart__wrap">
+    <p class="block-title">О Tesla в цифрах</p>
+    <ul class="chart__tab-list">
+      <li class="chart__tab-item"><a class="chart__tab-link chart__tab-link--active" href="#">Стоимость акций</a></li>
+      <li class="chart__tab-item"><a class="chart__tab-link" href="#">Биография</a></li>
+    </ul>
+  </div>
+  <div class="chart__tab-content chart__tab-content--active">
+    <div id="diagram"></div>
+    <ul class="chart__filter chart__filter--term">
+      <li class="chart__filter-item"><a class="chart__filter-link" href="#">Минута</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link" href="#">Час</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link chart__filter-link--active" href="#">День</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link" href="#">Неделя</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link" href="#">Месяц</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link" href="#">Квартал</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link" href="#">Год</a></li>
+      <li class="chart__filter-item"><a class="chart__filter-link chart__filter-link" href="#">Все время</a></li>
+    </ul>
+  </div>
   <div class="chart__tab-content">
     <p>Tesla (читается Тэ́сла, ранее Tesla Motors) — американская компания, производитель электромобилей и (через свой филиал SolarCity) решений для хранения электрической энергии.</p>
     <p>Компания была основана в июле 2003 года Мартином Эберхардом и Марком Тарпеннингом, но сама компания считает Илона Маска, Джеффри Брайана Штробеля и Иэна Райта почти её сооснователями.</p>
     <p>Названа в честь всемирно известного электротехника и физика Николы Теслы.</p>
   </div>
-  <ul class="chart__filter chart__filter--term">
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Минута</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Час</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link chart__filter-link--active" href="#">День</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Неделя</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Месяц</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Квартал</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link" href="#">Год</a></li>
-    <li class="chart__filter-item"><a class="chart__filter-link chart__filter-link" href="#">Все время</a></li>
-  </ul>
 </div>
 <div class="news">
   <div class="news__wrap">

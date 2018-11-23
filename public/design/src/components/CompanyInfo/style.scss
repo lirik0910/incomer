@@ -89,6 +89,11 @@
 		&--active {
 			display: block;
 		}
+		.info__description {
+			&:not(:last-of-type) {
+				// margin-bottom: 0;
+			}
+		}
 	}
 	&__brief {
 
@@ -125,13 +130,34 @@
 		font-size: 18px;
 		margin: 36px 0 12px;
 	}
-	&__text {
+	&__content {
 		font-size: 14px; 
 		line-height: 24px;
 		p {
 			&:not(:last-of-type) {
 				margin-bottom: 12px;
 			}
+		}
+	}
+	&__filial-list {
+		
+	}
+	&__filial-item {
+		list-style-type: none;
+		&:not(:last-of-type) {
+			margin-bottom: 6px;
+		}
+	}
+	&__filial-link {
+		display: block;
+		text-decoration: none;
+		color: $main-dark-grey-color;
+		font-weight: 700;
+		@include transition(color);
+		&:hover,
+		&:focus,
+		&:active {
+			color: $default-blue;
 		}
 	}
 }
