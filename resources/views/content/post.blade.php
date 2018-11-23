@@ -16,11 +16,13 @@
             @endphp
           <img src="{{ $img->url }}">
         </div>
-        <div class="post__introtext">
+        <!-- <div class="post__introtext">
           {{ $item->introtext }}
-        </div>
+        </div> -->
         <!--<h2 class="post__subtitle">Причины кризиса</h2>-->
         <div class="post__text">
+          <p>Баскетбольный клуб «Мариуполь» обыграл «Нико Баскет» из Николаева со счетом 97:90. Об этом на Facebook сообщил начальник учебно-спортивного отдела управления молодежи и спорта Георгий Федоренко.</p>
+          <p>Вчера мариупольская команда в рамках третьего тура чемпионата Украины потерпела поражение со счетом 92:95. Но на повторной встрече мариупольцы сполна реабилитировались. Весь поединок баскетболисты «Мариуполя» контролировали ход игры, владея преимуществом до 20 очков. «Нико Баскет» попытались безуспешно отыграться в конце матча.</p>
           <h2 class="post__subtitle">Причины кризиса</h2>
           <p>«Прекрасная победа <a href='#'>МБК "Мариуполь"</a>, которая подтвердила высокий класс мариупольского баскетбола на национальном уровне», - отметил Георгий Федоренко.</p>
           <p>Теперь же появилась возможность также заполнить интерактивную форму заявления, указав свои персональные данные. После обработки информации онлайн-сервис сгенерирует соответствующую форму с QR-кодом, который уже на месте считает сотрудник ГМСУ, и информация попадет в базу данных. Сотрудникам ведомства нужно будет лишь сверить правильность внесенных данных. </p>
@@ -50,8 +52,8 @@
                 <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
               <div class="card__statistic">
-                <span class="views">1034</span>
-                <span class="comments">537</span>
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
             </div>
           </article>
@@ -66,8 +68,8 @@
                 <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
               <div class="card__statistic">
-                <span class="views">1034</span>
-                <span class="comments">537</span>
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
             </div>
           </article>
@@ -82,8 +84,8 @@
                 <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
               <div class="card__statistic">
-                <span class="views">1034</span>
-                <span class="comments">537</span>
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
             </div>
           </article>
@@ -104,8 +106,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
@@ -118,8 +120,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
@@ -134,8 +136,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
@@ -150,8 +152,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
