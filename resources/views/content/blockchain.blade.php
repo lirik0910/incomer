@@ -38,8 +38,8 @@
                   <p>Tesla покупает 50% акций Bitmain на сумму $2 млрд</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -52,8 +52,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -66,8 +66,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -82,8 +82,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -96,8 +96,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -111,8 +111,8 @@
                   <p>Tesla покупает 50% акций Bitmain на сумму $2 млрд</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -127,8 +127,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -141,8 +141,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -155,8 +155,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>
@@ -169,8 +169,8 @@
                   <p>Facebook презентовал своё первое электронное устройство</p>
                 </div>
                 <div class="card__statistic">
-                  <span class="views">1034</span>
-                  <span class="comments">537</span>
+                  <span class="views-post">1034</span>
+                  <span class="comments-post">537</span>
                 </div>
               </div>
             </article>

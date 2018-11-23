@@ -16,7 +16,6 @@
             @endphp
           <img src="{{ $img->url }}">
         </div>
-        <!--<h2 class="post__subtitle">Причины кризиса</h2>-->
         <div class="post__text">
             {{ $item->description }}
         </div>
@@ -34,8 +33,8 @@
                 <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
               <div class="card__statistic">
-                <span class="views">1034</span>
-                <span class="comments">537</span>
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
             </div>
           </article>
@@ -50,8 +49,8 @@
                 <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
               <div class="card__statistic">
-                <span class="views">1034</span>
-                <span class="comments">537</span>
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
             </div>
           </article>
@@ -66,8 +65,8 @@
                 <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
               <div class="card__statistic">
-                <span class="views">1034</span>
-                <span class="comments">537</span>
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
             </div>
           </article>
@@ -88,8 +87,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
@@ -102,8 +101,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
@@ -118,8 +117,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>
@@ -134,8 +133,8 @@
               <p>Facebook презентовал своё первое электронное устройство</p>
             </div>
             <div class="card__statistic">
-              <span class="views">1034</span>
-              <span class="comments">537</span>
+              <span class="views-post">1034</span>
+              <span class="comments-post">537</span>
             </div>
           </div>
         </article>

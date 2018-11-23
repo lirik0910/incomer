@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Model\Category;
+use App\Repositories\Category\CategoryEloquent;
+use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Image\ImageEloquent;
 use App\Repositories\Image\ImageRepository;
 use App\Repositories\Person\PersonRepository;
@@ -42,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(VideoRepository::class, VideoEloquent::class);
         $this->app->singleton(NewsRepository::class, NewsEloquent::class);
         $this->app->singleton(TagRepository::class, TagEloquent::class);
+        $this->app->singleton(CategoryRepository::class, CategoryEloquent::class);
 
     }
 }

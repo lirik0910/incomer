@@ -97,6 +97,7 @@
               @include('components.index.hot_news_list', ['items' => $hotNews])
           </div>
         </div>
+          <button class="more">Показать ещё</button>
       </div>
       <div class="sidebar-wrap">
         <div class="preview">

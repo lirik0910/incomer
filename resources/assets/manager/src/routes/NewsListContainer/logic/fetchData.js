@@ -1,25 +1,24 @@
 import httpfetch from 'httpfetch.js';
 
-export default (dataForFetch = {}, self = {}) => {
-	self.setState({
-		dataLoadingFlag: true
-	}, () => {
-		self.selectedRowsIdsArray = [];
-		
-		httpfetch('http://localhost/api/news', 'GET', dataForFetch)
-			.then(({ data, total = 0 }) => self.setState({
-				dataLoadingFlag: false,
+export default (dataForFetch = {}, query = '', self = {}) => {
+	const { newsListPageLoading, newsListPageSelectedRowsIDsArray } = self.props;
+	
+	// newsListPageLoading(true);
+	httpfetch('/news', 'GET', dataForFetch, query)
+		.then(({ data, total = 0 }) => {
+			// newsListPageLoading(false);
+			self.setState({
 				total,
 				data
-			}))
-			.catch((err) => {
-				const { displayFetchErrorMessage } = self.props;
-				displayFetchErrorMessage(err.message);
-				setTimeout(() => {
-					displayFetchErrorMessage('');
-				}, 2600);
+			})
+		})
+		.catch((err) => {
+			const { newsListPageErrorMessage } = self.props;
+			newsListPageErrorMessage(err.message);
+			setTimeout(() => {
+				newsListPageErrorMessage('');
+			}, 2600);
 
-				self.setState({ dataLoadingFlag: false });
-			});
-	});
+			// newsListPageLoading(false);
+		});
 }

@@ -52,6 +52,14 @@ render(<ThemeProvider theme={theme}>
 
                 <Route
                     exact
+                    path="/news/:id"
+                    component={Loadable({
+                        loader: () => import('routes/NewsEditContainer/index'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+                <Route
+                    exact
                     path="/pages"
                     component={Loadable({
                         loader: () => import('routes/PagesListContainer'),

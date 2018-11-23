@@ -36,7 +36,7 @@ export default ({
         }
 
         {buildButtons(page, total, limit, onClick)}
-        {limit < total &&
+        {limit* page < total &&
         <React.Fragment>
             {/*<Button*/}
                 {/*variant="tab"*/}
