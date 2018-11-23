@@ -8,7 +8,7 @@ export default (self) => (e) => {
 		page: 1,
 		limit: 20,
 		sort_direction: 'desc',
-		sort_column: 'name'
+		sort_column: 'created_at'
 	};
 
 	for (let i in e.target.elements) {
@@ -20,9 +20,9 @@ export default (self) => (e) => {
 
 	// save props in url string
 	// сохранить параметры в строке url запроса
-	setObjectToQueryString('Users', 'users', dataForFetch);
+	setObjectToQueryString('News', 'news', dataForFetch);
 
 	// send request to server
 	// отправить запрос на сервер
-	fetchData(dataForFetch, self);
+	fetchData(dataForFetch, '', self);
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VideoUpdateRequest extends FormRequest
+class CategoryCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class VideoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'string',
-            'link' => 'string|max:255'
         ];
     }
 }

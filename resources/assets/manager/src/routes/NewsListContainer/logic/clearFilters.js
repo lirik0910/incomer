@@ -5,9 +5,8 @@ export default (self) => () => {
 	colletction['query'].value = '';
 	colletction['created_at'].value = '';
 
-	self.setState({
-		createdAtFilterValue: null
-	});
-	
+	const { userListPageCreatedAt } = self.props;
+
+	userListPageCreatedAt(null);
 	document.getElementById('users-data-fetch-submit').click();
 }

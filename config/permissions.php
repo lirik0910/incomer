@@ -45,6 +45,15 @@ return [
             'deleteTag',
             'restoreTag',
             'trashTag',
+
+            'listCategory',
+            'filterListCategory',
+            'readCategory',
+            'createCategory',
+            'updateCategory',
+            'deleteCategory',
+            'restoreCategory',
+            'trashCategory',
         ],
         'manager' => [
 

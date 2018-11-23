@@ -39,6 +39,9 @@ export default (() => {
 			},
 			'.react-datepicker-wrapper, .react-datepicker__input-container': {
 				display: 'block !important'
+			},
+			'.active': {
+				fontWeight: 'bold',
 			}
 		},
 		// determine the color scheme of the application

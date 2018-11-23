@@ -19,7 +19,10 @@ class UserEloquent implements UserRepository
         $page = $params['page'] ?? 1;
         $limit = $params['limit'] ?? 10;
 
-        $items = $this->model->limit($limit)->offset(($page - 1) * $limit);
+        $items = $this->model
+            ->limit($limit)
+            ->offset(($page - 1) * $limit)
+            ->where("type", '!=', 'admin');
         $total = $this->model->count();
 
         if(!empty($params['sort_column']) && !empty($params['sort_direction'])){

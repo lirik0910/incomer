@@ -1,374 +1,313 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
-import Link from 'components/Link';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {
+    newsListPageErrorMessage,
+    newsListPageSelectedRowsIDsArray,
+    newsListPageLoading
+} from 'actions/newsListPageActions.js';
+import {selectedRowsIdsArraySelector} from 'selectors.js';
+
 import Panel from 'components/Panel';
 import Table from 'components/Table';
 import TableHeader from 'components/TableHeader';
 import TableRow from 'components/TableRow';
 import Button from 'components/Button';
-import PageLoadingProcess from 'components/PageLoadingProcess';
 import Pagination from 'components/Pagination';
 import Typography from 'components/Typography';
+import Dialog from 'components/Dialog';
+import Input from 'components/Input';
+import Select from 'components/Select';
 
-import { 
-	submitForm,
-	deleteSelectedRows, 
-	copySelectedRows
-} from './logic/index';
+import {
+    submitForm,
+    deleteOneItem,
+    sortNews,
+    switchPage,
+} from './logic';
 
-import httpfetch from 'httpfetch.js';
-import { defineQueryProps } from 'url.js';
+import {defineQueryProps} from 'url.js';
+import Link from "../../components/Link/Link";
 
 const styles = () => ({
-	root: {
-		margin: 12,
-		gridArea: 'news-table',
-		'& table': {
-			marginBottom: 56
-		}
-	},
-	pagePaginationButtons: {
-		position: 'absolute',
-		bottom: 12,
-		left: 12
-	},
-	pagePaginationInfo: {
-		position: 'absolute',
-		bottom: 12,
-		right: 12
-	}
+    root: {
+        margin: 12,
+        gridArea: 'news-table',
+        '& table': {
+            marginBottom: 56
+        }
+    },
+    pagePaginationButtons: {
+        position: 'absolute',
+        bottom: 12,
+        left: 12
+    },
+    pagePaginationInfo: {
+        position: 'absolute',
+        bottom: 12,
+        right: 12
+    }
 });
 
 class NewsListTable extends React.PureComponent {
 
-	state = {
-		...{ ...defineQueryProps(), limit: 10, page: 0 },
-		
-		/**
-		 * Data on news who will be in the table
-		 * Данные по пользователям, которые будут в таблице
-		 * @type {Array}
-		 */
-		data: [
-		// EXAMPLE OF ONE LINE OBJECT
-		// ПРИМЕР ОБЪЕКТА ОДНОЙ СТРОКИ
-		{
-			id: 1,
-			category: 'category',
-			title: 'newstitle',
-			author: 'name.surname@email.com',
-			pub_date: 'pub_date',
-			views_count: 37326,
-			comments_count: 2332,
-			created_at: '05-10-2018 13:47:28',
-		}
-		],
-		total: 20,
-		removeItemId: 0,
-		dataLoadingFlag: false,
-	};
+    state = {
+        ...{...defineQueryProps(), limit: 10, page: 1},
 
-	componentDidMount = () => {
-		const { displayFetchErrorMessage = () => {} } = this.props;
-		httpfetch('/news', 'GET', {}, window.location.search.substr(1))
-			.then(({ data, total = 0 }) => this.setState({
-				dataLoadingFlag: false,
-				total,
-				data
-			}))
-			.catch((err) => {
-				displayFetchErrorMessage(err.message);
-				setTimeout(() => {
-					displayFetchErrorMessage('');
-				}, 2600);
-			});
+        /**
+         * Data on news who will be in the table
+         * Данные по пользователям, которые будут в таблице
+         * @type {Array}
+         */
+        data: [],
+        total: 20,
+        prepareDeleteRowID: 0,
+        currentEditRowIndex: -1,
+        currentEditRowCreatedAt: null
+    }
 
-		document.addEventListener('CloseDeleteDialog', this.closeDeleteDialog);
-		document.addEventListener('CopySelectedItems', copySelectedRows(this));
-		document.addEventListener('DeleteSelectedItems', deleteSelectedRows(this));
-	}
+    componentDidMount = () => {
+        document.getElementById('news-data-fetch-submit').click();
+    }
 
-	componentWillUnmount = () => {
-		document.removeEventListener('CloseDeleteDialog', this.closeDeleteDialog);
-		document.removeEventListener('CopySelectedItems', copySelectedRows(this));
-		document.removeEventListener('DeleteSelectedItems', deleteSelectedRows(this));
-	}
+    render = () => {
+        const {classes} = this.props;
+        const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt} = this.state;
 
-	selectedRowsIdsArray = [];
-
-	render = () => {
-		const { classes, deleteItems = () => {} } = this.props;
-		const { data = [], sort = '', direction = '', dataLoadingFlag, page = 0, limit = 20, total = 0 } = this.state;
-
-		return <Panel className={classes.root}>
-			{dataLoadingFlag && <PageLoadingProcess />}
-
-			<Table>
-				<TableHeader columns={[
-					<input type="checkbox"
-						onChange={this.selectAllRows} />,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Title" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'title' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+        return <Panel className={classes.root}>
+            <Table>
+                <TableHeader columns={[
+                    //<input type="checkbox" onChange={selectAllRows(this)}/>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Заголовок"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'title' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('title')}
-							className={sort === 'title' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Category" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'category' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+                            onClick={sortNews(this)('title')}
+                            className={sort === 'title' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Категория"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'category' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('category')}
-							className={sort === 'category' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Email" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'email' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+                            onClick={sortNews(this)('category')}
+                            className={sort === 'category' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Раздел"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'section' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('email')}
-							className={sort === 'email' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Publication date" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'pub_date' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+                            onClick={sortNews(this)('section')}
+                            className={sort === 'section' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Автор"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'author' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('pub_date')}
-							className={sort === 'pub_date' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Views" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'views' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+                            onClick={sortNews(this)('author')}
+                            className={sort === 'author' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Дата создания"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'created_at' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('views')}
-							className={sort === 'views' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Comments" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'comments_count' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+                            onClick={sortNews(this)('created_at')}
+                            className={sort === 'created_at' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Просмотры"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'views' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('comments_count')}
-							className={sort === 'comments_count' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<React.Fragment>
-						<Typography 
-							variant="simple"
-							text="Created at" />
-						<Button
-							variant="icon"
-							text={<span 
-								className={sort === 'created_at' && direction === 'asc' ?
-									'fa fa-sort-up' : 
-									'fa fa-sort-down'}>
+                            onClick={sortNews(this)('views')}
+                            className={sort === 'views' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Коментарии"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'comments_count' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
 							</span>}
-							onClick={this.sortUsers('created_at')}
-							className={sort === 'created_at' ?
-								'active' :
-								''} />
-					</React.Fragment>,
-					<Typography 
-						variant="simple"
-						text="Actions" />
-				]} />
+                            onClick={sortNews(this)('comments_count')}
+                            className={sort === 'comments_count' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
 
-				<tbody>
-				{data.map((row, i) => (
-					<TableRow
-						key={i}
-						columns={[
-							<input type="checkbox"
-								className="row-news-table-checkbox"
-								onChange={this.selectOneRow}
-								data-row-item-id={row.id} />,
-							row.title,
-							row.category,
-							row.author,
-							row.pub_date,
-							row.views_count,
-							row.comments_count,
-							row.created_at,
-							<React.Fragment>
-								<Link to={'/news/'+ row.id}>
-									<i className="fa fa-edit"></i>
-								</Link>
+                    <Typography
+                        variant="simple"
+                        text="Действия"/>
+                ]}/>
 
-								<Button
-									variant="icon"
-									text={<i className="fa fa-close"></i>}
-									onClick={() => this.setState({
-										removeItemId: row.id
-									}, () => deleteItems(row))} />
-							</React.Fragment>
-						]} />
-				))}
-				</tbody>
-			</Table>
+                <tbody>
+                {data.map((row, i) => (
+                    <TableRow
+                        key={row.id}
+                        columns={[
+                            //<input type="checkbox"
+                            //       className="row-news-table-checkbox"
+                            //       onChange={selectOneRow(this)}
+                            //       data-row-item-id={row.id}/>,
+                            row.title,
+                            row.category.title,
+                            row.last_name,
+                            row.email,
+                            row.created_at,
+                            row.comments_count,
+                            row.views,
+                            <React.Fragment>
+                                <Link to={"/news/" + row.id}>
+                                <Button
+                                    variant="icon"
+                                    text={<i className="fa fa-edit"></i>}
+                                    />
+                                </Link>
 
-			{limit < total && <div className={classes.pagePaginationButtons}>
-				<Pagination
-					limit={limit}
-					total={total}
-					page={page}
-					onClick={this.switchPage} />
-			</div>}
+                                <Button
+                                    variant="icon"
+                                    text={<i className="fa fa-close"></i>}
+                                    onClick={() => this.setState({
+                                        prepareDeleteRowID: row.id
+                                    })}/>
+                            </React.Fragment>
+                        ]}/>
+                ))}
+                </tbody>
+            </Table>
 
-			<Typography
-				text={`Showing rows ${page} to ${limit - (limit - total)} of ${total}`}
-				className={classes.pagePaginationInfo} />
+            {<div className={classes.pagePaginationButtons}>
+                <Pagination
+                    limit={limit}
+                    total={total}
+                    page={page}
+                    onClick={switchPage(this)}/>
+            </div>}
 
-			<form 
-				id="newsnewsdata-fetch-form"
-				onSubmit={submitForm(this)}>
-				<button 
-					type="submit"
-					style={{ display: 'none' }}
-					id="newsnewsdata-fetch-submit">
-				</button>
-			</form>
+            <Typography
+                text={`Записи: ${((page - 1) * limit) + 1} - ${page * limit > total ? total : page * limit} из ${total}`}
+                className={classes.pagePaginationInfo}/>
 
-			<input type="hidden"
-				name="sort_column"
-				form="newsnewsdata-fetch-form"
-				value={sort} />
-			<input type="hidden"
-				name="sort_direction"
-				form="newsnewsdata-fetch-form"
-				value={direction} />
-			<input type="hidden"
-				name="page"
-				form="newsnewsdata-fetch-form"
-				value={page} />
-			<input type="hidden"
-				name="limit"
-				form="newsnewsdata-fetch-form"
-				value={limit} />
-		</Panel>
-	}
+            <form
+                id="news-data-fetch-form"
+                onSubmit={submitForm(this)}>
+                <button
+                    type="submit"
+                    style={{display: 'none'}}
+                    id="news-data-fetch-submit">
+                </button>
+            </form>
 
-	selectOneRow = (e) => {
-		const { selectedRows } = this.props;
-		let index = 0;
+            <input type="hidden"
+                   name="sort_column"
+                   form="news-data-fetch-form"
+                   value={sort}/>
+            <input type="hidden"
+                   name="sort_direction"
+                   form="news-data-fetch-form"
+                   value={direction}/>
+            <input type="hidden"
+                   name="page"
+                   form="news-data-fetch-form"
+                   value={page}/>
+            <input type="hidden"
+                   name="limit"
+                   form="news-data-fetch-form"
+                   value={limit}/>
 
-		(index = this.selectedRowsIdsArray.indexOf(e.target.dataset['rowItemId'])) > -1 ?
-			this.selectedRowsIdsArray.splice(index, 1) : 
-			this.selectedRowsIdsArray.push(e.target.dataset['rowItemId']);
+            {prepareDeleteRowID ?
+                <Dialog
+                    title="Удаление пользователя"
+                    onClose={() => this.setState({
+                        prepareDeleteRowID: 0
+                    })}
+                    control={
+                        <React.Fragment>
+                            <Button
+                                variant="tab"
+                                text="OK"
+                                onClick={() => {
+                                    deleteOneItem(this, prepareDeleteRowID)
+                                        .then(() => {
+                                            document.getElementById('news-data-fetch-submit').click()
+                                        })
+                                }}/>
+                            <Button
+                                variant="tab"
+                                text="Отмена"
+                                onClick={() => this.setState({
+                                    prepareDeleteRowID: 0
+                                })}/>
+                        </React.Fragment>
+                    }>
 
-		this.selectedRowsIdsArray.length > 0 ?
-			selectedRows(true) :
-			selectedRows(false);
-	}
+                    <Typography
+                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteRowID}?
+							Это действие нельзя отменить!`}/>
+                </Dialog> : ''}
 
-	/**
-	 * Выделить все строки
-	 * @param {Object} e
-	 */
-	selectAllRows = (e) => {
-		const { selectedRows = () => {} } = this.props;
-		const collections = document.getElementsByClassName('row-newsnewstable-checkbox');
-		
-		this.selectedRowsIdsArray = [];
-		for (let i in collections) {
-			collections[i].type && (() => {
-				collections[i].checked = e.target.checked;
-				e.target.checked && this.selectedRowsIdsArray.push(collections[i].dataset['rowItemId'])
-			})();
-		}
-		selectedRows(e.target.checked);
-	}
 
-	/**
-	 * Sort data by column
-	 * Сортировка данных по определенной колонке
-	 * @param {String} newSortColumn - Название колонки
-	 * @param {String} newSortColumn - Column name
-	 * @return {Function}
-	 */
-	sortUsers = (newSortColumn = '') => () => {
-		const { direction, sort } = this.state;
-
-		this.setState({
-			sort: newSortColumn,
-			direction: sort !== newSortColumn ? 'asc' : 
-				direction === 'desc' ?
-					'asc' :
-					'desc'
-		}, () => {
-			document.getElementById('newsnewsdata-fetch-submit').click();
-		});
-	}
-
-	/**
-	 * Switch current table page for paggination
-	 * @param {Number} page
-	 * @param {Boolean} flag
-	 * @return {Function}
-	 */
-	switchPage = (page = 0, flag = true) => (e) => {
-		if (flag) {
-			this.setState({ page }, () => {
-				document.getElementById('news-data-fetch-submit').click();
-			});
-		}
-	}
-
-	closeDeleteDialog = () => {
-		const { deleteItems = () => {} } = this.props;
-		this.setState({ removeItemId: 0 }, () => deleteItems({}));
-	}
+        </Panel>
+    }
 }
+
 
 export default withStyles(styles)(NewsListTable);
