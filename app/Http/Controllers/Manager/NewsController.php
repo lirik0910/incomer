@@ -34,8 +34,7 @@ class NewsController extends Controller
     public function store(NewsCreateRequest $request)
     {
         try {
-            //var_dump($request); die;
-            $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'on_index_top', 'index_top_position', 'published', 'hot', 'images', 'videos', 'tags']);
+            $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'preview_pattern', 'type', 'published', 'images', 'videos', 'tags']);
             $data['creator_id'] = Auth::user()->id;
 
             if($data['pubished']){
@@ -65,7 +64,7 @@ class NewsController extends Controller
     public function update(NewsUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'on_index_top', 'index_top_position', 'hot', 'published', 'images', 'videos', 'tags']);
+            $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'preview_pattern', 'type', 'published', 'images', 'videos', 'tags']);
             $data['editor_id'] = Auth::user()->id;
 
             $result = $this->model->update($id, $data);

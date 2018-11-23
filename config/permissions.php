@@ -54,6 +54,14 @@ return [
             'deleteCategory',
             'restoreCategory',
             'trashCategory',
+
+            'listSection',
+            'readSection',
+            'createSection',
+            'restoreSection',
+            'updateSection',
+            'trashSection',
+            'deleteSection',
         ],
         'manager' => [
 

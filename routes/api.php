@@ -123,4 +123,17 @@ Route::namespace('Manager')
             Route::delete('/{id}', 'CategoryController@destroy')->middleware('scope:deleteCategory');
         });
 
+        // Sections routes
+        Route::prefix('section')->group(function () {
+
+            Route::get('', 'SectionController@index')->middleware('scope:listSection');
+            Route::get('/{id}', 'SectionController@show')->middleware('scope:readSection');
+
+            Route::post('', 'SectionController@store')->middleware('scope:createSection');
+
+            Route::put('/{id}', 'SectionController@update')->middleware('scope:updateSection');
+
+            Route::delete('/{id}', 'SectionController@destroy')->middleware('scope:deleteSection');
+        });
+
     });

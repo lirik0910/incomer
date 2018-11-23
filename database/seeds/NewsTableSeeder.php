@@ -28,9 +28,6 @@ class NewsTableSeeder extends Seeder
             'publisher_id' => 1,
             'publish_date' => now(),
             'published' => true,
-            'hot' => false,
-            'on_index_top' => true,
-            'index_top_position' => 'first'
         ]);
 
         App\Model\News::create([
@@ -43,9 +40,6 @@ class NewsTableSeeder extends Seeder
             'publisher_id' => 1,
             'publish_date' => now(),
             'published' => true,
-            'hot' => false,
-            'on_index_top' => true,
-            'index_top_position' => 'second'
         ]);
 
         App\Model\News::create([
@@ -58,9 +52,6 @@ class NewsTableSeeder extends Seeder
             'publisher_id' => 1,
             'publish_date' => now(),
             'published' => true,
-            'hot' => false,
-            'on_index_top' => true,
-            'index_top_position' => 'third'
         ]);
 
         $titleNumbers = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять'];

@@ -28,7 +28,7 @@ class Header extends React.Component {
                     variant="icon"
                     onClick={() => this.setState({displayAsideMenu: true})}/>
                 <Typography
-                    text="umanager"/>
+                    text="Incomer"/>
 
                 <div className={classes.primaryButtons}>
                     <Link to="/profile">

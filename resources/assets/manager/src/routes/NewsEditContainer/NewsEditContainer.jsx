@@ -30,16 +30,7 @@ const styles = ({Global, Palette}) => ({
             gridTemplateColumns: 'auto 352px'
         }
     },
-    control: {
-        lineHeight: '48px',
-        gridArea: 'control-elements',
-        '& button, & a': {
-            margin: '0 18px 0 0'
-        },
-        '& .fa': {
-            margin: '0 6px 0 0'
-        }
-    },
+
     title: {
         gridArea: 'page-title'
     },
@@ -61,25 +52,20 @@ class NewsEditContainer extends React.PureComponent {
     }
 
 
+
     render = () => {
         const {catchedErrorMessage, data} = this.state;
         const {classes} = this.props;
 
         return <React.Fragment>
             <Header/>
-            <div className={classes.formContainer }>
 
-                <Panel>
-                    <div>
-                        <NewsEditForm
-                            id={this.props.match.params.id}
-                            data={data}
-                        />
+            <NewsEditForm
+                id={this.props.match.params.id}
+                data={data}
+            />
 
-                    </div>
 
-                </Panel>
-            </div>
 
 
             {catchedErrorMessage && <Alert

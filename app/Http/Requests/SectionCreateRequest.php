@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
-class NewsUpdateRequest extends FormRequest
+class SectionCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,14 +24,9 @@ class NewsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string|max:400',
-            'category_id' => 'integer',
-            'related_id' => 'integer',
+            'category_id' => 'required|integer',
+            'title' => 'required|string|max:255',
             'description' => 'string',
-            'introtext' => 'string|max:500',
-            'videos' => 'json',
-            'images' => 'json',
-            'tags' => 'json',
         ];
     }
 }

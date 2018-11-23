@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
+    protected $fillable = ['category_id','title', 'description'];
+
+
     /*
      * Get category model
      * @return boolean

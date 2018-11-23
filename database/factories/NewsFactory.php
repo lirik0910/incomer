@@ -11,6 +11,5 @@ $factory->define(App\Model\News::class, function (Faker $faker) {
         'creator_id' => 1,
         'publisher_id' => 1,
         'publish_date' => now(),
-        'hot' => true,
     ];
 });

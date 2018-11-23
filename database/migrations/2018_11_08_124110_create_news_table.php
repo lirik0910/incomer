@@ -22,61 +22,85 @@ class CreateNewsTable extends Migration
             $table->integer('category_id', false, true)
                 ->nullable(false)
                 ->comment('Category ID');
+
             $table->integer('related_id', false, true)
                 ->nullable(true)
                 ->comment('Related news ID');
+
             $table->integer('section_id')
                 ->nullable(true)
                 ->comment('Category section ID');
+
             $table->string('title', 55)
                 ->nullable(false)
                 ->comment('News title');
+
             $table->string('subtitle', 20)
                 ->nullable(true)
                 ->comment('News subtitle');
+
             $table->text('description')
                 ->nullable(false)
                 ->comment('News description');
+
             $table->string('introtext', 255)
                 ->nullable(false)
                 ->comment('News introtext');
+
             $table->integer('views', false)
                 ->nullable(false)
                 ->default(0)
                 ->comment('Count of views');
-            $table->boolean('on_index_top')
-                ->default(false)
+
+//            $table->boolean('on_index_top')
+//                ->default(false)
+//                ->nullable(false)
+//                ->comment('Publishing on index page top');
+//
+//            $table->string('index_top_position', 50)
+//                ->nullable(true)
+//                ->comment('Position on index page');
+//
+//            $table->boolean('hot')
+//                ->default(false)
+//                ->nullable(false)
+//                ->comment('Hot news on index');
+
+
+            $table->string('type')
                 ->nullable(false)
-                ->comment('Publishing on index page top');
-            $table->string('index_top_position', 50)
-                ->nullable(true)
-                ->comment('Position on index page');
-            $table->boolean('hot')
-                ->default(false)
+                ->default('normal');
+
+            $table->string('preview_pattern')
                 ->nullable(false)
-                ->comment('Hot news on index');
+                ->default('first.big-img-left');
+
             $table->integer('creator_id', false, true)
                 ->nullable(false)
                 ->comment('User creator ID');
+
             $table->integer('editor_id', false, true)
                 ->nullable(true)
                 ->comment('User editor ID');
+
             $table->integer('publisher_id', false, true)
                 ->nullable(true)
                 ->comment('User publisher ID');
+
             $table->dateTime('publish_date')
                 ->nullable(true)
                 ->comment('Publish date');
+
             $table->boolean('published')
                 ->nullable(false)
                 ->default(false)
                 ->comment('Published status');
+
             $table->timestamps();
             $table->softDeletes();
 
 
-            $table->unique(['title', 'index_top_position']);
-            $table->index(['category_id', 'section_id', 'related_id', 'creator_id', 'editor_id', 'publisher_id']);
+//            $table->unique(['title', 'index_top_position']);
             //$table->index('section_id');
         });
     }
