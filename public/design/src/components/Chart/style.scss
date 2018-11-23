@@ -43,6 +43,24 @@
 			color: $light-color;
 		} 
 	}
+	&__tab-content {
+		line-height: 24px;
+		p {
+			&:not(:last-of-type) {
+				margin-bottom: 12px;
+			}
+		}
+		a {
+			text-decoration: none;
+			color: $default-blue;
+			@include transition(color);
+			&:hover,
+			&:focus,
+			&:active {
+				color: $darker-blue;
+			}
+		}
+	}
 	#diagram {
 		.highcharts-tick,
 		.highcharts-credits {

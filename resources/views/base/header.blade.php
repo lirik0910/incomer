@@ -38,7 +38,7 @@
                                         class="search__category-count">0</span></li>
                         </ul>
                     </div>
-                    <div class="search__info">
+                    <!--<div class="search__info">
                         <ul class="search__info-list search__info-list--active">
                             <li class="search__info-item"><a class="search__info-link" href="#">
                                     <div class="search__info-pic"><img class="search__info-img"
@@ -203,7 +203,7 @@
                                     </div>
                                 </a></li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div class="header__profile @if (Auth::check()) header__profile--login @endif">

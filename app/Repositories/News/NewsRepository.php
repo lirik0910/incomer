@@ -16,7 +16,11 @@ interface NewsRepository
 
     public function one(int $id);
 
+    public function search(array $params);
+
     public function update(int $id, array $data);
+
+    public function updateViews(int $id);
 
     public function create(array $data);
 

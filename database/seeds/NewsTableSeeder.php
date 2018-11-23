@@ -42,6 +42,7 @@ class NewsTableSeeder extends Seeder
             'creator_id' => 1,
             'publisher_id' => 1,
             'publish_date' => now(),
+            'published' => true,
             'hot' => false,
             'on_index_top' => true,
             'index_top_position' => 'second'
@@ -56,6 +57,7 @@ class NewsTableSeeder extends Seeder
             'creator_id' => 1,
             'publisher_id' => 1,
             'publish_date' => now(),
+            'published' => true,
             'hot' => false,
             'on_index_top' => true,
             'index_top_position' => 'third'
