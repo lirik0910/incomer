@@ -46,8 +46,10 @@ Route::namespace('Manager')
 
             Route::post('', 'UserController@store')->middleware('scope:createUser');
 
+            Route::put('/restore/{id}', 'UserController@restore')->middleware('scope:restoreUser');
             Route::put('/{id}', 'UserController@update')->middleware('scope:updateUser');
 
+            Route::delete('/trash/{id}', 'UserController@trash')->middleware('scope:trashUser');
             Route::delete('/{id}', 'UserController@destroy')->middleware('scope:deleteUser');
         });
 

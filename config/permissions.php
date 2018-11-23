@@ -15,6 +15,8 @@ return [
             'readUser',
             'createUser',
             'updateUser',
+            'restoreUser',
+            'trashUser',
             'deleteUser',
 
             'listImage',

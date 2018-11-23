@@ -29,7 +29,9 @@ import {
     sortUsers,
     switchPage,
     editItem,
-    fetchData
+    fetchData,
+    restoreItem,
+    deleteForeverOneItem
 } from './logic';
 import moment from 'moment';
 import {defineQueryProps} from 'url.js';
@@ -80,6 +82,7 @@ class UsersListTable extends React.PureComponent {
         ],
         total: 20,
         prepareDeleteRowID: 0,
+        prepareDeleteForeverRowID: 0,
         currentEditRowIndex: -1,
         currentEditRowCreatedAt: null
     }
@@ -90,7 +93,7 @@ class UsersListTable extends React.PureComponent {
 
     render = () => {
         const {classes} = this.props;
-        const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt} = this.state;
+        const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt, prepareDeleteForeverRowID = 0} = this.state;
 
         return <Panel className={classes.root}>
             <Table>
@@ -254,12 +257,27 @@ class UsersListTable extends React.PureComponent {
                                         currentEditRowIndex: i
                                     })}/>
 
-                                <Button
+                                {row.deleted_at && <Button
                                     variant="icon"
-                                    text={<i className="fa fa-close"></i>}
-                                    onClick={() => this.setState({
-                                        prepareDeleteRowID: row.id
+                                    text={<i className="fa fa-refresh"></i>}
+                                    onClick={() => restoreItem(this, row.id).then(() => {
+                                        document.getElementById('users-data-fetch-submit').click()
                                     })}/>
+                                }
+                                {!row.deleted_at ?
+                                    <Button
+                                        variant="icon"
+                                        text={<i className="fa fa-close"></i>}
+                                        onClick={() => this.setState({
+                                            prepareDeleteRowID: row.id
+                                        })}/> :
+                                    <Button
+                                        variant="icon"
+                                        text={<i className="fa fa-trash"></i>}
+                                        onClick={() => this.setState({
+                                            prepareDeleteForeverRowID: row.id
+                                        })}/>}
+
                             </React.Fragment>
                         ]}/>
                 ))}
@@ -331,6 +349,35 @@ class UsersListTable extends React.PureComponent {
 
                     <Typography
                         text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteRowID}?
+							Это действие нельзя отменить!`}/>
+                </Dialog> : ''}
+
+            {prepareDeleteForeverRowID ?
+                <Dialog
+                    title="Удаление пользователя"
+                    onClose={() => this.setState({
+                        prepareDeleteForeverRowID: 0
+                    })}
+                    control={
+                        <React.Fragment>
+                            <Button
+                                variant="tab"
+                                text="OK"
+                                onClick={() => {
+                                    deleteForeverOneItem(this, prepareDeleteForeverRowID)
+                                        .then(() => {document.getElementById('users-data-fetch-submit').click()})
+                                }}/>
+                            <Button
+                                variant="tab"
+                                text="Отмена"
+                                onClick={() => this.setState({
+                                    prepareDeleteForeverRowID: 0
+                                })}/>
+                        </React.Fragment>
+                    }>
+
+                    <Typography
+                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteForeverRowID}?
 							Это действие нельзя отменить!`}/>
                 </Dialog> : ''}
 

@@ -44,6 +44,15 @@ render(<ThemeProvider theme={theme}>
 
                 <Route
                     exact
+                    path="/tags"
+                    component={Loadable({
+                        loader: () => import('routes/TagsListContainer'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+
+                <Route
+                    exact
                     path="/news"
                     component={Loadable({
                         loader: () => import('routes/NewsListContainer/index'),

@@ -77,4 +77,26 @@ class USerController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
+
+    public function restore($id)
+    {
+        try {
+            $res = $this->model->restore($id);
+
+            return response()->json($res);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function trash($id)
+    {
+        try {
+            $res = $this->model->trash($id);
+
+            return response()->json($res);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
 }

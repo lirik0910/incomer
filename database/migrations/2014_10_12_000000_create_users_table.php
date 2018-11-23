@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
                 ->comment('Type of user (user or manager)');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
