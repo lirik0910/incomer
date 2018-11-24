@@ -10,6 +10,8 @@ import switchPage from './switchPage.js';
 import fetchData from './fetchData.js';
 import editItem from './editItem.js';
 import addItem from './addItem.js';
+import restoreItem from './restoreItem.js';
+import deleteForeverOneItem from './deleteForeverOneItem.js';
 
 export { 
 	submitForm, 
@@ -23,5 +25,7 @@ export {
 	switchPage,
 	fetchData,
 	editItem,
+    restoreItem,
     addItem,
+    deleteForeverOneItem,
 };

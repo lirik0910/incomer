@@ -94,9 +94,9 @@ class NewsEditContainer extends React.Component {
 
         const topNewsPatterns = [
             ['Первая, большая, картинка слева', 'first.big_img_left'],
-            ['Вторая, маленькая, картинка слева', 'second.small_img_left'],
+            ['Вторая, маленькая, картинка сверху', 'second.small_img_top'],
             ['Вторая, маленькая, картинка справа', 'second.small_img_right'],
-            ['Третья, маленькая, картинка слева', 'third.small_img_left'],
+            ['Третья, маленькая, картинка сверху', 'third.small_img_top'],
             ['Третья, маленькая, картинка справа', 'third.small_img_right'],
         ];
 

@@ -26,6 +26,8 @@ import {
     deleteOneItem,
     sortNews,
     switchPage,
+    restoreItem,
+    deleteForeverOneItem,
 } from './logic';
 
 import {defineQueryProps} from 'url.js';
@@ -65,7 +67,8 @@ class NewsListTable extends React.PureComponent {
         total: 20,
         prepareDeleteRowID: 0,
         currentEditRowIndex: -1,
-        currentEditRowCreatedAt: null
+        currentEditRowCreatedAt: null,
+        prepareDeleteForeverRowID: 0,
     }
 
     componentDidMount = () => {
@@ -74,7 +77,7 @@ class NewsListTable extends React.PureComponent {
 
     render = () => {
         const {classes} = this.props;
-        const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt} = this.state;
+        const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt, prepareDeleteForeverRowID = 0} = this.state;
 
         return <Panel className={classes.root}>
             <Table>
@@ -209,25 +212,41 @@ class NewsListTable extends React.PureComponent {
                             //       data-row-item-id={row.id}/>,
                             row.title,
                             row.category.title,
-                            row.last_name,
-                            row.email,
+                            row.section && row.section.title,
+                            row.creator && row.creator.email,
                             row.created_at,
                             row.comments_count,
                             row.views,
                             <React.Fragment>
                                 <Link to={"/news/" + row.id}>
-                                <Button
-                                    variant="icon"
-                                    text={<i className="fa fa-edit"></i>}
+                                    <Button
+                                        variant="icon"
+                                        text={<i className="fa fa-edit"></i>}
                                     />
                                 </Link>
 
-                                <Button
+                                {row.deleted_at && <Button
                                     variant="icon"
-                                    text={<i className="fa fa-close"></i>}
-                                    onClick={() => this.setState({
-                                        prepareDeleteRowID: row.id
+                                    text={<i className="fa fa-refresh"></i>}
+                                    onClick={() => restoreItem(this, row.id).then(() => {
+                                        document.getElementById('news-data-fetch-submit').click()
                                     })}/>
+                                }
+                                {!row.deleted_at ?
+                                    <Button
+                                        variant="icon"
+                                        text={<i className="fa fa-close"></i>}
+                                        onClick={() => this.setState({
+                                            prepareDeleteRowID: row.id
+                                        })}/> :
+                                    <Button
+                                        variant="icon"
+                                        text={<i className="fa fa-trash"></i>}
+                                        onClick={() => this.setState({
+                                            prepareDeleteForeverRowID: row.id
+                                        })}/>}
+
+
                             </React.Fragment>
                         ]}/>
                 ))}
@@ -300,7 +319,37 @@ class NewsListTable extends React.PureComponent {
                     }>
 
                     <Typography
-                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteRowID}?
+                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteRowID}?`}/>
+                </Dialog> : ''}
+
+            {prepareDeleteForeverRowID ?
+                <Dialog
+                    title="Удаление пользователя"
+                    onClose={() => this.setState({
+                        prepareDeleteForeverRowID: 0
+                    })}
+                    control={
+                        <React.Fragment>
+                            <Button
+                                variant="tab"
+                                text="OK"
+                                onClick={() => {
+                                    deleteForeverOneItem(this, prepareDeleteForeverRowID)
+                                        .then(() => {
+                                            document.getElementById('news-data-fetch-submit').click()
+                                        })
+                                }}/>
+                            <Button
+                                variant="tab"
+                                text="Отмена"
+                                onClick={() => this.setState({
+                                    prepareDeleteForeverRowID: 0
+                                })}/>
+                        </React.Fragment>
+                    }>
+
+                    <Typography
+                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteForeverRowID}?
 							Это действие нельзя отменить!`}/>
                 </Dialog> : ''}
 

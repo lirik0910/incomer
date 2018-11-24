@@ -21,6 +21,7 @@ class UserEloquent implements UserRepository
 
         $items = $this->model
             ->limit($limit)
+            ->withTrashed()
             ->offset(($page - 1) * $limit)
             ->where("type", '!=', 'admin');
         $total = $this->model->count();
@@ -59,6 +60,22 @@ class UserEloquent implements UserRepository
         $item->update($data);
         return $this->get($id);
 
+    }
+
+    public function restore(int $id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->restore();
+    }
+
+    public function trash(int $id)
+    {
+        $item = $this->model->withTrashed()->find($id);
+        if ($item === NULL) return false;
+
+        return $item->forceDelete();
     }
 
     public function delete($id)

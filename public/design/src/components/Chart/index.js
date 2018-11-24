@@ -11,12 +11,19 @@ Exporting(Highcharts);
 export default class Chart extends Base {
 	initDOMElements(e) {
         this.els = {
+        	_chartTabLink: $('.chart__tab-link'),
+        	_chartTabContent: $('.chart__tab-content'),
         	_chartFilterListTerm: $('.chart__filter--term'),
         	_chartFilterLinkTerm: $('.chart__filter--term .chart__filter-link')
         }
     }
 
 	onDOMReady(e) {
+
+		this.els._chartTabLink.click((e) => this.tabToggler(e));
+
+
+
 		var data = {
 			minute: {},
 			hour: {},
@@ -291,5 +298,15 @@ export default class Chart extends Base {
 			default:
 				this.createChart(data.day)
 		}
+	}
+
+	tabToggler(e) {
+		e.preventDefault();
+		this.els._chartTabLink.removeClass('chart__tab-link--active')
+		$(e.currentTarget).addClass('chart__tab-link--active')
+		this.els._chartTabContent.removeClass('chart__tab-content--active');
+		this.els._chartTabContent
+			.eq($(e.currentTarget).parent().index())
+			.addClass('chart__tab-content--active');
 	}
 }

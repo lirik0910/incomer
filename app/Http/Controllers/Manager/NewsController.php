@@ -65,7 +65,15 @@ class NewsController extends Controller
     {
         try {
             $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'preview_pattern', 'type', 'published', 'images', 'videos', 'tags']);
+
             $data['editor_id'] = Auth::user()->id;
+
+            $oldData = $this->model->one($id);
+            if(!$oldData['published'] && $data['published']){
+                $data['publisher_id'] = Auth::user()->id;
+            }
+
+
 
             $result = $this->model->update($id, $data);
 

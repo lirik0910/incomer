@@ -14,10 +14,6 @@ export default (dataForFetch = {}, query = '', self = {}) => {
 		})
 		.catch((err) => {
 			const { newsListPageErrorMessage } = self.props;
-			newsListPageErrorMessage(err.message);
-			setTimeout(() => {
-				newsListPageErrorMessage('');
-			}, 2600);
 
 			// newsListPageLoading(false);
 		});
