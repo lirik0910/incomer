@@ -25,19 +25,22 @@ class ImageNewsCollectionsTableSeeder extends Seeder
          * Add top news preview
          */
 
-        $topNews = $news->whereNotIn('index_top_position', ['null', false, 'NULL'])->all();
+        $topNews = $news->whereIn('type', ['top', 'category_top'])->all();
 
         foreach($topNews as $topItem){
-            switch ($topItem->index_top_position){
+            $pattern = explode('.', $topItem->preview_pattern);
+
+            switch ($pattern[0]){
                 case 'first':
                     $img = $images->where('title', 'man2.png')->first();
                     break;
                 case 'second':
-                    $img = $images->where('title', 'car.png')->first();
-                    break;
                 case 'third':
-                    $img = $images->where('title', 'man.png')->first();
-                    break;
+                    if($pattern[1] === 'small_img_top'){
+                        $img = $images->where('title', 'car.png')->first();
+                    } else{
+                        $img = $images->where('title', 'man.png')->first();
+                    }
                 default:
                     //$img = $images->whereIn('title', ['photo-dark.jpg', 'photo-light.jpg'])->random();
                     break;

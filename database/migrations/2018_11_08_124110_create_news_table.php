@@ -72,8 +72,7 @@ class CreateNewsTable extends Migration
                 ->default('normal');
 
             $table->string('preview_pattern')
-                ->nullable(false)
-                ->default('first.big-img-left');
+                ->nullable(true);
 
             $table->integer('creator_id', false, true)
                 ->nullable(false)
