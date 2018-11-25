@@ -12,7 +12,7 @@ interface NewsRepository
 
     public function current();
 
-    public function top();
+    public function indexTop();
 
     public function one(int $id);
 

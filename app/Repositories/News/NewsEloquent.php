@@ -83,13 +83,14 @@ class NewsEloquent implements NewsRepository
     {
         $limit = 5;
 
-        $news = $this->model::where(['published' => true, 'type' => 'top'])->orderBy('publish_date', 'DESC')->limit($limit);
+        $news = $this->model::where(['published' => true, 'type' => 'normal'])->orderBy('publish_date', 'DESC')->limit($limit);
+
         return $news->get();
     }
 
-    public function top()
+    public function indexTop()
     {
-        $news = $this->model::where(['published' => true, 'type' => 'top'])->withCount('comments');
+        $news = $this->model::where(['published' => true, 'type' => 'top'])->withCount('comments')->orderBy('preview_pattern', 'ASC');
         return $news->get();
     }
 
