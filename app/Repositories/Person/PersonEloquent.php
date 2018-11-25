@@ -31,7 +31,7 @@ class PersonEloquent implements PersonRepository
             ->limit($limit)
             ->offset(($page - 1) * $limit);
 
-        return $items->get();
+        return ['data' => $items->get(), 'total' => $items->count()];
     }
 
     public function get($id)

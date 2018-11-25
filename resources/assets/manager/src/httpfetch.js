@@ -17,6 +17,7 @@ export default (resource = '', method = 'GET', data = {}) => {
             queryString = query.join('&');
         }
         if (method === 'POST') {
+
             if (data instanceof FormData) {
                 body = data;
             } else {

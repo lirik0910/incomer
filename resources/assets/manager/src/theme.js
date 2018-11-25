@@ -53,7 +53,8 @@ export default (() => {
 			color4: '#E7E7E7',
 			color5: '#D7D7D7',
 			color6: '#F2F1F0',
-			color7: '#ACAAC1'
+			color7: '#ACAAC1',
+			color8: '#FFF'
 		},
 		// display variants of Button component
 		// определяются стили для компонента Button

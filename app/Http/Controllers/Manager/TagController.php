@@ -20,7 +20,7 @@ class TagController extends Controller
     public function index(Request $request)
     {
         try {
-            $params = $request->only(['page', 'filter']);
+            $params = $request->only(['page', 'filter', 'sort_column', 'sort_direction', 'query']);
             $result = $this->model->all($params);
 
             return response()->json($result);

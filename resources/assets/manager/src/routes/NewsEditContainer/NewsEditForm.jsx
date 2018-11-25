@@ -1,6 +1,8 @@
 import React from 'react';
 import withStyles from 'react-jss'
 
+import { connect } from 'react-redux';
+
 import Header from 'components/Header';
 import Button from 'components/Button';
 import Typography from 'components/Typography';
@@ -8,6 +10,16 @@ import Input from 'components/Input';
 import FieldDraftEditor from 'components/FieldDraftEditor';
 import Alert from 'components/Alert';
 
+import {
+    displayFilesManagerFlagSelector,
+    foldersListSelector,
+    filesListSelector
+} from 'routes/ManageMediaItemsContainer/selectors.js';
+
+import FoldersListManager from 'components/FoldersListManager';
+import FilesListManager from 'components/FilesListManager';
+import FolderListItem from 'components/FolderListItem';
+import FileListItem from 'components/FileListItem';
 
 import {
     fetchData,
@@ -17,6 +29,8 @@ import {
 } from './logic/index';
 import Select from "../../components/Select/Select";
 import Panel from "../../components/Panel/Panel";
+import {bindActionCreators} from "redux";
+// import connect from "react-redux/es/connect/connect";
 
 
 const styles = ({Global, Palette}) => ({
@@ -45,6 +59,23 @@ const styles = ({Global, Palette}) => ({
     },
     formContainer: {
         margin: 20,
+    },
+    filesContainer: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 9999,
+        display: 'grid',
+        gridTemplateAreas: `
+				'header header'
+				'page-title control-elements'
+				'folders-list-manager files-list-manager'
+			`,
+        gridTemplateRows: '30px 50px auto',
+        gridTemplateColumns: '50% 50%',
+        backgroundColor: Palette['color8']
     }
 });
 
@@ -59,9 +90,9 @@ class NewsEditContainer extends React.Component {
     };
 
     componentDidMount() {
-        fetchData(this.props.id, this);
-        fetchCategories(this);
-        fetchSections(this);
+        fetchCategories(this)
+            .then(() => fetchSections(this))
+            .then(() => fetchData(this.props.id, this));
     }
 
     saveChanges = () => {
@@ -75,8 +106,8 @@ class NewsEditContainer extends React.Component {
 
 
     render = () => {
-        const {catchedErrorMessage, data, categories, sections, displayAlert} = this.state;
-        const {classes} = this.props;
+        const {catchedErrorMessage, data, categories, sections, displayAlert, foldersList = [], filesList = [] } = this.state;
+        const {classes, displayFilesManagerFlag } = this.props;
 
         const categOptions = [['', null]].concat(categories.map((i) => [i.title, i.id]));
         const sectionOptions = [['', null]].concat(sections.map((i) => [i.title, i.id]));
@@ -297,8 +328,32 @@ class NewsEditContainer extends React.Component {
 
             {displayAlert ?
                 <Alert text={displayAlert}/> : ''}
+
+            {displayFilesManagerFlag ?
+                <Panel className={classes.filesContainer}>
+                    <FoldersListManager>
+                        {foldersList.map((item, i) => (
+                            <FolderListItem key={i} {...item} />
+                        ))}
+                    </FoldersListManager>
+
+                    <FilesListManager>
+                        {filesList.map((item, i) => (
+                            <FileListItem key={i} {...item} />
+                        ))}
+                    </FilesListManager>
+                </Panel> : ''}
         </React.Fragment>
     }
 }
 
-export default withStyles(styles)(NewsEditContainer);
+const mapStateToProps = (state) => ({
+    foldersList: foldersListSelector(state),
+    filesList: filesListSelector(state),
+    displayFilesManagerFlag: displayFilesManagerFlagSelector(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEditContainer));

@@ -23,10 +23,13 @@ import Alert from 'components/Alert';
 import Select from 'components/Select';
 import PageLoadingProcess from 'components/PageLoadingProcess';
 import moment from "moment";
+import TagsListTable from "./TagsListTable";
+import TagsEditForm from "./TagsEditForm";
 
-// import {
-//
-// } from './logic';
+import {
+    fetchPersons,
+    addItem,
+} from './logic';
 //
 // import moment from 'moment';
 // import editItem from "./logic/editItem";
@@ -41,7 +44,7 @@ const styles = ({Global, Palette}) => ({
             gridTemplateAreas: `
 				'header header'
 				'page-title control-elements'
-				'users-table users-filters'
+				'tags-table tags-filters'
 			`,
             gridTemplateRows: '30px 50px auto',
             gridTemplateColumns: 'auto 352px'
@@ -74,11 +77,16 @@ class TagsListContainer extends React.PureComponent {
         displayDeleteSeveralRows: false,
         displayAlert: false,
         currentAddRowCreatedAt: moment(),
-        addNewItemFlag: false
+        addNewItemFlag: false,
+        persons: [],
     };
+    componentDidMount() {
+        fetchPersons(this);
+    }
+
 
     render = () => {
-        const {displayAlert, displayDeleteSeveralRows, displayCopySeveralRows, addNewItemFlag} = this.state;
+        const {displayAlert, displayDeleteSeveralRows, displayCopySeveralRows, addNewItemFlag, persons} = this.state;
         const {classes, selectedRowsIdsArray, catchedErrorMessage, createdAtFilterValue, userListPageCreatedAt, dataLoadingFlag} = this.props;
 
         return <React.Fragment>
@@ -86,38 +94,42 @@ class TagsListContainer extends React.PureComponent {
 
             <Header/>
 
-            {/*<Typography*/}
-                {/*text="Пользователи"*/}
-                {/*variant="title"/>*/}
+            <Typography
+                text="Тэги"
+                variant="title"/>
 
-            {/*<div className={classes.control}>*/}
-                {/*<Button*/}
-                    {/*variant="link"*/}
-                    {/*color="secondary"*/}
-                    {/*text={*/}
-                        {/*<React.Fragment>*/}
-                            {/*<i className="fa fa-user-plus"></i>*/}
-                            {/*Добавить пользователя*/}
-                        {/*</React.Fragment>*/}
-                    {/*}*/}
-                    {/*onClick={() => this.setState({*/}
-                        {/*addNewItemFlag: true*/}
-                    {/*})}/>*/}
+            <div className={classes.control}>
+                <Button
+                    variant="link"
+                    color="secondary"
+                    text={
+                        <React.Fragment>
+                            <i className="fa fa-plus"></i>
+                            Добавить тэг
+                        </React.Fragment>
+                    }
+                    onClick={() => {
+                        this.setState({
+                            addNewItemFlag: true
+                        })
+                    }}/>
 
-            {/*</div>*/}
+            </div>
 
-            {/*<UsersListTable/>*/}
+            <TagsListTable
+                persons={persons}
+            />
 
             {/*<UsersListFilters>*/}
                 {/*<Typography*/}
                     {/*variant="label"*/}
-                    {/*text="Search users"/>*/}
+                    {/*text="Search tags"/>*/}
                 {/*<Search*/}
                     {/*inputProperties={{*/}
-                        {/*form: 'users-data-fetch-form'*/}
+                        {/*form: 'tags-data-fetch-form'*/}
                     {/*}}*/}
                     {/*submitProperties={{*/}
-                        {/*form: 'users-data-fetch-form'*/}
+                        {/*form: 'tags-data-fetch-form'*/}
                     {/*}}/>*/}
 
                 {/*<Typography*/}
@@ -126,13 +138,13 @@ class TagsListContainer extends React.PureComponent {
                 {/*<Input showTimeSelect*/}
                        {/*variant="date"*/}
                        {/*name="created_at"*/}
-                       {/*form="users-data-fetch-form"*/}
+                       {/*form="tags-data-fetch-form"*/}
                        {/*timeIntervals={10}*/}
                        {/*dateFormat="YYYY-MM-DD LT"*/}
                        {/*selected={createdAtFilterValue}*/}
                        {/*onChange={(newValue) => {*/}
                            {/*userListPageCreatedAt(newValue);*/}
-                           {/*document.getElementById('users-data-fetch-submit').click();*/}
+                           {/*document.getElementById('tags-data-fetch-submit').click();*/}
                        {/*}}/>*/}
 
                 {/*<Button*/}
@@ -162,7 +174,7 @@ class TagsListContainer extends React.PureComponent {
                     {/*}>*/}
 
                     {/*<Typography*/}
-                        {/*text="Are you sure you want to copy selected users?"/>*/}
+                        {/*text="Are you sure you want to copy selected tags?"/>*/}
                 {/*</Dialog> : ''}*/}
 
             {/*{displayDeleteSeveralRows ?*/}
@@ -177,7 +189,7 @@ class TagsListContainer extends React.PureComponent {
                                 {/*variant="tab"*/}
                                 {/*text="OK"*/}
                                 {/*onClick={() => deleteSelectedRows(this).then(() => {*/}
-                                    {/*document.getElementById('users-data-fetch-submit').click();*/}
+                                    {/*document.getElementById('tags-data-fetch-submit').click();*/}
                                 {/*})}/>*/}
                             {/*<Button*/}
                                 {/*variant="tab"*/}
@@ -189,37 +201,39 @@ class TagsListContainer extends React.PureComponent {
                     {/*}>*/}
 
                     {/*<Typography*/}
-                        {/*text="Are you sure you want to delete selected users?"/>*/}
+                        {/*text="Are you sure you want to delete selected tags?"/>*/}
                 {/*</Dialog> : ''}*/}
 
-            {/*{addNewItemFlag === true ?*/}
-                {/*<Dialog*/}
-                    {/*title="Добавить пользователя"*/}
-                    {/*onClose={() => this.setState({*/}
-                        {/*addNewItemFlag: false*/}
-                    {/*})}*/}
-                    {/*control={*/}
-                        {/*<React.Fragment>*/}
-                            {/*<Button*/}
-                                {/*variant="tab"*/}
-                                {/*text="OK"*/}
-                                {/*onClick={() => {*/}
-                                    {/*addItem(this, 'users-add-form')*/}
-                                        {/*.then(() => {*/}
-                                            {/*document.getElementById('users-data-fetch-submit').click();*/}
-                                        {/*});*/}
-                                {/*}}/>*/}
-                            {/*<Button*/}
-                                {/*variant="tab"*/}
-                                {/*text="Cancel"*/}
-                                {/*onClick={() => this.setState({*/}
-                                    {/*addNewItemFlag: false*/}
-                                {/*})}/>*/}
-                        {/*</React.Fragment>*/}
-                    {/*}>*/}
+            {addNewItemFlag === true ?
+                <Dialog
+                    title="Добавить пользователя"
+                    onClose={() => this.setState({
+                        addNewItemFlag: false
+                    })}
+                    control={
+                        <React.Fragment>
+                            <Button
+                                variant="tab"
+                                text="OK"
+                                onClick={() => {
+                                    addItem(this, 'tags-add-form')
+                                        .then(() => {
+                                            document.getElementById('tags-data-fetch-submit').click();
+                                        });
+                                }}/>
+                            <Button
+                                variant="tab"
+                                text="Cancel"
+                                onClick={() => this.setState({
+                                    addNewItemFlag: false
+                                })}/>
+                        </React.Fragment>
+                    }>
 
-                    {/*<UserEditForm/>*/}
-                {/*</Dialog> : ''}*/}
+                    <TagsEditForm
+                        persons={persons}
+                    />
+                </Dialog> : ''}
 
             {displayAlert ?
                 <Alert text={catchedErrorMessage}/> : ''}

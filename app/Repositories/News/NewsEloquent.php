@@ -68,7 +68,7 @@ class NewsEloquent implements NewsRepository
         $limit = $params['limit'] ?? 10;
 
 
-        $news = $this->model::where(['published' => true, 'hot' => true, 'on_index_top' => false])
+        $news = $this->model::where(['published' => true, 'type' => 'hot'])
             ->with(['images'])
             ->withCount('comments')
             ->offset($limit * ($page - 1))
@@ -83,13 +83,13 @@ class NewsEloquent implements NewsRepository
     {
         $limit = 5;
 
-        $news = $this->model::where(['published' => true, 'on_index_top' => false])->orderBy('publish_date', 'DESC')->limit($limit);
+        $news = $this->model::where(['published' => true, 'type' => 'top'])->orderBy('publish_date', 'DESC')->limit($limit);
         return $news->get();
     }
 
     public function top()
     {
-        $news = $this->model::where(['published' => true, 'on_index_top' => true])->withCount('comments')->orderBy('index_top_position', 'ASC');
+        $news = $this->model::where(['published' => true, 'type' => 'top'])->withCount('comments');
         return $news->get();
     }
 
