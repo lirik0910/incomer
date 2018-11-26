@@ -9,8 +9,13 @@ import {
     createItem,
     editItem,
 } from 'routes/ManageMediaItemsContainer/logic';
+import {
+    filesListPageErrorMessage
+} from 'actions/filesListActions.js';
 import Input from "../Input/Input";
 import ImageUpload from "../ImageUpload/ImageUpload";
+import {bindActionCreators} from "redux";
+import connect from "react-redux/es/connect/connect";
 
 const styles = ({Palette: {color7}}) => ({
     root: {
@@ -187,7 +192,7 @@ class FileEditManager extends React.Component {
 
 
                     <Button variant="tab"
-                            text={'Save'}
+                            text={'Create'}
                             onClick={() => {
                                 createItem(this, newItem).then(()=>{
                                     onCreate();
@@ -200,4 +205,13 @@ class FileEditManager extends React.Component {
     }
 }
 
-export default withStyles(styles)(FileEditManager);
+const mapStateToProps = (state) => ({
+    catchedErrorMessage: state.filesList.catchedErrorMessage,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    filesListPageErrorMessage: bindActionCreators(filesListPageErrorMessage, dispatch)
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(FileEditManager));

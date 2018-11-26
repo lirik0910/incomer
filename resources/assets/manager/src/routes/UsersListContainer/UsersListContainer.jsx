@@ -119,37 +119,37 @@ class UsersListContainer extends React.PureComponent {
 
             <UsersListTable/>
 
-            <UsersListFilters>
-                <Typography
-                    variant="label"
-                    text="Search users"/>
-                <Search
-                    inputProperties={{
-                        form: 'users-data-fetch-form'
-                    }}
-                    submitProperties={{
-                        form: 'users-data-fetch-form'
-                    }}/>
+            {/*<UsersListFilters>*/}
+                {/*<Typography*/}
+                    {/*variant="label"*/}
+                    {/*text="Search users"/>*/}
+                {/*<Search*/}
+                    {/*inputProperties={{*/}
+                        {/*form: 'users-data-fetch-form'*/}
+                    {/*}}*/}
+                    {/*submitProperties={{*/}
+                        {/*form: 'users-data-fetch-form'*/}
+                    {/*}}/>*/}
 
-                <Typography
-                    variant="label"
-                    text="Filter by sign up date"/>
-                <Input showTimeSelect
-                       variant="date"
-                       name="created_at"
-                       form="users-data-fetch-form"
-                       timeIntervals={10}
-                       dateFormat="YYYY-MM-DD LT"
-                       selected={createdAtFilterValue}
-                       onChange={(newValue) => {
-                           userListPageCreatedAt(newValue);
-                           document.getElementById('users-data-fetch-submit').click();
-                       }}/>
+                {/*<Typography*/}
+                    {/*variant="label"*/}
+                    {/*text="Filter by sign up date"/>*/}
+                {/*<Input showTimeSelect*/}
+                       {/*variant="date"*/}
+                       {/*name="created_at"*/}
+                       {/*form="users-data-fetch-form"*/}
+                       {/*timeIntervals={10}*/}
+                       {/*dateFormat="YYYY-MM-DD LT"*/}
+                       {/*selected={createdAtFilterValue}*/}
+                       {/*onChange={(newValue) => {*/}
+                           {/*userListPageCreatedAt(newValue);*/}
+                           {/*document.getElementById('users-data-fetch-submit').click();*/}
+                       {/*}}/>*/}
 
-                <Button
-                    variant="tab" text="Clear filters properties"
-                    onClick={clearFilters(this)}/>
-            </UsersListFilters>
+                {/*<Button*/}
+                    {/*variant="tab" text="Clear filters properties"*/}
+                    {/*onClick={clearFilters(this)}/>*/}
+            {/*</UsersListFilters>*/}
 
             {displayCopySeveralRows ?
                 <Dialog

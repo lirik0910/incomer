@@ -14,13 +14,10 @@ export default (self, data, id) => {
         })
         .catch((err) => {
             // userListPageLoading(false);
-            // userListPageErrorMessage(err.message);
-            //
-            // self.setState({
-            //     currentEditRowIndex: -1
-            // });
-            // setTimeout(() => {
-            //     userListPageErrorMessage(err.message);
-            // }, 2600);
+            self.props.filesListPageErrorMessage(err.message);
+
+            setTimeout(() => {
+                self.props.filesListPageErrorMessage(err.message);
+            }, 2600);
         });
 }

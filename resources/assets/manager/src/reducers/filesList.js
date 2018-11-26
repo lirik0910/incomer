@@ -7,7 +7,11 @@ const filesList = (state = {
 			console.log(action.payload)
 			return { ...state, displayFilesManagerFlag: action.payload };
 
-		default:
+        case 'FILES_PAGE_ERROR_MESSAGE':
+            return { ...state, catchedErrorMessage: action.payload };
+
+
+        default:
 			return { ...state }
 	}
 }

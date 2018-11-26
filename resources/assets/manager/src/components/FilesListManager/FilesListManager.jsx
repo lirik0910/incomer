@@ -38,10 +38,15 @@ const styles = ({Palette: {color7}}) => ({
 });
 
 class FilesListManager extends React.PureComponent {
+
+    state = {
+      search: '',
+    };
+
     render = () => {
         const {
             classes, children = [], onCreate = () => {
-            }
+            }, onSearch = () => {}
         } = this.props;
 
         return <Panel className={classes.root}>
@@ -52,15 +57,22 @@ class FilesListManager extends React.PureComponent {
                     Create file <i className="fa fa-plus"></i>
                 </React.Fragment>}
             />
-            {/*<Button */}
-            {/*variant="tab" */}
-            {/*text={<React.Fragment>*/}
-            {/*Delete selected <i className="fa fa-close"></i>*/}
-            {/*</React.Fragment>} />*/}
-            <Search className={classes.search}/>
+
+            <Search
+                inputProperties={{
+                    onChange: (e) => this.setState({search: e.target.value}),
+                    onKeyPress: (e) => {
+                        if (e.key === 'Enter') {
+                            onSearch(this.state.search)
+                        }
+                    }
+                }}
+                submitProperties={{
+                    onClick: () => onSearch(this.state.search),
+                }}
+                className={classes.search}
+            />
             <div className={classes.control}>
-                {/*<Typography text="Select all" /> */}
-                {/*<input type="checkbox" />*/}
                 <Typography text="Sort by name"/>
                 <Button
                     variant="icon"

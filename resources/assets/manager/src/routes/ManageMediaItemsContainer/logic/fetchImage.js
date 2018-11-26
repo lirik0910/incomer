@@ -13,11 +13,11 @@ export default (self = {}, id = false) => {
             })
         })
         .catch((err) => {
-            // const { filesListPageErrorMessage } = self.props;
-            // filesListPageErrorMessage(err.message);
-            // setTimeout(() => {
-            //     filesListPageErrorMessage('');
-            // }, 2600);
+            const { filesListPageErrorMessage } = self.props;
+            filesListPageErrorMessage(err.message);
+            setTimeout(() => {
+                filesListPageErrorMessage('');
+            }, 2600);
             //
             // filesListPageLoading(false);
         });

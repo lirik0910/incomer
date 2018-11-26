@@ -1,10 +1,18 @@
 
 const changeDisplayFilesManagerAction = (payload) => (dispatch) => {
-    console.log('!!!!!!')
     dispatch({
         type: 'CHANGE_DISPLAY_FILES_MANAGER',
         payload
     });
 }
 
-export { changeDisplayFilesManagerAction };
+
+const filesListPageErrorMessage = (payload) => (dispatch) => {
+    dispatch({
+        type: 'FILES_PAGE_ERROR_MESSAGE',
+        payload
+    });
+}
+
+
+export { changeDisplayFilesManagerAction, filesListPageErrorMessage };

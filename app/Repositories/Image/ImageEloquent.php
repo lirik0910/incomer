@@ -17,10 +17,12 @@ class ImageEloquent implements ImageRepository
     {
         $page = $params['page'] ?? 1;
         $limit = $params['limit'] ?? 10;
+        $search = $params['search'] ?? '';
 
         $items = $this->model->limit($limit)->offset(($page - 1) * $limit);
+        if($search) $items->where('title', 'ilike', '%' . $search . '%');
 
-        return ['data'=> $items->get(), 'total' => $this->model->count()];
+        return ['data'=> $items->get(), 'total' => $items->count()];
     }
 
     public function get($id)

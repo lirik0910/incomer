@@ -21,7 +21,7 @@ class ImageController extends Controller
     public function index(Request $request)
     {
         try {
-            $params = $request->only(['page', 'limit']);
+            $params = $request->only(['page', 'limit', 'search']);
             $res = $this->model->all($params);
 
             return response()->json($res);

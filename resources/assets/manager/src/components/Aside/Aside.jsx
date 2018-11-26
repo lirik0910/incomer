@@ -42,7 +42,7 @@ class Aside extends React.Component {
                 <Link to="/news" variant="anti">Новости</Link>
                 <Link to="/tags" variant="anti">Тэги</Link>
                 {/*<Link to="/pages" variant="anti">pages</Link>*/}
-                <Link to="/media" variant="anti">media</Link>
+                <Link to="/media" variant="anti">Медиа</Link>
             </div>
         </React.Fragment> : '';
 
