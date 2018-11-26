@@ -24,7 +24,8 @@ class TagUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'person_id' => 'integer',
+            'value' => 'string'
         ];
     }
 }

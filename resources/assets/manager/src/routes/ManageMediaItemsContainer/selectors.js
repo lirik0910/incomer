@@ -18,7 +18,7 @@ const filesListSelector = createSelector(
 const displayFilesManagerFlagSelector = createSelector(
 	(state) => state.filesList.displayFilesManagerFlag,
 	(filesList) => filesList
-)
+);
 
 export { 
 	dataLoadingFlagSelector,

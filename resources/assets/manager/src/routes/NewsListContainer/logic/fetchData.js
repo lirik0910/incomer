@@ -3,10 +3,10 @@ import httpfetch from 'httpfetch.js';
 export default (dataForFetch = {}, query = '', self = {}) => {
 	const { newsListPageLoading, newsListPageSelectedRowsIDsArray } = self.props;
 	
-	// newsListPageLoading(true);
+	newsListPageLoading(true);
 	httpfetch('/news', 'GET', dataForFetch, query)
 		.then(({ data, total = 0 }) => {
-			// newsListPageLoading(false);
+			newsListPageLoading(false);
 			self.setState({
 				total,
 				data
@@ -15,6 +15,6 @@ export default (dataForFetch = {}, query = '', self = {}) => {
 		.catch((err) => {
 			const { newsListPageErrorMessage } = self.props;
 
-			// newsListPageLoading(false);
+			newsListPageLoading(false);
 		});
 }

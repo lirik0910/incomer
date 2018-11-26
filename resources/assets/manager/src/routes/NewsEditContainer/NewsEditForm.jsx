@@ -1,9 +1,8 @@
 import React from 'react';
 import withStyles from 'react-jss'
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import Header from 'components/Header';
 import Button from 'components/Button';
 import Typography from 'components/Typography';
 import Input from 'components/Input';
@@ -25,12 +24,13 @@ import {
     fetchData,
     fetchCategories,
     fetchSections,
-    editItem
+    editItem,
+    fetchTags
 } from './logic/index';
 import Select from "../../components/Select/Select";
 import Panel from "../../components/Panel/Panel";
-import {bindActionCreators} from "redux";
-// import connect from "react-redux/es/connect/connect";
+
+import MultiSelect from 'react-select';
 
 
 const styles = ({Global, Palette}) => ({
@@ -60,6 +60,13 @@ const styles = ({Global, Palette}) => ({
     formContainer: {
         margin: 20,
     },
+    multiselect: {
+        borderRadius: 0,
+        '&>div': {
+            backgroundColor: Palette['color6'],
+            borderRadius: 0,
+        }
+    },
     filesContainer: {
         position: 'absolute',
         top: 0,
@@ -85,6 +92,7 @@ class NewsEditContainer extends React.Component {
         data: {},
         categories: [],
         sections: [],
+        tags: [],
         catchedErrorMessage: '',
         displayAlert: false,
     };
@@ -92,11 +100,12 @@ class NewsEditContainer extends React.Component {
     componentDidMount() {
         fetchCategories(this)
             .then(() => fetchSections(this))
+            .then(() => fetchTags(this))
             .then(() => fetchData(this.props.id, this));
     }
 
     saveChanges = () => {
-        const fields = ['title', 'subtitle', 'category_id', 'published', 'introtext', 'description', 'preview_pattern', 'section_id', 'type'];
+        const fields = ['title', 'subtitle', 'category_id', 'published', 'introtext', 'description', 'preview_pattern', 'section_id', 'type', 'tags'];
 
         const data = {};
         fields.forEach((i) => data[i] = this.state.data[i]);
@@ -106,11 +115,19 @@ class NewsEditContainer extends React.Component {
 
 
     render = () => {
-        const {catchedErrorMessage, data, categories, sections, displayAlert, foldersList = [], filesList = [] } = this.state;
-        const {classes, displayFilesManagerFlag } = this.props;
+        const {catchedErrorMessage, data, categories, sections, displayAlert, foldersList = [], filesList = [], tags = []} = this.state;
+        const {classes, displayFilesManagerFlag} = this.props;
 
-        const categOptions = [['', null]].concat(categories.map((i) => [i.title, i.id]));
-        const sectionOptions = [['', null]].concat(sections.map((i) => [i.title, i.id]));
+        const categOptions = [
+            ['', null], ...categories.map((i) => [i.title, i.id])
+        ];
+        const sectionOptions = [
+            ['', null],
+            ...sections.filter(((i) => i.category_id === data.category_id)).map((i) => [i.title, i.id])
+        ];
+        const tagsOptions = tags.map((i) => {
+            return {label: i.value, ...i}
+        });
 
         // !!!!!!   ОСТОРОЖНО - ЖУТКИЕ КОСТЫЛИ*   !!!!!!!
         // * некрасивые решения
@@ -180,6 +197,17 @@ class NewsEditContainer extends React.Component {
                     }
                     onClick={this.saveChanges}/>
 
+                {data.id && <Button
+                    variant="link"
+                    color="secondary"
+                    text={
+                        <a href={"/news/" + data.id + "?preview=1"} target="_blank">
+                            <i className="fa fa-eye"></i>
+                            Превью
+
+                        </a>
+                    }/>}
+
             </div>
 
             <div className={classes.formContainer}>
@@ -214,6 +242,23 @@ class NewsEditContainer extends React.Component {
 
                         <Typography
                             variant="label"
+                            text="Тэги"/>
+                        {data.tags && <MultiSelect
+                            defaultValue={data.tags.map((i) => {
+                                return {label: i.value, ...i}
+                            })}
+                            isMulti={true}
+                            isSearchable={true}
+                            className={classes.multiselect}
+                            options={tagsOptions}
+                            onChange={(tags) => {
+                                data.tags = tags;
+                                this.setState({data})
+                            }}
+                        />}
+
+                        <Typography
+                            variant="label"
                             text="Введение"/>
 
                         {data.introtext &&
@@ -242,6 +287,7 @@ class NewsEditContainer extends React.Component {
                                 }}
                             />
                         </div>}
+
 
                     </div>
 
@@ -321,6 +367,7 @@ class NewsEditContainer extends React.Component {
                         />
                     </React.Fragment>}
 
+
                 </Panel>
 
             </div>
@@ -353,7 +400,6 @@ const mapStateToProps = (state) => ({
     displayFilesManagerFlag: displayFilesManagerFlagSelector(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEditContainer));

@@ -33,7 +33,7 @@ class NewsUpdateRequest extends FormRequest
             'introtext' => 'string|max:500',
             'videos' => 'json',
             'images' => 'json',
-            'tags' => 'json',
+//            'tags' => 'json',
         ];
     }
 }

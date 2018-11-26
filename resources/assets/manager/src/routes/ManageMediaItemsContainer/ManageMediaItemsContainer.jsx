@@ -53,7 +53,7 @@ class ManageMediaItemsContainer extends React.PureComponent {
 
 	state = {
 		displayAsideMenu: false
-	}
+	};
 
 	render = () => {
 		const { displayAsideMenu } = this.state;

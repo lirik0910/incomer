@@ -85,17 +85,17 @@ class TagsListTable extends React.PureComponent {
         prepareDeleteForeverRowID: 0,
         currentEditRowIndex: -1,
         currentEditRowCreatedAt: null
-    }
+    };
 
     componentDidMount = () => {
         document.getElementById('tags-data-fetch-submit').click();
-    }
+    };
 
     render = () => {
         const {classes} = this.props;
         const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt, prepareDeleteForeverRowID = 0} = this.state;
         const persons = this.props.persons  && this.props.persons.map((i) => [i.name, i.id]);
-        console.log(persons)
+        console.log(persons);
 
         return <Panel className={classes.root}>
             <Table>

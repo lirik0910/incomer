@@ -97,7 +97,7 @@ class PageController extends Controller
     public function oneNews(Request $request, int $id)
     {
         $news = $this->newsModel->one($id);
-//var_dump($news->comments_count); die;
+
         if (!$news){
             throw new \Exception('News was not found');
         }
@@ -155,5 +155,12 @@ class PageController extends Controller
             'dateFormatter' => DateFormatter::class,
         ]);
     }
+
+
+    public function manager(Request $request)
+    {
+        return view('layouts.manager', ['view' => 'manager']);
+    }
+
 
 }

@@ -1,56 +1,56 @@
 
 const newsListPageDeleteRowID = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_DELETE_ROW_ID',
+		type: 'NEWS_LIST_PAGE_DELETE_ROW_ID',
 		payload
 	});
 }
 
 const newsListPageCreatedAt = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_CREATED_AT',
+		type: 'NEWS_LIST_PAGE_CREATED_AT',
 		payload
 	});
 }
 
 const newsListPageRowsAreSelected = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_ROWS_ARE_SELECTED',
+		type: 'NEWS_LIST_PAGE_ROWS_ARE_SELECTED',
 		payload
 	});
 }
 
 const newsListPageErrorMessage = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_ERROR_MESSAGE',
+		type: 'NEWS_LIST_PAGE_ERROR_MESSAGE',
 		payload
 	});
 }
 
 const newsListPageCopyRows = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_COPY_ROWS',
+		type: 'NEWS_LIST_PAGE_COPY_ROWS',
 		payload
 	});
 }
 
 const newsListPageDeleteRows = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_DELETE_ROWS',
+		type: 'NEWS_LIST_PAGE_DELETE_ROWS',
 		payload
 	});
 }
 
 const newsListPageLoading = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_LOADING',
+		type: 'NEWS_LIST_PAGE_LOADING',
 		payload
 	});
 }
 
 const newsListPageSelectedRowsIDsArray = (payload) => (dispatch) => {
 	dispatch({
-		type: 'USER_LIST_PAGE_SELECTED_ROWS_IDS_ARRAY',
+		type: 'NEWS_LIST_PAGE_SELECTED_ROWS_IDS_ARRAY',
 		payload
 	});
 }
