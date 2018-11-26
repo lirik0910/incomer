@@ -7,7 +7,11 @@ export default (self = {}) => {
             self.setState({sections});
         })
         .catch((err) => {
-            console.log(err);
+            const { newsListPageErrorMessage } = self.props;
+            newsListPageErrorMessage(err.message);
+            setTimeout(() => {
+                newsListPageErrorMessage('');
+            }, 2600);
 
         });
 

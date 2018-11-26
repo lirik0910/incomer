@@ -2,8 +2,6 @@ import httpfetch from 'httpfetch.js';
 
 export default (self, id, data) => {
 
-    console.log(data);
-
     data.tags = data.tags && data.tags.map((i) => i.id);
 
     return httpfetch('/news/' + id, 'PUT', data)
@@ -11,8 +9,11 @@ export default (self, id, data) => {
             self.setState({data})
         })
         .catch((err) => {
-            self.setState({
-                displayAlert: data.message,
-            });
+            const { newsListPageErrorMessage } = self.props;
+            newsListPageErrorMessage(err.message);
+            setTimeout(() => {
+                newsListPageErrorMessage('');
+            }, 2600);
+
         });
 }

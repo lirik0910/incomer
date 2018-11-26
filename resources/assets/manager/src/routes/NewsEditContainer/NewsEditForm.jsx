@@ -10,10 +10,8 @@ import FieldDraftEditor from 'components/FieldDraftEditor';
 import Alert from 'components/Alert';
 
 import {
-    displayFilesManagerFlagSelector,
-    foldersListSelector,
-    filesListSelector
-} from 'routes/ManageMediaItemsContainer/selectors.js';
+    newsListPageErrorMessage,
+} from 'actions/newsListPageActions';
 
 import FoldersListManager from 'components/FoldersListManager';
 import FilesListManager from 'components/FilesListManager';
@@ -31,6 +29,7 @@ import Select from "../../components/Select/Select";
 import Panel from "../../components/Panel/Panel";
 
 import MultiSelect from 'react-select';
+import {bindActionCreators} from "redux";
 
 
 const styles = ({Global, Palette}) => ({
@@ -115,8 +114,8 @@ class NewsEditContainer extends React.Component {
 
 
     render = () => {
-        const {catchedErrorMessage, data, categories, sections, displayAlert, foldersList = [], filesList = [], tags = []} = this.state;
-        const {classes, displayFilesManagerFlag} = this.props;
+        const { data, categories, sections, displayAlert, foldersList = [], filesList = [], tags = []} = this.state;
+        const {classes, displayFilesManagerFlag, catchedErrorMessage} = this.props;
 
         const categOptions = [
             ['', null], ...categories.map((i) => [i.title, i.id])
@@ -128,6 +127,7 @@ class NewsEditContainer extends React.Component {
         const tagsOptions = tags.map((i) => {
             return {label: i.value, ...i}
         });
+
 
         // !!!!!!   ОСТОРОЖНО - ЖУТКИЕ КОСТЫЛИ*   !!!!!!!
         // * некрасивые решения
@@ -174,8 +174,10 @@ class NewsEditContainer extends React.Component {
         };
 
 
-        const previewOptions = data.category_id && newsPreviewPatternsOptions[data.category_id][data.type];
-        console.log(previewOptions);
+        const previewOptions = [
+            ['', null],
+            ...data.category_id ? newsPreviewPatternsOptions[data.category_id][data.type]: []
+        ];
 
 
         return <React.Fragment>
@@ -318,7 +320,7 @@ class NewsEditContainer extends React.Component {
                         name="category_id"
                         options={categOptions}
                         onChange={(e) => {
-                            data.category_id = e.target.value;
+                            data.category_id = e.target.value || null;
                             this.setState({data})
                         }
                         }
@@ -373,8 +375,8 @@ class NewsEditContainer extends React.Component {
             </div>
 
 
-            {displayAlert ?
-                <Alert text={displayAlert}/> : ''}
+            {!!catchedErrorMessage ?
+                <Alert text={catchedErrorMessage}/> : ''}
 
             {displayFilesManagerFlag ?
                 <Panel className={classes.filesContainer}>
@@ -395,11 +397,11 @@ class NewsEditContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    foldersList: foldersListSelector(state),
-    filesList: filesListSelector(state),
-    displayFilesManagerFlag: displayFilesManagerFlagSelector(state)
+    catchedErrorMessage: state.newsListPage.catchedErrorMessage,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    newsListPageErrorMessage: bindActionCreators(newsListPageErrorMessage, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEditContainer));
