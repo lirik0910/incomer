@@ -8,6 +8,10 @@ import {
 	foldersListSelector,
 	filesListSelector
 } from './selectors.js';
+import {
+    fetchImages,
+    deleteItem,
+} from './logic';
 
 import Header from 'components/Header';
 import Button from 'components/Button';
@@ -19,6 +23,7 @@ import FoldersListManager from 'components/FoldersListManager';
 import FilesListManager from 'components/FilesListManager';
 import FolderListItem from 'components/FolderListItem';
 import FileListItem from 'components/FileListItem';
+import FileEditManager from "../../components/FileEditManager/FileEditManager";
 
 const styles = ({ Global, Palette }) => ({
 	'@global': { 
@@ -29,7 +34,7 @@ const styles = ({ Global, Palette }) => ({
 			gridTemplateAreas: `
 				'header header'
 				'page-title control-elements'
-				'folders-list-manager files-list-manager'
+				'files-list-manager folders-list-manager '
 			`,
 			gridTemplateRows: '30px 50px auto',
 			gridTemplateColumns: '50% 50%'
@@ -49,78 +54,53 @@ const styles = ({ Global, Palette }) => ({
 	}
 });
 
-class ManageMediaItemsContainer extends React.PureComponent {
+class ManageMediaItemsContainer extends React.Component {
 
 	state = {
-		displayAsideMenu: false
+		displayAsideMenu: false,
+		images: [],
+		editId: false,
 	};
 
-	render = () => {
-		const { displayAsideMenu } = this.state;
+	componentDidMount() {
+		fetchImages(this);
+    }
+
+    render = () => {
+		const { displayAsideMenu, images, editId } = this.state;
 		const { classes, dataLoadingFlag, foldersList, filesList } = this.props;
 
-		return <React.Fragment>
+        console.log(images);
+        return <React.Fragment>
 			{dataLoadingFlag && <PageLoadingProcess />}
 
-			<Header>
-				<Button
-					text={
-						<i className="fa fa-bars"></i>
-					}
-					variant="icon"
-					onClick={() => this.setState({ 
-						displayAsideMenu: true 
-					})} />
-				<Typography
-					text="umanager" />
-
-				<div className={classes.primaryButtons}>
-					<Link to="/profile">
-						<i className="fa fa-user"></i> profile
-					</Link>
-					<Link to="/settings">
-						<i className="fa fa-gear"></i> settings
-					</Link>
-				</div>
-			</Header>
-
-			{displayAsideMenu && <Aside
-				onClose={() => this.setState({ displayAsideMenu: false })}>
-
-				<div className={classes.asdieAppHeader}>
-					<Button
-						variant="contrast"
-						text={
-							<i className="fa fa-bars"></i>
-						}
-						onClick={() => this.setState({ 
-							displayAsideMenu: false 
-						})} />
-					<Typography variant="anti"
-						text="umanager" />
-				</div>
-
-				<Link to="/dashboard" variant="anti">dashboard</Link>
-				<Link to="/users" variant="anti">users</Link>
-				<Link to="/pages" variant="anti">pages</Link>
-				<Link to="/media" variant="anti">media</Link>
-			</Aside>}
+			<Header/>
 
 			<Typography
 				text="Files manager"
 				variant="title" />
 
-			<FoldersListManager>
-				{foldersList.map((item, i) => (
-					<FolderListItem key={i} {...item} />
+			<FilesListManager
+                onCreate={()=>{
+                	console.log('create');
+                	this.setState({editId: false})}}
+            >
+				{images.map((item, i) => (
+					<FileListItem
+						key={i}
+						{...item}
+						onEdit={(id)=>this.setState({editId:id})}
+						onDelete={(id)=>deleteItem(this, id).then(() => fetchImages(this))}
+					/>
 				))}
-			</FoldersListManager>
-			
-			<FilesListManager>
-				{filesList.map((item, i) => (
-					<FileListItem key={i} {...item} />
-				))}
-			</FilesListManager>
+			</FilesListManager
+			>
+
+            <FileEditManager
+				editId={editId}
+				onEdit={()=>fetchImages(this)}
+				onCreate={()=>fetchImages(this)}
+			/>
 		</React.Fragment>
 	}
 }

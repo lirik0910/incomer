@@ -19,7 +19,8 @@ class ImageEloquent implements ImageRepository
         $limit = $params['limit'] ?? 10;
 
         $items = $this->model->limit($limit)->offset(($page - 1) * $limit);
-        return $items->get();
+
+        return ['data'=> $items->get(), 'total' => $this->model->count()];
     }
 
     public function get($id)

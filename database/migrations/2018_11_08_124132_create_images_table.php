@@ -22,25 +22,32 @@ class CreateImagesTable extends Migration
             $table->integer('category_id', false, true)
                 ->nullable(true)
                 ->comment('Category ID');
+
             $table->string('title', 255)
                 ->nullable(false)
                 ->comment('Image title');
+
             $table->string('description', 255)
                 ->nullable(true)
                 ->comment('Image description');
+
             $table->string('path', 255)
                 ->nullable(false)
                 ->comment('Path to image');
+
             $table->string('url', 255)
                 ->nullable(false)
                 ->comment('Image url');
+
             $table->integer('creator_id', false, true)
                 ->nullable(false)
                 ->comment('User creator ID');
+
             $table->timestamps();
 
-            $table->unique(['title', 'path', 'url']);
-            $table->index(['category_id', 'creator_id']);
+            $table->unique(['title']);
+            $table->unique(['url']);
+//            $table->index(['category_id', 'creator_id']);
         });
     }
 

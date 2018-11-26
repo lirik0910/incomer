@@ -64,9 +64,13 @@ class ImageController extends Controller
         try {
             $item = $this->model->get($id);
 
-            $data = $request->only(['title', 'description', 'category_id']);
+            $data = $request->only(['title', 'description', 'category_id', 'path']);
+
             if($request->file('image')){
-                $data['url'] = basename($request->file('image')->store('public/images'.$item['path']));
+                $data['path'] = $item['path'] ? ltrim(rtrim($item['path'],'/'),'/'): '';
+                $data['url'] = '/storage/'.$request->file('image')->store('images'.$item['path']);
+            } else {
+                unset($data['path']);
             }
 
             $res = $this->model->update($id, $data);
