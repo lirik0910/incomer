@@ -156,7 +156,8 @@
 			z-index: 1;
 		}
 		&--large,
-		&--post {
+		&--post,
+		&--interview {
 			.views-post {
 				&:before {
 					background-image: url('../../../img/eye-light.png');
