@@ -16,72 +16,18 @@
             <div class="top">
                 @foreach($topNews as $topItem)
                     @php
-                        $img = $topItem->images->where('pivot.type', 'top_preview')->first();
+                        $pattern = explode('.', $topItem->preview_pattern)[1];
                     @endphp
                     @if($loop->first)
-                        <a class="card card--large" href="{{ url('/news/' . $topItem->id) }}">
-                            <article class="card__article">
-                                <div class="card__pic">
-                                    <img src="{{ asset($img->url) }}">
-                                </div>
-                                <div class="card__content">
-                                    <div class="card__text">
-                                        <p class="card__subtitle">{{ $topItem->subtitle }}</p>
-                                        <p>{{ $topItem->title }}</p>
-                                    </div>
-                                    <div class="card__statistic">
-                                        <span class="views-post">{{ $topItem->views }}</span>
-                                        <span class="comments-post">{{ $topItem->comments_count }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
+                        @include('components.news.patterns.' . $pattern, ['item' => $topItem])
+                    @elseif($loop->iteration === 2)
+                        <div class="top__article-wrap">
+                            @include('components.news.patterns.' . $pattern, ['item' => $topItem])
+                    @else
+                            @include('components.news.patterns.' . $pattern, ['item' => $topItem])
+                        </div>
                     @endif
                 @endforeach
-            <div class="top__article-wrap">
-                @foreach($topNews as $topItem)
-                    @php
-                        $img = $topItem->images->where('pivot.type', 'top_preview')->first();
-                    @endphp
-                    @if($loop->iteration == 2)
-                        <a class="card card--square card--post" href="{{ url('/news/' . $topItem->id)}}">
-                            <article class="card__article">
-                                <div class="card__pic">
-                                    <img src="{{ asset($img->url) }}">
-                                </div>
-                                <div class="card__content">
-                                    <div class="card__text">
-                                        <p>{{ $topItem->title }}</p>
-                                    </div>
-                                    <div class="card__statistic">
-                                        <span class="views-post">{{ $topItem->views }}</span>
-                                        <span class="comments-post">{{ $topItem->comments_count }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
-                    @elseif($loop->last)
-                        <a class="card card--square card--interview" href="{{ url('/news/' . $topItem->id)}}">
-                            <article class="card__article">
-                                <div class="card__pic">
-                                    <img src="{{ asset($img->url) }}">
-                                </div>
-                                <div class="card__content">
-                                    <div class="card__text">
-                                        <p class="card__subtitle">{{ $topItem->subtitle }}</p>
-                                        <p class="card__name">{{ $topItem->title }}</p>
-                                        <!--<p class="card__position">AB–Invest, CEO</p>-->
-                                    </div>
-                                    <div class="card__statistic">
-                                        <span class="views-post">{{ $topItem->views }}</span>
-                                        <span class="comments-post">{{ $topItem->comments_count }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
-                    @endif
-                @endforeach
-            </div>
           </div>
           <div class="popular">
             <p class="block__title">Актуально сейчас</p>

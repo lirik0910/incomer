@@ -1,17 +1,17 @@
 @php
     if($item->images){
-        $img = $item->images->where('pivot.type', 'preview')->first();
+        $img = $item->images->where('pivot.type', 'top_preview')->first();
 
         if($img !== NULL && File::exists(public_path($img->url))){
             $img = asset($img->url);
         } else{
-            $img = asset('img/photo-dark.jpg');
+            $img = asset('img/placeholder.png');
         }
     } else{
-        $img = asset('img/photo-dark.jpg');
+        $img = asset('img/placeholder.png');
     }
 @endphp
-<a class="card @if($type === 'long') card--long-full-img @else card--square-full-img @endif" href="{{ url('/news/' . $item->id) }}">
+<a class="card card--square card--post" href="{{ url('/news/' . $item->id)}}">
     <article class="card__article">
         <div class="card__pic">
             <img src="{{ asset($img) }}">

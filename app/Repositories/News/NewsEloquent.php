@@ -73,17 +73,35 @@ class NewsEloquent implements NewsRepository
             ->withCount('comments')
             ->offset($limit * ($page - 1))
             //->limit(4)
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('publish_date', 'DESC')
             ->simplePaginate($limit);
 
         return $news;
     }
 
-    public function current()
+    public function current(array $params)
     {
-        $limit = 5;
+        $page = $params['page'] ?? 1;
 
-        $news = $this->model::where(['published' => true, 'type' => 'normal'])->orderBy('publish_date', 'DESC')->limit($limit);
+        if(empty($params['categoryId'])){
+            $limit = 5;
+
+            $news = $this->model::where(['published' => true])->orWhereIn('type', ['normal', 'hot'])->orderBy('publish_date', 'DESC')->limit($limit);
+        } elseif ($params['categoryId'] === 2){
+            $limit = 12;
+
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId'], 'type' => 'normal'])
+                ->with('category', 'section')
+                ->withCount('comments')
+                ->offset($limit * ($page - 1))
+                ->orderBy('publish_date', 'DESC')
+                ->simplePaginate($limit);
+
+            return $news;
+        } elseif ($params['categoryId'] === 3){
+            $limit = 4;
+        }
+
         return $news->get();
     }
 
@@ -92,6 +110,13 @@ class NewsEloquent implements NewsRepository
         $news = $this->model::where(['published' => true, 'type' => 'top'])->withCount('comments')->orderBy('preview_pattern', 'ASC');
         return $news->get();
     }
+
+    public function categoryTop(int $categoryId)
+    {
+        $news = $this->model::where(['category_id' => $categoryId, 'type' => 'category_top'])->withCount('comments')->orderBy('preview_pattern', 'ASC');
+        return $news->get();
+    }
+
 
 
     public function one(int $id)

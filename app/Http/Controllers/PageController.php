@@ -36,7 +36,7 @@ class PageController extends Controller
                 'dateFormatter' => DateFormatter::class
             ])->render();
         } else{
-            $current = $this->newsModel->current();
+            $current = $this->newsModel->current($params);
             $top = $this->newsModel->indexTop();
             $videos = $this->videoModel->index();
 
@@ -69,6 +69,7 @@ class PageController extends Controller
     */
     public function oneCompany(Request $request)
     {
+
         return view('content.company', ['view' => 'company']);
     }
 
@@ -87,7 +88,26 @@ class PageController extends Controller
     */
     public function blockchain(Request $request)
     {
-        return view('content.blockchain', ['view' => 'blockchain']);
+        $params = $request->only(['page']);
+        $params['categoryId'] = 2;
+
+        $current = $this->newsModel->current($params);
+
+        //var_dump($current); die;
+        if($request->ajax()){
+            return view('components.blockchain.current_news_list', [
+                'items' => $current,
+            ])->render();
+        }
+
+        $top = $this->newsModel->categoryTop($params['categoryId']);
+
+        return view('content.blockchain', [
+            'view' => 'blockchain',
+            'topNews' => $top,
+            'currentNews' => $current,
+            'dateFormatter' => DateFormatter::class,
+        ]);
     }
 
     /*

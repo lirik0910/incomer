@@ -10,9 +10,11 @@ interface NewsRepository
 
     public function hot(array $params);
 
-    public function current();
+    public function current(array $params);
 
     public function indexTop();
+
+    public function categoryTop(int $categoryId);
 
     public function one(int $id);
 
