@@ -147,6 +147,7 @@ class LayoutComponent extends Component {
 				this.setState({
 					showImageLoading: false,
 					dragEnter: false,
+                    holdExpanded: false,
 				});
 			});
 	};
