@@ -77,7 +77,7 @@ const styles = ({Global, Palette}) => ({
 				'page-title control-elements'
 				'files-list-manager folders-list-manager'
 			`,
-        gridTemplateRows: '0px 0px auto',
+        gridTemplateRows: '0px 40px auto',
         gridTemplateColumns: '50% 50%',
         backgroundColor: Palette['color8']
     }
@@ -132,8 +132,9 @@ class NewsEditContainer extends React.Component {
 
         changeDisplayFilesManagerAction(true);
         const self = this;
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
             self.resolveFunction = resolve;
+            self.rejectFunction = reject;
         });
     };
 
@@ -458,9 +459,25 @@ class NewsEditContainer extends React.Component {
                 <Alert text={catchedErrorMessage}/> : ''}
             {displayFilesManagerFlag ?
                 <Panel className={classes.filesContainer}>
+
                     <Typography
                         text="Выберите изображение"
                         variant="title"/>
+                    <Button
+                        style={{float: 'right'}}
+                        variant="link"
+                        color="secondary"
+                        onClick={() => {
+                            changeDisplayFilesManagerAction(false);
+                            this.rejectFunction();
+                        }}
+                        text={
+                            <>
+                                <i className="fa fa-close"></i>
+                                Отмена
+                            </>
+                        }/>
+
                     <FilesManager
                         isSelectable={true}
                         onSelect={this.setSelectedImage}

@@ -11,6 +11,7 @@ import FileListItem from 'components/FileListItem';
 import FileEditManager from "../../components/FileEditManager/FileEditManager";
 import {bindActionCreators} from "redux";
 import Alert from "../../components/Alert/Alert";
+import Button from "../../components/Button/Button";
 
 const styles = ({Global, Palette}) => ({});
 
@@ -28,7 +29,13 @@ class FilesManager extends React.Component {
 
     render = () => {
         const {images, editId} = this.state;
-        const {classes, catchedErrorMessage, isSelectable = false, onSelect = () => {}} = this.props;
+        const {
+            classes,
+            catchedErrorMessage,
+            isSelectable = false,
+            onSelect = () => {},
+            onClose = () => {},
+        } = this.props;
 
         return <React.Fragment>
 
@@ -60,7 +67,7 @@ class FilesManager extends React.Component {
                 onCreate={() => fetchImages(this)}
                 onSelect={(img) => onSelect(img)}
             />
-            {!!catchedErrorMessage && <Alert text={catchedErrorMessage}/> }
+            {!!catchedErrorMessage && <Alert text={catchedErrorMessage}/>}
 
         </React.Fragment>
     }
