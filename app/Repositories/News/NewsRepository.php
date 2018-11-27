@@ -16,6 +16,8 @@ interface NewsRepository
 
     public function categoryTop(int $categoryId);
 
+    public function withPatterns();
+
     public function one(int $id);
 
     public function search(array $params);

@@ -26,11 +26,11 @@ class NewsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string|max:400',
+            'title' => 'string|max:255',
             'category_id' => 'integer',
             'related_id' => 'integer',
             'description' => 'string',
-            'introtext' => 'string|max:500',
+            'introtext' => 'string',
             'videos' => 'json',
             'images' => 'json',
 //            'tags' => 'json',

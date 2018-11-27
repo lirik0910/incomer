@@ -40,11 +40,11 @@ class CreateNewsTable extends Migration
                 ->comment('News subtitle');
 
             $table->text('description')
-                ->nullable(false)
+                ->nullable(true)
                 ->comment('News description');
 
-            $table->string('introtext', 255)
-                ->nullable(false)
+            $table->text('introtext')
+                ->nullable(true)
                 ->comment('News introtext');
 
             $table->integer('views', false)

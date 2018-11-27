@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import {ThemeProvider} from 'react-jss';
@@ -17,7 +17,9 @@ render(<ThemeProvider theme={theme}>
     <BrowserRouter basename="/manager">
         <Provider store={store()}>
             <Switch>
-
+                <Route exact path="/" render={() => (
+                    <Redirect to="/news"/>
+                )}/>
                 <Route
                     exact
                     path="/login"
@@ -56,6 +58,14 @@ render(<ThemeProvider theme={theme}>
                     path="/news"
                     component={Loadable({
                         loader: () => import('routes/NewsListContainer/index'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+                <Route
+                    exact
+                    path="/news/create"
+                    component={Loadable({
+                        loader: () => import('routes/NewsEditContainer/index'),
                         loading: () => <PageLoadingProcess/>
                     })}/>
 

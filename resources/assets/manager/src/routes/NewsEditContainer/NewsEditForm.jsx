@@ -9,27 +9,25 @@ import Input from 'components/Input';
 import FieldDraftEditor from 'components/FieldDraftEditor';
 import Alert from 'components/Alert';
 
-import {
-    newsListPageErrorMessage,
-} from 'actions/newsListPageActions';
-
-import FoldersListManager from 'components/FoldersListManager';
-import FilesListManager from 'components/FilesListManager';
-import FolderListItem from 'components/FolderListItem';
-import FileListItem from 'components/FileListItem';
+import {newsListPageErrorMessage,} from 'actions/newsListPageActions';
+import {changeDisplayFilesManagerAction} from 'actions/filesListActions.js';
 
 import {
-    fetchData,
+    createItem,
+    editItem,
     fetchCategories,
     fetchSections,
-    editItem,
-    fetchTags
+    fetchTags,
+    fetchData,
+    fetchNewsWithPatterns
 } from './logic/index';
 import Select from "../../components/Select/Select";
 import Panel from "../../components/Panel/Panel";
 
 import MultiSelect from 'react-select';
 import {bindActionCreators} from "redux";
+import FilesManager from "../ManageMediaItemsContainer/FilesManager";
+import {withRouter} from "react-router-dom";
 
 
 const styles = ({Global, Palette}) => ({
@@ -67,19 +65,19 @@ const styles = ({Global, Palette}) => ({
         }
     },
     filesContainer: {
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        right: 0,
+        bottom: 0,
         zIndex: 9999,
         display: 'grid',
         gridTemplateAreas: `
 				'header header'
 				'page-title control-elements'
-				'folders-list-manager files-list-manager'
+				'files-list-manager folders-list-manager'
 			`,
-        gridTemplateRows: '30px 50px auto',
+        gridTemplateRows: '0px 0px auto',
         gridTemplateColumns: '50% 50%',
         backgroundColor: Palette['color8']
     }
@@ -88,10 +86,22 @@ const styles = ({Global, Palette}) => ({
 class NewsEditContainer extends React.Component {
 
     state = {
-        data: {},
+        data: {
+            category_id: 1,
+            section_id: null,
+            title: '',
+            subtitle: '',
+            description: '',
+            introtext: '',
+            tags: [],
+            type: 'normal',
+            preview_pattern: null,
+            published: false,
+        },
         categories: [],
         sections: [],
         tags: [],
+        withPatterns: [],
         catchedErrorMessage: '',
         displayAlert: false,
     };
@@ -100,7 +110,8 @@ class NewsEditContainer extends React.Component {
         fetchCategories(this)
             .then(() => fetchSections(this))
             .then(() => fetchTags(this))
-            .then(() => fetchData(this.props.id, this));
+            .then(() => fetchNewsWithPatterns(this))
+            .then(() => this.props.id && fetchData(this.props.id, this));
     }
 
     saveChanges = () => {
@@ -109,25 +120,61 @@ class NewsEditContainer extends React.Component {
         const data = {};
         fields.forEach((i) => data[i] = this.state.data[i]);
 
-        editItem(this, this.state.data.id, data);
+        if (this.state.data.id) {
+            editItem(this, this.state.data.id, data);
+        } else {
+            createItem(this, data);
+        }
+    };
+
+    selectImage = () => {
+        const {changeDisplayFilesManagerAction} = this.props;
+
+        changeDisplayFilesManagerAction(true);
+        const self = this;
+        return new Promise(function (resolve) {
+            self.resolveFunction = resolve;
+        });
+    };
+
+
+    setSelectedImage = (image) => {
+        const {changeDisplayFilesManagerAction} = this.props;
+        changeDisplayFilesManagerAction(false);
+
+        this.resolveFunction({data: {link: image.url}});
     };
 
 
     render = () => {
-        const { data, categories, sections, displayAlert, foldersList = [], filesList = [], tags = []} = this.state;
-        const {classes, displayFilesManagerFlag, catchedErrorMessage} = this.props;
+        const {
+            data,
+            categories,
+            sections,
+            displayAlert,
+            foldersList = [],
+            filesList = [],
+            tags = [],
+            withPatterns = [],
+        } = this.state;
+        const {
+            classes,
+            displayFilesManagerFlag,
+            catchedErrorMessage,
+            changeDisplayFilesManagerAction
+        } = this.props;
 
         const categOptions = [
-            ['', null], ...categories.map((i) => [i.title, i.id])
+            ['', null],
+            ...categories.map((i) => [i.title, i.id])
         ];
         const sectionOptions = [
             ['', null],
-            ...sections.filter(((i) => i.category_id === data.category_id)).map((i) => [i.title, i.id])
+            ...sections.filter(((i) => parseInt(i.category_id) === parseInt(data.category_id))).map((i) => [i.title, i.id])
         ];
         const tagsOptions = tags.map((i) => {
             return {label: i.value, ...i}
         });
-
 
         // !!!!!!   ОСТОРОЖНО - ЖУТКИЕ КОСТЫЛИ*   !!!!!!!
         // * некрасивые решения
@@ -176,9 +223,30 @@ class NewsEditContainer extends React.Component {
 
         const previewOptions = [
             ['', null],
-            ...data.category_id ? newsPreviewPatternsOptions[data.category_id][data.type]: []
+            ...data.category_id ? newsPreviewPatternsOptions[data.category_id][data.type] : []
         ];
 
+        let currentPatternNews = '';
+        withPatterns.forEach((cur) => {
+            if (data.type != cur.type ||
+                typeof data.preview_pattern !== 'string' ||
+                typeof cur.preview_pattern !== 'string') return;
+
+            const
+                itemPreview = data.preview_pattern.split('.')[0],
+                curPreview = cur.preview_pattern.split('.')[0];
+
+            if (data.type === 'category_top') {
+                if (itemPreview === curPreview &&
+                    cur.category_id == data.category_id
+                ) {
+                    currentPatternNews = cur;
+                }
+            } else {
+                if (itemPreview === curPreview)
+                    currentPatternNews = cur;
+            }
+        });
 
         return <React.Fragment>
 
@@ -206,7 +274,6 @@ class NewsEditContainer extends React.Component {
                         <a href={"/news/" + data.id + "?preview=1"} target="_blank">
                             <i className="fa fa-eye"></i>
                             Превью
-
                         </a>
                     }/>}
 
@@ -263,9 +330,10 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text="Введение"/>
 
-                        {data.introtext &&
+                        {typeof data.introtext !== 'undefined' &&
                         <div className={classes.textEditor}>
                             <FieldDraftEditor
+                                selectImageCallback={this.selectImage}
                                 defaultValue={data.introtext}
                                 onChange={(e) => {
                                     data.introtext = e;
@@ -279,9 +347,10 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text="Контент"/>
 
-                        {data.description &&
+                        {typeof data.description !== 'undefined' &&
                         <div className={classes.textEditor}>
                             <FieldDraftEditor
+                                selectImageCallback={this.selectImage}
                                 defaultValue={data.description}
                                 onChange={(e) => {
                                     data.description = e;
@@ -325,33 +394,37 @@ class NewsEditContainer extends React.Component {
                         }
                         }
                     />}
-
-                    <Typography
-                        variant="label"
-                        text="Секция"/>
-                    {typeof data.section_id !== 'undefined' && <Select
-                        defaultValue={data.section_id}
-                        name="section_id"
-                        options={sectionOptions}
-                        onChange={(e) => {
-                            data.section_id = e.target.value;
-                            this.setState({data})
-                        }
-                        }
-                    />}
-                    <Typography
+                    {typeof data.section_id !== 'undefined' &&
+                    <>
+                        <Typography
+                            variant="label"
+                            text="Секция"/>
+                        <Select
+                            defaultValue={data.section_id}
+                            name="section_id"
+                            options={sectionOptions}
+                            onChange={(e) => {
+                                data.section_id = e.target.value;
+                                this.setState({data})
+                            }
+                            }
+                        />
+                    </>}
+                    {typeof data.type !== 'undefined' &&
+                    <><Typography
                         variant="label"
                         text="Тип новости"/>
-                    {typeof data.type !== 'undefined' && <Select
-                        defaultValue={data.type}
-                        name="type"
-                        options={newsTypeOptions}
-                        onChange={(e) => {
-                            data.type = e.target.value;
-                            this.setState({data})
-                        }
-                        }
-                    />}
+                        <Select
+                            defaultValue={data.type}
+                            name="type"
+                            options={newsTypeOptions}
+                            onChange={(e) => {
+                                data.type = e.target.value;
+                                this.setState({data})
+                            }
+                            }
+                        />
+                    </>}
 
                     {previewOptions &&
                     <React.Fragment>
@@ -367,7 +440,13 @@ class NewsEditContainer extends React.Component {
                                 this.setState({data})
                             }}
                         />
-                    </React.Fragment>}
+                        {currentPatternNews &&
+                        <Typography
+                            variant="label"
+                            text={'Текущая новость на этой позиции: ' + currentPatternNews.title}/>}
+                    </React.Fragment>
+
+                    }
 
 
                 </Panel>
@@ -377,20 +456,15 @@ class NewsEditContainer extends React.Component {
 
             {!!catchedErrorMessage ?
                 <Alert text={catchedErrorMessage}/> : ''}
-
             {displayFilesManagerFlag ?
                 <Panel className={classes.filesContainer}>
-                    <FoldersListManager>
-                        {foldersList.map((item, i) => (
-                            <FolderListItem key={i} {...item} />
-                        ))}
-                    </FoldersListManager>
-
-                    <FilesListManager>
-                        {filesList.map((item, i) => (
-                            <FileListItem key={i} {...item} />
-                        ))}
-                    </FilesListManager>
+                    <Typography
+                        text="Выберите изображение"
+                        variant="title"/>
+                    <FilesManager
+                        isSelectable={true}
+                        onSelect={this.setSelectedImage}
+                    />
                 </Panel> : ''}
         </React.Fragment>
     }
@@ -398,10 +472,16 @@ class NewsEditContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
     catchedErrorMessage: state.newsListPage.catchedErrorMessage,
+    // foldersList: foldersListSelector(state),
+    // filesList: filesListSelector(state),
+    displayFilesManagerFlag: state.filesList.displayFilesManagerFlag,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    newsListPageErrorMessage: bindActionCreators(newsListPageErrorMessage, dispatch)
+    newsListPageErrorMessage: bindActionCreators(newsListPageErrorMessage, dispatch),
+    changeDisplayFilesManagerAction: bindActionCreators(changeDisplayFilesManagerAction, dispatch)
+
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEditContainer));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEditContainer)));
+

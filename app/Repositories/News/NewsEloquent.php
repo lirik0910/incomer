@@ -118,6 +118,12 @@ class NewsEloquent implements NewsRepository
     }
 
 
+    public function withPatterns()
+    {
+        $news = $this->model->whereIn('type', ['top', 'category_top'])->get();
+        return $news;
+    }
+
 
     public function one(int $id)
     {
@@ -207,12 +213,15 @@ class NewsEloquent implements NewsRepository
         if( !empty($data['preview_pattern']) && $data['preview_pattern'] !== $old['preview_pattern'] ||
             !empty($data['type'] ) && $data['type'] !== $old['type']
         ){
-            $oldPatternNews = $this->model->where([
+            $whereParams = [
                 'preview_pattern' => $data['preview_pattern'] ?? $old['preview_pattern'],
-                'type' => $data['type'] ?? $old['type']
-            ])->first();
+                'type' => $data['type'] ?? $old['type']];
 
-            $oldPatternNews->update(['type' => 'hot']);
+            if($whereParams['type'] === 'category_top')
+                $whereParams['category_id'] = $data['category_id'] ?? $old['category_id'];
+
+            $oldPatternNews = $this->model->where($whereParams)->first();
+            if(!empty($oldPatternNews)) $oldPatternNews->update(['type' => 'hot']);
         }
 
         $old->update($data);

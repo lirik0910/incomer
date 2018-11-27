@@ -27,11 +27,11 @@ class NewsCreateRequest extends FormRequest
             'title' => 'required|string|max:400',
             'category_id' => 'required|integer',
             'related_id' => 'integer',
-            'description' => 'required|string',
-            'introtext' => 'required|string|max:500',
+//            'description' => 'string',
+//            'introtext' => 'string',
             'videos' => 'json',
             'images' => 'json',
-            'tags' => 'json',
+//            'tags' => 'json',
 
         ];
     }

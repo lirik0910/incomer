@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -30,8 +30,7 @@ class LayoutComponent extends Component {
 	componentWillReceiveProps(props: Object): void {
 		// window.Base.removeEventListener('AddDraftImage');
 		// window.Base.addEventListener('AddDraftImage', (e) => this.selectImage(e.detail));
-
-		if (this.props.expanded && !props.expanded && this.state.holdExpanded === false) {
+        if (this.props.expanded && !props.expanded && this.state.holdExpanded === false) {
 			this.setState({
 				imgSrc: '',
 				dragEnter: false,
@@ -57,7 +56,7 @@ class LayoutComponent extends Component {
 	};
 
 	onImageDrop: Function = (event: Object): void => {
-		event.preventDefault();
+        event.preventDefault();
 		event.stopPropagation();
 		this.setState({
 			dragEnter: false,
@@ -136,7 +135,7 @@ class LayoutComponent extends Component {
 	uploadImage: Function = (file: Object): void => {
 		this.toggleShowImageLoading();
 		const { uploadCallback } = this.props.config;
-		uploadCallback(file)
+        uploadCallback(file)
 			.then(({ data }) => {
 				this.setState({
 					showImageLoading: false,
@@ -153,7 +152,9 @@ class LayoutComponent extends Component {
 	};
 
 	fileUploadClick = (event) => {
-		this.setState({ holdExpanded: true }, () => this.props.config.uploadCallback(null));
+		// TODO: select Image from editor
+        this.setState({ holdExpanded: true });
+        this.uploadImage(null);
 	}
 
 	stopPropagation: Function = (event: Object): void => {

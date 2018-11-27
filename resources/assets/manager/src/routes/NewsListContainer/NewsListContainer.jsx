@@ -7,6 +7,7 @@ import Typography from 'components/Typography';
 import Alert from 'components/Alert';
 
 import NewsListTable from './NewsListTable.jsx';
+import {Link} from "react-router-dom";
 
 
 const styles = ({Global, Palette}) => ({
@@ -66,8 +67,10 @@ class NewsListContainer extends React.PureComponent {
                     color="secondary"
                     text={
                         <React.Fragment>
+                            <Link to="/news/create">
                             <i className="fa fa-plus"></i>
                             Добавить новость
+                            </Link>
                         </React.Fragment>
                     }
                   />

@@ -1,4 +1,4 @@
-import { setObjectToQueryString } from 'url.js';
+import {setObjectToQueryString} from 'url.js';
 import fetchData from './fetchData.js';
 
 export default (self) => (e) => {

@@ -22,8 +22,12 @@ class NewsController extends Controller
     public function index(Request $request)
     {
         try {
-            $params = $request->only(['page', 'filter', 'sort_column', 'sort_direction', 'query']);
-            $result = $this->model->all($params);
+            $params = $request->only(['page', 'filter', 'sort_column', 'sort_direction', 'query', 'withPatterns']);
+            if(!empty($params['withPatterns'])){
+                $result = $this->model->withPatterns();
+            } else {
+                $result = $this->model->all($params);
+            }
 
             return response()->json($result);
         } catch (\Exception $e) {
@@ -37,7 +41,7 @@ class NewsController extends Controller
             $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'preview_pattern', 'type', 'published', 'images', 'videos', 'tags']);
             $data['creator_id'] = Auth::user()->id;
 
-            if($data['pubished']){
+            if(!empty($data['published'])){
                 $data['publish_date'] = now();
                 $data['publisher_id'] = $data['creator_id'];
             }

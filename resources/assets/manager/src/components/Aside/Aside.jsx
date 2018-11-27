@@ -2,7 +2,6 @@ import React from 'react';
 import withStyles from 'react-jss';
 import Overlay from 'components/Overlay';
 import Button from "../Button/Button";
-import Typography from "../Typography/Typography";
 import Link from "../Link/Link";
 
 

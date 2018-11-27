@@ -45,8 +45,7 @@ class FilesListManager extends React.PureComponent {
 
     render = () => {
         const {
-            classes, children = [], onCreate = () => {
-            }, onSearch = () => {}
+            classes, children = [], onCreate = () => {}, onSearch = () => {}
         } = this.props;
 
         return <Panel className={classes.root}>

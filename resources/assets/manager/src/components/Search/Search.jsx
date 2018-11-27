@@ -4,7 +4,7 @@ import withStyles from 'react-jss';
 import Input from 'components/Input';
 import Button from 'components/Button';
 
-import { getItemFromQueryProps } from 'url.js';
+import {getItemFromQueryProps} from 'url.js';
 
 export default withStyles(() => ({
 	root: {

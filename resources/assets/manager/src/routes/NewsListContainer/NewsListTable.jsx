@@ -1,10 +1,7 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
-import {
-    newsListPageErrorMessage,
-    newsListPageLoading,
-} from 'actions/newsListPageActions.js';
+import {newsListPageErrorMessage, newsListPageLoading,} from 'actions/newsListPageActions.js';
 
 import Panel from 'components/Panel';
 import Table from 'components/Table';
@@ -15,14 +12,7 @@ import Pagination from 'components/Pagination';
 import Typography from 'components/Typography';
 import Dialog from 'components/Dialog';
 
-import {
-    submitForm,
-    deleteOneItem,
-    sortNews,
-    switchPage,
-    restoreItem,
-    deleteForeverOneItem,
-} from './logic';
+import {deleteForeverOneItem, deleteOneItem, restoreItem, sortNews, submitForm, switchPage,} from './logic';
 
 import {defineQueryProps} from 'url.js';
 import Link from "../../components/Link/Link";
@@ -76,8 +66,6 @@ class NewsListTable extends React.PureComponent {
     render = () => {
         const {classes, dataLoadingFlag, catchedErrorMessage} = this.props;
         const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, prepareDeleteForeverRowID = 0} = this.state;
-
-        console.log(catchedErrorMessage);
 
         return <React.Fragment>
             <Panel className={classes.root}>
