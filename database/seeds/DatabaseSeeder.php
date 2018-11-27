@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
              VideosTableSeeder::class,
              ImagesTableSeeder::class,
              ImageNewsCollectionsTableSeeder::class,
+             PersonsFieldContentsSeeder::class
          ]);
     }
 }

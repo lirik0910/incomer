@@ -13,7 +13,7 @@ class PersonTypeFieldsTableSeeder extends Seeder
     {
         $persons = [
             'company' => [
-                'symbol', 'title', 'logo', 'state', 'price', 'change', 'exchange',
+                'ticker', 'title', 'logo', 'state', 'price', 'change', 'exchange',
                 'founding_date', 'industry', 'description', 'market_capitalization',
                 'shares_in_circulation', 'address', 'phone', 'fax', 'website'
             ],
