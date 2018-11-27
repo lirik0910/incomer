@@ -68,7 +68,10 @@ class ImageController extends Controller
 
             if($request->file('image')){
                 $data['path'] = $item['path'] ? ltrim(rtrim($item['path'],'/'),'/'): '';
-                $data['url'] = '/storage/'.$request->file('image')->store('images'.$item['path']);
+                $data['path'] = '/' .  $data['path'];
+                $data['url'] = '/storage/'.$request
+                        ->file('image')
+                        ->storeAs('images'.$item['path'], basename($item['url']));
             } else {
                 unset($data['path']);
             }

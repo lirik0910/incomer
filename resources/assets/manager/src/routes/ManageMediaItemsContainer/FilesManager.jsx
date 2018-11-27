@@ -2,13 +2,8 @@ import React from 'react';
 import withStyles from 'react-jss';
 
 import {connect} from 'react-redux';
-import {
-    filesListPageErrorMessage
-} from 'actions/filesListActions.js';
-import {
-    fetchImages,
-    deleteItem,
-} from './logic';
+import {filesListPageErrorMessage} from 'actions/filesListActions.js';
+import {deleteItem, fetchImages,} from './logic';
 
 
 import FilesListManager from 'components/FilesListManager';
@@ -33,7 +28,7 @@ class FilesManager extends React.Component {
 
     render = () => {
         const {images, editId} = this.state;
-        const {classes, catchedErrorMessage} = this.props;
+        const {classes, catchedErrorMessage, isSelectable = false, onSelect = () => {}} = this.props;
 
         return <React.Fragment>
 
@@ -59,9 +54,11 @@ class FilesManager extends React.Component {
             >
 
             <FileEditManager
+                isSelectable={isSelectable}
                 editId={editId}
                 onEdit={() => fetchImages(this)}
                 onCreate={() => fetchImages(this)}
+                onSelect={(img) => onSelect(img)}
             />
             {!!catchedErrorMessage && <Alert text={catchedErrorMessage}/> }
 

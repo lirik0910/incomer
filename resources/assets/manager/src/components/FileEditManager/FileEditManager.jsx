@@ -4,14 +4,8 @@ import withStyles from 'react-jss';
 import Panel from 'components/Panel';
 import Button from 'components/Button';
 import Typography from 'components/Typography';
-import {
-    fetchImage,
-    createItem,
-    editItem,
-} from 'routes/ManageMediaItemsContainer/logic';
-import {
-    filesListPageErrorMessage
-} from 'actions/filesListActions.js';
+import {createItem, editItem, fetchImage,} from 'routes/ManageMediaItemsContainer/logic';
+import {filesListPageErrorMessage} from 'actions/filesListActions.js';
 import Input from "../Input/Input";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import {bindActionCreators} from "redux";
@@ -72,7 +66,7 @@ class FileEditManager extends React.Component {
     }
 
     render = () => {
-        const {classes, onEdit = () => {}, onCreate = () => {}} = this.props;
+        const {classes, onEdit = () => {}, onCreate = () => {}, isSelectable, onSelect = () => {}} = this.props;
         let {currentItem, newItem} = this.state;
 
 
@@ -139,6 +133,13 @@ class FileEditManager extends React.Component {
                                     onEdit();
                                 });
                             }}/>
+
+                    {isSelectable && <Button variant="tab"
+                            text={'Select'}
+                            onClick={() => {
+                                    onSelect(currentItem);
+                            }}/>}
+
                 </React.Fragment>}
 
                 {!currentItem && <React.Fragment>

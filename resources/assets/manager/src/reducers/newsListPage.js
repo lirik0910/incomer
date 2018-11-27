@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { getItemFromQueryProps } from 'url.js';
+import {getItemFromQueryProps} from 'url.js';
 
 const newsListPage = (state = {
 	prepareDeleteRowID: 0, 

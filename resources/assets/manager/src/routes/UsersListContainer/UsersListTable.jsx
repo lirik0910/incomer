@@ -5,8 +5,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {
     userListPageErrorMessage,
-    userListPageSelectedRowsIDsArray,
-    userListPageLoading
+    userListPageLoading,
+    userListPageSelectedRowsIDsArray
 } from 'actions/usersListPageActions.js';
 import {selectedRowsIdsArraySelector} from 'selectors.js';
 
@@ -21,15 +21,7 @@ import Dialog from 'components/Dialog';
 import Input from 'components/Input';
 import Select from 'components/Select';
 
-import {
-    submitForm,
-    deleteOneItem,
-    sortUsers,
-    switchPage,
-    editItem,
-    restoreItem,
-    deleteForeverOneItem
-} from './logic';
+import {deleteForeverOneItem, deleteOneItem, editItem, restoreItem, sortUsers, submitForm, switchPage} from './logic';
 import moment from 'moment';
 import {defineQueryProps} from 'url.js';
 

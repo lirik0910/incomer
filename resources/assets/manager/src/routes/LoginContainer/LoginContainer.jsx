@@ -1,22 +1,13 @@
 import React from 'react';
 import withStyles from 'react-jss'
 
-import Header from 'components/Header';
 import Button from 'components/Button';
-import Aside from 'components/Aside';
 import Typography from 'components/Typography';
-import Link from 'components/Link';
-import Search from 'components/Search';
 import Input from 'components/Input';
-import Dialog from 'components/Dialog';
 import Alert from 'components/Alert';
 
 
-import {
-    signIn,
-} from './logic/index';
-
-import moment from 'moment';
+import {signIn,} from './logic/index';
 import {getItemFromQueryProps} from 'url.js';
 import Panel from "../../components/Panel/Panel";
 
@@ -105,9 +96,6 @@ class LoginContainer extends React.PureComponent {
                 />
 
             </Panel>
-
-
-
 
             {catchedErrorMessage && <Alert
                 text={catchedErrorMessage}/>}

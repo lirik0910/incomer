@@ -3,44 +3,27 @@ import withStyles from 'react-jss';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {
-    userListPageCreatedAt,
-    userListPageLoading,
-    userListPageErrorMessage
-} from 'actions/usersListPageActions.js';
+import {userListPageCreatedAt, userListPageErrorMessage, userListPageLoading} from 'actions/usersListPageActions.js';
 import {
     catchedErrorMessageSelector,
     createdAtFilterValueSelector,
-    selectedRowsIdsArraySelector,
-    dataLoadingFlagSelector
+    dataLoadingFlagSelector,
+    selectedRowsIdsArraySelector
 } from 'selectors.js';
 
 import Header from 'components/Header';
 import Button from 'components/Button';
-import Aside from 'components/Aside';
 import Typography from 'components/Typography';
-import Link from 'components/Link';
-import Search from 'components/Search';
-import Input from 'components/Input';
 import Dialog from 'components/Dialog';
 import Alert from 'components/Alert';
-import Select from 'components/Select';
 import PageLoadingProcess from 'components/PageLoadingProcess';
 
 import UsersListTable from './UsersListTable.jsx';
-import UsersListFilters from './UsersListFilters.jsx';
 import UserEditForm from './UsersEditForm.jsx';
 
-import {
-    clearFilters,
-    copySelectedRows,
-    addItem,
-    deleteSelectedRows
-} from './logic';
+import {addItem, copySelectedRows, deleteSelectedRows} from './logic';
 
 import moment from 'moment';
-import editItem from "./logic/editItem";
-import fetchData from "./logic/fetchData";
 
 const styles = ({Global, Palette}) => ({
     '@global': {
