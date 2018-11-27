@@ -37,12 +37,12 @@ class Aside extends React.Component {
                     {/*<Typography variant="anti"/>*/}
                 </div>
 
-                <Link to="/dashboard" variant="anti">dashboard</Link>
+                {/*<Link to="/dashboard" variant="anti">dashboard</Link>*/}
                 <Link to="/users" variant="anti">Пользователи</Link>
                 <Link to="/news" variant="anti">Новости</Link>
                 <Link to="/tags" variant="anti">Тэги</Link>
-                <Link to="/pages" variant="anti">pages</Link>
-                <Link to="/media" variant="anti">media</Link>
+                {/*<Link to="/pages" variant="anti">pages</Link>*/}
+                <Link to="/media" variant="anti">Медиа</Link>
             </div>
         </React.Fragment> : '';
 

@@ -17,14 +17,14 @@ class Tag extends Model
 
 
 
-    /*
-    * Get news models
-    * @return boolean
-    */
-    public function news()
-    {
-        return $this->hasManyThrough(News::class, TagNewsCollection::class);
-    }
+//    /*
+//    * Get news models
+//    * @return boolean
+//    */
+//    public function news()
+//    {
+//        return $this->hasManyThrough(News::class, TagNewsCollection::class);
+//    }
 
     /*
      * Get person model

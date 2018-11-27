@@ -4,35 +4,34 @@ export default (resource = '', method = 'GET', data = {}) => {
     const apiUrl = 'http://localhost/api';
 
     let body,
-        content = 'multipart/form-data',
+        content = '',
         query = [],
         queryString = '';
 
 
-    if (Object.keys(data).length > 0) {
-        if (method === 'GET' || method === 'DELETE') {
-            for (let key in data) {
-                query.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
-            }
-            queryString = query.join('&');
+    if (method === 'GET' || method === 'DELETE') {
+        for (let key in data) {
+            query.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
         }
-        if (method === 'POST') {
-            if (data instanceof FormData) {
-                body = data;
-            } else {
-                body = JSON.stringify(data);
-                content = 'application/json';
-            }
+        queryString = query.join('&');
+    }
+    if (method === 'POST') {
+
+        if (data instanceof FormData) {
+            body = data;
+        } else {
+            body = JSON.stringify(data);
+            content = 'application/json';
         }
-        if (method === 'PUT') {
-            if (data instanceof FormData) {
-                method = 'POST';
-                data.append('_method', 'put');
-                body = data;
-            } else {
-                body = JSON.stringify(data);
-                content = 'application/json';
-            }
+    }
+    if (method === 'PUT') {
+        if (data instanceof FormData) {
+            method = 'POST';
+            data.append('_method', 'PUT');
+            body = data;
+        } else {
+            body = JSON.stringify(data);
+            content = 'application/json';
         }
     }
 
@@ -44,7 +43,7 @@ export default (resource = '', method = 'GET', data = {}) => {
             credentials: 'include',
             withCredentials: true,
             headers: {
-                'Content-Type': content,
+                ...(content ? {'Content-Type': content} : {}),
                 'X-Requested-With': 'XMLHttpRequest',
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
 

@@ -3,7 +3,6 @@
 namespace App\Repositories\Tag;
 
 use App\Model\Tag;
-use App\Model\TagNewsCollection;
 use App\Model\TagRssCollection;
 use App\Repositories\Tag\TagRepository;
 
@@ -20,20 +19,40 @@ class TagEloquent implements TagRepository
     {
         $page = $params['page'] ?? 1;
         $limit = $params['limit'] ?? 10;
-        $string = $params['string'] ?? '';
+        $string = $params['string'] ?? FALSE;
 
-        if(!$string){
-            $res = $this->model->with('person')->limit($limit)->offset(($page - 1) * $limit);
-        } else{
-            $res = $this->model->where('value', 'LIKE', "%$string%")->with('person');
+        $items = $this->model
+            ->with('person')
+            ->limit($limit)
+            ->withTrashed()
+            ->offset(($page - 1) * $limit);
+
+        if($string){
+            $items = $items->where('value', 'LIKE', "%$string%");
         }
 
-        return $res->get();
+        if (!empty($params['sort_column']) && !empty($params['sort_direction'])) {
+            switch ($params['sort_column']) {
+                case 'person':
+                    $items = $items
+                        ->join('persons', 'persons.id', '=', 'tags.person_id')
+                        ->orderBy('persons.name', $params['sort_direction']);
+                    break;
+
+
+
+                default:
+                    $items = $items->orderBy($params['sort_column'], $params['sort_direction']);
+                    break;
+            }
+        }
+
+        return ['data' => $items->get(), 'total' => $items->count()];
     }
 
     public function one($id)
     {
-        $res = $this->model->with(['person', 'news', 'rss'])->find($id);
+        $res = $this->model->with(['person'])->withTrashed()->find($id);
 
         if (!$res){
             throw new \Exception('Tags was not found');
@@ -51,7 +70,7 @@ class TagEloquent implements TagRepository
 
     public function update($id, array $data)
     {
-        $res = $this->model->find($id);
+        $res = $this->model->withTrashed()->find($id);
 
         if (!$res){
             throw new \Exception('Tags was not found');

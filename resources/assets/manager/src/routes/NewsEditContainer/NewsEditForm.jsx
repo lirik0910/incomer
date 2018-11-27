@@ -1,22 +1,35 @@
 import React from 'react';
 import withStyles from 'react-jss'
 
-import Header from 'components/Header';
+import {connect} from 'react-redux';
+
 import Button from 'components/Button';
 import Typography from 'components/Typography';
 import Input from 'components/Input';
 import FieldDraftEditor from 'components/FieldDraftEditor';
 import Alert from 'components/Alert';
 
+import {
+    newsListPageErrorMessage,
+} from 'actions/newsListPageActions';
+
+import FoldersListManager from 'components/FoldersListManager';
+import FilesListManager from 'components/FilesListManager';
+import FolderListItem from 'components/FolderListItem';
+import FileListItem from 'components/FileListItem';
 
 import {
     fetchData,
     fetchCategories,
     fetchSections,
-    editItem
+    editItem,
+    fetchTags
 } from './logic/index';
 import Select from "../../components/Select/Select";
 import Panel from "../../components/Panel/Panel";
+
+import MultiSelect from 'react-select';
+import {bindActionCreators} from "redux";
 
 
 const styles = ({Global, Palette}) => ({
@@ -45,6 +58,30 @@ const styles = ({Global, Palette}) => ({
     },
     formContainer: {
         margin: 20,
+    },
+    multiselect: {
+        borderRadius: 0,
+        '&>div': {
+            backgroundColor: Palette['color6'],
+            borderRadius: 0,
+        }
+    },
+    filesContainer: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 9999,
+        display: 'grid',
+        gridTemplateAreas: `
+				'header header'
+				'page-title control-elements'
+				'folders-list-manager files-list-manager'
+			`,
+        gridTemplateRows: '30px 50px auto',
+        gridTemplateColumns: '50% 50%',
+        backgroundColor: Palette['color8']
     }
 });
 
@@ -54,18 +91,20 @@ class NewsEditContainer extends React.Component {
         data: {},
         categories: [],
         sections: [],
+        tags: [],
         catchedErrorMessage: '',
         displayAlert: false,
     };
 
     componentDidMount() {
-        fetchData(this.props.id, this);
-        fetchCategories(this);
-        fetchSections(this);
+        fetchCategories(this)
+            .then(() => fetchSections(this))
+            .then(() => fetchTags(this))
+            .then(() => fetchData(this.props.id, this));
     }
 
     saveChanges = () => {
-        const fields = ['title', 'subtitle', 'category_id', 'published', 'introtext', 'description', 'preview_pattern', 'section_id', 'type'];
+        const fields = ['title', 'subtitle', 'category_id', 'published', 'introtext', 'description', 'preview_pattern', 'section_id', 'type', 'tags'];
 
         const data = {};
         fields.forEach((i) => data[i] = this.state.data[i]);
@@ -75,11 +114,20 @@ class NewsEditContainer extends React.Component {
 
 
     render = () => {
-        const {catchedErrorMessage, data, categories, sections, displayAlert} = this.state;
-        const {classes} = this.props;
+        const { data, categories, sections, displayAlert, foldersList = [], filesList = [], tags = []} = this.state;
+        const {classes, displayFilesManagerFlag, catchedErrorMessage} = this.props;
 
-        const categOptions = [['', null]].concat(categories.map((i) => [i.title, i.id]));
-        const sectionOptions = [['', null]].concat(sections.map((i) => [i.title, i.id]));
+        const categOptions = [
+            ['', null], ...categories.map((i) => [i.title, i.id])
+        ];
+        const sectionOptions = [
+            ['', null],
+            ...sections.filter(((i) => i.category_id === data.category_id)).map((i) => [i.title, i.id])
+        ];
+        const tagsOptions = tags.map((i) => {
+            return {label: i.value, ...i}
+        });
+
 
         // !!!!!!   ОСТОРОЖНО - ЖУТКИЕ КОСТЫЛИ*   !!!!!!!
         // * некрасивые решения
@@ -126,8 +174,10 @@ class NewsEditContainer extends React.Component {
         };
 
 
-        const previewOptions = data.category_id && newsPreviewPatternsOptions[data.category_id][data.type];
-        console.log(previewOptions);
+        const previewOptions = [
+            ['', null],
+            ...data.category_id ? newsPreviewPatternsOptions[data.category_id][data.type]: []
+        ];
 
 
         return <React.Fragment>
@@ -148,6 +198,17 @@ class NewsEditContainer extends React.Component {
                         </React.Fragment>
                     }
                     onClick={this.saveChanges}/>
+
+                {data.id && <Button
+                    variant="link"
+                    color="secondary"
+                    text={
+                        <a href={"/news/" + data.id + "?preview=1"} target="_blank">
+                            <i className="fa fa-eye"></i>
+                            Превью
+
+                        </a>
+                    }/>}
 
             </div>
 
@@ -183,6 +244,23 @@ class NewsEditContainer extends React.Component {
 
                         <Typography
                             variant="label"
+                            text="Тэги"/>
+                        {data.tags && <MultiSelect
+                            defaultValue={data.tags.map((i) => {
+                                return {label: i.value, ...i}
+                            })}
+                            isMulti={true}
+                            isSearchable={true}
+                            className={classes.multiselect}
+                            options={tagsOptions}
+                            onChange={(tags) => {
+                                data.tags = tags;
+                                this.setState({data})
+                            }}
+                        />}
+
+                        <Typography
+                            variant="label"
                             text="Введение"/>
 
                         {data.introtext &&
@@ -211,6 +289,7 @@ class NewsEditContainer extends React.Component {
                                 }}
                             />
                         </div>}
+
 
                     </div>
 
@@ -241,7 +320,7 @@ class NewsEditContainer extends React.Component {
                         name="category_id"
                         options={categOptions}
                         onChange={(e) => {
-                            data.category_id = e.target.value;
+                            data.category_id = e.target.value || null;
                             this.setState({data})
                         }
                         }
@@ -290,15 +369,39 @@ class NewsEditContainer extends React.Component {
                         />
                     </React.Fragment>}
 
+
                 </Panel>
 
             </div>
 
 
-            {displayAlert ?
-                <Alert text={displayAlert}/> : ''}
+            {!!catchedErrorMessage ?
+                <Alert text={catchedErrorMessage}/> : ''}
+
+            {displayFilesManagerFlag ?
+                <Panel className={classes.filesContainer}>
+                    <FoldersListManager>
+                        {foldersList.map((item, i) => (
+                            <FolderListItem key={i} {...item} />
+                        ))}
+                    </FoldersListManager>
+
+                    <FilesListManager>
+                        {filesList.map((item, i) => (
+                            <FileListItem key={i} {...item} />
+                        ))}
+                    </FilesListManager>
+                </Panel> : ''}
         </React.Fragment>
     }
 }
 
-export default withStyles(styles)(NewsEditContainer);
+const mapStateToProps = (state) => ({
+    catchedErrorMessage: state.newsListPage.catchedErrorMessage,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    newsListPageErrorMessage: bindActionCreators(newsListPageErrorMessage, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEditContainer));

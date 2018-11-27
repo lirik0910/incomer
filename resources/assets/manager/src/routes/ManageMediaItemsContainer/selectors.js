@@ -15,8 +15,14 @@ const filesListSelector = createSelector(
 	(managerMediaItemsPage) => managerMediaItemsPage
 );
 
+const displayFilesManagerFlagSelector = createSelector(
+	(state) => state.filesList.displayFilesManagerFlag,
+	(filesList) => filesList
+);
+
 export { 
 	dataLoadingFlagSelector,
 	foldersListSelector,
-	filesListSelector
+	filesListSelector,
+    displayFilesManagerFlagSelector
 };

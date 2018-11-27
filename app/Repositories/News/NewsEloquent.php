@@ -51,7 +51,7 @@ class NewsEloquent implements NewsRepository
                         ->orderBy('users.email', $params['sort_direction']);
                     break;
 
-                    
+
                 default:
                     $items = $items->orderBy($params['sort_column'], $params['sort_direction']);
                     break;
@@ -98,10 +98,10 @@ class NewsEloquent implements NewsRepository
                 ->simplePaginate($limit);
 
             return $news;
-        } elseif ($params['categoryId'] === 3){
+        } elseif ($params['categoryId'] === 3) {
             $limit = 4;
+            $news = $this->model::where(['published' => true, 'type' => 'normal'])->orderBy('publish_date', 'DESC')->limit($limit);
         }
-
         return $news->get();
     }
 
@@ -121,7 +121,7 @@ class NewsEloquent implements NewsRepository
 
     public function one(int $id)
     {
-        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
+        $news = $this->model->withTrashed()->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
 
         if (!$news) {
             throw new \Exception('News was not found');
@@ -134,22 +134,22 @@ class NewsEloquent implements NewsRepository
     {
         $text = $params['searchText'] ?? '';
 
-        $news = $this->model::where('title', 'ilike', '%' . $text .'%')->orWhere('description', 'ilike', '%' . $text .'%')->get();
+        $news = $this->withTrashed()->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->get();
 
         return $news;
     }
 
     public function create(array $data)
     {
-        $images = isset($data['images']) ?? '';
-        $videos = isset($data['videos']) ?? '';
-        $tags = isset($data['tags']) ?? '';
+        $images = $data['images'] ?? '';
+        $videos = $data['videos'] ?? '';
+        $tags = $data['tags'] ?? '';
 
         unset($data['images'], $data['videos'], $data['tags']);
 
         $news = $this->model->create($data);
 
-        if (isset($images) && !empty($images)) {
+        if (!empty($images)) {
             foreach ($images as $image) {
                 $data = [
                     'image_id' => (int)$image,
@@ -160,7 +160,7 @@ class NewsEloquent implements NewsRepository
             }
         }
 
-        if (isset($videos) && !empty($videos)) {
+        if (!empty($videos)) {
             foreach ($videos as $video) {
                 $data = [
                     'video_id' => (int)$video,
@@ -170,8 +170,8 @@ class NewsEloquent implements NewsRepository
                 ImageNewsCollection::create($data);
             }
         }
+        if (!empty($tags)) {
 
-        if (isset($tags) && !empty($tags)) {
             foreach ($tags as $tag) {
                 $data = [
                     'tag_id' => (int)$tag,
@@ -187,24 +187,35 @@ class NewsEloquent implements NewsRepository
 
     public function update(int $id, array $data)
     {
-        $news = $this->model->find($id);
+        $old = $this->model->withTrashed()->find($id);
 
-        if (!$news) {
+        if (!$old) {
             throw new \Exception('News was not found');
         }
-
-        $images = isset($data['images']) ?? '';
-        $videos = isset($data['videos']) ?? '';
-        $tags = isset($data['tags']) ?? '';
+        $images = $data['images'] ?? '';
+        $videos = $data['videos'] ?? '';
+        $tags = $data['tags'] ?? '';
 
         unset($data['images'], $data['videos'], $data['tags']);
 
-        if ($data['published'] && !$news->published) {
+        if ($data['published'] && !$old->published) {
             $data['publisher_id'] = $data['editor_id'];
             $data['publish_date'] = now();
         }
 
-        $news->update($data);
+
+        if( !empty($data['preview_pattern']) && $data['preview_pattern'] !== $old['preview_pattern'] ||
+            !empty($data['type'] ) && $data['type'] !== $old['type']
+        ){
+            $oldPatternNews = $this->model->where([
+                'preview_pattern' => $data['preview_pattern'] ?? $old['preview_pattern'],
+                'type' => $data['type'] ?? $old['type']
+            ])->first();
+
+            $oldPatternNews->update(['type' => 'hot']);
+        }
+
+        $old->update($data);
 
         if (isset($images) && !empty($images)) {
             foreach ($images as $image) {
@@ -213,7 +224,7 @@ class NewsEloquent implements NewsRepository
                 if (!$item) {
                     $data = [
                         'image_id' => (int)$image,
-                        'news_id' => (int)$news['id']
+                        'news_id' => (int)$old['id']
                     ];
 
                     ImageNewsCollection::create($data);
@@ -228,7 +239,7 @@ class NewsEloquent implements NewsRepository
                 if (!$item) {
                     $data = [
                         'video_id' => (int)$video,
-                        'news_id' => (int)$news['id']
+                        'news_id' => (int)$old['id']
                     ];
 
                     VideoNewsCollection::create($data);
@@ -237,17 +248,14 @@ class NewsEloquent implements NewsRepository
         }
 
         if (isset($tags) && !empty($tags)) {
+            TagNewsCollection::where('news_id', $old['id'])->delete();
             foreach ($tags as $tag) {
+                $data = [
+                    'tag_id' => (int)$tag,
+                    'news_id' => (int)$old['id']
+                ];
 
-                $item = TagNewsCollection::where(['news_id' => $id, 'tag_id' => (int)$tag])->first();
-                if (!$item) {
-                    $data = [
-                        'tag_id' => (int)$tag,
-                        'news_id' => (int)$news['id']
-                    ];
-
-                    TagNewsCollection::create($data);
-                }
+                TagNewsCollection::create($data);
             }
         }
 

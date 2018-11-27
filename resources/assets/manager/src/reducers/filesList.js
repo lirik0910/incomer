@@ -1,11 +1,17 @@
 
 const filesList = (state = {
+    displayFilesManagerFlag: false
 }, action) => {
 	switch(action.type) {
-		// case 'FILES_LIST_ROWS_ARE_SELECTED_SELECTED':
-		// 	return { ...state, selectedRowsFlag: action.payload };
+		case 'CHANGE_DISPLAY_FILES_MANAGER':
+			console.log(action.payload)
+			return { ...state, displayFilesManagerFlag: action.payload };
 
-		default:
+        case 'FILES_PAGE_ERROR_MESSAGE':
+            return { ...state, catchedErrorMessage: action.payload };
+
+
+        default:
 			return { ...state }
 	}
 }

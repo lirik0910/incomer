@@ -24,12 +24,9 @@ import Select from 'components/Select';
 import {
     submitForm,
     deleteOneItem,
-    selectOneRow,
-    selectAllRows,
     sortUsers,
     switchPage,
     editItem,
-    fetchData,
     restoreItem,
     deleteForeverOneItem
 } from './logic';
@@ -85,11 +82,11 @@ class UsersListTable extends React.PureComponent {
         prepareDeleteForeverRowID: 0,
         currentEditRowIndex: -1,
         currentEditRowCreatedAt: null
-    }
+    };
 
     componentDidMount = () => {
         document.getElementById('users-data-fetch-submit').click();
-    }
+    };
 
     render = () => {
         const {classes} = this.props;
