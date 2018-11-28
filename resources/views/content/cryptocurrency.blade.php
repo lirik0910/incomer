@@ -12,64 +12,74 @@
           <li class="tag__item"><a class="tag__link" href="#">AMD</a></li>
         </ul>
       </div>
-      <div class="cost">
-        <ul class="cost__list">
-          <li class="cost__item"> <span>Bitcoin</span><span>$6.8281,50</span></li>
-          <li class="cost__item"> <span>Ethereum </span><span>$1.4917,28</span></li>
-          <li class="cost__item"> <span>Zcash </span><span>$809,91</span></li>
+      <div class="rate">
+        <ul class="rate__list rate__list--active">
+          <li class="rate__item"><span>Bitcoin</span><span>$6.8281,50</span></li>
+          <li class="rate__item"><span>Ethereum</span><span>$1.4917,28</span></li>
+          <li class="rate__item"><span>Zcash</span><span>$809,91</span></li>
+        </ul>
+        <ul class="rate__list">
+          <li class="rate__item"><span>Ripple</span><span>$6.8281,50</span></li>
+          <li class="rate__item"><span>EOS</span><span>$1.4917,28</span></li>
+          <li class="rate__item"><span>Bitcoin Cash</span><span>$809,91</span></li>
+        </ul>
+        <ul class="rate__list">
+          <li class="rate__item"><span>XRP</span><span>$6.8281,50</span></li>
+          <li class="rate__item"><span>Stellar</span><span>$1.4917,28</span></li>
+          <li class="rate__item"><span>Litecoin</span><span>$809,91</span></li>
         </ul>
       </div>
-        <div class="sort">
-          <ul class="sort__list">
-            <li class="sort__item">
-              <a class="sort__link" href="#">
-                @include('svg.view-list')
-              </a>
-            </li>
-            <li class="sort__item">
-              <a class="sort__link sort__link--active" href="#">
-                @include('svg.view-thumbs')
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="sort">
+        <ul class="sort__list">
+          <li class="sort__item">
+            <a class="sort__link" href="#">
+              @include('svg.view-list')
+            </a>
+          </li>
+          <li class="sort__item">
+            <a class="sort__link sort__link--active" href="#">
+              @include('svg.view-thumbs')
+            </a>
+          </li>
+        </ul>
       </div>
-      <section class="main-news">
-        <div class="row">
-          <a class="card card--large" href="#">
-            <article class="card__article">
-              <div class="card__pic">
-                <img src="img/man2.png">
+    </div>
+    <section class="main-news">
+      <div class="row">
+        <a class="card card--large" href="#">
+          <article class="card__article">
+            <div class="card__pic">
+              <img src="img/man2.png">
+            </div>
+            <div class="card__content">
+              <div class="card__text">
+                <p>Tesla покупает 50% акций Bitmain на сумму $2 млрд</p>
               </div>
-              <div class="card__content">
-                <div class="card__text">
-                  <p>Tesla покупает 50% акций Bitmain на сумму $2 млрд</p>
-                </div>
-                <div class="card__statistic">
-                  <span class="views-post">1034</span>
-                  <span class="comments-post">537</span>
-                </div>
+              <div class="card__statistic">
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
-            </article>
-          </a>
-          <a class="card card--square-full-img" href="#">
-            <article class="card__article">
-              <div class="card__pic">
-                <img src="img/photo-light.jpg">
+            </div>
+          </article>
+        </a>
+        <a class="card card--square-full-img" href="#">
+          <article class="card__article">
+            <div class="card__pic">
+              <img src="img/photo-light.jpg">
+            </div>
+            <div class="card__content">
+              <div class="card__text">
+                <p>Facebook презентовал своё первое электронное устройство</p>
               </div>
-              <div class="card__content">
-                <div class="card__text">
-                  <p>Facebook презентовал своё первое электронное устройство</p>
-                </div>
-                <div class="card__statistic">
-                  <span class="views-post">1034</span>
-                  <span class="comments-post">537</span>
-                </div>
+              <div class="card__statistic">
+                <span class="views-post">1034</span>
+                <span class="comments-post">537</span>
               </div>
-            </article>
-          </a>
-          <div class="faq">
-            <p class="faq__title">ЧАВО для чайников</p>
+            </div>
+          </article>
+        </a>
+        <div class="faq">
+          <p class="faq__title">ЧАВО для чайников</p>
             <ul class="faq__list">
               <li class="faq__item">
                 <a class="faq__link" href="#">Что такое криптовалюта?</a>

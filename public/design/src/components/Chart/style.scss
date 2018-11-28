@@ -120,6 +120,15 @@
 		// .highcharts-5mbmonx-0 {
 		// 	overflow: visible;
 		// }
+		// .highcharts-range-selector-group {
+		// 	transform: translate(-41px, 217px);
+		// }
+		.highcharts-axis-labels.highcharts-xaxis-labels.highcharts-navigator-xaxis {
+			opacity: 0;
+		}
+		.highcharts-navigator {
+			opacity: 0;
+		}
 	}
 
 

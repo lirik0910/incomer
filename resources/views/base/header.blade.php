@@ -25,185 +25,19 @@
                         <ul class="search__category-list">
                             <li class="search__category-item"><a
                                         class="search__category-link search__category-link--active"
-                                        href="#">Всё</a><span class="search__category-count">307</span></li>
+                                        href="#">Всё</a><span class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link" href="#">Новости</a><span
-                                        class="search__category-count">306</span></li>
+                                        class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link"
                                                                  href="#">Компании</a><span
                                         class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link" href="#">Люди</a><span
-                                        class="search__category-count">1</span></li>
+                                        class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link"
                                                                  href="#">Продукты</a><span
                                         class="search__category-count">0</span></li>
                         </ul>
                     </div>
-                    <!--<div class="search__info">
-                        <ul class="search__info-list search__info-list--active">
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/photo-light.jpg"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/photo-dark.jpg"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                        </ul>
-                        <ul class="search__info-list">
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                        </ul>
-                        <ul class="search__info-list">
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                        </ul>
-                        <ul class="search__info-list">
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                        </ul>
-                        <ul class="search__info-list">
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li class="search__info-item"><a class="search__info-link" href="#">
-                                    <div class="search__info-pic"><img class="search__info-img"
-                                                                       src="/img/placeholder.png"></div>
-                                    <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                                        <time class="search__info-time">Сегодня в 16:54</time>
-                                        <div class="search__info-text">
-                                            <p>Илон Маск заявил в личном твиттере о своей любви к аниме, после чего
-                                                акции Tesla взлетели на 12%</p>
-                                        </div>
-                                    </div>
-                                </a></li>
-                        </ul>
-                    </div>-->
                 </div>
             </div>
             <div class="header__profile @if (Auth::check()) header__profile--login @endif">

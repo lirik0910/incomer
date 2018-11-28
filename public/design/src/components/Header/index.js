@@ -15,6 +15,7 @@ export default class Header extends Base {
         	_searchBtn: $('.header .search__btn'),
         	_searchResult: $('.header .search__results'),
         	_searchCategory: $('.header .search__category'),
+        	_searchInfoList: $('.header .search__info-list'),
         	_searchCategoryCount: $('.header .search__category-count'),
         	_searchCategoryList: $('.header .search__category-list'),
         	_searchCategoryLink: $('.header .search__category-link')
@@ -26,12 +27,13 @@ export default class Header extends Base {
 		this.els._headerProfileWrap.click(() => this.loginProfile());
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));
 		this.els._searchInput.on('input', (e) => this.getSearchResult(e));
-		this.checkSearchResultFilling();
+		// this.checkSearchResultFilling();
 		this.baseDOM._window.click((e) => this.closeSearchByClickOutside(e));
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
 			(e) => this.searchFilter(e));
 		this.els._searchCategoryList.click((e) => e.preventDefault());
+		this.setResultsItems();
 	}
 
 	searchAnimation(e) {
@@ -79,10 +81,31 @@ export default class Header extends Base {
             dataType: 'html',
             data: {searchText: $(e.currentTarget).val()},
         }).done( (data) => {
-            if (this.els._searchResult.children('.search__info')) {
-            	this.els._searchResult.children('.search__info').remove();
+            if (this.els._searchResult.find('.search__info')) {
+            	this.els._searchResult.find('.search__info').remove();
             }
             this.els._searchResult.append(data);
+
+			switch($('.search__category-link--active').parent().index()) {
+				case 0:
+					$('.header .search__info-list.all').addClass('search__info-list--active');
+					break;
+				case 1:
+					$('.header .search__info-list.news').addClass('search__info-list--active');
+					break;
+				case 2:
+					$('.header .search__info-list.companies').addClass('search__info-list--active');
+					break;
+				case 3:
+					$('.header .search__info-list.peoples').addClass('search__info-list--active');
+					break;
+				case 4:
+					$('.header .search__info-list.products').addClass('search__info-list--active');
+					break;
+				default:
+					$('.header .search__info-list.all').addClass('search__info-list--active');
+			}
+			this.checkSearchResultFilling();
         }).fail( (e) => { });
 	}
 
@@ -98,13 +121,39 @@ export default class Header extends Base {
 	}
 
 	searchFilter(e) {
-		e.preventDefault();
+
+		/*e.preventDefault();
 		this.els._searchCategoryLink.removeClass('search__category-link--active')
 		$(e.currentTarget).addClass('search__category-link--active')
 		$('.header .search__info-list').removeClass('search__info-list--active');
 		$('.header .search__info-list')
 			.eq($(e.currentTarget).parent().index())
-			.addClass('search__info-list--active');
+			.addClass('search__info-list--active');*/
+
+		e.preventDefault();
+		this.els._searchCategoryLink.removeClass('search__category-link--active');
+		$(e.currentTarget).addClass('search__category-link--active');
+		$('.header .search__info-list').removeClass('search__info-list--active');
+
+		switch($(e.currentTarget).parent().index()) {
+			case 0:
+				$('.header .search__info-list.all').addClass('search__info-list--active');
+				break;
+			case 1:
+				$('.header .search__info-list.news').addClass('search__info-list--active');
+				break;
+			case 2:
+				$('.header .search__info-list.companies').addClass('search__info-list--active');
+				break;
+			case 3:
+				$('.header .search__info-list.peoples').addClass('search__info-list--active');
+				break;
+			case 4:
+				$('.header .search__info-list.products').addClass('search__info-list--active');
+				break;
+			default:
+				$('.header .search__info-list.all').addClass('search__info-list--active');
+		}
 	}
 
 	closeSearchByClickOutside(e) {
@@ -121,5 +170,13 @@ export default class Header extends Base {
 				this.els._searchResult.fadeOut();
 			}
 		}
+	}
+
+	setResultsItems() {
+		for (var i = 0; i < $('.search__info-list').length; i++) {
+			var itemNum = $($('.search__info-list')[i]).children().length;
+			$($('.search__category-count')[i]).text(itemNum);
+		}
+		this.checkSearchResultFilling();
 	}
 }

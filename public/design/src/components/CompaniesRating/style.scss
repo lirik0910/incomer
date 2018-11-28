@@ -106,5 +106,18 @@
 		&:active {
 			background-color: $darker-blue;
 		}
+		span {
+			vertical-align: middle;
+			letter-spacing: 0.4px;
+		}
+		svg {
+			width: 15px;
+			height: 15px;
+			margin-left: 10px;
+			vertical-align: middle;
+			path {
+				fill: $light-color;
+			}
+		}
 	}
 }

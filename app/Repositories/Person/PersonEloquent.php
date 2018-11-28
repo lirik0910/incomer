@@ -107,7 +107,15 @@ class PersonEloquent implements PersonRepository
         }
 
         return $this->get($id);
+    }
 
+    public function search(array $params)
+    {
+        $text = $params['searchText'] ?? '';
+
+        $persons = $this->model::where('name', 'ilike', '%' . $text . '%')->with('fields', 'type')->get();
+
+        return $persons;
     }
 
     public function delete($id)

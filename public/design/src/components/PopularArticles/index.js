@@ -3,15 +3,18 @@ import Base from '../../Base.js';
 export default class PopularArticles extends Base {
 	initDOMElements(e) {
         this.els = {
-        	// _headerNav: $('.header__nav'),
-            _news: $('.news'),
-           // _moreBttn: this.els._newsWrap.find('.more'),
+            _news: $('.news')
         }
     }
 
 	onDOMReady(e) {
-	    this.els._news.find('.more').click( (e) => this.getMoreArticles(e));
+	    this.els._news.find('.more').click((e) => this.getMoreArticles(e));
 	}
+
+
+	ajaxComplete(e){
+        this.els._news.find('.more').click( (e) => this.getMoreArticles(e));
+    }
 
 	getMoreArticles(e){
 	    e.preventDefault();
