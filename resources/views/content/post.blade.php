@@ -13,11 +13,17 @@
         <div class="post__pic">
             @php
                 $img = $item->images->where('pivot.type', 'preview')->first();
+
+                    if($img !== NULL && File::exists(public_path($img->url))){
+                        $img = asset($img->url);
+                    } else{
+                        $img = asset('img/photo-dark.jpg');
+                    }
             @endphp
-          <img src="{{ $img->url }}">
+          <img src="{{ $img }}">
         </div>
         <div class="post__text">
-            {{ $item->description }}
+            {!! $item->description !!}
         </div>
         <button class="post__comment-btn">Читать комментарии</button>
       </article>

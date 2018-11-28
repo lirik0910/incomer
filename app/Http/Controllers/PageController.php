@@ -93,6 +93,7 @@ class PageController extends Controller
     {
         $params = $request->only(['page']);
         $params['categoryId'] = 2;
+        if($request->ajax()) $params['limit'] = 12;
 
         $current = $this->newsModel->current($params);
 
@@ -162,7 +163,7 @@ class PageController extends Controller
         $params = $request->only('searchText');
         $results['news'] = $this->newsModel->search($params);
         $persons = $this->personModel->search($params)->groupBy('type_id');
-        $results['companies'] = $persons[2];
+        $results['companies'] = $persons ? $persons[2] : [];
 
         $all = [];
 

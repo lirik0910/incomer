@@ -19,6 +19,8 @@ export default class CurrentArticles extends Base {
     getMoreArticles(e){
         e.preventDefault();
 
+        $('.more').prop('disabled', true);
+
         $.ajax({
             url: $(e.target).attr('href'),
             method: 'GET',
