@@ -96,7 +96,6 @@ class PageController extends Controller
 
         $current = $this->newsModel->current($params);
 
-        //var_dump($current); die;
         if($request->ajax()){
             return view('components.blockchain.current_news_list', [
                 'items' => $current,
