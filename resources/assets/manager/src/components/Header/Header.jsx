@@ -10,7 +10,7 @@ class Header extends React.Component {
 
     state = {
         displayAsideMenu: false
-    }
+    };
 
     render() {
         const {
@@ -31,13 +31,23 @@ class Header extends React.Component {
                     text="Incomer"/>
 
                 <div className={classes.primaryButtons}>
-                    <Link to="/profile">
-                        <i className="fa fa-user"></i> profile
-                    </Link>
-                    <Link to="/settings">
-                        <i className="fa fa-gear"></i> settings
-                    </Link>
+                    <Button
+                        variant="icon"
+                        text={
+                            <React.Fragment>
+                                <Typography
+                                    text="logout"/>
+                            </React.Fragment>
+                        }
+
+                        onClick={() => {
+                            localStorage.clear();
+                            window.location.replace("/manager");
+                        }}
+                    />
                 </div>
+
+
             </Panel>
             <Aside
                 onClose={() => this.setState({displayAsideMenu: false})}

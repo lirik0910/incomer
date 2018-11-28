@@ -20,7 +20,7 @@ class PersonController extends Controller
     public function index(Request $request)
     {
         try {
-            $params = $request->only(['page', 'limit']);
+            $params = $request->only(['page', 'limit', 'type_id', 'sort_column', 'sort_direction']);
             $res = $this->model->all($params);
 
             return response()->json($res);

@@ -26,12 +26,29 @@ class PersonEloquent implements PersonRepository
         $limit = $params['limit'] ?? 10;
 
         $items = $this->model
-            ->withTrashed()
             ->with(['type', 'fields.field_type'])
-            ->limit($limit)
-            ->offset(($page - 1) * $limit);
+            ->withTrashed();
 
-        return ['data' => $items->get(), 'total' => $items->count()];
+        if (!empty($params['sort_column']) && !empty($params['sort_direction'])) {
+            switch ($params['sort_column']) {
+
+                default:
+                    $items = $items->orderBy($params['sort_column'], $params['sort_direction']);
+                    break;
+            }
+        } else {
+            $items->orderBy('name', 'asc');
+        }
+
+
+        if(!empty($params['type_id'])){
+            $items->where(['type_id' => $params['type_id']]);
+        }
+
+        return [
+            'total' => $items->count(),
+            'data' => $items->limit($limit)->offset(($page - 1) * $limit)->get(),
+        ];
     }
 
     public function get($id)
@@ -51,10 +68,15 @@ class PersonEloquent implements PersonRepository
         unset($data['fields']);
 
         $item = $this->model->create($data);
+        $fieldsData = [];
         foreach ($fields as $key => $field){
-            $fields[$key]['person_id'] = $item['id'];
+            $fieldsData[] = [
+                'person_id' => $item['id'],
+                'field_id' => $field['field_id'],
+                'value' => $field['value']
+            ];
         }
-        $this->fields->insert($fields);
+        $this->fields->insert($fieldsData);
 
         return $this->get($item['id']);
     }
@@ -69,9 +91,19 @@ class PersonEloquent implements PersonRepository
         unset($data['fields']);
 
         foreach ($fields as $field){
-            $this->fields
+            $old = $this->fields
                 ->where(['person_id' => $id, 'field_id' => $field['field_id']])
-                ->update(['value' => $field['value']]);
+                ->first();
+
+            if(!empty($old)){
+                $old->update(['value' => $field['value']]);
+            } else {
+                $this->fields->create([
+                    'person_id' => $id,
+                    'field_id' => $field['field_id'],
+                    'value' => $field['value']
+                ]);
+            }
         }
 
         return $this->get($id);

@@ -58,6 +58,7 @@ const styles = ({Global, Palette}) => ({
         margin: 20,
     },
     multiselect: {
+        zIndex: 100,
         borderRadius: 0,
         '&>div': {
             backgroundColor: Palette['color6'],
@@ -86,18 +87,7 @@ const styles = ({Global, Palette}) => ({
 class NewsEditContainer extends React.Component {
 
     state = {
-        data: {
-            category_id: 1,
-            section_id: null,
-            title: '',
-            subtitle: '',
-            description: '',
-            introtext: '',
-            tags: [],
-            type: 'normal',
-            preview_pattern: null,
-            published: false,
-        },
+        data: {},
         categories: [],
         sections: [],
         tags: [],
@@ -111,7 +101,26 @@ class NewsEditContainer extends React.Component {
             .then(() => fetchSections(this))
             .then(() => fetchTags(this))
             .then(() => fetchNewsWithPatterns(this))
-            .then(() => this.props.id && fetchData(this.props.id, this));
+            .then(() => {
+                if(!this.props.id)
+                {
+                    this.setState({data: {
+                            category_id: 1,
+                            section_id: null,
+                            title: '',
+                            subtitle: '',
+                            description: '',
+                            introtext: '',
+                            tags: [],
+                            type: 'normal',
+                            preview_pattern: null,
+                            published: false,
+                        }});
+                }
+                else {
+                    return fetchData(this.props.id, this);
+                }
+            });
     }
 
     saveChanges = () => {
@@ -287,7 +296,7 @@ class NewsEditContainer extends React.Component {
                         <Typography
                             variant="label"
                             text="Заголовок"/>
-                        {typeof data.title !== 'undefined' && <Input
+                        {typeof data.title !== 'undefined'  && <Input
                             type="text"
                             name="title"
                             defaultValue={data.title}
@@ -331,7 +340,7 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text="Введение"/>
 
-                        {typeof data.introtext !== 'undefined' &&
+                        {typeof data.introtext !== 'undefined'  &&
                         <div className={classes.textEditor}>
                             <FieldDraftEditor
                                 selectImageCallback={this.selectImage}
@@ -348,7 +357,7 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text="Контент"/>
 
-                        {typeof data.description !== 'undefined' &&
+                        {typeof data.description !== 'undefined'  &&
                         <div className={classes.textEditor}>
                             <FieldDraftEditor
                                 selectImageCallback={this.selectImage}
@@ -368,7 +377,7 @@ class NewsEditContainer extends React.Component {
             </div>
             <div className={classes.formContainer}>
                 <Panel>
-                    {typeof data.published !== 'undefined' && <div>
+                    {typeof data.published !== 'undefined'  && <div>
                         <input type="checkbox"
                                defaultChecked={data.published}
                                onChange={(e) => {
@@ -385,7 +394,7 @@ class NewsEditContainer extends React.Component {
                     <Typography
                         variant="label"
                         text="Категория"/>
-                    {typeof data.category_id !== 'undefined' && <Select
+                    {typeof data.category_id !== 'undefined'  && <Select
                         defaultValue={data.category_id}
                         name="category_id"
                         options={categOptions}
@@ -395,7 +404,7 @@ class NewsEditContainer extends React.Component {
                         }
                         }
                     />}
-                    {typeof data.section_id !== 'undefined' &&
+                    {typeof data.section_id !== 'undefined'  &&
                     <>
                         <Typography
                             variant="label"
@@ -411,7 +420,7 @@ class NewsEditContainer extends React.Component {
                             }
                         />
                     </>}
-                    {typeof data.type !== 'undefined' &&
+                    {typeof data.type !== 'undefined'  &&
                     <><Typography
                         variant="label"
                         text="Тип новости"/>

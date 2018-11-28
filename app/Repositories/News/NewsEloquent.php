@@ -127,7 +127,7 @@ class NewsEloquent implements NewsRepository
 
     public function one(int $id)
     {
-        $news = $this->model->withTrashed()->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
+        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
 
         if (!$news) {
             throw new \Exception('News was not found');
@@ -140,7 +140,7 @@ class NewsEloquent implements NewsRepository
     {
         $text = $params['searchText'] ?? '';
 
-        $news = $this->withTrashed()->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->get();
+        $news = $this->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->get();
 
         return $news;
     }
@@ -290,6 +290,8 @@ class NewsEloquent implements NewsRepository
         if (!$news) {
             return false;
         }
+
+        $news->update(['published' => false]);
 
         return $news->delete();
     }

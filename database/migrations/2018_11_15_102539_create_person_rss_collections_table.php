@@ -25,7 +25,6 @@ class CreatePersonRssCollectionsTable extends Migration
             $table->integer('rss_id')
                 ->nullable(false)
                 ->comment('Rss ID');
-            $table->timestamps();
 
             $table->unique(['person_id', 'rss_id']);
         });

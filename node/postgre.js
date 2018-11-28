@@ -24,7 +24,7 @@ class Database {
                  JOIN person_field_contents ON person_field_contents.person_id = persons.id
           WHERE person_types.title = 'company'
             AND person_field_contents.field_id = person_type_fields.id
-            AND person_type_fields.title = 'symbol';
+            AND person_type_fields.title = 'ticker';
         `;
 
         this.tagsQuery = `

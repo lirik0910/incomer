@@ -23,7 +23,7 @@ class PersonsTableSeeder extends Seeder
 
         $companies = [
             'JPM' => 'JPMorgan Chase', 'GE' => 'General Electric',
-            'XOM' => 'ExxonMobil', 'BRK-A' => 'Berkshire Hathaway',
+            'XOM' => 'ExxonMobil', 'BRK.A' => 'Berkshire Hathaway',
             'C' => 'Citigroup', 'WFC' => 'Wells Fargo',
             'T' => 'AT&T', 'CVX' => 'Chevron',
             'COP' => 'ConocoPhillips', 'WMT' => 'Walmart',
