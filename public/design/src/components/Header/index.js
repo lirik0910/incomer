@@ -86,6 +86,26 @@ export default class Header extends Base {
             }
             //console.log(data);
             this.els._searchResult.append(data);
+
+			switch($('.search__category-link--active').parent().index()) {
+				case 0:
+					$('.header .search__info-list.all').addClass('search__info-list--active');
+					break;
+				case 1:
+					$('.header .search__info-list.news').addClass('search__info-list--active');
+					break;
+				case 2:
+					$('.header .search__info-list.companies').addClass('search__info-list--active');
+					break;
+				case 3:
+					$('.header .search__info-list.peoples').addClass('search__info-list--active');
+					break;
+				case 4:
+					$('.header .search__info-list.products').addClass('search__info-list--active');
+					break;
+				default:
+					$('.header .search__info-list.all').addClass('search__info-list--active');
+			}
         }).fail( (e) => { });
 	}
 
