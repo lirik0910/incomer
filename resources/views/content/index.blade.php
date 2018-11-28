@@ -41,6 +41,7 @@
         <div class="news-wrap">
           <div class="news">
               @include('components.index.hot_news_list', ['items' => $hotNews])
+              <button class="news__btn">Показать еще</button>
           </div>
         </div>
       </div>
@@ -179,7 +180,10 @@
                 <td class="rating__table-cell">30.1</td>
               </tr>
             </table>
-            <a class="rating__full-list" href="#">Перейти к рейтингу компаний</a>
+            <a class="rating__full-list" href="#">
+              <span>Перейти к полному рейтингу</span>
+              @include('svg.arrow')
+            </a>
           </div>
         </div>-->
       </div>

@@ -7,6 +7,7 @@
 @import '../../components/Auth/style.scss';
 // @import '../../components/Strip/style.scss';
 @import '../../components/Tags/style.scss';
+@import '../../components/Rate/style.scss';
 @import '../../components/Card/style.scss';
 @import '../../components/Exchange/style.scss';
 @import '../../components/Footer/style.scss';
@@ -97,24 +98,24 @@
 	.tag {
 		display: inline-block;
 	}
-	.cost {
-		display: inline-block;
-		// margin-left: 36px;
-		&__item {
-			display: inline-block;
-			font-weight: 900;
-			font-size: 14px;
-			letter-spacing: 0.5px;
-			&:not(:last-of-type) {
-				margin-right: 18px;
-			}
-			span {
-				&:not(:last-of-type) {
-					margin-right: 10px;
-				}
-			}
-		}
-	}
+	// .cost {
+	// 	display: inline-block;
+	// 	// margin-left: 36px;
+	// 	&__item {
+	// 		display: inline-block;
+	// 		font-weight: 900;
+	// 		font-size: 14px;
+	// 		letter-spacing: 0.5px;
+	// 		&:not(:last-of-type) {
+	// 			margin-right: 18px;
+	// 		}
+	// 		span {
+	// 			&:not(:last-of-type) {
+	// 				margin-right: 10px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 	.sort {
 		display: inline-block;
 		&__list {
