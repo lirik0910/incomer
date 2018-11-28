@@ -33,23 +33,7 @@ export default class Header extends Base {
 			'a:not(.search__category-link--active, .search__category-link--light)', 
 			(e) => this.searchFilter(e));
 		this.els._searchCategoryList.click((e) => e.preventDefault());
-
-
 		this.setResultsItems();
-
-
-
-		// for (var i = 0; i < this.els._searchInfoList.length; i++) {
-		// 	var itemNum = $(this.els._searchInfoList[i]).children().length;
-		// 	$(this.els._searchCategoryCount[i]).text(itemNum);
-		// }
-
-		// this.checkSearchResultFilling();
-
-
-
-
-
 	}
 
 	searchAnimation(e) {
@@ -117,13 +101,39 @@ export default class Header extends Base {
 	}
 
 	searchFilter(e) {
-		e.preventDefault();
+
+		/*e.preventDefault();
 		this.els._searchCategoryLink.removeClass('search__category-link--active')
 		$(e.currentTarget).addClass('search__category-link--active')
 		$('.header .search__info-list').removeClass('search__info-list--active');
 		$('.header .search__info-list')
 			.eq($(e.currentTarget).parent().index())
-			.addClass('search__info-list--active');
+			.addClass('search__info-list--active');*/
+
+		e.preventDefault();
+		this.els._searchCategoryLink.removeClass('search__category-link--active');
+		$(e.currentTarget).addClass('search__category-link--active');
+		$('.header .search__info-list').removeClass('search__info-list--active');
+
+		switch($(e.currentTarget).parent().index()) {
+			case 0:
+				$('.header .search__info-list.all').addClass('search__info-list--active');
+				break;
+			case 1:
+				$('.header .search__info-list.news').addClass('search__info-list--active');
+				break;
+			case 2:
+				$('.header .search__info-list.companies').addClass('search__info-list--active');
+				break;
+			case 3:
+				$('.header .search__info-list.peoples').addClass('search__info-list--active');
+				break;
+			case 4:
+				$('.header .search__info-list.products').addClass('search__info-list--active');
+				break;
+			default:
+				$('.header .search__info-list.all').addClass('search__info-list--active');
+		}
 	}
 
 	closeSearchByClickOutside(e) {
