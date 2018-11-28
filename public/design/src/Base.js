@@ -13,6 +13,9 @@ export default class Base {
 			this.initDOMElements(e);
 			this.onDOMReady(e);
 		});
+		this.baseDOM._document.ajaxComplete(e => {
+            this.ajaxComplete(e);
+        });
 		this.baseDOM._window.on('load', e => this.onLoaded(e));
 		this.baseDOM._window.on('resize', e => this.onResized(e));
 		this.baseDOM._window.on('wheel', e => this.onWheel(e));
@@ -24,6 +27,10 @@ export default class Base {
 
 	onDOMReady(e) {
 	}
+
+	ajaxComplete(e){
+
+    }
 
 	onLoaded(e) {
 	}

@@ -140,7 +140,7 @@ class NewsEloquent implements NewsRepository
     {
         $text = $params['searchText'] ?? '';
 
-        $news = $this->withTrashed()->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->get();
+        $news = $this->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->get();
 
         return $news;
     }
