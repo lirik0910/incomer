@@ -25,14 +25,14 @@
                         <ul class="search__category-list">
                             <li class="search__category-item"><a
                                         class="search__category-link search__category-link--active"
-                                        href="#">Всё</a><span class="search__category-count">307</span></li>
+                                        href="#">Всё</a><span class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link" href="#">Новости</a><span
-                                        class="search__category-count">306</span></li>
+                                        class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link"
                                                                  href="#">Компании</a><span
                                         class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link" href="#">Люди</a><span
-                                        class="search__category-count">1</span></li>
+                                        class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link"
                                                                  href="#">Продукты</a><span
                                         class="search__category-count">0</span></li>
