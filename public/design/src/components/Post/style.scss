@@ -50,12 +50,20 @@
 		}
 	}
 	&__text {
-		font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+		font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
         overflow-wrap: break-word !important;
 		line-height: 36px !important;
 		&:last-of-type {
 			padding-bottom: 36px !important;
 			border-bottom: 1px solid $main-light-grey-color !important;
+		}
+		p,
+		& p span {
+			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+			overflow-wrap: break-word !important;
+			line-height: 36px !important;
+			color: $main-dark-grey-color !important;
+			font-size: 20px !important;
 		}
 		p {
 			&:not(:last-of-type) {
@@ -68,13 +76,16 @@
 			line-height: 1.3 !important;
 			margin: 52px 0 10px !important;
 		}
-		& > img {
+		& > img,
+		& p > img {
 			width: 70% !important;
 		    display: block !important;
 		    margin: 24px auto !important;
 		    border-radius: 12px !important;
 		}
-		a {
+		a,
+		& p a,
+		& p span a {
 			text-decoration: none !important;
 			color: $default-blue !important;
 			font-weight: 700 !important;
@@ -85,7 +96,8 @@
 				color: $darker-blue !important;
 			}
 		}
-		blockquote {
+		blockquote,
+		& p blockquote {
 			margin: 35px 0 10px 0 !important;
 			font-size: 18px !important;
 			line-height: 30px !important;
@@ -112,7 +124,8 @@
 				transform: translate(50%, 0) !important;
 			}
 		}
-		cite {
+		cite,
+		& p cite {
 			display: block !important;
 			margin-bottom: 36px !important;
 			font-size: 16px !important;
