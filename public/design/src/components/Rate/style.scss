@@ -1,0 +1,27 @@
+.rate {
+	display: inline-block;
+	overflow: hidden;
+	&__list {
+		transition: opacity .3s ease-in-out, max-height .3s ease-in-out;
+		max-height: 0;
+		opacity: 0;
+		&--active {
+			max-height: 18.4px;
+			opacity: 1;
+		}
+	}
+	&__item {
+		display: inline-block;
+		font-weight: 900;
+		font-size: 14px;
+		letter-spacing: 0.5px;
+		&:not(:last-of-type) {
+			margin-right: 18px;
+		}
+		span {
+			&:not(:last-of-type) {
+				margin-right: 10px;
+			}
+		}
+	}
+}
