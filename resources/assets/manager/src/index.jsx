@@ -112,14 +112,6 @@ render(<ThemeProvider theme={theme}>
 
                 <Route
                     exact
-                    path="/pages"
-                    component={Loadable({
-                        loader: () => import('routes/PagesListContainer'),
-                        loading: () => <PageLoadingProcess/>
-                    })}/>
-
-                <Route
-                    exact
                     path="/page"
                     component={Loadable({
                         loader: () => import('routes/EditPageContainer'),
