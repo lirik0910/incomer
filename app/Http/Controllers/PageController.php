@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use App\Model\News;
 use App\Repositories\News\NewsRepository;
 use App\Repositories\Video\VideoRepository;
+use App\Repositories\Person\PersonRepository;
 use App\Helpers\DateFormatter;
 
 class PageController extends Controller
 {
     private $newsModel;
     private $videoModel;
+    private $personModel;
 
-    public function __construct(NewsRepository $newsModel, VideoRepository $videoModel)
+    public function __construct(NewsRepository $newsModel, VideoRepository $videoModel, PersonRepository $personModel)
     {
         $this->newsModel = $newsModel;
         $this->videoModel = $videoModel;
+        $this->personModel = $personModel;
     }
 
     /*
@@ -158,11 +161,11 @@ class PageController extends Controller
     {
         $results = [];
         $params = $request->only('searchText');
-
         $results['news'] = $this->newsModel->search($params);
-        //$results['persons'] = ['frwg' => 2, 'vhr' => 41];
-        $all = [];
+        $persons = $this->personModel->search($params)->groupBy('type_id');
+        $results['companies'] = $persons[2];
 
+        $all = [];
 
         foreach($results as $name => $result){
             $all[$name] = $result;
@@ -176,11 +179,9 @@ class PageController extends Controller
         ]);
     }
 
-
     public function manager(Request $request)
     {
         return view('layouts.manager', ['view' => 'manager']);
     }
-
 
 }

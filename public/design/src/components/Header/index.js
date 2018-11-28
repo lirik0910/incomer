@@ -79,9 +79,10 @@ export default class Header extends Base {
             dataType: 'html',
             data: {searchText: $(e.currentTarget).val()},
         }).done( (data) => {
-            if (this.els._searchResult.children('.search__info')) {
-            	this.els._searchResult.children('.search__info').remove();
+            if (this.els._searchResult.find('.search__info')) {
+            	this.els._searchResult.find('.search__info').remove();
             }
+            //console.log(data);
             this.els._searchResult.append(data);
         }).fail( (e) => { });
 	}

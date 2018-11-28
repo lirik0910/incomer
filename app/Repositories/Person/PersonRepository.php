@@ -13,6 +13,8 @@ interface PersonRepository
 
     public function update($id, array $data);
 
+    public function search(array $params);
+
     public function delete($id);
 
     public function restore($id);
