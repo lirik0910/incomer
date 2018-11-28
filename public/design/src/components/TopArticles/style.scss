@@ -235,7 +235,8 @@
 						min-height: auto;
 					    bottom: 0;
 					    right: 0;
-					    height: 105%;
+					    max-height: calc(100% + 10px);
+    					max-width: calc(100% + 50px);
 					}
 				}
 				.card__subtitle {
