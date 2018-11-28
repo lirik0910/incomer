@@ -15,6 +15,7 @@ export default class Header extends Base {
         	_searchBtn: $('.header .search__btn'),
         	_searchResult: $('.header .search__results'),
         	_searchCategory: $('.header .search__category'),
+        	_searchInfoList: $('.header .search__info-list'),
         	_searchCategoryCount: $('.header .search__category-count'),
         	_searchCategoryList: $('.header .search__category-list'),
         	_searchCategoryLink: $('.header .search__category-link')
@@ -26,12 +27,29 @@ export default class Header extends Base {
 		this.els._headerProfileWrap.click(() => this.loginProfile());
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));
 		this.els._searchInput.on('input', (e) => this.getSearchResult(e));
-		this.checkSearchResultFilling();
+		// this.checkSearchResultFilling();
 		this.baseDOM._window.click((e) => this.closeSearchByClickOutside(e));
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
 			(e) => this.searchFilter(e));
 		this.els._searchCategoryList.click((e) => e.preventDefault());
+
+
+		this.setResultsItems();
+
+
+
+		// for (var i = 0; i < this.els._searchInfoList.length; i++) {
+		// 	var itemNum = $(this.els._searchInfoList[i]).children().length;
+		// 	$(this.els._searchCategoryCount[i]).text(itemNum);
+		// }
+
+		// this.checkSearchResultFilling();
+
+
+
+
+
 	}
 
 	searchAnimation(e) {
@@ -122,5 +140,13 @@ export default class Header extends Base {
 				this.els._searchResult.fadeOut();
 			}
 		}
+	}
+
+	setResultsItems() {
+		for (var i = 0; i < $('.search__info-list').length; i++) {
+			var itemNum = $($('.search__info-list')[i]).children().length;
+			$($('.search__category-count')[i]).text(itemNum);
+		}
+		this.checkSearchResultFilling();
 	}
 }
