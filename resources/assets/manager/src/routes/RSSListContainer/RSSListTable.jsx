@@ -21,7 +21,7 @@ import Dialog from 'components/Dialog';
 import Input from 'components/Input';
 import Select from 'components/Select';
 
-import { deleteOneItem, editItem, restoreItem, sortUsers, submitForm, switchPage} from './logic';
+import {deleteOneItem, editItem, restoreItem, sortUsers, submitForm, switchPage} from './logic';
 import {defineQueryProps} from 'url.js';
 
 const styles = () => ({
@@ -82,7 +82,7 @@ class RSSListTable extends React.PureComponent {
     render = () => {
         const {classes} = this.props;
         const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt, prepareDeleteForeverRowID = 0} = this.state;
-        const persons = this.props.persons  && this.props.persons.map((i) => [i.name, i.id]);
+        const persons = this.props.persons && this.props.persons.map((i) => [i.name, i.id]);
         console.log(persons);
 
         return <Panel className={classes.root}>
@@ -153,27 +153,25 @@ class RSSListTable extends React.PureComponent {
                             row.persons && row.persons[0] && row.persons[0].name,
                             row.pub_date,
                             <React.Fragment>
-                                {/*<Button*/}
-                                    {/*variant="icon"*/}
-                                    {/*text={<i className="fa fa-star"></i>}*/}
-                                    {/*onClick={() => editItem(this, row.id, {is_used: !row.is_used})*/}
-                                        {/*.then(() => {*/}
-                                            {/*document.getElementById('rss-data-fetch-submit').click()*/}
-                                        {/*}) }/>*/}
+
 
                                 {!row.is_visible && <Button
                                     variant="icon"
-                                    text={<i className="fa fa-refresh"></i>}
+                                    text={<i className="fa fa-eye-slash"></i>}
                                     onClick={() => restoreItem(this, row.id).then(() => {
                                         document.getElementById('rss-data-fetch-submit').click()
                                     })}/>
                                 }
-                                {row.is_visible &&  <Button
+                                {row.is_visible && <Button
                                     variant="icon"
-                                    text={<i className="fa fa-close"></i>}
-                                    onClick={() => this.setState({
-                                        prepareDeleteRowID: row.id
-                                    })}/>}
+                                    text={<i className="fa fa-eye"></i>}
+                                    onClick={() => {
+                                        deleteOneItem(this, row.id)
+                                            .then(() => {
+                                                document.getElementById('rss-data-fetch-submit').click()
+                                            })
+                                    }
+                                    }/>}
 
                             </React.Fragment>
                         ]}/>
@@ -219,35 +217,6 @@ class RSSListTable extends React.PureComponent {
                    name="limit"
                    form="tags-data-fetch-form"
                    value={limit}/>
-
-            {prepareDeleteRowID ?
-                <Dialog
-                    title="Удаление новости"
-                    onClose={() => this.setState({
-                        prepareDeleteRowID: 0
-                    })}
-                    control={
-                        <React.Fragment>
-                            <Button
-                                variant="tab"
-                                text="OK"
-                                onClick={() => {
-                                    deleteOneItem(this, prepareDeleteRowID)
-                                        .then(() => {document.getElementById('rss-data-fetch-submit').click()})
-                                }}/>
-                            <Button
-                                variant="tab"
-                                text="Отмена"
-                                onClick={() => this.setState({
-                                    prepareDeleteRowID: 0
-                                })}/>
-                        </React.Fragment>
-                    }>
-
-                    <Typography
-                        text={`Вы уверены, что хотите удалить новости с id ${prepareDeleteRowID}?
-							Это действие нельзя отменить!`}/>
-                </Dialog> : ''}
 
             {currentEditRowIndex > -1 ?
                 <Dialog

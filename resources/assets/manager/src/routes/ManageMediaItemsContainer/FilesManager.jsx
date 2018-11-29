@@ -33,7 +33,7 @@ class FilesManager extends React.Component {
             classes,
             catchedErrorMessage,
             isSelectable = false,
-            onSelect = () => {},
+            onSelect,
             onClose = () => {},
         } = this.props;
 
@@ -65,8 +65,7 @@ class FilesManager extends React.Component {
                 editId={editId}
                 onEdit={() => fetchImages(this)}
                 onCreate={() => fetchImages(this)}
-                onSelect={(img) =>{
-                    onSelect(img)}}
+                onSelect={onSelect}
             />
             {!!catchedErrorMessage && <Alert text={catchedErrorMessage}/>}
 

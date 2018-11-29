@@ -23,7 +23,7 @@ const styles = ({Palette: {color7}}) => ({
             marginRight: 12
         }
     },
-    container:{
+    container: {
         width: '100%',
     },
     button: {
@@ -54,7 +54,7 @@ class FileEditManager extends React.Component {
     state = {
         currentItem: false,
         newItem: {
-            title:'',
+            title: '',
             description: ' ',
             path: '',
         },
@@ -66,7 +66,11 @@ class FileEditManager extends React.Component {
     }
 
     render = () => {
-        const {classes, onEdit = () => {}, onCreate = () => {}, isSelectable, onSelect = () => {}} = this.props;
+        const {
+            classes, onEdit = () => {
+            }, onCreate = () => {
+            }, isSelectable, onSelect
+        } = this.props;
         let {currentItem, newItem} = this.state;
 
 
@@ -78,7 +82,7 @@ class FileEditManager extends React.Component {
 
                     <ImageUpload
                         currentItem={currentItem}
-                        onChange={(image)=>{
+                        onChange={(image) => {
                             // console.log(image);
                             currentItem.image = image;
                             this.setState({currentItem})
@@ -86,17 +90,17 @@ class FileEditManager extends React.Component {
                     />
 
                     {/*<Typography*/}
-                        {/*variant="label"*/}
-                        {/*text="Путь"/>*/}
+                    {/*variant="label"*/}
+                    {/*text="Путь"/>*/}
                     {/*<Input*/}
-                        {/*type="text"*/}
-                        {/*name="path"*/}
-                        {/*readOnly={true}*/}
-                        {/*value={currentItem.path}*/}
-                        {/*onChange={(e) => {*/}
-                            {/*currentItem.path= e.target.value;*/}
-                            {/*this.setState({currentItem})*/}
-                        {/*}}*/}
+                    {/*type="text"*/}
+                    {/*name="path"*/}
+                    {/*readOnly={true}*/}
+                    {/*value={currentItem.path}*/}
+                    {/*onChange={(e) => {*/}
+                    {/*currentItem.path= e.target.value;*/}
+                    {/*this.setState({currentItem})*/}
+                    {/*}}*/}
                     {/*/>*/}
 
                     <Typography
@@ -127,18 +131,18 @@ class FileEditManager extends React.Component {
 
 
                     <Button variant="tab"
-                            text={(<>Save</>)}
+                            text={(<>Сохранить</>)}
                             onClick={() => {
-                                editItem(this, currentItem, currentItem.id).then(()=>{
+                                editItem(this, currentItem, currentItem.id).then(() => {
                                     onEdit();
                                 });
                             }}/>
 
-                    {isSelectable && <Button variant="tab"
-                            text={'Select'}
-                            onClick={() => {
-                                    onSelect(currentItem);
-                            }}/>}
+                    {isSelectable &&
+                    <Button variant="tab"
+                            text={'Выбрать'}
+                            onClick={() => onSelect(currentItem)}
+                    />}
 
                 </React.Fragment>}
 
@@ -146,23 +150,23 @@ class FileEditManager extends React.Component {
 
                     <ImageUpload
                         currentItem={newItem}
-                        onChange={(image)=>{
+                        onChange={(image) => {
                             newItem.image = image;
                             this.setState({newItem})
                         }}
                     />
 
                     {/*<Typography*/}
-                        {/*variant="label"*/}
-                        {/*text="Путь"/>*/}
+                    {/*variant="label"*/}
+                    {/*text="Путь"/>*/}
                     {/*<Input*/}
-                        {/*type="text"*/}
-                        {/*name="path"*/}
-                        {/*value={newItem.path}*/}
-                        {/*onChange={(e) => {*/}
-                            {/*newItem.path= e.target.value;*/}
-                            {/*this.setState({newItem})*/}
-                        {/*}}*/}
+                    {/*type="text"*/}
+                    {/*name="path"*/}
+                    {/*value={newItem.path}*/}
+                    {/*onChange={(e) => {*/}
+                    {/*newItem.path= e.target.value;*/}
+                    {/*this.setState({newItem})*/}
+                    {/*}}*/}
                     {/*/>*/}
 
                     <Typography
@@ -195,7 +199,7 @@ class FileEditManager extends React.Component {
                     <Button variant="tab"
                             text={'Create'}
                             onClick={() => {
-                                createItem(this, newItem).then(()=>{
+                                createItem(this, newItem).then(() => {
                                     onCreate();
                                 });
                             }}/>

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageNewsCollection extends Model
 {
-    protected $fillable = ['type'];
+    protected $fillable = ['type', 'image_id', 'news_id'];
 
 }

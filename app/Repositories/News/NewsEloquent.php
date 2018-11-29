@@ -158,8 +158,9 @@ class NewsEloquent implements NewsRepository
         if (!empty($images)) {
             foreach ($images as $image) {
                 $data = [
-                    'image_id' => (int)$image,
-                    'news_id' => (int)$news['id']
+                    'type' => $image['type'],
+                    'image_id' => $image['id'],
+                    'news_id' => $news['id']
                 ];
 
                 ImageNewsCollection::create($data);
@@ -225,15 +226,14 @@ class NewsEloquent implements NewsRepository
         }
 
         $old->update($data);
-
         if (isset($images) && !empty($images)) {
             foreach ($images as $image) {
-
-                $item = ImageNewsCollection::where(['news_id' => $id, 'image_id' => (int)$image])->first();
+                $item = ImageNewsCollection::where(['news_id' => $id, 'image_id' => (int)$image['id']])->first();
                 if (!$item) {
                     $data = [
-                        'image_id' => (int)$image,
-                        'news_id' => (int)$old['id']
+                        'image_id' => $image['id'],
+                        'type' => $image['type'],
+                        'news_id' => $old['id']
                     ];
 
                     ImageNewsCollection::create($data);

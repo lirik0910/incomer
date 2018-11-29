@@ -30,14 +30,19 @@ async function getCharts(type) {
     const requests = [];
     const companies = await db.getCompanies();
     companies.forEach(({id, symbol}) => {
-        const source = type === 'day' ? sources[1]: sources[0];
+        const source = type === 'day' ? sources[1] : sources[0];
         const url = source.url.replace('{{company}}', symbol);
         requests.push({url, symbol, person_id: id});
     });
 
     return await Promise.all(requests.map(async ({url, symbol, person_id}) => {
-        const request = await fetch(url);
-        const items = await request.json();
-        return {person_id, items, symbol};
-    }));
+        try {
+            const request = await fetch(url);
+            const items = await request.json();
+            return {person_id, items, symbol};
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    }).filter((i) => i !== false));
 }

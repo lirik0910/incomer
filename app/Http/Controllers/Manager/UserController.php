@@ -32,7 +32,7 @@ class USerController extends Controller
     public function store(UserCreateRequest $request)
     {
         try {
-            $data = $request->only(['username', 'password', 'email', 'first_name', 'last_name', 'phone', 'country', 'type']);
+            $data = $request->only(['username', 'patronymic', 'password', 'email', 'first_name', 'last_name', 'phone', 'country', 'type']);
             $data['type'] = !empty($data['type']) ? $data['type'] : 'manager';
 
             $res = $this->model->create($data);
@@ -58,7 +58,7 @@ class USerController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['password', 'username', 'first_name', 'last_name', 'phone', 'country']);
+            $data = $request->only(['password', 'patronymic', 'username', 'first_name', 'last_name', 'phone', 'country']);
             $res = $this->model->update($id, $data);
 
             return response()->json($res);
