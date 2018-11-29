@@ -280,6 +280,44 @@ class NewsEloquent implements NewsRepository
         return $news->views;
     }
 
+    public function tagsRelatedNews(int $id)
+    {
+        $news = $this->one($id);
+
+        if(!$news){
+            return [];
+        }
+
+        $tags = $news->tags()->first();
+
+        if(!$tags){
+            return [];
+        }
+
+        $relatedNews = $tags->news()
+            ->orderBy('publish_date', 'DESC')
+            ->limit(3)
+            ->get();
+
+        return $relatedNews;
+    }
+
+    public function categoryRelatedNews(int $id)
+    {
+        $news = $this->one($id);
+
+        if(!$news){
+            return false;
+        }
+
+        $relatedNews = $news->category()->first()->news()
+            ->orderBy('publish_date', 'DESC')
+            ->limit(4)
+            ->get();
+
+        return $relatedNews;
+    }
+
     public function delete(int $id)
     {
         $news = $this->model->find($id);
