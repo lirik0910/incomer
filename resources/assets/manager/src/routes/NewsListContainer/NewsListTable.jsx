@@ -208,12 +208,12 @@ class NewsListTable extends React.PureComponent {
                                 row.comments_count,
                                 row.views,
                                 <React.Fragment>
-                                    <Link to={"/news/" + row.id}>
+                                    {!row.deleted_at &&<Link to={"/news/" + row.id}>
                                         <Button
                                             variant="icon"
                                             text={<i className="fa fa-edit"></i>}
                                         />
-                                    </Link>
+                                    </Link>}
 
                                     {row.deleted_at && <Button
                                         variant="icon"

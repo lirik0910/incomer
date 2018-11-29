@@ -93,10 +93,10 @@ class PageController extends Controller
     {
         $params = $request->only(['page']);
         $params['categoryId'] = 2;
+        if($request->ajax()) $params['limit'] = 12;
 
         $current = $this->newsModel->current($params);
 
-        //var_dump($current); die;
         if($request->ajax()){
             return view('components.blockchain.current_news_list', [
                 'items' => $current,
@@ -142,11 +142,11 @@ class PageController extends Controller
     */
     public function userArea(Request $request)
     {
-        return view('content.user_area', ['view' => 'company']);
+        return view('content.user_private_area', ['view' => 'user_private_area']);
     }
 
     /*
-    * Get userProfile page
+    * Get user_personal_area page
     * @param Request $request
     */
     public function userProfile(Request $request)
@@ -163,7 +163,7 @@ class PageController extends Controller
         $params = $request->only('searchText');
         $results['news'] = $this->newsModel->search($params);
         $persons = $this->personModel->search($params)->groupBy('type_id');
-        $results['companies'] = $persons[2];
+        $results['companies'] = $persons ? $persons[2] : [];
 
         $all = [];
 

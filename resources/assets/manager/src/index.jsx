@@ -52,12 +52,45 @@ render(<ThemeProvider theme={theme}>
                         loading: () => <PageLoadingProcess/>
                     })}/>
 
+                <Route
+                    exact
+                    path="/persons"
+                    component={Loadable({
+                        loader: () => import('routes/PersonsListContainer'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+                <Route
+                    exact
+                    path="/persons/:type_id/create"
+                    component={Loadable({
+                        loader: () => import('routes/PersonsEditContainer/index'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+                <Route
+                    exact
+                    path="/persons/:type_id/:id"
+                    component={Loadable({
+                        loader: () => import('routes/PersonsEditContainer/index'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+
 
                 <Route
                     exact
                     path="/news"
                     component={Loadable({
                         loader: () => import('routes/NewsListContainer/index'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
+
+                <Route
+                    exact
+                    path="/rss"
+                    component={Loadable({
+                        loader: () => import('routes/RSSListContainer/index'),
                         loading: () => <PageLoadingProcess/>
                     })}/>
 
@@ -74,14 +107,6 @@ render(<ThemeProvider theme={theme}>
                     path="/news/:id"
                     component={Loadable({
                         loader: () => import('routes/NewsEditContainer/index'),
-                        loading: () => <PageLoadingProcess/>
-                    })}/>
-
-                <Route
-                    exact
-                    path="/pages"
-                    component={Loadable({
-                        loader: () => import('routes/PagesListContainer'),
                         loading: () => <PageLoadingProcess/>
                     })}/>
 

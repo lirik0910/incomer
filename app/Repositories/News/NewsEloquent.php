@@ -88,9 +88,9 @@ class NewsEloquent implements NewsRepository
 
             $news = $this->model::where(['published' => true])->orWhereIn('type', ['normal', 'hot'])->orderBy('publish_date', 'DESC')->limit($limit);
         } elseif ($params['categoryId'] === 2){
-            $limit = 12;
+            $limit = $params['limit'] ?? 8;
 
-            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId'], 'type' => 'normal'])
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])->whereIn('type', ['normal', 'hot'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->offset($limit * ($page - 1))
@@ -117,17 +117,15 @@ class NewsEloquent implements NewsRepository
         return $news->get();
     }
 
-
     public function withPatterns()
     {
         $news = $this->model->whereIn('type', ['top', 'category_top'])->get();
         return $news;
     }
 
-
     public function one(int $id)
     {
-        $news = $this->model->withTrashed()->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
+        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
 
         if (!$news) {
             throw new \Exception('News was not found');
@@ -158,8 +156,9 @@ class NewsEloquent implements NewsRepository
         if (!empty($images)) {
             foreach ($images as $image) {
                 $data = [
-                    'image_id' => (int)$image,
-                    'news_id' => (int)$news['id']
+                    'type' => $image['type'],
+                    'image_id' => $image['id'],
+                    'news_id' => $news['id']
                 ];
 
                 ImageNewsCollection::create($data);
@@ -225,15 +224,14 @@ class NewsEloquent implements NewsRepository
         }
 
         $old->update($data);
-
         if (isset($images) && !empty($images)) {
             foreach ($images as $image) {
-
-                $item = ImageNewsCollection::where(['news_id' => $id, 'image_id' => (int)$image])->first();
+                $item = ImageNewsCollection::where(['news_id' => $id, 'image_id' => (int)$image['id']])->first();
                 if (!$item) {
                     $data = [
-                        'image_id' => (int)$image,
-                        'news_id' => (int)$old['id']
+                        'image_id' => $image['id'],
+                        'type' => $image['type'],
+                        'news_id' => $old['id']
                     ];
 
                     ImageNewsCollection::create($data);
@@ -284,12 +282,13 @@ class NewsEloquent implements NewsRepository
 
     public function delete(int $id)
     {
-
         $news = $this->model->find($id);
 
         if (!$news) {
             return false;
         }
+
+        $news->update(['published' => false]);
 
         return $news->delete();
     }

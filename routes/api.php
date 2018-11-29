@@ -37,6 +37,24 @@ Route::namespace('Manager')
             Route::delete('/{id}', 'PersonController@destroy')->middleware('scope:deletePerson');
         });
 
+        // Person types routes
+        Route::prefix('person_type')->group(function () {
+            Route::get('', 'PersonTypeController@index')->middleware('scope:listPersonType');
+            Route::get('/{id}', 'PersonTypeController@show')->middleware('scope:readPersonType');
+        });
+
+
+        // RSS news routes
+        Route::prefix('rss')->group(function () {
+            Route::get('', 'RSSNewsController@index')->middleware('scope:listRSSNews');
+            Route::get('/{id}', 'RSSNewsController@show')->middleware('scope:readRSSNews');
+
+            Route::put('/{id}', 'RSSNewsController@update')->middleware('scope:updateRSSNews');
+            Route::put('/restore/{id}', 'RSSNewsController@restore')->middleware('scope:restoreRSSNews');
+
+            Route::delete('/{id}', 'RSSNewsController@destroy')->middleware('scope:deleteRSSNews');
+        });
+
 
         // Users routes
         Route::prefix('user')->group(function () {

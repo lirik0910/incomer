@@ -30,7 +30,7 @@ class NewsCreateRequest extends FormRequest
 //            'description' => 'string',
 //            'introtext' => 'string',
             'videos' => 'json',
-            'images' => 'json',
+//            'images' => 'json',
 //            'tags' => 'json',
 
         ];

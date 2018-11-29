@@ -41,7 +41,6 @@
         <div class="news-wrap">
           <div class="news">
               @include('components.index.hot_news_list', ['items' => $hotNews])
-              <button class="news__btn">Показать еще</button>
           </div>
         </div>
       </div>

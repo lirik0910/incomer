@@ -11,6 +11,9 @@ return [
             'trashPerson',
             'deletePerson',
 
+            'listPersonType',
+            'readPersonType',
+
             'listUser',
             'readUser',
             'createUser',
@@ -64,14 +67,19 @@ return [
             'updateSection',
             'trashSection',
             'deleteSection',
+
+            'listRSSNews',
+            'readRSSNews',
+            'updateRSSNews',
+            'restoreRSSNews',
+            'deleteRSSNews',
+
         ],
         'manager' => [
-
             'listPerson',
         ],
         'editor' => [
             'listPerson',
-
         ]
     ],
 ];

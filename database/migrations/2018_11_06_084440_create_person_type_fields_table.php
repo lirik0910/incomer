@@ -22,9 +22,14 @@ class CreatePersonTypeFieldsTable extends Migration
             $table->integer('type_id', false, true)
                 ->nullable(false)
                 ->comment('Person type ID');
+
             $table->string('title', 255)
                 ->nullable(false)
                 ->comment('Field title');
+
+            $table->string('content_type', 255)
+                ->default('text');
+
             $table->string('description', 255)
                 ->nullable(true)
                 ->comment('Field description');

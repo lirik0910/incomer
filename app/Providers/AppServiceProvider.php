@@ -9,6 +9,10 @@ use App\Repositories\Image\ImageEloquent;
 use App\Repositories\Image\ImageRepository;
 use App\Repositories\Person\PersonRepository;
 use App\Repositories\Person\PersonEloquent;
+use App\Repositories\PersonType\PersonTypeEloquent;
+use App\Repositories\PersonType\PersonTypeRepository;
+use App\Repositories\RSSNews\RSSNewsEloquent;
+use App\Repositories\RSSNews\RSSNewsRepository;
 use App\Repositories\Section\SectionEloquent;
 use App\Repositories\Section\SectionRepository;
 use App\Repositories\User\UserEloquent;
@@ -50,6 +54,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(TagRepository::class, TagEloquent::class);
         $this->app->singleton(CategoryRepository::class, CategoryEloquent::class);
         $this->app->singleton(SectionRepository::class, SectionEloquent::class);
+        $this->app->singleton(PersonTypeRepository::class, PersonTypeEloquent::class);
+        $this->app->singleton(RSSNewsRepository::class, RSSNewsEloquent::class);
 
     }
 }
