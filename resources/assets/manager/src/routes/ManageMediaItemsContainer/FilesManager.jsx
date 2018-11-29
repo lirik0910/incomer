@@ -65,7 +65,8 @@ class FilesManager extends React.Component {
                 editId={editId}
                 onEdit={() => fetchImages(this)}
                 onCreate={() => fetchImages(this)}
-                onSelect={(img) => onSelect(img)}
+                onSelect={(img) =>{
+                    onSelect(img)}}
             />
             {!!catchedErrorMessage && <Alert text={catchedErrorMessage}/>}
 

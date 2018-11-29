@@ -42,6 +42,8 @@ class Aside extends React.Component {
                 <Link to="/tags" variant="anti">Тэги</Link>
                 {/*<Link to="/pages" variant="anti">pages</Link>*/}
                 <Link to="/media" variant="anti">Медиа</Link>
+                <Link to="/persons" variant="anti">Компании</Link>
+                <Link to="/rss" variant="anti">RSS</Link>
             </div>
         </React.Fragment> : '';
 
@@ -56,27 +58,3 @@ const styles = ({Aside}) => ({
 });
 
 export default withStyles(styles)(Aside);
-//
-// export default withStyles(({ Aside }) => ({
-// 	...Aside,
-// 	left: { left: 0 },
-// 	right: { right: 0 }
-// }))(({
-// 	side = 'left',
-// 	variant = 'default',
-// 	className = '',
-// 	classes,
-// 	theme,
-// 	children = [],
-// 	onClose = () => {},
-// 	getRef = () => {},
-// 	...properties
-// }) => (
-// 	<React.Fragment>
-// 		<Overlay variant={variant} onClose={onClose} />
-// 		<div ref={getRef} {...properties}
-// 			className={classes[variant] +' '+ classes[side] +' '+ className}>
-// 			{children}
-// 		</div>
-// 	</React.Fragment>
-// ));

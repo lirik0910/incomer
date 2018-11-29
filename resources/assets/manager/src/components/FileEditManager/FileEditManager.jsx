@@ -55,7 +55,7 @@ class FileEditManager extends React.Component {
         currentItem: false,
         newItem: {
             title:'',
-            description: '',
+            description: ' ',
             path: '',
         },
     };
@@ -85,19 +85,19 @@ class FileEditManager extends React.Component {
                         }}
                     />
 
-                    <Typography
-                        variant="label"
-                        text="Путь"/>
-                    <Input
-                        type="text"
-                        name="path"
-                        readOnly={true}
-                        value={currentItem.path}
-                        onChange={(e) => {
-                            currentItem.path= e.target.value;
-                            this.setState({currentItem})
-                        }}
-                    />
+                    {/*<Typography*/}
+                        {/*variant="label"*/}
+                        {/*text="Путь"/>*/}
+                    {/*<Input*/}
+                        {/*type="text"*/}
+                        {/*name="path"*/}
+                        {/*readOnly={true}*/}
+                        {/*value={currentItem.path}*/}
+                        {/*onChange={(e) => {*/}
+                            {/*currentItem.path= e.target.value;*/}
+                            {/*this.setState({currentItem})*/}
+                        {/*}}*/}
+                    {/*/>*/}
 
                     <Typography
                         variant="label"
@@ -152,18 +152,18 @@ class FileEditManager extends React.Component {
                         }}
                     />
 
-                    <Typography
-                        variant="label"
-                        text="Путь"/>
-                    <Input
-                        type="text"
-                        name="path"
-                        value={newItem.path}
-                        onChange={(e) => {
-                            newItem.path= e.target.value;
-                            this.setState({newItem})
-                        }}
-                    />
+                    {/*<Typography*/}
+                        {/*variant="label"*/}
+                        {/*text="Путь"/>*/}
+                    {/*<Input*/}
+                        {/*type="text"*/}
+                        {/*name="path"*/}
+                        {/*value={newItem.path}*/}
+                        {/*onChange={(e) => {*/}
+                            {/*newItem.path= e.target.value;*/}
+                            {/*this.setState({newItem})*/}
+                        {/*}}*/}
+                    {/*/>*/}
 
                     <Typography
                         variant="label"

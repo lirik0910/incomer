@@ -84,7 +84,6 @@ export default class Header extends Base {
             if (this.els._searchResult.find('.search__info')) {
             	this.els._searchResult.find('.search__info').remove();
             }
-            //console.log(data);
             this.els._searchResult.append(data);
 
 			switch($('.search__category-link--active').parent().index()) {
@@ -106,6 +105,7 @@ export default class Header extends Base {
 				default:
 					$('.header .search__info-list.all').addClass('search__info-list--active');
 			}
+			this.checkSearchResultFilling();
         }).fail( (e) => { });
 	}
 
