@@ -12,6 +12,7 @@ export default class CompaniesRating extends Base {
 	onDOMReady(e) {
 		this.els._ratingTermList.on('click', 'a:not(.rating__term-link--active)', 
 			(e) => this.ratingFilter(e));
+		this.els._ratingTermList.click((e) => { e.preventDefault() })
 	}
 
 	ratingFilter(e) {

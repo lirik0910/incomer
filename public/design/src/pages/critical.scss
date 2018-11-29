@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-900.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-900.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-700.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-700.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans Cyrl';
+    src: url('../../../fonts/MuseoSansCyrl-500.woff2') format('woff2'),
+         url('../../../fonts/MuseoSansCyrl-500.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #ededed;
+    color: #252525;
+}
+
+a, button, input {
+    outline: none;
+}
+
+.container {
+    max-width: 1272px;
+    margin: 0 auto;
+}
+
+.logo {
+    padding: 12px 12px 12px 0;
+    text-decoration: none;
+    display: inline-block;
+    svg {
+        width: 110px;
+        display: inline-block;
+    }
+}
+
+.header {
+    color: #3a3a3a;
+    background-color: #fff;
+    font-size: 14px;
+    box-shadow: 0px 6px 18px 0px rgba(0, 0, 0, 0.03);
+    font-weight: 700;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__nav {
+        padding: 12px 0;
+        margin-right: 50px;
+        display: inline-block;
+        transition: opacity .3s ease-in-out;
+    }
+    &__nav-list {
+
+    }
+    &__nav-item {
+        display: inline-block;
+    }
+    &__nav-link {
+        text-decoration: none;
+        color: #3a3a3a;
+        display: inline-block;
+        font-size: 14px;
+        padding: 10px 24px;
+        border-radius: 20px;
+        transition: background-color .3s ease-in-out;
+        &--active {
+            background-color: #ededed;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: #ededed;
+        }
+    }
+    &__wrap {
+        display: flex;
+    }
+    &__profile {
+        position: relative;
+        width: 264px;
+        text-align: right;
+        border-radius: 12px 12px 0 0;
+        font-size: 14px;
+        svg {
+            display: inline-block;
+            circle, path, polyline {
+                stroke: #252525;
+            }
+            &:first-of-type {
+                margin-right: 15px;
+                width: 20px;
+                height: 20px;
+            }
+            &:last-of-type {
+                display: none;
+                margin-left: 15px;
+                width: 15px;
+                height: 15px;
+                transform: rotate(90deg);
+    
+                transition: all .3s ease-in-out;
+            }
+        }
+        &--login {
+            svg {
+                &:last-of-type {
+                    display: inline-block;
+                }
+            }
+            &:hover {
+                background-color: #ededed;
+                .header__profile-popup {
+                    display: block;
+                }
+                svg {
+                    &:last-of-type {
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+        }
+    }
+    &__profile-wrap {
+        padding: 5px 24px;
+        // padding: 5px 0 5px 24px;
+        cursor: pointer;
+        display: inline-block;
+    }
+    &__profile-title {
+        display: inline-block;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__profile-popup {
+        display: none;
+        position: absolute;
+        z-index: 505;
+        left: 50%;
+        top: 34px;
+        transform: translate(-50%, 0);
+        padding: 15px 50px;
+        background-color: #fff;
+        box-shadow: 0px 6px 18px 0px rgba(0, 0, 0, 0.03);
+        border-radius: 0 0 12px 12px;
+        width: 264px;
+        text-align: left;
+    }
+    &__profile-list {
+
+    }
+    &__profile-item {
+        list-style-type: none;
+        &:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+    }
+    &__profile-link {
+        display: block;
+        padding: 10px 0;
+        text-decoration: none;
+        color: #252525;
+        transition: all .3s ease-in-out;
+        &:hover {
+            color: lighten(#252525, 30%)
+        }
+    }
+}

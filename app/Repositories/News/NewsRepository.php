@@ -18,6 +18,10 @@ interface NewsRepository
 
     public function withPatterns();
 
+    public function tagsRelatedNews(int $id);
+
+    public function categoryRelatedNews(int $id);
+
     public function one(int $id);
 
     public function search(array $params);
