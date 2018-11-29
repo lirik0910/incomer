@@ -34,11 +34,11 @@ class ImageController extends Controller
     {
         try {
             $data = $request->only(['title', 'description', 'path', 'category_id']);
-
-            $data['path'] = $data['path'] ? ltrim(rtrim($data['path'],'/'),'/'): '';
-            $data['path'] = '/' .  $data['path'];
+            $data['path'] = '';
+//            $data['path'] = $data['path'] ? ltrim(rtrim($data['path'],'/'),'/'): '';
+//            $data['path'] = '/' .  $data['path'];
             $data['creator_id'] = Auth::user()->id;
-            $data['url'] = '/storage/'.$request->file('image')->store('images'.$data['path']);
+            $data['url'] = '/storage/'.$request->file('image')->store('images');
 
             $res = $this->model->create($data);
 
@@ -67,11 +67,12 @@ class ImageController extends Controller
             $data = $request->only(['title', 'description', 'category_id', 'path']);
 
             if($request->file('image')){
-                $data['path'] = $item['path'] ? ltrim(rtrim($item['path'],'/'),'/'): '';
-                $data['path'] = '/' .  $data['path'];
+//                $data['path'] = $item['path'] ? ltrim(rtrim($item['path'],'/'),'/'): '';
+//                $data['path'] = '/' .  $data['path'];
+
                 $data['url'] = '/storage/'.$request
                         ->file('image')
-                        ->storeAs('images'.$item['path'], basename($item['url']));
+                        ->storeAs('images', basename($item['url']));
             } else {
                 unset($data['path']);
             }

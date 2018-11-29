@@ -426,6 +426,15 @@ class UsersListTable extends React.PureComponent {
 
                         <Typography
                             variant="label"
+                            text="Фамилия"/>
+                        <Input
+                            type="text"
+                            name="patronymic"
+                            placeholder="Отчество"
+                            defaultValue={data[currentEditRowIndex].patronymic}/>
+
+                        <Typography
+                            variant="label"
                             text="Email"/>
                         <Input
                             type="text"

@@ -60,8 +60,8 @@ const styles = ({Global, Palette}) => ({
 class LoginContainer extends React.PureComponent {
 
     state = {
-        email: 'admin@admin.com',
-        password: 'secret',
+        email: '',
+        password: '',
         catchedErrorMessage: '',
     };
 

@@ -28,6 +28,7 @@ import MultiSelect from 'react-select';
 import {bindActionCreators} from "redux";
 import FilesManager from "../ManageMediaItemsContainer/FilesManager";
 import {withRouter} from "react-router-dom";
+import ImageSelect from "../../components/ImageSelect/ImageSelect";
 
 
 const styles = ({Global, Palette}) => ({
@@ -102,9 +103,9 @@ class NewsEditContainer extends React.Component {
             .then(() => fetchTags(this))
             .then(() => fetchNewsWithPatterns(this))
             .then(() => {
-                if(!this.props.id)
-                {
-                    this.setState({data: {
+                if (!this.props.id) {
+                    this.setState({
+                        data: {
                             category_id: 1,
                             section_id: null,
                             title: '',
@@ -115,16 +116,16 @@ class NewsEditContainer extends React.Component {
                             type: 'normal',
                             preview_pattern: null,
                             published: false,
-                        }});
-                }
-                else {
+                        }
+                    });
+                } else {
                     return fetchData(this.props.id, this);
                 }
             });
     }
 
     saveChanges = () => {
-        const fields = ['title', 'subtitle', 'category_id', 'published', 'introtext', 'description', 'preview_pattern', 'section_id', 'type', 'tags'];
+        const fields = ['title', 'subtitle', 'category_id', 'published', 'introtext', 'description', 'preview_pattern', 'section_id', 'type', 'tags', 'top_preview_img', 'preview_img'];
 
         const data = {};
         fields.forEach((i) => data[i] = this.state.data[i]);
@@ -152,7 +153,7 @@ class NewsEditContainer extends React.Component {
         const {changeDisplayFilesManagerAction} = this.props;
         changeDisplayFilesManagerAction(false);
 
-        this.resolveFunction({data: {link: image.url}});
+        if(this.resolveFunction) this.resolveFunction({data: {link: image.url}});
     };
 
 
@@ -258,6 +259,7 @@ class NewsEditContainer extends React.Component {
             }
         });
 
+
         return <React.Fragment>
 
 
@@ -296,7 +298,7 @@ class NewsEditContainer extends React.Component {
                         <Typography
                             variant="label"
                             text="Заголовок"/>
-                        {typeof data.title !== 'undefined'  && <Input
+                        {typeof data.title !== 'undefined' && <Input
                             type="text"
                             name="title"
                             defaultValue={data.title}
@@ -340,7 +342,7 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text="Введение"/>
 
-                        {typeof data.introtext !== 'undefined'  &&
+                        {typeof data.introtext !== 'undefined' &&
                         <div className={classes.textEditor}>
                             <FieldDraftEditor
                                 selectImageCallback={this.selectImage}
@@ -357,7 +359,7 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text="Контент"/>
 
-                        {typeof data.description !== 'undefined'  &&
+                        {typeof data.description !== 'undefined' &&
                         <div className={classes.textEditor}>
                             <FieldDraftEditor
                                 selectImageCallback={this.selectImage}
@@ -377,7 +379,7 @@ class NewsEditContainer extends React.Component {
             </div>
             <div className={classes.formContainer}>
                 <Panel>
-                    {typeof data.published !== 'undefined'  && <div>
+                    {typeof data.published !== 'undefined' && <div>
                         <input type="checkbox"
                                defaultChecked={data.published}
                                onChange={(e) => {
@@ -394,7 +396,7 @@ class NewsEditContainer extends React.Component {
                     <Typography
                         variant="label"
                         text="Категория"/>
-                    {typeof data.category_id !== 'undefined'  && <Select
+                    {typeof data.category_id !== 'undefined' && <Select
                         defaultValue={data.category_id}
                         name="category_id"
                         options={categOptions}
@@ -404,7 +406,7 @@ class NewsEditContainer extends React.Component {
                         }
                         }
                     />}
-                    {typeof data.section_id !== 'undefined'  &&
+                    {typeof data.section_id !== 'undefined' &&
                     <>
                         <Typography
                             variant="label"
@@ -420,7 +422,7 @@ class NewsEditContainer extends React.Component {
                             }
                         />
                     </>}
-                    {typeof data.type !== 'undefined'  &&
+                    {typeof data.type !== 'undefined' &&
                     <><Typography
                         variant="label"
                         text="Тип новости"/>
@@ -455,9 +457,44 @@ class NewsEditContainer extends React.Component {
                             variant="label"
                             text={'Текущая новость на этой позиции: ' + currentPatternNews.title}/>}
                     </React.Fragment>
-
                     }
 
+
+                    <React.Fragment>
+                        <Typography
+                            variant="label"
+                            text='ТОП Превью картинка'/>
+                        <ImageSelect
+                            link={data.top_preview_img && data.top_preview_img.url}
+                            onSelect={(img) => {
+                                console.log('top_preview');
+                                data.top_preview_img = {
+                                    id: img.id,
+                                    url: img.url,
+                                    type: 'top_preview',
+                                };
+                                this.setState({data})
+                            }}
+                        />
+                    </React.Fragment>
+
+                    <React.Fragment>
+                        <Typography
+                            variant="label"
+                            text='Превью картинка'/>
+                        <ImageSelect
+                            link={data.preview_img && data.preview_img.url}
+                            onSelect={(img) => {
+                                console.log('preview');
+                                data.preview_img = {
+                                    id: img.id,
+                                    url: img.url,
+                                    type: 'preview',
+                                };
+                                this.setState({data})
+                            }}
+                        />
+                    </React.Fragment>
 
                 </Panel>
 
@@ -478,7 +515,7 @@ class NewsEditContainer extends React.Component {
                         color="secondary"
                         onClick={() => {
                             changeDisplayFilesManagerAction(false);
-                            this.rejectFunction();
+                            if(this.rejectFunction) this.rejectFunction();
                         }}
                         text={
                             <>

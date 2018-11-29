@@ -1,13 +1,11 @@
 import React from 'react';
 import withStyles from 'react-jss'
 
-import {connect} from 'react-redux';
-
 import Button from 'components/Button';
 import Typography from 'components/Typography';
 
 import {newsListPageErrorMessage,} from 'actions/newsListPageActions';
-import {changeDisplayFilesManagerAction} from 'actions/filesListActions.js';
+import {changeDisplayFilesManagerSelectAction} from 'actions/filesListActions.js';
 
 import {
     createItem,
@@ -20,10 +18,7 @@ import {
 } from 'routes/ManageMediaItemsContainer/logic/index';
 import Panel from "../../components/Panel/Panel";
 
-import {bindActionCreators} from "redux";
 import FilesManager from "routes/ManageMediaItemsContainer/FilesManager";
-import Input from "../Input/Input";
-import ImageUpload from "../ImageUpload/ImageUpload";
 
 
 const styles = ({Global, Palette}) => ({
@@ -54,36 +49,10 @@ class ImageSelect extends React.Component {
         url: '',
     };
 
-    componentDidMount() {
-
-    }
-
-    // selectImage = () => {
-    //     const {changeDisplayFilesManagerAction} = this.props;
-    //
-    //     changeDisplayFilesManagerAction(true);
-    //     const self = this;
-    //     return new Promise(function (resolve, reject) {
-    //         self.resolveFunction = resolve;
-    //         self.rejectFunction = reject;
-    //     });
-    // };
-
-    //
-    // setSelectedImage = (image) => {
-    //     const {changeDisplayFilesManagerAction} = this.props;
-    //     changeDisplayFilesManagerAction(false);
-    //
-    //     this.resolveFunction({data: {link: image.url}});
-    // };
-
-
     render = () => {
-        const {url } = this.state;
+        const {url, is_open } = this.state;
         const {
             classes,
-            displayFilesManagerFlag,
-            changeDisplayFilesManagerAction,
             onSelect = () => {},
             link,
         } = this.props;
@@ -95,7 +64,9 @@ class ImageSelect extends React.Component {
                     variant="link"
                     color="secondary"
                     onClick={() => {
-                        changeDisplayFilesManagerAction(true);
+
+                        this.setState({is_open: true});
+                        // changeDisplayFilesManagerSelectAction(true);
                     }}
                     text={
                         <>Выбрать изображение</>
@@ -106,7 +77,7 @@ class ImageSelect extends React.Component {
                         <img width='100' src={link} alt=""/>}
                 </div>
             </div>
-            {displayFilesManagerFlag ?
+            {is_open ?
                 <Panel className={classes.filesContainer}>
 
                     <Typography
@@ -117,7 +88,8 @@ class ImageSelect extends React.Component {
                         variant="link"
                         color="secondary"
                         onClick={() => {
-                            changeDisplayFilesManagerAction(false);
+                            this.setState({is_open: false});
+
                         }}
                         text={
                             <>
@@ -129,8 +101,11 @@ class ImageSelect extends React.Component {
                     <FilesManager
                         isSelectable={true}
                         onSelect={(image) => {
+                            console.log(image);
                             this.setState({url: image.url});
-                            changeDisplayFilesManagerAction(false);
+                            // changeDisplayFilesManagerSelectAction(false);
+                            this.setState({is_open: false});
+
                             onSelect(image);
                         }}
                     />
@@ -140,13 +115,6 @@ class ImageSelect extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    displayFilesManagerFlag: state.filesList.displayFilesManagerFlag,
-});
 
-const mapDispatchToProps = (dispatch) => ({
-    changeDisplayFilesManagerAction: bindActionCreators(changeDisplayFilesManagerAction, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ImageSelect));
+export default withStyles(styles)(ImageSelect);
 

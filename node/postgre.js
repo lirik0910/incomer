@@ -65,6 +65,7 @@ class Database {
 
     async addChart(charts) {
         return Promise.all(charts.map(async (chart) => {
+            if(!chart.items) return;
             let query = this.chartQuery + chart.items.map((i) => {
                 return ` (
                 ${chart.person_id},
@@ -80,7 +81,6 @@ class Database {
 
             query += `ON CONFLICT (person_id, date, minute) DO NOTHING`;
 
-            console.log(query);
             // await this.db.query('truncate charts');
             return await this.db.query(query);
         }));

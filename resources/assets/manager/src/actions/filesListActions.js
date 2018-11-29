@@ -7,6 +7,14 @@ const changeDisplayFilesManagerAction = (payload) => (dispatch) => {
 }
 
 
+const changeDisplayFilesManagerSelectAction = (payload) => (dispatch) => {
+    dispatch({
+        type: 'CHANGE_DISPLAY_FILES_MANAGER_SELECT',
+        payload
+    });
+}
+
+
 const filesListPageErrorMessage = (payload) => (dispatch) => {
     dispatch({
         type: 'FILES_PAGE_ERROR_MESSAGE',
@@ -15,4 +23,4 @@ const filesListPageErrorMessage = (payload) => (dispatch) => {
 }
 
 
-export { changeDisplayFilesManagerAction, filesListPageErrorMessage };
+export { changeDisplayFilesManagerAction, changeDisplayFilesManagerSelectAction, filesListPageErrorMessage };
