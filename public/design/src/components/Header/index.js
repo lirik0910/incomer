@@ -10,6 +10,8 @@ export default class Header extends Base {
         	_headerProfileItem: $('.header__profile-item'),
         	_auth: $('.auth'),
         	_authPopup: $('.auth__popup'),
+        	_authContent: $('.auth__content'),
+        	_authTabContent: $('.auth__tab-content'),
         	_search: $('.header .search'),
         	_searchInput: $('.header .search__input'),
         	_searchBtn: $('.header .search__btn'),
@@ -52,9 +54,9 @@ export default class Header extends Base {
 			this.els._auth.fadeIn();
 		}
 
-		if ($('.auth__tab-content:first-of-type').height() < 
-			$('.auth__tab-content:nth-of-type(2)').height()) {
-			$('.auth__content').height($('.auth__tab-content:first-of-type').height())
+		if (this.els._authTabContent.eq(0).height() < 
+			this.els._authTabContent.eq(1).height()) {
+			this.els._authContent.height(this.els._authTabContent.eq(0).height())
 		}
 	}
 
@@ -88,22 +90,28 @@ export default class Header extends Base {
 
 			switch($('.search__category-link--active').parent().index()) {
 				case 0:
-					$('.header .search__info-list.all').addClass('search__info-list--active');
+					$('.header .search__info-list.all')
+						.addClass('search__info-list--active');
 					break;
 				case 1:
-					$('.header .search__info-list.news').addClass('search__info-list--active');
+					$('.header .search__info-list.news')
+						.addClass('search__info-list--active');
 					break;
 				case 2:
-					$('.header .search__info-list.companies').addClass('search__info-list--active');
+					$('.header .search__info-list.companies')
+						.addClass('search__info-list--active');
 					break;
 				case 3:
-					$('.header .search__info-list.peoples').addClass('search__info-list--active');
+					$('.header .search__info-list.peoples')
+						.addClass('search__info-list--active');
 					break;
 				case 4:
-					$('.header .search__info-list.products').addClass('search__info-list--active');
+					$('.header .search__info-list.products')
+						.addClass('search__info-list--active');
 					break;
 				default:
-					$('.header .search__info-list.all').addClass('search__info-list--active');
+					$('.header .search__info-list.all')
+						.addClass('search__info-list--active');
 			}
 			this.checkSearchResultFilling();
         }).fail( (e) => { });
@@ -115,7 +123,8 @@ export default class Header extends Base {
 				$($('.header .search__category-count')[i])
 					.prev()
 					.addClass('search__category-link--light');
-				$($('.header .search__category-count')[i]).addClass('search__category-count--light')
+				$($('.header .search__category-count')[i])
+					.addClass('search__category-count--light')
 			}
 		}
 	}
@@ -137,22 +146,28 @@ export default class Header extends Base {
 
 		switch($(e.currentTarget).parent().index()) {
 			case 0:
-				$('.header .search__info-list.all').addClass('search__info-list--active');
+				$('.header .search__info-list.all')
+					.addClass('search__info-list--active');
 				break;
 			case 1:
-				$('.header .search__info-list.news').addClass('search__info-list--active');
+				$('.header .search__info-list.news')
+					.addClass('search__info-list--active');
 				break;
 			case 2:
-				$('.header .search__info-list.companies').addClass('search__info-list--active');
+				$('.header .search__info-list.companies')
+					.addClass('search__info-list--active');
 				break;
 			case 3:
-				$('.header .search__info-list.peoples').addClass('search__info-list--active');
+				$('.header .search__info-list.peoples')
+					.addClass('search__info-list--active');
 				break;
 			case 4:
-				$('.header .search__info-list.products').addClass('search__info-list--active');
+				$('.header .search__info-list.products')
+					.addClass('search__info-list--active');
 				break;
 			default:
-				$('.header .search__info-list.all').addClass('search__info-list--active');
+				$('.header .search__info-list.all')
+					.addClass('search__info-list--active');
 		}
 	}
 
