@@ -29,122 +29,18 @@
       </article>
       <div class="sidebar-news">
         <p class="sidebar-news__title">Похожие новости</p>
-        <a class="card card--square-full-img" href="#">
-          <article class="card__article">
-            <div class="card__pic">
-              <img src="img/photo-light.jpg">
-            </div>
-            <div class="card__content">
-              <div class="card__text">
-                <p>Facebook презентовал своё первое электронное устройство</p>
-              </div>
-              <div class="card__statistic">
-                <span class="views-post">1034</span>
-                <span class="comments-post">537</span>
-              </div>
-            </div>
-          </article>
-        </a>
-        <a class="card card--square-full-img" href="#">
-          <article class="card__article">
-            <div class="card__pic">
-              <img src="img/photo-dark.jpg">
-            </div>
-            <div class="card__content">
-              <div class="card__text">
-                <p>Facebook презентовал своё первое электронное устройство</p>
-              </div>
-              <div class="card__statistic">
-                <span class="views-post">1034</span>
-                <span class="comments-post">537</span>
-              </div>
-            </div>
-          </article>
-        </a>
-        <a class="card card--square-full-img" href="#">
-          <article class="card__article">
-            <div class="card__pic">
-              <img src="img/photo-light.jpg">
-            </div>
-            <div class="card__content">
-              <div class="card__text">
-                <p>Facebook презентовал своё первое электронное устройство</p>
-              </div>
-              <div class="card__statistic">
-                <span class="views-post">1034</span>
-                <span class="comments-post">537</span>
-              </div>
-            </div>
-          </article>
-        </a>
+          @foreach($tagRel as $relItem)
+              @include('components.index.hot_news_item', ['type' => 'short', 'item' => $relItem])
+          @endforeach
       </div>
     </div>
   </div>
   <div class="related">
     <div class="container">
-      <p class="related__title">Новости, похожие на эту</p>
-      <a class="card card--square-full-img" href="#">
-        <article class="card__article">
-          <div class="card__pic">
-            <img src="img/photo-light.jpg">
-          </div>
-          <div class="card__content">
-            <div class="card__text">
-              <p>Facebook презентовал своё первое электронное устройство</p>
-            </div>
-            <div class="card__statistic">
-              <span class="views-post">1034</span>
-              <span class="comments-post">537</span>
-            </div>
-          </div>
-        </article>
-      </a>
-      <a class="card card--square-full-img" href="#">
-        <article class="card__article">
-          <div class="card__pic"><img src="img/photo-dark.jpg"></div>
-          <div class="card__content">
-            <div class="card__text">
-              <p>Facebook презентовал своё первое электронное устройство</p>
-            </div>
-            <div class="card__statistic">
-              <span class="views-post">1034</span>
-              <span class="comments-post">537</span>
-            </div>
-          </div>
-        </article>
-      </a>
-      <a class="card card--square-full-img" href="#">
-        <article class="card__article">
-          <div class="card__pic">
-            <img src="img/photo-light.jpg">
-          </div>
-          <div class="card__content">
-            <div class="card__text">
-              <p>Facebook презентовал своё первое электронное устройство</p>
-            </div>
-            <div class="card__statistic">
-              <span class="views-post">1034</span>
-              <span class="comments-post">537</span>
-            </div>
-          </div>
-        </article>
-      </a>
-      <a class="card card--square-full-img" href="#">
-        <article class="card__article">
-          <div class="card__pic">
-            <img src="img/photo-light.jpg">
-          </div>
-          <div class="card__content">
-            <div class="card__text">
-              <p>Facebook презентовал своё первое электронное устройство</p>
-            </div>
-            <div class="card__statistic">
-              <span class="views-post">1034</span>
-              <span class="comments-post">537</span>
-            </div>
-          </div>
-        </article>
-      </a>
+      <p class="related__title">Новости из похожей категории</p>
+          @foreach($catRel as $relItem)
+            @include('components.index.hot_news_item', ['type' => 'short', 'item' => $relItem])
+          @endforeach
     </div>
   </div>
 @endsection

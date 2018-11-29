@@ -125,6 +125,9 @@ class PageController extends Controller
             throw new \Exception('News was not found');
         }
 
+        $tagRelNews = $this->newsModel->tagsRelatedNews($id);
+        $catRelNews = $this->newsModel->categoryRelatedNews($id);
+
         if(!$this->newsModel->updateViews($id)){
             throw new \Exception('Cannot update views count');
         }
@@ -132,6 +135,8 @@ class PageController extends Controller
         return view('content.post', [
             'view' => 'post',
             'item' => $news,
+            'tagRel' => $tagRelNews,
+            'catRel' => $catRelNews,
             'dateFormatter' => DateFormatter::class,
         ]);
     }
