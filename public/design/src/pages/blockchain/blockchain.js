@@ -4,7 +4,7 @@ import Base from '../../Base.js';
 
 import Header from '../../components/Header/index';
 import Auth from '../../components/Auth/index';
-// import CompanyInfo from '../../components/CompanyInfo/index';
+import CurrentArticles from '../../components/CurrentArticles/index';
 // import Chart from '../../components/Chart/index';
 // import CompanyNews from '../../components/CompanyNews/index';
 import Footer from '../../components/Footer/index';
@@ -13,7 +13,7 @@ import Modal from '../../components/Modal/index';
 new Base().call(() => {
 	new Header();
 	new Auth();
-	// new CompanyInfo();
+	new CurrentArticles();
 	// new Chart();
 	// new CompanyNews();
 	new Footer();
