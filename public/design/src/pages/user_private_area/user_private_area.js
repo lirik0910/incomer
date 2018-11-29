@@ -1,4 +1,4 @@
-import './userProfile.scss';
+import './user_private_area.scss';
 import 'normalize.css';
 import Base from '../../Base.js';
 

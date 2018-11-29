@@ -110,12 +110,12 @@ export default class Header extends Base {
 	}
 
 	checkSearchResultFilling() {
-		for (var i = 0; i < this.els._searchCategoryCount.length; i++) {
-			if ($(this.els._searchCategoryCount[i]).text() === '0') {
-				$(this.els._searchCategoryCount[i])
+		for (var i = 0; i < $('.header .search__category-count').length; i++) {
+			if ($($('.header .search__category-count')[i]).text() === '0') {
+				$($('.header .search__category-count')[i])
 					.prev()
 					.addClass('search__category-link--light');
-				$(this.els._searchCategoryCount[i]).addClass('search__category-count--light')
+				$($('.header .search__category-count')[i]).addClass('search__category-count--light')
 			}
 		}
 	}
