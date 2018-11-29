@@ -50,7 +50,7 @@ class UsersListTable extends React.PureComponent {
                 options={[
                     ['Пользователь', 'user'],
                     ['Редактор', 'manager'],
-                    ['Администратор', 'admin'],
+                    // ['Администратор', 'admin'],
                 ]}
             />
         </form>

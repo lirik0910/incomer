@@ -213,7 +213,7 @@ class PersonsListTable extends React.PureComponent {
                         }>
 
                         <Typography
-                            text={`Вы уверены, что хотите удалить персоналии с id ${prepareDeleteRowID}?`}/>
+                            text={`Вы уверены, что хотите удалить персоналию с id ${prepareDeleteRowID}?`}/>
                     </Dialog> : ''}
 
                 {prepareDeleteForeverRowID ?
@@ -243,7 +243,7 @@ class PersonsListTable extends React.PureComponent {
                         }>
 
                         <Typography
-                            text={`Вы уверены, что хотите удалить персоналии с id ${prepareDeleteForeverRowID}?
+                            text={`Вы уверены, что хотите удалить персоналию с id ${prepareDeleteForeverRowID}?
 							Это действие нельзя отменить!`}/>
                     </Dialog> : ''}
 

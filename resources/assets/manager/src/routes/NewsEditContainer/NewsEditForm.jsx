@@ -264,7 +264,7 @@ class NewsEditContainer extends React.Component {
 
 
             <Typography
-                text="Редактирование новости"
+                text={this.props.id ?"Редактирование новости": "Создание новости"}
                 variant="title"/>
 
             <div className={classes.control}>
@@ -438,7 +438,7 @@ class NewsEditContainer extends React.Component {
                         />
                     </>}
 
-                    {previewOptions &&
+                    {previewOptions && typeof data.preview_pattern !== 'undefined' &&
                     <React.Fragment>
                         <Typography
                             variant="label"
@@ -458,9 +458,9 @@ class NewsEditContainer extends React.Component {
                             text={'Текущая новость на этой позиции: ' + currentPatternNews.title}/>}
                     </React.Fragment>
                     }
+                    <br/>
 
-
-                    <React.Fragment>
+                    {(data.type === 'top' || data.type === 'category_top' ) && <React.Fragment>
                         <Typography
                             variant="label"
                             text='ТОП Превью картинка'/>
@@ -476,8 +476,9 @@ class NewsEditContainer extends React.Component {
                                 this.setState({data})
                             }}
                         />
-                    </React.Fragment>
+                    </React.Fragment>}
 
+                    <br/>
                     <React.Fragment>
                         <Typography
                             variant="label"

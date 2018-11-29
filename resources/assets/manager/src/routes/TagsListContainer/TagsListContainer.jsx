@@ -109,93 +109,10 @@ class TagsListContainer extends React.PureComponent {
                 persons={persons}
             />
 
-            {/*<UsersListFilters>*/}
-                {/*<Typography*/}
-                    {/*variant="label"*/}
-                    {/*text="Search tags"/>*/}
-                {/*<Search*/}
-                    {/*inputProperties={{*/}
-                        {/*form: 'tags-data-fetch-form'*/}
-                    {/*}}*/}
-                    {/*submitProperties={{*/}
-                        {/*form: 'tags-data-fetch-form'*/}
-                    {/*}}/>*/}
-
-                {/*<Typography*/}
-                    {/*variant="label"*/}
-                    {/*text="Filter by sign up date"/>*/}
-                {/*<Input showTimeSelect*/}
-                       {/*variant="date"*/}
-                       {/*name="created_at"*/}
-                       {/*form="tags-data-fetch-form"*/}
-                       {/*timeIntervals={10}*/}
-                       {/*dateFormat="YYYY-MM-DD LT"*/}
-                       {/*selected={createdAtFilterValue}*/}
-                       {/*onChange={(newValue) => {*/}
-                           {/*userListPageCreatedAt(newValue);*/}
-                           {/*document.getElementById('tags-data-fetch-submit').click();*/}
-                       {/*}}/>*/}
-
-                {/*<Button*/}
-                    {/*variant="tab" text="Clear filters properties"*/}
-                    {/*onClick={clearFilters(this)}/>*/}
-            {/*</UsersListFilters>*/}
-
-            {/*{displayCopySeveralRows ?*/}
-                {/*<Dialog*/}
-                    {/*title="Copy rows"*/}
-                    {/*onClose={() => this.setState({*/}
-                        {/*displayCopySeveralRows: false*/}
-                    {/*})}*/}
-                    {/*control={*/}
-                        {/*<React.Fragment>*/}
-                            {/*<Button*/}
-                                {/*variant="tab"*/}
-                                {/*text="OK"*/}
-                                {/*onClick={copySelectedRows(this)}/>*/}
-                            {/*<Button*/}
-                                {/*variant="tab"*/}
-                                {/*text="Cancel"*/}
-                                {/*onClick={() => this.setState({*/}
-                                    {/*displayCopySeveralRows: false*/}
-                                {/*})}/>*/}
-                        {/*</React.Fragment>*/}
-                    {/*}>*/}
-
-                    {/*<Typography*/}
-                        {/*text="Are you sure you want to copy selected tags?"/>*/}
-                {/*</Dialog> : ''}*/}
-
-            {/*{displayDeleteSeveralRows ?*/}
-                {/*<Dialog*/}
-                    {/*title="Delete rows"*/}
-                    {/*onClose={() => this.setState({*/}
-                        {/*displayDeleteSeveralRows: false*/}
-                    {/*})}*/}
-                    {/*control={*/}
-                        {/*<React.Fragment>*/}
-                            {/*<Button*/}
-                                {/*variant="tab"*/}
-                                {/*text="OK"*/}
-                                {/*onClick={() => deleteSelectedRows(this).then(() => {*/}
-                                    {/*document.getElementById('tags-data-fetch-submit').click();*/}
-                                {/*})}/>*/}
-                            {/*<Button*/}
-                                {/*variant="tab"*/}
-                                {/*text="Cancel"*/}
-                                {/*onClick={() => this.setState({*/}
-                                    {/*displayDeleteSeveralRows: false*/}
-                                {/*})}/>*/}
-                        {/*</React.Fragment>*/}
-                    {/*}>*/}
-
-                    {/*<Typography*/}
-                        {/*text="Are you sure you want to delete selected tags?"/>*/}
-                {/*</Dialog> : ''}*/}
 
             {addNewItemFlag === true ?
                 <Dialog
-                    title="Добавить пользователя"
+                    title="Добавить тэг"
                     onClose={() => this.setState({
                         addNewItemFlag: false
                     })}
@@ -225,7 +142,7 @@ class TagsListContainer extends React.PureComponent {
                 </Dialog> : ''}
 
             {displayAlert ?
-                <Alert text={catchedErrorMessage}/> : ''}
+                <Alert text={displayAlert}/> : ''}
         </React.Fragment>
     }
 }

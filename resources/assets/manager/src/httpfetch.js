@@ -1,7 +1,7 @@
 export default (resource = '', method = 'GET', data = {}) => {
     method = method.toUpperCase();
 
-    const apiUrl = 'http://95.179.128.38/api';
+    const apiUrl = process.env.API_URL;
 
     let body,
         content = '',

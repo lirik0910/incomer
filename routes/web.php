@@ -33,8 +33,8 @@ Route::get('/wiki/{url}', 'PageController@wikiPage');
 
 Route::get('/search', 'PageController@search');
 
-Route::get('/manager', 'PageController@manager');
-Route::get('/manager/{any}', 'PageController@manager');
+//Route::get('/manager', 'PageController@manager');
+//Route::get('/manager/{any}', 'PageController@manager');
 
 
 

@@ -51,7 +51,7 @@ class TagsListTable extends React.PureComponent {
 
         /**
          * Data on tags who will be in the table
-         * Данные по пользователям, которые будут в таблице
+         * Данные по тэгам, которые будут в таблице
          * @type {Array}
          */
         data: [
@@ -83,7 +83,6 @@ class TagsListTable extends React.PureComponent {
         const {classes} = this.props;
         const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt, prepareDeleteForeverRowID = 0} = this.state;
         const persons = this.props.persons  && this.props.persons.map((i) => [i.name, i.id]);
-        console.log(persons);
 
         return <Panel className={classes.root}>
             <Table>
@@ -210,7 +209,7 @@ class TagsListTable extends React.PureComponent {
 
             {prepareDeleteRowID ?
                 <Dialog
-                    title="Удаление пользователя"
+                    title="Удаление тэга"
                     onClose={() => this.setState({
                         prepareDeleteRowID: 0
                     })}
@@ -233,13 +232,12 @@ class TagsListTable extends React.PureComponent {
                     }>
 
                     <Typography
-                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteRowID}?
-							Это действие нельзя отменить!`}/>
+                        text={`Вы уверены, что хотите удалить тэг с id ${prepareDeleteRowID}?`}/>
                 </Dialog> : ''}
 
             {prepareDeleteForeverRowID ?
                 <Dialog
-                    title="Удаление пользователя"
+                    title="Удаление тэга"
                     onClose={() => this.setState({
                         prepareDeleteForeverRowID: 0
                     })}
@@ -262,7 +260,7 @@ class TagsListTable extends React.PureComponent {
                     }>
 
                     <Typography
-                        text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteForeverRowID}?
+                        text={`Вы уверены, что хотите удалить тэг с id ${prepareDeleteForeverRowID}?
 							Это действие нельзя отменить!`}/>
                 </Dialog> : ''}
 

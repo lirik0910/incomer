@@ -81,9 +81,9 @@ class PersonsListContainer extends React.PureComponent {
             <Header/>
             <div className={classes.tabs}>
                 {tabs.map((type, index) => {
-                    return (<React.Fragment>
+                    return (<React.Fragment key={type.id}>
                         <Typography
-                            key={type.id}
+
                             className={classes.tab + (tabIndex === index ? ' ' + classes.activeTab : '')}
                             onClick={() => this.setState({tabIndex: index})}
                             text={type.title}

@@ -58,7 +58,7 @@ class USerController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['password', 'patronymic', 'username', 'first_name', 'last_name', 'phone', 'country']);
+            $data = $request->only(['password', 'type', 'patronymic', 'username', 'first_name', 'last_name', 'phone', 'country']);
             $res = $this->model->update($id, $data);
 
             return response()->json($res);

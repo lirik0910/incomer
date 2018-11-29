@@ -48,7 +48,7 @@ class NewsListTable extends React.PureComponent {
 
         /**
          * Data on news who will be in the table
-         * Данные по пользователям, которые будут в таблице
+         * Данные по новостьм, которые будут в таблице
          * @type {Array}
          */
         data: [],
@@ -284,7 +284,7 @@ class NewsListTable extends React.PureComponent {
 
                 {prepareDeleteRowID ?
                     <Dialog
-                        title="Удаление пользователя"
+                        title="Удаление новости"
                         onClose={() => this.setState({
                             prepareDeleteRowID: 0
                         })}
@@ -309,12 +309,12 @@ class NewsListTable extends React.PureComponent {
                         }>
 
                         <Typography
-                            text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteRowID}?`}/>
+                            text={`Вы уверены, что хотите удалить новость с id ${prepareDeleteRowID}?`}/>
                     </Dialog> : ''}
 
                 {prepareDeleteForeverRowID ?
                     <Dialog
-                        title="Удаление пользователя"
+                        title="Удаление новости"
                         onClose={() => this.setState({
                             prepareDeleteForeverRowID: 0
                         })}
@@ -339,7 +339,7 @@ class NewsListTable extends React.PureComponent {
                         }>
 
                         <Typography
-                            text={`Вы уверены, что хотите удалить пользователя с id ${prepareDeleteForeverRowID}?
+                            text={`Вы уверены, что хотите удалить новость с id ${prepareDeleteForeverRowID}?
 							Это действие нельзя отменить!`}/>
                     </Dialog> : ''}
 

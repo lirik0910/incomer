@@ -82,6 +82,8 @@ function getClientEnvironment(publicUrl) {
 
         SOCKET_PORT: process.env.SOCKET_PORT || 3400,
 
+        API_URL: process.env.API_URL || 'http://localhost/api',
+
         SOCKET_HOST: process.env.SOCKET_HOST || 'ws://127.0.0.1'
       }
     );
