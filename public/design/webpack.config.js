@@ -25,7 +25,7 @@ const common = merge([
             'content': PATHS.src + '/pages/content/content.js',
             'company': PATHS.src + '/pages/company/company.js',
             'companies': PATHS.src + '/pages/companies/companies.js',
-            'userProfile': PATHS.src + '/pages/userProfile/userProfile.js',
+            'user_private_area': PATHS.src + '/pages/user_private_area/user_private_area.js',
             'cryptocurrency': PATHS.src + '/pages/cryptocurrency/cryptocurrency.js',
             'blockchain': PATHS.src + '/pages/blockchain/blockchain.js'
         },
@@ -60,9 +60,9 @@ const common = merge([
                 template: PATHS.src + '/pages/companies/companies.pug'
             }),
             new HtmlWebpackPlugin({
-                filename: 'userProfile.html',
-                chunks: ['userProfile', 'common'],
-                template: PATHS.src + '/pages/userProfile/userProfile.pug'
+                filename: 'user_private_area.html',
+                chunks: ['user_private_area', 'common'],
+                template: PATHS.src + '/pages/user_private_area/user_private_area.pug'
             }),
             new HtmlWebpackPlugin({
                 filename: 'cryptocurrency.html',

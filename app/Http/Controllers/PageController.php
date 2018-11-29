@@ -142,11 +142,11 @@ class PageController extends Controller
     */
     public function userArea(Request $request)
     {
-        return view('content.user_area', ['view' => 'company']);
+        return view('content.user_private_area', ['view' => 'user_private_area']);
     }
 
     /*
-    * Get userProfile page
+    * Get user_personal_area page
     * @param Request $request
     */
     public function userProfile(Request $request)

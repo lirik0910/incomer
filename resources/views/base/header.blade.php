@@ -49,7 +49,7 @@
                 </div>
                 <div class="header__profile-popup">
                     <ul class="header__profile-list">
-                        <li class="header__profile-item"><a class="header__profile-link" href="#">Мой профиль</a>
+                        <li class="header__profile-item"><a class="header__profile-link" href="{{ url('/private_area') }}">Мой профиль</a>
                         </li>
                         <li class="header__profile-item"><a class="header__profile-link" href="#">Настройки</a></li>
                         <li class="header__profile-item"><a class="header__profile-link" href="/auth/logout">Выход</a></li>

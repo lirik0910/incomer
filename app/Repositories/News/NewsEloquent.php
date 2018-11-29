@@ -117,13 +117,11 @@ class NewsEloquent implements NewsRepository
         return $news->get();
     }
 
-
     public function withPatterns()
     {
         $news = $this->model->whereIn('type', ['top', 'category_top'])->get();
         return $news;
     }
-
 
     public function one(int $id)
     {
@@ -284,7 +282,6 @@ class NewsEloquent implements NewsRepository
 
     public function delete(int $id)
     {
-
         $news = $this->model->find($id);
 
         if (!$news) {
