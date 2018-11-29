@@ -19,11 +19,13 @@
 		}
 	}
 	&--square {
-		// width: 300px;
-		// height: 300px;
 		@extend %square;
 		.card__pic {
 			height: 160px;
+		}
+		.card__text {
+			max-height: 72px;
+			overflow: hidden;
 		}
 	}
 	&--long {
@@ -68,6 +70,8 @@
 			font-size: 36px;
 			line-height: 42px;
 			letter-spacing: 0.5px;
+			max-height: 148.8px;
+			overflow: hidden;
 		}
 		.card__statistic {
 			margin-top: 18px;

@@ -31,11 +31,11 @@
                             <li class="search__category-item"><a class="search__category-link"
                                                                  href="#">Компании</a><span
                                         class="search__category-count">0</span></li>
-                            <li class="search__category-item"><a class="search__category-link" href="#">Люди</a><span
+                            <!--<li class="search__category-item"><a class="search__category-link" href="#">Люди</a><span
                                         class="search__category-count">0</span></li>
                             <li class="search__category-item"><a class="search__category-link"
                                                                  href="#">Продукты</a><span
-                                        class="search__category-count">0</span></li>
+                                        class="search__category-count">0</span></li>-->
                         </ul>
                     </div>
                 </div>
@@ -49,10 +49,10 @@
                 </div>
                 <div class="header__profile-popup">
                     <ul class="header__profile-list">
-                        <li class="header__profile-item"><a class="header__profile-link" href="{{ url('/private_area') }}">Мой профиль</a>
-                        </li>
-                        <li class="header__profile-item"><a class="header__profile-link" href="#">Настройки</a></li>
-                        <li class="header__profile-item"><a class="header__profile-link" href="/auth/logout">Выход</a></li>
+                        <!--<li class="header__profile-item"><a class="header__profile-link" href="#">Мой профиль</a>
+                        </li>-->
+                        <li class="header__profile-item"><a class="header__profile-link" href="{{ url('/private_area') }}">Настройки</a></li>
+                        <li class="header__profile-item"><a class="header__profile-link" href="{{ url('/auth/logout') }}">Выход</a></li>
                     </ul>
                 </div>
             </div>

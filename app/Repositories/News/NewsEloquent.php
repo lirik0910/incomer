@@ -285,10 +285,16 @@ class NewsEloquent implements NewsRepository
         $news = $this->one($id);
 
         if(!$news){
-            return false;
+            return [];
         }
 
-        $relatedNews = $news->tags()->first()->news()
+        $tags = $news->tags()->first();
+
+        if(!$tags){
+            return [];
+        }
+
+        $relatedNews = $tags->news()
             ->orderBy('publish_date', 'DESC')
             ->limit(3)
             ->get();
