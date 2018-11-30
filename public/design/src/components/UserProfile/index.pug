@@ -1,6 +1,9 @@
 div.profile
 	div.profile__info
-		div.profile__photo
+		form(runat='server').avatarUploader
+			input(type='file')#avatarInput
+			img(src='img/photo-dark.jpg' alt='avatar')#avatar
+		//- div.profile__photo
 			img(src='img/photo-dark.jpg', alt='user-photo')
 		p.profile__name Example User 78
 		p.profile__role Читатель
@@ -18,7 +21,7 @@ div.profile
 		a.profile__exit(href='#') Выйти
 
 	div.profile__detail
-		div.profile__detail-block.profile__detail-block--personal
+		form.profile__detail-block.profile__detail-block--personal
 			p.profile__title Личная информация
 			fieldset.profile__fieldset.profile__fieldset--fullname
 				legend Ф.И.О
@@ -77,7 +80,7 @@ div.profile
 						option(value='4') Полтава
 			a.profile__btn(href='#') Сохранить изменения
 
-		div.profile__detail-block.profile__detail-block--settings
+		form.profile__detail-block.profile__detail-block--settings
 			p.profile__title Настройки профиля
 			fieldset.profile__fieldset
 				legend Смена электронной почты
@@ -94,7 +97,7 @@ div.profile
 					p.profile__notice-content При смене электронной почты для следующего входа будет использоваться уже новый адрес.
 				a.profile__btn(href='#') Сменить email
 			fieldset.profile__fieldset
-				legend Смена электронной почты
+				legend Смена пароля
 				div.profile__field
 					span.profile__placeholder Старый пароль
 					input.profile__input(type='password')

@@ -97,7 +97,7 @@
           </div>
           <div class="chart__tab-content chart__tab-content--active">
             <div id="diagram"></div>
-            <ul class="chart__filter chart__filter--term">
+            <ul class="chart__filter">
               <li class="chart__filter-item">
                 <a class="chart__filter-link" href="#">Минута</a>
               </li>

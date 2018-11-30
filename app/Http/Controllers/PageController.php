@@ -60,8 +60,14 @@ class PageController extends Controller
     */
     public function companies(Request $request)
     {
+        $params = $request->only(['page', 'limit']);
+        $params['type_id'] = 2;
 
-        return view('content.companies', ['view' => 'companies']);
+        $companies = $this->personModel->sortList($params);
+
+        //var_dump($companies); die;
+
+        return view('content.companies', ['view' => 'companies', 'companies' => $companies]);
     }
 
     /*

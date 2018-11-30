@@ -86,7 +86,10 @@ class NewsEloquent implements NewsRepository
         if(empty($params['categoryId'])){
             $limit = 5;
 
-            $news = $this->model::where(['published' => true])->orWhereIn('type', ['normal', 'hot'])->orderBy('publish_date', 'DESC')->limit($limit);
+            $news = $this->model::where(['published' => true])
+                ->where('publish_date', '!=', null)
+                ->orWhereIn('type', ['normal', 'hot'])
+                ->orderBy('publish_date', 'DESC')->limit($limit);
         } elseif ($params['categoryId'] === 2){
             $limit = 12;
 

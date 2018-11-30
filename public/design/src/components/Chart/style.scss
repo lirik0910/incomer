@@ -1,12 +1,6 @@
-@import '../../pages/variables.scss';
-@import '../../pages/mixins.scss';
-
-// @import '../../../node_modules/chartist/dist/scss/chartist.scss';
-
 .chart {
 	@extend %card;
 	width: 948px;
-	// height: 400px;
 	font-size: 16px;
 	margin-bottom: 24px;
 	overflow: hidden;
@@ -16,10 +10,6 @@
 	}
 	&__filter {
 		display: inline-block;
-		&--term {
-			display: block;
-			margin-top: 18px;
-		}
 	}
 	&__filter-item {
 		display: inline-block;
@@ -27,7 +17,6 @@
 	&__filter-link {
 		display: inline-block;
 		padding: 5px 11px;
-		// padding: 5px 12px;
 		text-decoration: none;
 		color: $main-dark-grey-color;
 		font-size: 12px;
@@ -95,7 +84,8 @@
 	}
 	#diagram {
 		.highcharts-tick,
-		.highcharts-credits {
+		.highcharts-credits,
+		.highcharts-exporting-group {
 		    display: none;
 		}
 		.highcharts-tooltip {
@@ -108,121 +98,9 @@
 				letter-spacing: 0.2px;
 			}
 		}
-		.highcharts-axis.highcharts-yaxis {
-			// display: none;
-		}
-		.highcharts-point-hover {
-
-		}
-		.highcharts-exporting-group {
-			display: none;
-		}
-		// .highcharts-5mbmonx-0 {
-		// 	overflow: visible;
-		// }
-		// .highcharts-range-selector-group {
-		// 	transform: translate(-41px, 217px);
-		// }
-		.highcharts-axis-labels.highcharts-xaxis-labels.highcharts-navigator-xaxis {
-			opacity: 0;
-		}
+		.highcharts-axis-labels.highcharts-xaxis-labels.highcharts-navigator-xaxis,
 		.highcharts-navigator {
 			opacity: 0;
 		}
 	}
-
-
-
-	/* .ct-chart {
-		position: relative;
-	}
-	.axis {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 1px;
-		height: 1px;
-		background-color: green;
-		&:before {
-			content: '';
-			width: 500px;
-			height: 1px;
-			border-top: 1px dotted #000;
-			display: block;
-			border-color: $default-blue;
-		}
-		&:after {
-			content: '';
-			width: 5px;
-			height: 500px;
-			border-left: 1px dotted #000;
-			display: block;
-			border-color: $default-blue;
-		}
-	}
-	svg {
-		.ct-grid {
-			stroke-dasharray: none;
-			stroke: $main-light-grey-color;
-		}
-		.ct-labels {
-			foreignObject {
-				position: relative;
-				span {
-					position: absolute;
-					left: -50%;
-	    				top: 0;
-				}
-				.ct-label.ct-horizontal.ct-end {
-					justify-content: center;
-				}
-			}
-		}
-		.ct-label {
-			font-size: 10px;
-			letter-spacing: 0.2px;
-			color: $main-dark-grey-color;
-		}
-		path.ct-line {
-			stroke: $default-blue;
-			stroke-width: 2px;
-		}
-		.ct-series-a .ct-circle {
-			stroke: white;
-			stroke-width: 2px;
-			fill: $default-blue;
-			cursor: pointer;
-			@include transition(r);
-			&:hover {
-				r: 8;
-			}
-		}
-	}
-	.chartist-tooltip.tooltip-show {
-		opacity: 1; 
-	}
-	
-	.chartist-tooltip {
-		position: absolute;
-		display: inline-block;
-		opacity: 0;
-		font-size: 10px;
-		letter-spacing: 0.2px;
-		color: $main-dark-grey-color;
-		font-weight: 900;
-		pointer-events: none;
-		z-index: 1;
-		transition: opacity .3s ease-in-out; 
-	}
-	.ct-series-a {
-		stroke-dasharray: 1093;
-		stroke-dashoffset: 1093;
-		stroke: $default-blue;
-		animation: animationChartPath 0.5s 0.2s linear both;
-	}
-	@keyframes animationChartPath {
-		to {
-			stroke-dashoffset: 0;
-		}
-	} */
 }
