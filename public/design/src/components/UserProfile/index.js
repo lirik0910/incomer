@@ -64,5 +64,15 @@ export default class UserProfile extends Base {
 		    }
 		    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 		}
+
+		// $.ajax({
+  //           url: '/avatar',
+  //           method: 'POST',
+  //           dataType: 'json',
+  //           // dataType: 'html',
+  //           data: {avatar: $(e.currentTarget)[0].files},
+  //       }).done( (data) => {
+            
+  //       }).fail( (e) => { });
 	}
 }
