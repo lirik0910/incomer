@@ -8,7 +8,8 @@ export default class UserProfile extends Base {
         	_profileSelectOption: $('.profile__select option'),
         	_passwordToggler: $('.profile__pass-btn'),
         	_profileSelectCountry: $('#country'),
-        	_profileSelectCity: $('#city')
+        	_profileSelectCity: $('#city'),
+        	_avatarInput: $('#avatarInput')
         }
     }
 
@@ -20,6 +21,7 @@ export default class UserProfile extends Base {
 		this.els._profileSelect.change((e) => this.selectOption(e));
 		this.els._passwordToggler.click((e) => this.togglePasswordVisibility(e));
 		this.els._profileSelectCountry.change((e) => this.toggleSelectVisibility(e));
+		this.els._avatarInput.change((e) => this.uploadAvatar(e));
 	}
 
 	focusinInputAnimation(e) {
@@ -52,5 +54,25 @@ export default class UserProfile extends Base {
 		} else {
 			this.els._profileSelectCity.parent().removeClass('profile__field--block');
 		}
+	}
+
+	uploadAvatar(e) {
+		if ($(e.currentTarget)[0].files && $(e.currentTarget)[0].files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = (e) => {
+		        $('#avatar').attr('src', e.target.result);
+		    }
+		    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+		}
+
+		// $.ajax({
+  //           url: '/avatar',
+  //           method: 'POST',
+  //           dataType: 'json',
+  //           // dataType: 'html',
+  //           data: {avatar: $(e.currentTarget)[0].files},
+  //       }).done( (data) => {
+            
+  //       }).fail( (e) => { });
 	}
 }

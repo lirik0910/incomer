@@ -21,7 +21,7 @@ export default (() => {
 				top: 0,
 				left: 0,
 				width: '100%',
-				position: 'fixed',
+				// position: 'fixed',
 				fontSize: 14,
 				fontFamily: 'arial'
 			},
@@ -29,7 +29,7 @@ export default (() => {
 				margin: 0,
 				padding: 0,
 				height: '100%',
-				overflowX: 'hidden'
+				// overflowX: 'hidden'
 			},
 			'#root': {
 				background: 'linear-gradient(180deg, #F5F5F5, #FFF)'

@@ -61,7 +61,7 @@ services:
   node:
     restart: always
     image: node:10-alpine
-    command: npm start
+    command: sh -c "npm i && npm start"
     working_dir: /var/www/node
     volumes:
       - .:/var/www

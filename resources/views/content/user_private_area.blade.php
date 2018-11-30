@@ -3,9 +3,10 @@
   <div class="container">
     <div class="profile">
       <div class="profile__info">
-        <div class="profile__photo">
-          <img src="img/photo-dark.jpg" alt="user-photo">
-        </div>
+        <form class="avatarUploader" runat="server">
+          <input type="file" id="avatarInput">
+          <img src="img/photo-dark.jpg" alt="avatar" id="avatar">
+        </form>
         <p class="profile__name">Example User 78</p>
         <p class="profile__role">Читатель</p>
         <ul class="profile__menu-list">
@@ -28,7 +29,7 @@
         <a class="profile__exit" href="#">Выйти</a>
       </div>
       <div class="profile__detail">
-        <div class="profile__detail-block profile__detail-block--personal">
+        <form class="profile__detail-block profile__detail-block--personal">
           <p class="profile__title">Личная информация</p>
           <fieldset class="profile__fieldset profile__fieldset--fullname">
             <legend>Ф.И.О</legend>
@@ -96,8 +97,8 @@
             </div>
           </fieldset>
           <a class="profile__btn" href="#">Сохранить изменения</a>
-        </div>
-        <div class="profile__detail-block profile__detail-block--settings">
+        </form>
+        <form class="profile__detail-block profile__detail-block--settings">
           <p class="profile__title">Настройки профиля</p>
           <fieldset class="profile__fieldset">
             <legend>Смена электронной почты</legend>
@@ -136,7 +137,7 @@
             </div>
             <a class="profile__btn" href="#">Изменить пароль</a>
           </fieldset>
-        </div>
+        </form>
       </div>
     </div>
   </div>

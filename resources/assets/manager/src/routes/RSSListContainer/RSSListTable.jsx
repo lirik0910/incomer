@@ -83,7 +83,6 @@ class RSSListTable extends React.PureComponent {
         const {classes} = this.props;
         const {data = [], sort = '', direction = '', page = 0, limit = 20, total = 0, prepareDeleteRowID = 0, currentEditRowIndex, currentEditRowCreatedAt, prepareDeleteForeverRowID = 0} = this.state;
         const persons = this.props.persons && this.props.persons.map((i) => [i.name, i.id]);
-        console.log(persons);
 
         return <Panel className={classes.root}>
             <Table>
@@ -125,16 +124,16 @@ class RSSListTable extends React.PureComponent {
                     <React.Fragment>
                         <Typography
                             variant="simple"
-                            text="Компания"/>
+                            text="Дата публикации"/>
                         <Button
                             variant="icon"
                             text={<span
-                                className={sort === 'value' && direction === 'asc' ?
+                                className={sort === 'pub_date' && direction === 'asc' ?
                                     'fa fa-sort-up' :
                                     'fa fa-sort-down'}>
 							</span>}
-                            onClick={sortUsers(this)('value')}
-                            className={sort === 'value' ?
+                            onClick={sortUsers(this)('pub_date')}
+                            className={sort === 'pub_date' ?
                                 'active' :
                                 ''}/>
                     </React.Fragment>,

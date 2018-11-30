@@ -88,9 +88,9 @@ class NewsEloquent implements NewsRepository
 
             $news = $this->model::where(['published' => true])->orWhereIn('type', ['normal', 'hot'])->orderBy('publish_date', 'DESC')->limit($limit);
         } elseif ($params['categoryId'] === 2){
-            $limit = $params['limit'] ?? 8;
+            $limit = 12;
 
-            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])->whereIn('type', ['normal', 'hot'])
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId'], 'type' => 'normal'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->offset($limit * ($page - 1))
@@ -155,24 +155,21 @@ class NewsEloquent implements NewsRepository
 
         if (!empty($images)) {
             foreach ($images as $image) {
-                $data = [
+                ImageNewsCollection::create([
                     'type' => $image['type'],
                     'image_id' => $image['id'],
                     'news_id' => $news['id']
-                ];
-
-                ImageNewsCollection::create($data);
+                ]);
             }
         }
 
         if (!empty($videos)) {
             foreach ($videos as $video) {
-                $data = [
+
+                ImageNewsCollection::create([
                     'video_id' => (int)$video,
                     'news_id' => (int)$news['id']
-                ];
-
-                ImageNewsCollection::create($data);
+                ]);
             }
         }
         if (!empty($tags)) {
@@ -226,15 +223,19 @@ class NewsEloquent implements NewsRepository
         $old->update($data);
         if (isset($images) && !empty($images)) {
             foreach ($images as $image) {
-                $item = ImageNewsCollection::where(['news_id' => $id, 'image_id' => (int)$image['id']])->first();
+                $item = ImageNewsCollection::where(['news_id' => $id, 'type' => $image['type']])->first();
                 if (!$item) {
-                    $data = [
+                    ImageNewsCollection::create([
                         'image_id' => $image['id'],
                         'type' => $image['type'],
                         'news_id' => $old['id']
-                    ];
-
-                    ImageNewsCollection::create($data);
+                    ]);
+                } else {
+                    $item->update([
+                        'image_id' => $image['id'],
+                        'type' => $image['type'],
+                        'news_id' => $old['id']
+                    ]);
                 }
             }
         }

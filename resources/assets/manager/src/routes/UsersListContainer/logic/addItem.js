@@ -14,9 +14,16 @@ export default (self, form, id) => {
         })
         .catch((data) => {
             userListPageErrorMessage(data.message);
-
             self.setState({
                 displayAlert: data.message,
             });
+
+            setTimeout(() => {
+                userListPageErrorMessage('');
+                self.setState({
+                    displayAlert: '',
+                });
+            }, 2600);
+
         });
 }

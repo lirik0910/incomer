@@ -46,6 +46,7 @@ class TagEloquent implements TagRepository
                     break;
             }
         }
+        $items->orderBy('id', 'asc');
 
         return ['data' => $items->get(), 'total' => $items->count()];
     }

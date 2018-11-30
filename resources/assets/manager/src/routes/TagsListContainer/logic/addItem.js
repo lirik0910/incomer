@@ -20,9 +20,14 @@ export default (self, form) => {
                 addNewItemFlag: false
             });
         })
-        .catch((data) => {
+        .catch((err) => {
             self.setState({
-                displayAlert: data.message,
+                displayAlert: err.message,
             });
+            setTimeout(() => {
+                self.setState({
+                    displayAlert: '',
+                });
+            }, 2600);
         });
 }
