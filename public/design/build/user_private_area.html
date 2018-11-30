@@ -239,7 +239,9 @@
     <div class="container">
 <div class="profile">
   <div class="profile__info">
-    <div class="profile__photo"><img src="img/photo-dark.jpg" alt="user-photo"></div>
+    <form class="avatarUploader" runat="server">
+      <input type="file" id="avatarInput"><img src="img/photo-dark.jpg" alt="avatar" id="avatar">
+    </form>
     <p class="profile__name">Example User 78</p>
     <p class="profile__role">Читатель</p>
     <ul class="profile__menu-list">

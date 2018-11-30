@@ -1,6 +1,9 @@
 div.profile
 	div.profile__info
-		div.profile__photo
+		form(runat='server').avatarUploader
+			input(type='file')#avatarInput
+			img(src='img/photo-dark.jpg' alt='avatar')#avatar
+		//- div.profile__photo
 			img(src='img/photo-dark.jpg', alt='user-photo')
 		p.profile__name Example User 78
 		p.profile__role Читатель
