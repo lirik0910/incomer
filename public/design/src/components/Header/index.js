@@ -36,6 +36,7 @@ export default class Header extends Base {
 			(e) => this.searchFilter(e));
 		this.els._searchCategoryList.click((e) => e.preventDefault());
 		this.setResultsItems();
+		this.els._searchInfoList.on('change', this.checkSearchResultFilling())
 	}
 
 	searchAnimation(e) {
@@ -113,18 +114,31 @@ export default class Header extends Base {
 					$('.header .search__info-list.all')
 						.addClass('search__info-list--active');
 			}
-			this.checkSearchResultFilling();
+			// this.checkSearchResultFilling();
         }).fail( (e) => { });
 	}
 
 	checkSearchResultFilling() {
-		for (var i = 0; i < $('.header .search__category-count').length; i++) {
+		/*for (var i = 0; i < $('.header .search__category-count').length; i++) {
 			if ($($('.header .search__category-count')[i]).text() === '0') {
 				$($('.header .search__category-count')[i])
 					.prev()
 					.addClass('search__category-link--light');
 				$($('.header .search__category-count')[i])
 					.addClass('search__category-count--light')
+			}
+		}*/
+		for (var i = 0; i < this.els._searchCategoryCount.length; i++) {
+			if ($(this.els._searchCategoryCount[i]).text() === '0') {
+				$(this.els._searchCategoryCount[i])
+					.prev()
+					.addClass('search__category-link--light');
+				$(this.els._searchCategoryCount[i]).addClass('search__category-count--light')
+			}
+			else {
+				$(this.els._searchCategoryCount[i])
+					.prev()
+					.removeClass('search__category-link--light')
 			}
 		}
 	}

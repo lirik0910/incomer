@@ -78,7 +78,7 @@ div.profile
 						option(value='2') Мариуполь
 						option(value='3') Керч
 						option(value='4') Полтава
-			a.profile__btn(href='#') Сохранить изменения
+			a.profile__btn(href='#')#saveNewPersonalInfo Сохранить изменения
 
 		form.profile__detail-block.profile__detail-block--settings
 			p.profile__title Настройки профиля
@@ -95,7 +95,7 @@ div.profile
 				div.profile__notice
 					p.profile__notice-header Внимание!
 					p.profile__notice-content При смене электронной почты для следующего входа будет использоваться уже новый адрес.
-				a.profile__btn(href='#') Сменить email
+				a.profile__btn(href='#')#saveNewEmail Сменить email
 			fieldset.profile__fieldset
 				legend Смена пароля
 				div.profile__field
@@ -108,4 +108,4 @@ div.profile
 					input.profile__input(type='password')
 					a.profile__pass-btn(href='#')
 						include ../../../img/eye.svg
-				a.profile__btn(href='#') Изменить пароль
+				a.profile__btn(href='#')#saveNewPassword Изменить пароль

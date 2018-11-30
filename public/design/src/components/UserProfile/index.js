@@ -9,7 +9,10 @@ export default class UserProfile extends Base {
         	_passwordToggler: $('.profile__pass-btn'),
         	_profileSelectCountry: $('#country'),
         	_profileSelectCity: $('#city'),
-        	_avatarInput: $('#avatarInput')
+        	_avatarInput: $('#avatarInput'),
+        	_saveNewPersonalInfo: $('#saveNewPersonalInfo'),
+        	_saveNewEmail: $('#saveNewEmail'),
+        	_saveNewPassword: $('#saveNewPassword')
         }
     }
 
@@ -22,6 +25,9 @@ export default class UserProfile extends Base {
 		this.els._passwordToggler.click((e) => this.togglePasswordVisibility(e));
 		this.els._profileSelectCountry.change((e) => this.toggleSelectVisibility(e));
 		this.els._avatarInput.change((e) => this.uploadAvatar(e));
+		this.els._saveNewPersonalInfo.click((e) => this.saveNewPersonalInfo(e));
+		this.els._saveNewEmail.click((e) => this.saveNewEmail(e));
+		this.els._saveNewPassword.click((e) => this.saveNewPassword(e));
 	}
 
 	focusinInputAnimation(e) {
@@ -75,7 +81,7 @@ export default class UserProfile extends Base {
         	if ($(e.currentTarget)[0].files && $(e.currentTarget)[0].files[0]) {
 			    var reader = new FileReader();
 			    reader.onload = (e) => {
-			        $('#avatar').attr('src', e.target.result);
+			        $('#avatar').attr('src', data);
 			    }
 			    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 			}
@@ -87,7 +93,46 @@ export default class UserProfile extends Base {
             $('.modal').fadeIn('400', function() {
                 $('.modal__content').slideDown();
             });
-            
+
         });*/
+	}
+
+	saveNewPersonalInfo(e) {
+		e.preventDefault();
+
+		/*$.ajax({
+            url: '/user/info',
+            method: 'POST',
+            dataType: 'json',
+            data: data,
+        }).done((data) => {
+
+            $('.profile__detail-block--personal input').val('');
+			$('.profile__detail-block--personal select').val('');
+			$('.profile__placeholder').removeClass('profile__placeholder--active');
+
+            $('.modal__header').text('Успех');
+            $('.modal__body').text('Информация была успешно обновлена');
+            $('.modal').fadeIn('400', function() {
+                $('.modal__content').slideDown();
+            });
+
+        }).fail(function(e) {
+            $('.modal__header').text('Ошибка');
+            $('.modal__body').text(error.statusText);
+            $('.modal').fadeIn('400', function() {
+                $('.modal__content').slideDown();
+            });
+        });*/
+	}
+
+	saveNewEmail(e) {
+		e.preventDefault();
+		
+	}
+
+	saveNewPassword(e) {
+		e.preventDefault();
+
 	}
 }
