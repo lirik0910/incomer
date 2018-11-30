@@ -65,14 +65,29 @@ export default class UserProfile extends Base {
 		    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 		}
 
-		// $.ajax({
-  //           url: '/avatar',
-  //           method: 'POST',
-  //           dataType: 'json',
-  //           // dataType: 'html',
-  //           data: {avatar: $(e.currentTarget)[0].files},
-  //       }).done( (data) => {
+		/*$.ajax({
+            url: '/avatar',
+            method: 'GET',
+            dataType: 'text',
+            data: {avatar: $(e.currentTarget)[0].files},
+        }).done( (data) => {
+        	
+        	if ($(e.currentTarget)[0].files && $(e.currentTarget)[0].files[0]) {
+			    var reader = new FileReader();
+			    reader.onload = (e) => {
+			        $('#avatar').attr('src', e.target.result);
+			    }
+			    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+			}
+
+        }).fail( (e) => {
+
+        	$('.modal__header').text('Ошибка');
+            $('.modal__body').text('Извините, попробуйте позже');
+            $('.modal').fadeIn('400', function() {
+                $('.modal__content').slideDown();
+            });
             
-  //       }).fail( (e) => { });
+        });*/
 	}
 }
