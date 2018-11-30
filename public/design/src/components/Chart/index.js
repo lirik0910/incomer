@@ -5,14 +5,12 @@ Exporting(Highcharts);
 
 export default class Chart extends Base {
 	initDOMElements(e) {
-				this.els = {
-					_chartTabLink: $('.chart__tab-link'),
-					_chartTabContent: $('.chart__tab-content'),
-					_chartFilterListTerm: $('.chart__filter--term'),
-					_chartFilterLinkTerm: $('.chart__filter--term .chart__filter-link'),
-					_chartFilterLink: $('.chart__filter-link')
-				}
+		this.els = {
+			_chartTabLink: $('.chart__tab-link'),
+			_chartTabContent: $('.chart__tab-content'),
+			_chartFilterLink: $('.chart__filter-link')
 		}
+	}
 
 	onDOMReady(e) {
 		this.initChart();
@@ -20,9 +18,9 @@ export default class Chart extends Base {
 		this.els._chartFilterLink.click((e) => this.filterToggler(e));
 		this.els._chartFilterLink.click((e) => this.chooseChartPreriod(e));
 
-		// this.els._chartFilterLinkTerm.on('click', 'a:not(.chart__filter-link--active)', 
-		// 	(e) => this.chooseChartPreriod(e);
-		
+		// $('.chart__filter').on('click', 
+		// 	'a:not(.chart__filter-link--active)', 
+		// 	function() { console.log('hhhh') });
 	}
 
 	initChart() {
