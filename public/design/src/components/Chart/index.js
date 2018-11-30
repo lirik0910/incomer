@@ -26,7 +26,7 @@ export default class Chart extends Base {
 	initChart() {
 		Highcharts.stockChart('diagram', {
 			chart: {
-				height: 270
+				height: 220
 			},
 			credits: {
 				enabled: false
@@ -2135,45 +2135,45 @@ export default class Chart extends Base {
 	}
 
 	getYearPeriod(chart, currentYear, currentMonth, currentDay) {
-		var beforeDate = new Date(currentYear - 1, currentMonth, currentDay),
-			beforeYear = beforeDate.getFullYear(),
-			beforeMonth = beforeDate.getMonth(),
-			beforeDay = beforeDate.getDate();
-		chart.xAxis[0].setExtremes(Date.UTC(beforeYear, beforeMonth, beforeDay), 
-								   Date.UTC(currentYear, currentMonth, currentDay));
+		var beforeDate = new Date(currentYear - 1, currentMonth, currentDay);
+		chart.xAxis[0].setExtremes(
+			Date.UTC(beforeDate.getFullYear(), 
+					 beforeDate.getMonth(), 
+					 beforeDate.getDate()), 
+			Date.UTC(currentYear, currentMonth, currentDay)
+		);
 		this.updateChartOption(chart, false, 20);
 	}
 
 	getQuarterPeriod(chart, currentYear, currentMonth, currentDay) {
-		var beforeDate = new Date(currentYear, currentMonth - 4, currentDay),
-			beforeYear = beforeDate.getFullYear(),
-			beforeMonth = beforeDate.getMonth(),
-			beforeDay = beforeDate.getDate();
-
-		chart.xAxis[0].setExtremes(Date.UTC(beforeYear, beforeMonth, beforeDay), 
-								   Date.UTC(currentYear, currentMonth, currentDay));
+		var beforeDate = new Date(currentYear, currentMonth - 4, currentDay);
+		chart.xAxis[0].setExtremes(
+			Date.UTC(beforeDate.getFullYear(), 
+					 beforeDate.getMonth(), 
+					 beforeDate.getDate()),
+			Date.UTC(currentYear, currentMonth, currentDay)
+		);
 		this.updateChartOption(chart, false, 10);
 	}
 
 	getMonthPeriod(chart, currentYear, currentMonth, currentDay) {
-		var beforeDate = new Date(currentYear, currentMonth - 1, currentDay),
-			beforeYear = beforeDate.getFullYear(),
-			beforeMonth = beforeDate.getMonth(),
-			beforeDay = beforeDate.getDate();
-
-		chart.xAxis[0].setExtremes(Date.UTC(beforeYear, beforeMonth, beforeDay), 
-								   Date.UTC(currentYear, currentMonth, currentDay));
+		var beforeDate = new Date(currentYear, currentMonth - 1, currentDay);
+		chart.xAxis[0].setExtremes(
+			Date.UTC(beforeDate.getFullYear(), 
+					 beforeDate.getMonth(), 
+					 beforeDate.getDate()), 
+			Date.UTC(currentYear, currentMonth, currentDay)
+		);
 		this.updateChartOption(chart, true, 10);
 	}
 
 	getWeekPeriod(chart, currentYear, currentMonth, currentDay) {
-		var beforeDate = new Date(currentYear, currentMonth, currentDay - 7),
-			beforeYear = beforeDate.getFullYear(),
-			beforeMonth = beforeDate.getMonth(),
-			beforeDay = beforeDate.getDate();
-
-		chart.xAxis[0].setExtremes(Date.UTC(beforeYear, beforeMonth, beforeDay), 
-								   Date.UTC(currentYear, currentMonth, currentDay));
+		var beforeDate = new Date(currentYear, currentMonth, currentDay - 7);
+		chart.xAxis[0].setExtremes(
+			Date.UTC(beforeDate.getFullYear(), 
+					 beforeDate.getMonth(), 
+					 beforeDate.getDate()), 
+			Date.UTC(currentYear, currentMonth, currentDay));
 		this.updateChartOption(chart, true, 5);
 	}
 
