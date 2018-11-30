@@ -15,6 +15,8 @@ Route::get('/', 'PageController@index')->name('home');
 
 Route::get('news/{url}', 'PageController@oneNews');
 
+Route::get('chart/{id}', 'ChartController@index');
+
 Route::prefix('companies')->group(function(){
     Route::get('/', 'PageController@companies');
     Route::get('/{id}', 'PageController@oneCompany');

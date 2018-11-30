@@ -41,7 +41,7 @@ class NewsController extends Controller
             $data = $request->only(['category_id', 'section_id', 'related_id', 'title', 'subtitle', 'description', 'introtext', 'preview_pattern', 'type', 'published', 'images', 'videos', 'tags']);
             $data['creator_id'] = Auth::user()->id;
 
-            if(!empty($data['published'])){
+            if(!empty($data['published']) && $data['published']){
                 $data['publish_date'] = now();
                 $data['publisher_id'] = $data['creator_id'];
             }
@@ -74,6 +74,7 @@ class NewsController extends Controller
 
             $oldData = $this->model->one($id);
             if(!$oldData['published'] && $data['published']){
+                $data['publish_date'] = now();
                 $data['publisher_id'] = Auth::user()->id;
             }
 

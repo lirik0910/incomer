@@ -151,6 +151,21 @@ class NewsEloquent implements NewsRepository
 
         unset($data['images'], $data['videos'], $data['tags']);
 
+
+        if( !empty($data['preview_pattern']) && !empty($data['type'] ) )
+        {
+            $whereParams = [
+                'preview_pattern' => $data['preview_pattern'],
+                'type' => $data['type']
+            ];
+
+            if($whereParams['type'] === 'category_top')
+                $whereParams['category_id'] = $data['category_id'];
+
+            $oldPatternNews = $this->model->where($whereParams)->first();
+            if(!empty($oldPatternNews)) $oldPatternNews->update(['type' => 'hot']);
+        }
+
         $news = $this->model->create($data);
 
         if (!empty($images)) {

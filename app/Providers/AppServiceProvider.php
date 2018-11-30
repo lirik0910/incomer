@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Model\Category;
 use App\Repositories\Category\CategoryEloquent;
 use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Chart\ChartEloquent;
+use App\Repositories\Chart\ChartRepository;
 use App\Repositories\Image\ImageEloquent;
 use App\Repositories\Image\ImageRepository;
 use App\Repositories\Person\PersonRepository;
@@ -55,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(CategoryRepository::class, CategoryEloquent::class);
         $this->app->singleton(SectionRepository::class, SectionEloquent::class);
         $this->app->singleton(PersonTypeRepository::class, PersonTypeEloquent::class);
+        $this->app->singleton(ChartRepository::class, ChartEloquent::class);
         $this->app->singleton(RSSNewsRepository::class, RSSNewsEloquent::class);
 
     }

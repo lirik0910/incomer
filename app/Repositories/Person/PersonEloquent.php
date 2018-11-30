@@ -62,6 +62,17 @@ class PersonEloquent implements PersonRepository
         return $item;
     }
 
+    public function getForView($id)
+    {
+        $item = $this->model
+            ->withTrashed()
+            ->with(['type', 'fields.field_type'])
+            ->find($id);
+
+        if (!$item) throw new \Exception('Person not found');
+        return $item;
+    }
+
     public function create(array $data)
     {
         $fields = json_decode($data['fields'], true);

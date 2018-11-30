@@ -8,8 +8,8 @@
             <img src="img/tesla.png">
           </div>
           <div class="info__text">
-            <p class="info__title">Tesla</p>
-            <p class="info__subtitle">NOSDAQ: TSLA</p>
+            <p class="info__title">{{ $company->name }}</p>
+            <p class="info__subtitle">NOSDAQ: {{ $info['ticker'] ?? '' }}</p>
           </div>
           <div class="info__stock info__stock--increase">
             @include('svg.chevron')
@@ -85,7 +85,7 @@
       <div class="main-wrap">
         <div class="chart">
           <div class="chart__wrap">
-            <p class="block-title">О Tesla в цифрах</p>
+            <p class="block-title">О {{ $company->name }}  в цифрах</p>
             <ul class="chart__tab-list">
               <li class="chart__tab-item">
                 <a class="chart__tab-link chart__tab-link--active" href="#">Стоимость акций</a>

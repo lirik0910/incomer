@@ -148,7 +148,7 @@ class RSSListTable extends React.PureComponent {
                     <TableRow
                         key={i}
                         columns={[
-                            row.title,
+                            <a href={row.link} target="_blank">{row.title}</a>,
                             row.persons && row.persons[0] && row.persons[0].name,
                             row.pub_date,
                             <React.Fragment>
