@@ -29,7 +29,7 @@ export default class Header extends Base {
 		this.els._headerProfileWrap.click(() => this.loginProfile());
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));
 		this.els._searchInput.on('input', (e) => this.getSearchResult(e));
-		// this.checkSearchResultFilling();
+		this.checkSearchResultFilling();
 		this.baseDOM._window.click((e) => this.closeSearchByClickOutside(e));
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
