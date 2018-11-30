@@ -18,7 +18,7 @@ const styles = ({Global, Palette}) => ({
 				'news-table news-filters'
 			`,
             gridTemplateRows: '30px 50px auto',
-            gridTemplateColumns: 'auto 352px'
+            gridTemplateColumns: '70% 30%'
         }
     },
 

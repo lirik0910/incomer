@@ -6,7 +6,7 @@
       <article class="post">
         <h1 class="post__title">{{ $item->title }}</h1>
         <div class="post__info">
-          <time class="post__date">{{ $dateFormatter::format($item->publish_date) }}</time>
+          <time class="post__date">{{ $item->publish_date? $dateFormatter::format($item->publish_date): '' }}</time>
           <span class="views-post views-post--light">{{ $item->views }}</span>
           <span class="comments-post comments-post--light">{{ $item->comments_count }}</span>
         </div>

@@ -15,7 +15,10 @@ export default theme => {
 
 		content: {
 			padding: '0 12px',
-			fontFamily: 'arial'
+			fontFamily: 'arial',
+			'& *':{
+				maxWidth: '100%',
+			}
 		},
 
 		label: {

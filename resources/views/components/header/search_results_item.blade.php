@@ -10,7 +10,7 @@
                 <img class="search__info-img" src="@if(isset($img)) {{ $img->url }} @else /img/placeholder.png @endif">
             </div>
             <div class="search__info-detail"><span class="search__info-category">Новости</span>
-                <time class="search__info-time">{{ $dateFormatter::format($item->publish_date) }}</time>
+                <time class="search__info-time">{{ $item->publish_date ? $dateFormatter::format($item->publish_date) : '' }}</time>
                 <div class="search__info-text">
                     <p>{{ $item->title }}</p>
                 </div>

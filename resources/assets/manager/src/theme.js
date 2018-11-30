@@ -29,10 +29,14 @@ export default (() => {
 				margin: 0,
 				padding: 0,
 				height: '100%',
-				// overflowX: 'hidden'
+                maxWidth: '100%',
+
+                // overflowX: 'hidden'
 			},
 			'#root': {
-				background: 'linear-gradient(180deg, #F5F5F5, #FFF)'
+                maxWidth: '100%',
+
+                background: 'linear-gradient(180deg, #F5F5F5, #FFF)'
 			},
 			'.react-datepicker-popper': {
 				left: '-34px !important'
