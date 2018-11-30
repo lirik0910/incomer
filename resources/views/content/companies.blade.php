@@ -15,12 +15,12 @@
                 @include('svg.arrow')
               </a>
             </li>
-            <li class="companies__sort-item"> 
+            <!--<li class="companies__sort-item">
               <a class="companies__sort-link" href="#" data-sort-value="rating" data-sort-type="original-order"> 
                 <span>Рейтинг</span>
                 @include('svg.arrow')
               </a>
-            </li>
+            </li>-->
             <li class="companies__sort-item"> 
               <a class="companies__sort-link" href="#" data-sort-value="capitalization" data-sort-type="original-order"> 
                 <span>Капитализация</span>
@@ -31,6 +31,7 @@
         </div>
         <div class="companies__catalog">
           <ul class="companies__list">
+
             <li class="companies__item">
               <a class="companies__link" href="#">
                 <div class="companies__info">
