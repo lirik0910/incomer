@@ -29,13 +29,13 @@ class ChartController extends Controller
         $filteredChart = [];
         foreach ($chart as $point) {
             $filteredChart[] = [
-                strtotime($point['date'].' '.$point['minute']),
+                strtotime($point['date'].' '.$point['minute'])*1000,
                 (float) $point['close']
             ];
         }
 
 
-        return response()->json($chart);
-//        return response()->json($filteredChart);
+//        return response()->json($chart);
+        return response()->json($filteredChart);
     }
 }
