@@ -62,15 +62,22 @@ class PageController extends Controller
     */
     public function companies(Request $request)
     {
-        $params = $request->only(['page', 'limit']);
+        //$params = $request->only(['page', 'limit']);
         $params['type_id'] = 2;
+        $params['category_id'] = 1;
 
         $companies = [];
         $companies = $this->personModel->sortList($params);
 
+        $news = $this->newsModel->current($params);
+
         //var_dump($companies); die;
 
-        return view('content.companies', ['view' => 'companies', 'companies' => $companies]);
+        return view('content.companies', [
+            'view' => 'companies',
+            'companies' => $companies,
+            'news' => $news
+        ]);
     }
 
     /*

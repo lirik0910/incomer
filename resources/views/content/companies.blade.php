@@ -37,7 +37,10 @@
       </div>
       <div class="sidebar-news">
         <p class="sidebar-news__title">Новости компаний</p>
-        <a class="card card--square-full-img" href="#">
+          @foreach($news as $item)
+              @include('components.index.hot_news_item', ['item' => $item, 'type' => 'short'])
+          @endforeach
+        <!--<a class="card card--square-full-img" href="#">
           <article class="card__article">
             <div class="card__pic">
               <img src="img/photo-light.jpg">
@@ -84,7 +87,7 @@
               </div>
             </div>
           </article>
-        </a>
+        </a>-->
       </div>
     </div>
   </div>

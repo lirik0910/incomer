@@ -114,6 +114,17 @@ class NewsEloquent implements NewsRepository
                 ->simplePaginate($limit);
 
             return $news;
+        } elseif ($params['categoryId'] === 1){
+            $limit = $params['limit'] ?? 3;
+
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
+                ->orWhereIn('type', ['normal', 'hot'])
+                ->with('category', 'section')
+                ->withCount('comments')
+                ->limit($limit)
+                //->offset($limit * ($page - 1))
+                ->orderBy('publish_date', 'DESC');
+                //->simplePaginate($limit);
         }
         return $news->get();
     }
