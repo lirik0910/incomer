@@ -88,13 +88,13 @@ class NewsEloquent implements NewsRepository
 
             $news = $this->model::where(['published' => true])
                 //->where('publish_date', '!=', null)
-                ->orWhereIn('type', ['normal', 'hot'])
+                ->whereIn('type', ['normal', 'hot'])
                 ->orderBy('publish_date', 'DESC')->limit($limit);
         } elseif ($params['categoryId'] === 2){
             $limit = 12;
 
             $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
-                ->orWhereIn('type', ['normal', 'hot'])
+                ->whereIn('type', ['normal', 'hot'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->offset($limit * ($page - 1))
@@ -106,7 +106,7 @@ class NewsEloquent implements NewsRepository
             $limit = $params['limit'] ?? 9;
 
             $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
-                ->orWhereIn('type', ['normal', 'hot'])
+                ->whereIn('type', ['normal', 'hot'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->offset($limit * ($page - 1))
@@ -118,7 +118,7 @@ class NewsEloquent implements NewsRepository
             $limit = $params['limit'] ?? 3;
 
             $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
-                ->orWhereIn('type', ['normal', 'hot'])
+                ->whereIn('type', ['normal', 'hot'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->limit($limit)
