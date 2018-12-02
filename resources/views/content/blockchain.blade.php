@@ -33,10 +33,10 @@
                   <div class="row">
                       @include('components.news.patterns.' . explode('.', $topNews->first()->preview_pattern)[1], ['item' => $topNews->first()])
                       @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
-              @elseif($loop->iteration === 2)
+              @elseif($loop->iteration === 2 || $loop->iteration === 12)
                       @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
                   </div>
-              @elseif($loop->iteration === 3)
+              @elseif($loop->iteration === 3 || $loop->iteration === 9)
                   <div class="row">
                       @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
               @elseif($loop->iteration === 4)

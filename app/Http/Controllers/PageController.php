@@ -39,7 +39,9 @@ class PageController extends Controller
                 'dateFormatter' => DateFormatter::class
             ])->render();
         } else{
+            //var_dump($params); die;
             $current = $this->newsModel->current($params);
+            //var_dump; die;
             $top = $this->newsModel->indexTop();
             $videos = $this->videoModel->index();
 
@@ -65,6 +67,7 @@ class PageController extends Controller
         $params = $request->only(['page', 'limit']);
         $params['type_id'] = 2;
 
+        $companies = [];
         $companies = $this->personModel->sortList($params);
 
         //var_dump($companies); die;
