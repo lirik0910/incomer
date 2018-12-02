@@ -13,8 +13,8 @@
             <p class="info__subtitle">NOSDAQ: {{ $info['ticker'] ?? '' }}</p>
           </div>
           <div class="info__stock info__stock--increase">
-            @include('svg.chevron')
-            <span>{{$info['price'] ?? ''}}</span>
+            {{--@include('svg.chevron')--}}
+            <span>{{$info['lastPrice'] ?? ''}}</span>
           </div>
         </div>
         <div class="info__detail">

@@ -84,14 +84,21 @@ class PageController extends Controller
         }
 
         $data = $this->chartModel->all($ids);
+        $lastPrices = $this->chartModel->lastPrices($ids);
 
         $filteredChart = [];
+        $filteredPrices = [];
         foreach ($data as $point) {
             $filteredChart[$point->person_id][] = (float)$point['close'];
         }
 
+        foreach ($lastPrices as $price) {
+            $filteredPrices[$price->person_id] = (float)$price['close'];
+        }
+
         foreach ($companies as $company) {
             $company->chart = json_encode($filteredChart[$company->id]);
+            $company->lastPrice = $filteredPrices[$company->id];
         }
 
         return view('content.companies', [
@@ -113,6 +120,7 @@ class PageController extends Controller
         foreach ($company->fields as $field) {
             $info[$field->field_type->title] = $field->value;
         }
+        $info['lastPrice'] = $this->chartModel->lastPrice($id)['close'];
 
 
         return view('content.company', [
