@@ -1,8 +1,9 @@
 @extends('layouts.app')
+
 @section('content')
   <div class="container">
     <div class="summary">
-      <div class="tag">
+      <!--<div class="tag">
         <ul class="tag__list">
           <li class="tag__item"><a class="tag__link" href="#">Bitcoin</a></li>
           <li class="tag__item"><a class="tag__link" href="#">Ethereum</a></li>
@@ -42,7 +43,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div>-->
     </div>
     <section class="main-news">
       <div class="row">
