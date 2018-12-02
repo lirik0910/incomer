@@ -34,8 +34,6 @@ class ChartController extends Controller
             ];
         }
 
-
-//        return response()->json($chart);
         return response()->json($filteredChart);
     }
 }

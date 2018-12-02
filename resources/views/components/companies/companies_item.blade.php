@@ -27,7 +27,7 @@
             <span class="companies__stock-value">170.583.344</span>
         </div>
         <div class="companies__visualisation">
-            <div class="companies__chart" id="chart-1"></div>
+            <div class="companies__chart company_item_chart" id="company_chart_{{$item->id}}" data-content="{{$item->chart}}"></div>
             <div class="companies__rating companies__rating--increase">
                 @include('svg.arrow')
                 <span class="companies__rating-value">314.86</span>
