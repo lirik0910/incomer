@@ -72,7 +72,7 @@ class ImageController extends Controller
 
                 $data['url'] = '/storage/'.$request
                         ->file('image')
-                        ->storeAs('images', basename($item['url']));
+                        ->storeAs('images/images_content', basename($item['url']));
             } else {
                 unset($data['path']);
             }
