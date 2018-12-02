@@ -101,7 +101,25 @@ class PageController extends Controller
     */
     public function cryptocurrencies(Request $request)
     {
-        return view('content.cryptocurrency', ['view' => 'cryptocurrency']);
+        $params = $request->only(['page']);
+        $params['categoryId'] = 3;
+
+        $current = $this->newsModel->current($params);
+
+        if($request->ajax()){
+            return view('components.cryptocurrencies.current_news_list', [
+                'items' => $current,
+            ])->render();
+        }
+
+        $top = $this->newsModel->categoryTop($params['categoryId']);
+
+        return view('content.cryptocurrency', [
+            'view' => 'cryptocurrency',
+            'currentNews' => $current,
+            'topNews' => $top,
+            'dateFormatter' => DateFormatter::class,
+        ]);
     }
 
     /*

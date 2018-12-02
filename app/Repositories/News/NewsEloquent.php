@@ -93,7 +93,8 @@ class NewsEloquent implements NewsRepository
         } elseif ($params['categoryId'] === 2){
             $limit = 12;
 
-            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId'], 'type' => 'normal'])
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
+                ->orWhereIn('type', ['normal', 'hot'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->offset($limit * ($page - 1))
@@ -102,8 +103,17 @@ class NewsEloquent implements NewsRepository
 
             return $news;
         } elseif ($params['categoryId'] === 3) {
-            $limit = 4;
-            $news = $this->model::where(['published' => true, 'type' => 'normal'])->orderBy('publish_date', 'DESC')->limit($limit);
+            $limit = $params['limit'] ?? 9;
+
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
+                ->orWhereIn('type', ['normal', 'hot'])
+                ->with('category', 'section')
+                ->withCount('comments')
+                ->offset($limit * ($page - 1))
+                ->orderBy('publish_date', 'DESC')
+                ->simplePaginate($limit);
+
+            return $news;
         }
         return $news->get();
     }
