@@ -1,7 +1,7 @@
 @php
 //var_dump($item->fields->where('field_type.title', 'ticker')->first()); die;
     if($item->fields){
-        $img = $item->fields->where()->first();
+        $img = $item->fields->where('field_type.title', 'logo')->first();
         if($img !== NULL && File::exists(public_path($img->url))){
             $img = $img->value;
         } else{

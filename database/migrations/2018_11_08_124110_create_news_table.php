@@ -31,7 +31,7 @@ class CreateNewsTable extends Migration
                 ->nullable(true)
                 ->comment('Category section ID');
 
-            $table->string('title', 55)
+            $table->string('title', 70)
                 ->nullable(false)
                 ->comment('News title');
 
@@ -39,7 +39,7 @@ class CreateNewsTable extends Migration
                 ->nullable(true)
                 ->comment('News subtitle');
 
-            $table->text('description')
+            $table->string('description', 10000)
                 ->nullable(true)
                 ->comment('News description');
 

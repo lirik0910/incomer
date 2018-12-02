@@ -37,7 +37,9 @@ class PageController extends Controller
                 'dateFormatter' => DateFormatter::class
             ])->render();
         } else{
+            //var_dump($params); die;
             $current = $this->newsModel->current($params);
+            //var_dump; die;
             $top = $this->newsModel->indexTop();
             $videos = $this->videoModel->index();
 
@@ -60,14 +62,22 @@ class PageController extends Controller
     */
     public function companies(Request $request)
     {
-        $params = $request->only(['page', 'limit']);
+        //$params = $request->only(['page', 'limit']);
         $params['type_id'] = 2;
+        $params['category_id'] = 1;
 
+        $companies = [];
         $companies = $this->personModel->sortList($params);
+
+        $news = $this->newsModel->current($params);
 
         //var_dump($companies); die;
 
-        return view('content.companies', ['view' => 'companies', 'companies' => $companies]);
+        return view('content.companies', [
+            'view' => 'companies',
+            'companies' => $companies,
+            'news' => $news
+        ]);
     }
 
     /*
@@ -98,7 +108,25 @@ class PageController extends Controller
     */
     public function cryptocurrencies(Request $request)
     {
-        return view('content.cryptocurrency', ['view' => 'cryptocurrency']);
+        $params = $request->only(['page']);
+        $params['categoryId'] = 3;
+
+        $current = $this->newsModel->current($params);
+
+        if($request->ajax()){
+            return view('components.cryptocurrencies.current_news_list', [
+                'items' => $current,
+            ])->render();
+        }
+
+        $top = $this->newsModel->categoryTop($params['categoryId']);
+
+        return view('content.cryptocurrency', [
+            'view' => 'cryptocurrency',
+            'currentNews' => $current,
+            'topNews' => $top,
+            'dateFormatter' => DateFormatter::class,
+        ]);
     }
 
     /*

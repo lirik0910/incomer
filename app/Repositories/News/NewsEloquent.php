@@ -87,13 +87,14 @@ class NewsEloquent implements NewsRepository
             $limit = 5;
 
             $news = $this->model::where(['published' => true])
-                ->where('publish_date', '!=', null)
-                ->orWhereIn('type', ['normal', 'hot'])
+                //->where('publish_date', '!=', null)
+                ->whereIn('type', ['normal', 'hot'])
                 ->orderBy('publish_date', 'DESC')->limit($limit);
         } elseif ($params['categoryId'] === 2){
             $limit = 12;
 
-            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId'], 'type' => 'normal'])
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
+                ->whereIn('type', ['normal', 'hot'])
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->offset($limit * ($page - 1))
@@ -102,8 +103,28 @@ class NewsEloquent implements NewsRepository
 
             return $news;
         } elseif ($params['categoryId'] === 3) {
-            $limit = 4;
-            $news = $this->model::where(['published' => true, 'type' => 'normal'])->orderBy('publish_date', 'DESC')->limit($limit);
+            $limit = $params['limit'] ?? 9;
+
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
+                ->whereIn('type', ['normal', 'hot'])
+                ->with('category', 'section')
+                ->withCount('comments')
+                ->offset($limit * ($page - 1))
+                ->orderBy('publish_date', 'DESC')
+                ->simplePaginate($limit);
+
+            return $news;
+        } elseif ($params['categoryId'] === 1){
+            $limit = $params['limit'] ?? 3;
+
+            $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
+                ->whereIn('type', ['normal', 'hot'])
+                ->with('category', 'section')
+                ->withCount('comments')
+                ->limit($limit)
+                //->offset($limit * ($page - 1))
+                ->orderBy('publish_date', 'DESC');
+                //->simplePaginate($limit);
         }
         return $news->get();
     }

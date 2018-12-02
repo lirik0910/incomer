@@ -86,6 +86,7 @@
 		.card__pic {
 			height: 100%;
 			img {
+                max-block-size: -webkit-fill-available;
 				left: 50%;
 				top: 50%;
 				transform: translate(-50%, -50%);
