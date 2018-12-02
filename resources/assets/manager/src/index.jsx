@@ -76,7 +76,13 @@ render(<ThemeProvider theme={theme}>
                         loading: () => <PageLoadingProcess/>
                     })}/>
 
-
+                <Route
+                    exact
+                    path="/video"
+                    component={Loadable({
+                        loader: () => import('routes/VideoListContainer'),
+                        loading: () => <PageLoadingProcess/>
+                    })}/>
 
                 <Route
                     exact

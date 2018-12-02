@@ -34,7 +34,7 @@ class VideoController extends Controller
     {
         try {
             $data = $request->only(['title', 'description', 'link', 'preview_url', 'category_id', 'on_index']);
-            $data['creatorId'] = Auth::user()->id;
+            $data['creator_id'] = Auth::user()->id;
 
             $res = $this->model->create($data);
 

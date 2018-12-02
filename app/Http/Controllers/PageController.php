@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use function foo\func;
 use Illuminate\Http\Request;
-use App\Model\News;
 use App\Repositories\News\NewsRepository;
 use App\Repositories\Video\VideoRepository;
 use App\Repositories\Person\PersonRepository;
@@ -79,10 +77,22 @@ class PageController extends Controller
     * Get company page
     * @param Request $request
     */
-    public function oneCompany(Request $request)
+    public function oneCompany(Request $request, $id)
     {
+        $company = $this->personModel->get($id);
 
-        return view('content.company', ['view' => 'company']);
+        $info = [];
+        foreach ($company->fields as $field) {
+            $info[$field->field_type->title] = $field->value;
+        }
+//        dd($info);
+
+
+        return view('content.company', [
+            'view' => 'company',
+            'company' =>  $company,
+            'info' => $info,
+        ]);
     }
 
     /*

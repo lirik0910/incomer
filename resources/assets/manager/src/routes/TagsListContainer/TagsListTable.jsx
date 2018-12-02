@@ -88,22 +88,7 @@ class TagsListTable extends React.PureComponent {
             <Table>
                 <TableHeader columns={[
                     //<input type="checkbox" onChange={selectAllRows(this)}/>,
-                    <React.Fragment>
-                        <Typography
-                            variant="simple"
-                            text="Персона"/>
-                        <Button
-                            variant="icon"
-                            text={<span
-                                className={sort === 'person' && direction === 'asc' ?
-                                    'fa fa-sort-up' :
-                                    'fa fa-sort-down'}>
-							</span>}
-                            onClick={sortUsers(this)('person')}
-                            className={sort === 'person' ?
-                                'active' :
-                                ''}/>
-                    </React.Fragment>,
+
                     <React.Fragment>
                         <Typography
                             variant="simple"
@@ -120,6 +105,22 @@ class TagsListTable extends React.PureComponent {
                                 'active' :
                                 ''}/>
                     </React.Fragment>,
+                    <React.Fragment>
+                        <Typography
+                            variant="simple"
+                            text="Персона"/>
+                        <Button
+                            variant="icon"
+                            text={<span
+                                className={sort === 'person' && direction === 'asc' ?
+                                    'fa fa-sort-up' :
+                                    'fa fa-sort-down'}>
+							</span>}
+                            onClick={sortUsers(this)('person')}
+                            className={sort === 'person' ?
+                                'active' :
+                                ''}/>
+                    </React.Fragment>,
 
                     <Typography
                         variant="simple"
@@ -131,8 +132,8 @@ class TagsListTable extends React.PureComponent {
                     <TableRow
                         key={i}
                         columns={[
-                            row.person && row.person.name,
                             row.value,
+                            row.person && row.person.name,
                             <React.Fragment>
                                 <Button
                                     variant="icon"

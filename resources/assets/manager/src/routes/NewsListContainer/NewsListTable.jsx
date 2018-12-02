@@ -205,8 +205,8 @@ class NewsListTable extends React.PureComponent {
                                 row.section && row.section.title,
                                 row.creator && row.creator.email,
                                 row.created_at,
-                                row.comments_count,
                                 row.views,
+                                row.comments_count,
                                 <React.Fragment>
                                     {!row.deleted_at &&<Link to={"/news/" + row.id}>
                                         <Button

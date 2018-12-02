@@ -120,8 +120,8 @@ export default class Auth extends Base {
 
 		$.ajax({
             url: '/auth/login',
-            method: "POST",
-            dataType: "json",
+            method: 'POST',
+            dataType: 'json',
             data: data,
 
         }).done( (data) => {

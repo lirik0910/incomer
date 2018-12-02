@@ -18,8 +18,8 @@ class VideoEloquent implements VideoRepository
         $page = $params['page'] ?? 1;
         $limit = $params['limit'] ?? 10;
 
-        $items = $this->model->limit($limit)->offset(($page - 1) * $limit);
-        return $items->get();
+        $items = $this->model->limit($limit)->offset(($page - 1) * $limit)->orderBy('on_index', 'desc')->orderBy('id', 'desc');
+        return ['data' => $items->get(), 'total' => $items->count()];
     }
 
     public function index()

@@ -24,16 +24,16 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/js/3.8e58550c.chunk.js"
   },
   {
-    "revision": "674f50d287a8c48dc19ba404d20fe713",
-    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.674f50d2.eot"
+    "revision": "b06871f281fee6b241d60582ae9369b9",
+    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
     "revision": "f25d5458d69c30849630",
     "url": "http://95.179.128.38/manager/static/js/4.f25d5458.chunk.js"
   },
   {
-    "revision": "b06871f281fee6b241d60582ae9369b9",
-    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.b06871f2.ttf"
+    "revision": "674f50d287a8c48dc19ba404d20fe713",
+    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.674f50d2.eot"
   },
   {
     "revision": "c34e3b496387a47e7279",
@@ -64,20 +64,20 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
-    "revision": "e57d3b0214fdf5bca540",
-    "url": "http://95.179.128.38/manager/static/js/12.e57d3b02.chunk.js"
+    "revision": "fbf1637e60d34ff6d37a",
+    "url": "http://95.179.128.38/manager/static/js/12.fbf1637e.chunk.js"
   },
   {
     "revision": "9a7d70afe4bd7aa5ea6d",
     "url": "http://95.179.128.38/manager/static/js/13.9a7d70af.chunk.js"
   },
   {
-    "revision": "ff86a9008c5f98a67964",
-    "url": "http://95.179.128.38/manager/static/js/14.ff86a900.chunk.js"
+    "revision": "f96e912784659b6c9c86",
+    "url": "http://95.179.128.38/manager/static/js/14.f96e9127.chunk.js"
   },
   {
-    "revision": "a1b0a0c3c897c0c3f52e",
-    "url": "http://95.179.128.38/manager/static/js/15.a1b0a0c3.chunk.js"
+    "revision": "077447236532091400e9",
+    "url": "http://95.179.128.38/manager/static/js/15.07744723.chunk.js"
   },
   {
     "revision": "8e7aceb1b6beba364dee",
@@ -92,8 +92,8 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/js/17.f2cce3b5.chunk.js"
   },
   {
-    "revision": "beb3b12c605814e29fff",
-    "url": "http://95.179.128.38/manager/static/js/runtime~main.beb3b12c.js"
+    "revision": "6f6172fa054f1783dad3",
+    "url": "http://95.179.128.38/manager/static/js/runtime~main.6f6172fa.js"
   },
   {
     "revision": "e46d34673a4d1335d99396af0cc9ff43",
@@ -120,7 +120,7 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/css/1.cdaf27bd.chunk.css"
   },
   {
-    "revision": "415f66be80b635489ce806b1caeb20ae",
+    "revision": "0333270f3f26978a74588121c7e3a659",
     "url": "http://95.179.128.38/manager/index.html"
   }
 ];
