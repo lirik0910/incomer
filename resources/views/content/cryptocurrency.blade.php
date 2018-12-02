@@ -78,6 +78,8 @@
             @elseif($loop->iteration === 2 || $loop->iteration === 6)
                 <div class="row">
                     @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+            @else
+                @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
             @endif
 
         @endforeach
