@@ -37,15 +37,12 @@ class ChartEloquent implements ChartRepository
 
     public function all(array $ids = [])
     {
+
         $items = $this->model
             ->whereIn('person_id', $ids)
-            ->select(
-                \DB::raw("DISTINCT on (date_trunc('month', date)) date_trunc('month', date) as moy, *")
-            )
-            ->whereRaw('minute = \'00:00:00\'')
-            ->orderBy('moy', 'desc')
+            ->whereRaw('(date_part(\'hour\', minute))::integer = 0')
+            ->whereRaw('(date_part(\'dow\', date))::integer % 7 = 5')
             ->orderBy('date', 'desc');
-
 
         return $items->get();
     }
