@@ -5,7 +5,7 @@
         if($img !== NULL && File::exists(public_path($img->url))){
             $img = $img->value;
         } else{
-            $img = 'img/placeholder.jpg';
+            $img = asset('img/placeholder.png');
         }
     }
 @endphp
@@ -13,18 +13,18 @@
     <a class="companies__link" href="{{ url('companies/'.$item->id ) }}">
         <div class="companies__info">
             <div class="companies__img">
-                <img src="img/tesla.png" alt="company-logo">
+                <img src="{{ $img }}" alt="company-logo">
             </div>
             <div class="companies__text">
                 <span class="companies__title">{{ $item->name }}</span>
-                <span class="companies__subtitle">NASDAQ: TSLA</span>
+                <span class="companies__subtitle">@if($item->fields->where('field_type.title', 'subtitle')->first()){{ $item->fields->where('field_type.title', 'subtitle')->first()->value }} @endif</span>
             </div>
         </div>
         <div class="companies__stock">
             <span class="companies__stock-description">Капитализация</span>
-            <span class="companies__stock-value companies__stock-value--sort">$53.708.000.000</span>
+            <span class="companies__stock-value companies__stock-value--sort">$@if($item->fields->where('field_type.title', 'market_capitalization')->first()){{ $item->fields->where('field_type.title', 'market_capitalization')->first()->value }} @endif</span>
             <span class="companies__stock-description">Акции в обращении</span>
-            <span class="companies__stock-value">170.583.344</span>
+            <span class="companies__stock-value">@if($item->fields->where('field_type.title', 'shares_in_circulation')->first())${{ $item->fields->where('field_type.title', 'shares_in_circulation')->first()->value }} @endif</span>
         </div>
         <div class="companies__visualisation">
             <div class="companies__chart company_item_chart" id="company_chart_{{$item->id}}" data-content="{{$item->chart}}"></div>

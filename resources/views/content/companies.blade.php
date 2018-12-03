@@ -40,54 +40,6 @@
           @foreach($news as $item)
               @include('components.index.hot_news_item', ['item' => $item, 'type' => 'short'])
           @endforeach
-        <!--<a class="card card--square-full-img" href="#">
-          <article class="card__article">
-            <div class="card__pic">
-              <img src="img/photo-light.jpg">
-            </div>
-            <div class="card__content">
-              <div class="card__text">
-                <p>Facebook презентовал своё первое электронное устройство</p>
-              </div>
-              <div class="card__statistic">
-                <span class="views-post">1034</span>
-                <span class="comments-post">537</span>
-              </div>
-            </div>
-          </article>
-        </a>
-        <a class="card card--square-full-img" href="#">
-          <article class="card__article">
-            <div class="card__pic">
-              <img src="img/photo-dark.jpg">
-            </div>
-            <div class="card__content">
-              <div class="card__text">
-                <p>Facebook презентовал своё первое электронное устройство</p>
-              </div>
-              <div class="card__statistic">
-                <span class="views-post">1034</span>
-                <span class="comments-post">537</span>
-              </div>
-            </div>
-          </article>
-        </a>
-        <a class="card card--square-full-img" href="#">
-          <article class="card__article">
-            <div class="card__pic">
-              <img src="img/photo-light.jpg">
-            </div>
-            <div class="card__content">
-              <div class="card__text">
-                <p>Facebook презентовал своё первое электронное устройство</p>
-              </div>
-              <div class="card__statistic">
-                <span class="views-post">1034</span>
-                <span class="comments-post">537</span>
-              </div>
-            </div>
-          </article>
-        </a>-->
       </div>
     </div>
   </div>
