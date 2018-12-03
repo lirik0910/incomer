@@ -94,9 +94,11 @@ class PageController extends Controller
             $filteredPrices[$price->person_id] = (float)$price['close'];
         }
 
-        foreach ($companies as $company) {
+        foreach ($companies as $key => $company) {
             if(isset($fliteredChart[$company->id])){
                 $company->chart = json_encode($filteredChart[$company->id]);
+            } else{
+                $companies->forget($key);
             }
             if(isset($filteredPrices[$company->id])){
                 $company->lastPrice = $filteredPrices[$company->id];
