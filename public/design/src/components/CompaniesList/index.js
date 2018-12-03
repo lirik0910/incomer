@@ -39,61 +39,24 @@ export default class CompaniesList extends Base {
 		        visible: false
 		    },
 		});
-
-		for(var i = 0; i < $("[id^='chart-']").length; i++) {
-			var chart = new Highcharts.Chart({
-		    chart: { renderTo: $("[id^='chart-']")[i] },
-			    series: [{
-			        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-			        pointStart: Date.UTC(2010, 0, 1),
-			        pointInterval: 3600 * 1000, // one hour
-			        marker: false,
-			        color: '#252525',
-			        states: {
-		                hover: false
-		            }
-			    }]
-			});
-		}
-
-
-
-
-
-		/*
-		window.chart = new Highcharts.Chart({
-		// Highcharts.chart('chart-1', {
-			chart: {
-				// renderTo: $container[0],
-				renderTo: 'chart-1',
-		        height: 60,
-		        width: 327
-		    },
-		    title: false,
-			legend: false,
-		    xAxis: {
-		        // type: 'datetime'
-		        visible: false
-		    },
-
-		    yAxis: {
-		        visible: false
-		    },
-
-		    series: [{
-		        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-		        pointStart: Date.UTC(2010, 0, 1),
-		        pointInterval: 3600 * 1000, // one hour
-		        marker: false,
-		        color: '#252525',
-		        states: {
-	                hover: false
-	            }
-		    }]
-		});*/
-
-
-
+        $(".company_item_chart").each(function(){
+        	var data = JSON.parse($(this).attr('data-content'));
+            console.log(data);
+            console.log($(this));
+            var chart = new Highcharts.Chart({
+                chart: { renderTo: $(this).attr('id') },
+                series: [{
+                    data: data,
+                    pointStart: Date.UTC(2010, 0, 1),
+                    pointInterval: 3600 * 1000, // one hour
+                    marker: false,
+                    color: '#252525',
+                    states: {
+                        hover: false
+                    }
+                }]
+            });
+		});
 
 	}
 
@@ -122,13 +85,13 @@ export default class CompaniesList extends Base {
 			sortType = $(e.currentTarget).attr('data-sort-type');
 
 		switch(sortType) {
-			case 'original-order': 
+			case 'original-order':
 				iso.arrange({ sortBy: sortValue, sortAscending: true });
 				break;
-			case 'asc': 
+			case 'asc':
 				iso.arrange({ sortBy: sortValue, sortAscending: false });
 				break;
-			case 'desc': 
+			case 'desc':
 				iso.arrange({ sortBy: 'original-order', sortAscending: true });
 				break;
 			default:
@@ -139,16 +102,16 @@ export default class CompaniesList extends Base {
 
 	dataAttrToggling(e) {
 		switch($(e.currentTarget).attr('data-sort-type')) {
-			case 'original-order': 
+			case 'original-order':
 				$(e.currentTarget).attr({'data-sort-type': 'asc'});
 				break;
-			case 'asc': 
+			case 'asc':
 				$(e.currentTarget).attr({'data-sort-type': 'desc'});
 				break;
-			case 'desc': 
+			case 'desc':
 				$(e.currentTarget).attr({'data-sort-type': 'original-order'});
 				break;
-			default: 
+			default:
 				$(e.currentTarget).attr({'data-sort-type': 'original-order'});
 				break;
 		}

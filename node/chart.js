@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const sources = [
     {
         title: 'iextrading.1year',
-        url: 'https://api.iextrading.com/1.0/stock/{{company}}/chart/1y'
+        url: 'https://api.iextrading.com/1.0/stock/{{company}}/chart/5y'
     },
     {
         title: 'iextrading.1year',
@@ -19,7 +19,6 @@ module.exports = async function updateCharts(type = 'day') {
     try {
         const data = await getCharts(type);
         const result = await db.addChart(data);
-        console.log(result);
         console.log('Charts updated');
     } catch (e) {
         console.log(e);

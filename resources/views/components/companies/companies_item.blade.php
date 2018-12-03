@@ -10,7 +10,7 @@
     }
 @endphp
 <li class="companies__item">
-    <a class="companies__link" href="{{ url('companies/' ) }}">
+    <a class="companies__link" href="{{ url('companies/'.$item->id ) }}">
         <div class="companies__info">
             <div class="companies__img">
                 <img src="img/tesla.png" alt="company-logo">
@@ -27,10 +27,10 @@
             <span class="companies__stock-value">170.583.344</span>
         </div>
         <div class="companies__visualisation">
-            <div class="companies__chart" id="chart-1"></div>
+            <div class="companies__chart company_item_chart" id="company_chart_{{$item->id}}" data-content="{{$item->chart}}"></div>
             <div class="companies__rating companies__rating--increase">
-                @include('svg.arrow')
-                <span class="companies__rating-value">314.86</span>
+                {{--@include('svg.arrow')--}}
+                <span class="companies__rating-value">{{ $item->lastPrice }}</span>
             </div>
         </div>
     </a>

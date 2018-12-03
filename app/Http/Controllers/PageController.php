@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Chart\ChartRepository;
 use Illuminate\Http\Request;
 use App\Repositories\News\NewsRepository;
 use App\Repositories\Video\VideoRepository;
@@ -13,12 +14,18 @@ class PageController extends Controller
     private $newsModel;
     private $videoModel;
     private $personModel;
+    private $chartModel;
 
-    public function __construct(NewsRepository $newsModel, VideoRepository $videoModel, PersonRepository $personModel)
+    public function __construct(
+        NewsRepository $newsModel,
+        VideoRepository $videoModel,
+        PersonRepository $personModel,
+        ChartRepository $chartModel)
     {
         $this->newsModel = $newsModel;
         $this->videoModel = $videoModel;
         $this->personModel = $personModel;
+        $this->chartModel = $chartModel;
     }
 
     /*
@@ -31,12 +38,12 @@ class PageController extends Controller
 
         $hot = $this->newsModel->hot($params);
 
-        if($request->ajax()){
+        if ($request->ajax()) {
             return view('components.index.hot_news_list', [
                 'items' => $hot,
                 'dateFormatter' => DateFormatter::class
             ])->render();
-        } else{
+        } else {
             //var_dump($params); die;
             $current = $this->newsModel->current($params);
             //var_dump; die;
@@ -71,7 +78,28 @@ class PageController extends Controller
 
         $news = $this->newsModel->current($params);
 
-        //var_dump($companies); die;
+        $ids = [];
+        foreach ($companies as $item) {
+            $ids[] = $item->id;
+        }
+
+        $data = $this->chartModel->all($ids);
+        $lastPrices = $this->chartModel->lastPrices($ids);
+
+        $filteredChart = [];
+        $filteredPrices = [];
+        foreach ($data as $point) {
+            $filteredChart[$point->person_id][] = (float)$point['close'];
+        }
+
+        foreach ($lastPrices as $price) {
+            $filteredPrices[$price->person_id] = (float)$price['close'];
+        }
+
+        foreach ($companies as $company) {
+            $company->chart = json_encode($filteredChart[$company->id]);
+            $company->lastPrice = $filteredPrices[$company->id];
+        }
 
         return view('content.companies', [
             'view' => 'companies',
@@ -92,12 +120,12 @@ class PageController extends Controller
         foreach ($company->fields as $field) {
             $info[$field->field_type->title] = $field->value;
         }
-//        dd($info);
+        $info['lastPrice'] = $this->chartModel->lastPrice($id)['close'];
 
 
         return view('content.company', [
             'view' => 'company',
-            'company' =>  $company,
+            'company' => $company,
             'info' => $info,
         ]);
     }
@@ -113,7 +141,7 @@ class PageController extends Controller
 
         $current = $this->newsModel->current($params);
 
-        if($request->ajax()){
+        if ($request->ajax()) {
             return view('components.cryptocurrencies.current_news_list', [
                 'items' => $current,
             ])->render();
@@ -141,7 +169,7 @@ class PageController extends Controller
         $current = $this->newsModel->current($params);
 
         //var_dump($current); die;
-        if($request->ajax()){
+        if ($request->ajax()) {
             return view('components.blockchain.current_news_list', [
                 'items' => $current,
             ])->render();
@@ -165,14 +193,14 @@ class PageController extends Controller
     {
         $news = $this->newsModel->one($id);
 
-        if (!$news){
+        if (!$news) {
             throw new \Exception('News was not found');
         }
 
         $tagRelNews = $this->newsModel->tagsRelatedNews($id);
         $catRelNews = $this->newsModel->categoryRelatedNews($id);
 
-        if(!$this->newsModel->updateViews($id)){
+        if (!$this->newsModel->updateViews($id)) {
             throw new \Exception('Cannot update views count');
         }
 
@@ -216,7 +244,7 @@ class PageController extends Controller
 
         $all = [];
 
-        foreach($results as $name => $result){
+        foreach ($results as $name => $result) {
             $all[$name] = $result;
         }
 
