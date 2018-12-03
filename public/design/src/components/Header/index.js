@@ -81,20 +81,20 @@ export default class Header extends Base {
 			this.els._searchInput.removeClass('search__input--rounded');
 		}
 
-		$('.all').append('<li class="search__info-item"><a class="search__info-link" href="#" style="font-size:16px">hello</a></li>')
-		$('.companies').append('<li class="search__info-item"><a class="search__info-link" href="#" style="font-size:16px">byyy</a></li>')
+		// $('.all').append('<li class="search__info-item"><a class="search__info-link" href="#" style="font-size:16px">hello</a></li>')
+		// $('.companies').append('<li class="search__info-item"><a class="search__info-link" href="#" style="font-size:16px">byyy</a></li>')
 
-		// $.ajax({
-  //           url: '/search',
-  //           method: 'GET',
-  //           dataType: 'html',
-  //           data: {searchText: $(e.currentTarget).val()},
-  //       }).done( (data) => {
-  //           if (this.els._searchResult.find('.search__info')) {
-  //           	this.els._searchResult.find('.search__info').remove();
-  //           }
-  //           this.els._searchResult.append(data);
-  //       }).fail( (e) => { });
+		$.ajax({
+            url: '/search',
+            method: 'GET',
+            dataType: 'html',
+            data: {searchText: $(e.currentTarget).val()},
+        }).done( (data) => {
+            if (this.els._searchResult.find('.search__info')) {
+            	this.els._searchResult.find('.search__info').remove();
+            }
+            this.els._searchResult.append(data);
+        }).fail( (e) => { });
         
 		this.checkSearchResultFilling();
 		this.setResultsItems();
