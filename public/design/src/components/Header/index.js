@@ -75,11 +75,9 @@ export default class Header extends Base {
 		if ($(e.currentTarget).val()) {
 			this.els._searchResult.fadeIn();
 			this.els._searchInput.addClass('search__input--rounded');
-			// this.els._searchInput.css({'border-radius': '20px 20px 0 0'})
 		}
 		else {
 			this.els._searchResult.fadeOut();
-			// this.els._searchInput.css({'border-radius': '20px'})
 			this.els._searchInput.removeClass('search__input--rounded');
 		}
 
