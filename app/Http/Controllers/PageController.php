@@ -242,7 +242,9 @@ class PageController extends Controller
         $params = $request->only('searchText');
         $results['news'] = $this->newsModel->search($params);
         $persons = $this->personModel->search($params)->groupBy('type_id');
-        $results['companies'] = $persons[2];
+        if(isset($persons[2])){
+            $results['companies'] = $persons[2];
+        }
 
         $all = [];
 
