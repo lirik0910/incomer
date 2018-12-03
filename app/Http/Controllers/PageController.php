@@ -69,11 +69,9 @@ class PageController extends Controller
     */
     public function companies(Request $request)
     {
-        //$params = $request->only(['page', 'limit']);
         $params['type_id'] = 2;
-        $params['category_id'] = 1;
+        $params['categoryId'] = 1;
 
-        $companies = [];
         $companies = $this->personModel->sortList($params);
 
         $news = $this->newsModel->current($params);
@@ -96,10 +94,10 @@ class PageController extends Controller
             $filteredPrices[$price->person_id] = (float)$price['close'];
         }
 
-        foreach ($companies as $company) {
+/*        foreach ($companies as $company) {
             $company->chart = json_encode($filteredChart[$company->id]);
             $company->lastPrice = $filteredPrices[$company->id];
-        }
+        }*/
 
         return view('content.companies', [
             'view' => 'companies',
