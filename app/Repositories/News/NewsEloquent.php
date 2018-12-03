@@ -336,7 +336,7 @@ class NewsEloquent implements NewsRepository
         }
 
         $relatedNews = $tags->news()
-            ->whereNotIn('id', [$id])
+            ->whereNotIn('news.id', [$id])
             ->orderBy('publish_date', 'DESC')
             ->limit(3)
             ->get();
