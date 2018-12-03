@@ -26,17 +26,16 @@ export default class Header extends Base {
 
 	onDOMReady(e) {
 		this.els._searchBtn.click((e) => this.searchAnimation(e));
+		this.baseDOM._window.click((e) => this.closeSearchByClickOutside(e));
 		this.els._headerProfileWrap.click(() => this.loginProfile());
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));
+		this.els._searchCategoryList.click((e) => e.preventDefault());
 		this.els._searchInput.on('input', (e) => this.getSearchResult(e));
-		this.checkSearchResultFilling();
-		this.baseDOM._window.click((e) => this.closeSearchByClickOutside(e));
+		// this.checkSearchResultFilling();
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
-			(e) => this.searchFilter(e));
-		this.els._searchCategoryList.click((e) => e.preventDefault());
+			(e) => this.searchActiveFilterTab(e));
 		this.setResultsItems();
-		this.els._searchInfoList.on('change', this.checkSearchResultFilling())
 	}
 
 	searchAnimation(e) {
@@ -94,38 +93,14 @@ export default class Header extends Base {
             	this.els._searchResult.find('.search__info').remove();
             }
             this.els._searchResult.append(data);
-
-			switch($('.search__category-link--active').parent().index()) {
-				case 0:
-					$('.header .search__info-list.all')
-						.addClass('search__info-list--active');
-					break;
-				case 1:
-					$('.header .search__info-list.news')
-						.addClass('search__info-list--active');
-					break;
-				case 2:
-					$('.header .search__info-list.companies')
-						.addClass('search__info-list--active');
-					break;
-				case 3:
-					$('.header .search__info-list.peoples')
-						.addClass('search__info-list--active');
-					break;
-				case 4:
-					$('.header .search__info-list.products')
-						.addClass('search__info-list--active');
-					break;
-				default:
-					$('.header .search__info-list.all')
-						.addClass('search__info-list--active');
-			}
-			// this.checkSearchResultFilling();
         }).fail( (e) => { });
+        
+		// this.checkSearchResultFilling();
+		this.setResultsItems();
 	}
 
 	checkSearchResultFilling() {
-		/*for (var i = 0; i < $('.header .search__category-count').length; i++) {
+		for (var i = 0; i < $('.header .search__category-count').length; i++) {
 			if ($($('.header .search__category-count')[i]).text() === '0') {
 				$($('.header .search__category-count')[i])
 					.prev()
@@ -133,32 +108,17 @@ export default class Header extends Base {
 				$($('.header .search__category-count')[i])
 					.addClass('search__category-count--light')
 			}
-		}*/
-		for (var i = 0; i < this.els._searchCategoryCount.length; i++) {
-			if ($(this.els._searchCategoryCount[i]).text() === '0') {
-				$(this.els._searchCategoryCount[i])
-					.prev()
-					.addClass('search__category-link--light');
-				$(this.els._searchCategoryCount[i]).addClass('search__category-count--light')
-			}
 			else {
-				$(this.els._searchCategoryCount[i])
+				$($('.header .search__category-count')[i])
 					.prev()
 					.removeClass('search__category-link--light')
+				$($('.header .search__category-count')[i])
+					.removeClass('search__category-count--light')
 			}
 		}
 	}
 
-	searchFilter(e) {
-
-		/*e.preventDefault();
-		this.els._searchCategoryLink.removeClass('search__category-link--active')
-		$(e.currentTarget).addClass('search__category-link--active')
-		$('.header .search__info-list').removeClass('search__info-list--active');
-		$('.header .search__info-list')
-			.eq($(e.currentTarget).parent().index())
-			.addClass('search__info-list--active');*/
-
+	searchActiveFilterTab(e) {
 		e.preventDefault();
 		this.els._searchCategoryLink.removeClass('search__category-link--active');
 		$(e.currentTarget).addClass('search__category-link--active');
@@ -178,7 +138,7 @@ export default class Header extends Base {
 					.addClass('search__info-list--active');
 				break;
 			case 3:
-				$('.header .search__info-list.peoples')
+				$('.header .search__info-list.people')
 					.addClass('search__info-list--active');
 				break;
 			case 4:
