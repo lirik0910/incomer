@@ -208,12 +208,15 @@
 		display: block;
 		margin: 24px auto 66px;
 	}
-
 	.highcharts-tick,
 	.highcharts-credits {
 	    display: none;
 	}
 	.highcharts-exporting-group {
 		display: none;
+	}
+	.highcharts-container,
+	.highcharts-root {
+		overflow: visible;
 	}
 }
