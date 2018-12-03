@@ -96,7 +96,7 @@ export default class Header extends Base {
             this.els._searchResult.append(data);
         }).fail( (e) => { });
         
-		this.checkSearchResultFilling();
+		// this.checkSearchResultFilling();
 		this.setResultsItems();
 	}
 
