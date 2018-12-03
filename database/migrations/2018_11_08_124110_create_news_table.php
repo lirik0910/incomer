@@ -39,7 +39,7 @@ class CreateNewsTable extends Migration
                 ->nullable(true)
                 ->comment('News subtitle');
 
-            $table->string('description', 10000)
+            $table->string('description', 50000)
                 ->nullable(true)
                 ->comment('News description');
 
