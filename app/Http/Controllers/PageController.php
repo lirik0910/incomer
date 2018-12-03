@@ -94,10 +94,10 @@ class PageController extends Controller
             $filteredPrices[$price->person_id] = (float)$price['close'];
         }
 
-/*        foreach ($companies as $company) {
+        foreach ($companies as $company) {
             $company->chart = json_encode($filteredChart[$company->id]);
             $company->lastPrice = $filteredPrices[$company->id];
-        }*/
+        }
 
         return view('content.companies', [
             'view' => 'companies',
