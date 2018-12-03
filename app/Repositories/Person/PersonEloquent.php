@@ -63,7 +63,7 @@ class PersonEloquent implements PersonRepository
         if (!empty($params['sortBy']) && !empty($params['sortDir'])){
             $items->orderBy($params['sortBy'], $params['sortDir']);
         } else{
-            $items->orderBy('name', 'ASC');
+            $items->orderBy('name', 'DESC');
         }
 
         //return $items->get();
