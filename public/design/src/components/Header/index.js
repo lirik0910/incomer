@@ -31,11 +31,11 @@ export default class Header extends Base {
 		this.els._headerProfileItem.last().click((e) => this.logoutProfile(e));
 		this.els._searchCategoryList.click((e) => e.preventDefault());
 		this.els._searchInput.on('input', (e) => this.getSearchResult(e));
-		// this.checkSearchResultFilling();
 		this.els._searchCategoryList.on('click', 
 			'a:not(.search__category-link--active, .search__category-link--light)', 
 			(e) => this.searchActiveFilterTab(e));
 		this.setResultsItems();
+		this.checkSearchResultFilling();
 	}
 
 	searchAnimation(e) {
@@ -75,11 +75,9 @@ export default class Header extends Base {
 		if ($(e.currentTarget).val()) {
 			this.els._searchResult.fadeIn();
 			this.els._searchInput.addClass('search__input--rounded');
-			// this.els._searchInput.css({'border-radius': '20px 20px 0 0'})
 		}
 		else {
 			this.els._searchResult.fadeOut();
-			// this.els._searchInput.css({'border-radius': '20px'})
 			this.els._searchInput.removeClass('search__input--rounded');
 		}
 
@@ -95,7 +93,7 @@ export default class Header extends Base {
             this.els._searchResult.append(data);
         }).fail( (e) => { });
         
-		// this.checkSearchResultFilling();
+		this.checkSearchResultFilling();
 		this.setResultsItems();
 	}
 

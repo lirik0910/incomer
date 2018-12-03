@@ -98,24 +98,6 @@
 	.tag {
 		display: inline-block;
 	}
-	// .cost {
-	// 	display: inline-block;
-	// 	// margin-left: 36px;
-	// 	&__item {
-	// 		display: inline-block;
-	// 		font-weight: 900;
-	// 		font-size: 14px;
-	// 		letter-spacing: 0.5px;
-	// 		&:not(:last-of-type) {
-	// 			margin-right: 18px;
-	// 		}
-	// 		span {
-	// 			&:not(:last-of-type) {
-	// 				margin-right: 10px;
-	// 			}
-	// 		}
-	// 	}
-	// }
 	.sort {
 		display: inline-block;
 		&__list {
@@ -157,6 +139,7 @@
 	display: inline-block;
 	vertical-align: top;
 	padding: 30px 24px;
+	margin-left: 24px;
 	&__title {
 		font-weight: 900;
 		font-size: 20px;
@@ -194,9 +177,10 @@
 		}
 		.card {
 			display: inline-block;
-			// &:not(:last-of-type) {
+			&:not(:last-of-type) {
 				margin-right: 24px;
-			// }
+			}
+
 		}
 	}
 }

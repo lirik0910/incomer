@@ -17,6 +17,18 @@
 				min-height: 100%;
 			}
 		}
+		/* .card__text {
+			position: absolute;
+		    left: 24px;
+		    right: 24px;
+		    bottom: 60px;
+		}
+		.card__statistic {
+			position: absolute;
+		    left: 24px;
+		    right: 24px;
+		    bottom: 24px;
+		} */
 	}
 	&--square {
 		@extend %square;
@@ -41,6 +53,11 @@
 			padding: 24px;
 			width: 60%;
 			font-weight: 700;
+
+			/* position: absolute;
+					    left: 24px;
+					    right: 24px;
+					    bottom: 60px; */
 		}
 	}
 	&--large {
@@ -72,6 +89,11 @@
 			letter-spacing: 0.5px;
 			max-height: 148.8px;
 			overflow: hidden;
+
+			p:not(.card__subtitle) {
+			    max-height: 129px;
+			    overflow: hidden;
+			}
 		}
 		.card__statistic {
 			margin-top: 18px;
@@ -102,6 +124,18 @@
 			right: 0;
 			color: $light-color;
 			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+		}
+		.card__text {
+			position: absolute;
+		    left: 24px;
+		    right: 24px;
+		    bottom: 60px;
+		}
+		.card__statistic {
+			position: absolute;
+		    left: 24px;
+		    right: 24px;
+		    bottom: 24px;
 		}
 		.views-post {
 			&:before {
@@ -158,6 +192,8 @@
 		text-transform: uppercase;
 		color: rgba(0, 0, 0, 0.6);
 		font-weight: 500;
+		max-height: 24px;
+    	overflow: hidden;
 		// color: rgba(255, 255, 255, 0.6);
 	}
 	&__statistic {
