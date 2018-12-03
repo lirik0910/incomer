@@ -57,6 +57,18 @@
 			padding-bottom: 36px !important;
 			border-bottom: 1px solid $main-light-grey-color !important;
 		}
+		span {
+			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+		}
+
+		/* h1 span
+		h2 span
+		h3 span
+		h4 span
+		h5 span
+		h6 span {
+			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+		} */
 		p,
 		& p span {
 			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
@@ -78,7 +90,8 @@
 		}
 		& > img,
 		& p > img {
-			//width: 70% !important;
+			max-width: 100% !important;
+			// width: 70% !important;
 		    display: block !important;
 		    margin: 24px auto !important;
 		    border-radius: 12px !important;
