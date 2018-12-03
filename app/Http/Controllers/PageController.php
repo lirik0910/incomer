@@ -94,10 +94,11 @@ class PageController extends Controller
             $filteredPrices[$price->person_id] = (float)$price['close'];
         }
 
-        foreach ($companies as $company) {
+        foreach ($companies as $key => $company) {
             if(isset($fliteredChart[$company->id])){
                 $company->chart = json_encode($filteredChart[$company->id]);
             }
+
             if(isset($filteredPrices[$company->id])){
                 $company->lastPrice = $filteredPrices[$company->id];
             }
@@ -243,7 +244,9 @@ class PageController extends Controller
         $params = $request->only('searchText');
         $results['news'] = $this->newsModel->search($params);
         $persons = $this->personModel->search($params)->groupBy('type_id');
-        $results['companies'] = $persons[2];
+        if(isset($persons[2])){
+            $results['companies'] = $persons[2];
+        }
 
         $all = [];
 

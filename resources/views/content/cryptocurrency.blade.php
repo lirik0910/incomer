@@ -73,7 +73,7 @@
                     </div>
                 </div>
             @elseif($loop->last || $loop->iteration === 5)
-                    @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                    @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short', 'margin' => false])
                 </div>
             @elseif($loop->iteration === 2 || $loop->iteration === 6)
                 <div class="row">
