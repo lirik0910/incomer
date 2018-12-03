@@ -95,8 +95,13 @@ class PageController extends Controller
         }
 
         foreach ($companies as $company) {
-            $company->chart = json_encode($filteredChart[$company->id]);
-            $company->lastPrice = $filteredPrices[$company->id];
+            if(isset($fliteredChart[$company->id])){
+                $company->chart = json_encode($filteredChart[$company->id]);
+            }
+            if(isset($filteredPrices[$company->id])){
+                $company->lastPrice = $filteredPrices[$company->id];
+            }
+
         }
 
         return view('content.companies', [
