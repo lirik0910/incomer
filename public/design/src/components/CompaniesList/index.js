@@ -40,7 +40,7 @@ export default class CompaniesList extends Base {
 		    },
 		});
         $(".company_item_chart").each(function(){
-        	var data = JSON.parse($(this).attr('data-content'));
+        	var data = $(this).attr('data-content') ? JSON.parse($(this).attr('data-content')) :[];
             console.log(data);
             console.log($(this));
             var chart = new Highcharts.Chart({
