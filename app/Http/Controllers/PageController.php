@@ -103,6 +103,7 @@ class PageController extends Controller
             if(isset($filteredPrices[$company->id])){
                 $company->lastPrice = $filteredPrices[$company->id];
             }
+
         }
 
         return view('content.companies', [
