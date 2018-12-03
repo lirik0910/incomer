@@ -66,6 +66,7 @@ class PersonEloquent implements PersonRepository
             $items->orderBy('name', 'ASC');
         }
 
+
         return $items->get();
         //return $items->offset(($page - 1) * $limit)->simplePaginate($limit);
     }
