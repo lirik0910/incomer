@@ -40,25 +40,22 @@ export default class CompaniesList extends Base {
 		    },
 		});
         $(".company_item_chart").each(function(){
-            if($(this).attr('data-content')){
-                var data = JSON.parse($(this).attr('data-content'));
-                console.log(data);
-                console.log($(this));
-                var chart = new Highcharts.Chart({
-                    chart: { renderTo: $(this).attr('id') },
-                    series: [{
-                        data: data,
-                        pointStart: Date.UTC(2010, 0, 1),
-                        pointInterval: 3600 * 1000, // one hour
-                        marker: false,
-                        color: '#252525',
-                        states: {
-                            hover: false
-                        }
-                    }]
-                });
-            }
-
+        	var data = JSON.parse($(this).attr('data-content'));
+            console.log(data);
+            console.log($(this));
+            var chart = new Highcharts.Chart({
+                chart: { renderTo: $(this).attr('id') },
+                series: [{
+                    data: data,
+                    pointStart: Date.UTC(2010, 0, 1),
+                    pointInterval: 3600 * 1000, // one hour
+                    marker: false,
+                    color: '#252525',
+                    states: {
+                        hover: false
+                    }
+                }]
+            });
 		});
 
 	}
