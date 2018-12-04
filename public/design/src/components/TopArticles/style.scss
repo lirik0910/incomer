@@ -11,31 +11,37 @@
 		&--large,
 		&--post,
 		&--interview {
-			.views-post {
-				&:before {
-					background-image: url('../../../img/eye-light.png');
-				}
-			}
-			.comments-post {
-				&:before {
-					background-image: url('../../../img/comment-light.png');
-				}
-			}
+			// .views-post {
+			// 	&:before {
+			// 		background-image: url('../../../img/eye-light.png');
+			// 	}
+			// }
+			// .comments-post {
+			// 	&:before {
+			// 		background-image: url('../../../img/comment-light.png');
+			// 	}
+			// }
 		}
 		&--large {
 			height: 240px;
-			background-color: $default-blue;
-			color: $light-color;
+			// background-color: $default-blue;
+			// color: $light-color;
 			.card__content {
 				padding: 24px;
 			}
-			.card__subtitle {
-				color: $light-color;
+			// .card__subtitle {
+			// 	color: $light-color;
+			// }
+			.card__text {
+				max-height: 148.8px;
+				p:not(.card__subtitle) {
+				    max-height: 129px;
+				}
 			}
 		}
 		&--square {
-			background-color: $lighter-blue;
-			color: $light-color;
+			// background-color: $lighter-blue;
+			// color: $light-color;
 			display: inline-block;
 			font-size: 16px;
 			height: 240px;
@@ -43,9 +49,9 @@
 			&:not(:last-of-type) {
 				margin-right: 24px;
 			}
-			.card__subtitle {
-				color: $light-color;
-			}
+			// .card__subtitle {
+			// 	color: $light-color;
+			// }
 			&.card--post {
 				overflow: visible;
 				.card__pic {
@@ -63,6 +69,20 @@
 				}
 				.card__content {
 					padding-top: 0;
+					position: relative;
+					height: 120px;
+				}
+				.card__text {
+					position: absolute;
+				    left: 24px;
+				    right: 24px;
+				    bottom: 54px;
+				}
+				.card__statistic {
+					position: absolute;
+				    left: 24px;
+				    right: 24px;
+				    bottom: 24px;
 				}
 			}
 			&.card--interview {
@@ -100,15 +120,19 @@
 					line-height: 30px;
 					letter-spacing: 0.3px;
 					font-weight: 700;
+					max-height: 88px;
+					overflow: hidden;
 				}
 				.card__position {
 					font-size: 14px;
 					line-height: 24px;
 					letter-spacing: 0.53px;
 					margin-top: 6px;
+					max-height: 24px;
+					overflow: hidden;
 				}
 				.card__text {
-					max-height: 185px;
+					max-height: 195px;
 					overflow: hidden;
 				}
 			}
