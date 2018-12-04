@@ -80,21 +80,22 @@
             margin-right: 24px;
         }
         &--large {
-            background-color: #121212;
-            color: $light-color;
-            .card__subtitle {
-                color: rgba(255, 255, 255, 0.6);
-            }
-            .views-post {
-                &:before {
-                    background-image: url('../../../img/eye-light.png');
-                }
-            }
-            .comments-post {
-                &:before {
-                    background-image: url('../../../img/comment-light.png');
-                }
-            }
+            // background-color: #121212;
+            // color: $light-color;
+            // color: $main-dark-grey-color;
+            // .card__subtitle {
+            //     color: rgba(255, 255, 255, 0.6);
+            // }
+            // .views-post {
+            //     &:before {
+            //         background-image: url('../../../img/eye-light.png');
+            //     }
+            // }
+            // .comments-post {
+            //     &:before {
+            //         background-image: url('../../../img/comment-light.png');
+            //     }
+            // }
         }
     }
     .more {
