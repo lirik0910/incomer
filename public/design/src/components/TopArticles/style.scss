@@ -63,6 +63,20 @@
 				}
 				.card__content {
 					padding-top: 0;
+					position: relative;
+					height: 120px;
+				}
+				.card__text {
+					position: absolute;
+				    left: 24px;
+				    right: 24px;
+				    bottom: 54px;
+				}
+				.card__statistic {
+					position: absolute;
+				    left: 24px;
+				    right: 24px;
+				    bottom: 24px;
 				}
 			}
 			&.card--interview {
@@ -100,6 +114,7 @@
 					line-height: 30px;
 					letter-spacing: 0.3px;
 					font-weight: 700;
+					max-height: 124px;
 				}
 				.card__position {
 					font-size: 14px;
