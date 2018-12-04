@@ -173,6 +173,23 @@ class NewsEditContainer extends React.Component {
                         />
                     </React.Fragment>
                     }
+                    {typeof data.bio !== 'undefined' &&
+                    <React.Fragment>
+
+                        <Typography
+                            variant="label"
+                            text="Краткая биография"/>
+                        <Input
+                            type="text"
+                            name="bio"
+                            defaultValue={data.bio}
+                            onChange={(e) => {
+                                data.bio = e.target.value;
+                                this.setState({data})
+                            }}
+                        />
+                    </React.Fragment>
+                    }
                     {fields.map((field, index) => {
                         if (field.content_type === 'text')
                             return <React.Fragment key={index}>

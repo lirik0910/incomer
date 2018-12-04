@@ -14,6 +14,29 @@
 @import '../../components/Socials/style.scss';
 @import '../../components/Modal/style.scss';
 
+.card--large .card__text {
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0;
+}
+
+.card--large .card__pic img {
+    height: 288px;
+    max-width: 276px;
+    bottom: 0;
+    top: -24px;
+    left: -24px;
+}
+
+.top .card--square.card--post .card__pic img {
+    transform: translate(0);
+    top: -24px;
+    bottom: 0;
+    left: -24px;
+    width: 348px;
+    height: auto;
+}
+
 .logo {
     padding: 12px 12px 12px 0;
     text-decoration: none;

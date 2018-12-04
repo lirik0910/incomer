@@ -39,7 +39,7 @@
                 </div>
                 <p class="info__caption">Рыночная капитализация</p>
                 <div class="info__description"> 
-                  <p>{{ $info['market_capitalization'] ?? ''}}</p>
+                  <p>${{ $info['market_capitalization'] ?? ''}}</p>
                 </div>
                 <p class="info__caption">Акции в обращении</p>
                 <div class="info__description"> 
@@ -61,7 +61,7 @@
                   <p>{{ $info['fax']?? '' }}</p>
                 </div>
                 <p class="info__caption">Веб-сайт</p>
-                <div class="info__description"> <a href="{{ $info['website'] ?? ''}}">{{ $info['website'] ?? ''}}</a></div>
+                <div class="info__description"> <a target="_blank" href="{{ $info['website'] ?? ''}}">{{ $info['website'] ?? ''}}</a></div>
               </div>
             </div>
             {{--<div class="info__tab-content">--}}

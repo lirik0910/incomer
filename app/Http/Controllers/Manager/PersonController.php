@@ -55,7 +55,7 @@ class PersonController extends Controller
     public function update(PersonUpdateRequest $request, $id)
     {
         try {
-            $data = $request->only(['name', 'type_id', 'fields']);
+            $data = $request->only(['name', 'bio', 'type_id', 'fields']);
             $res = $this->model->update($id, $data);
 
             return response()->json($res);

@@ -12,7 +12,7 @@ class Person extends Model
     protected $table = 'persons';
 
     protected $fillable=[
-        'name', 'type_id'
+        'name', 'type_id', 'bio'
     ];
 
     public function type()
