@@ -24,7 +24,7 @@
 .card--large .card__pic img {
     height: 288px;
     max-width: 276px;
-    bottom: 0;
+    bottom: -24px;
     top: -24px;
     left: -24px;
 }
@@ -36,6 +36,7 @@
     left: -24px;
     width: 348px;
     height: auto;
+    max-height: 100%;
 }
 
 .wrap {
