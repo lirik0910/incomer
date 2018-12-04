@@ -87,11 +87,13 @@
 			font-size: 36px;
 			line-height: 42px;
 			letter-spacing: 0.5px;
-			max-height: 148.8px;
+			// max-height: 148.8px;
+			max-height: 190px;
 			overflow: hidden;
 
 			p:not(.card__subtitle) {
-			    max-height: 129px;
+			    max-height: 166px;
+			    // max-height: 129px;
 			    overflow: hidden;
 			}
 		}

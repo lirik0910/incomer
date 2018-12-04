@@ -32,6 +32,12 @@
 			.card__subtitle {
 				color: $light-color;
 			}
+			.card__text {
+				max-height: 148.8px;
+				p:not(.card__subtitle) {
+				    max-height: 129px;
+				}
+			}
 		}
 		&--square {
 			background-color: $lighter-blue;
