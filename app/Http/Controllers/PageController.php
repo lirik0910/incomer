@@ -69,12 +69,11 @@ class PageController extends Controller
     */
     public function companies(Request $request)
     {
+        $params = $request->all();
         $params['type_id'] = 2;
         $params['categoryId'] = 1;
 
         $companies = $this->personModel->sortList($params);
-
-        $news = $this->newsModel->current($params);
 
         $ids = [];
         foreach ($companies as $item) {
@@ -102,6 +101,14 @@ class PageController extends Controller
             }
 
         }
+
+        if($request->ajax()){
+            return view('components.companies.companies_list', [
+                'items' => $companies,
+            ]);
+        }
+
+        $news = $this->newsModel->current($params);
 
 
         return view('content.companies', [

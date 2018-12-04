@@ -3,5 +3,5 @@
 @endforeach
 
 @isset($items)
-{{--    {{ $items->links() }}--}}
+    {{ $items->links() }}
 @endisset

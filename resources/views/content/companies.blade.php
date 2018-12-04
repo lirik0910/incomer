@@ -33,6 +33,9 @@
             <ul class="companies__list">
                 @include('components.companies.companies_list', ['items' => $companies])
             </ul>
+{{--            @isset($companies)
+                {{ $companies->links() }}
+            @endisset--}}
         </div>
       </div>
       <div class="sidebar-news">

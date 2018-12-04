@@ -84,7 +84,7 @@ class NewsEloquent implements NewsRepository
         $page = $params['page'] ?? 1;
 
         if(empty($params['categoryId'])){
-            $limit = 5;
+            $limit = 4;
 
             $news = $this->model::where(['published' => true])
                 //->where('publish_date', '!=', null)

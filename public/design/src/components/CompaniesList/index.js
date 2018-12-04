@@ -7,15 +7,19 @@ Exporting(Highcharts);
 export default class CompaniesList extends Base {
 	initDOMElements(e) {
         this.els = {
-        	_companiesSortLink : $('.companies__sort-link')
+        	_companiesSortLink : $('.companies__sort-link'),
+            _companiesCatalog: $('.companies__catalog'),
+            _companiesList: $('.companies__list'),
         }
     }
 
 	onDOMReady(e) {
-		var iso = this.initIsotope();
-		this.els._companiesSortLink.click((e) => this.sortingIsotop(e, iso));
+		//var iso = this.initIsotope();
+		//this.els._companiesSortLink.click((e) => this.sortingIsotop(e, iso));
 		this.els._companiesSortLink.click((e) => this.dataAttrToggling(e));
 		this.els._companiesSortLink.click((e) => this.toggleActiveClass(e));
+		//this.els._companiesSortLink.click((e) => this.getSortingData(e));
+        this.els._companiesCatalog.find('.more').click((e) => this.getMoreArticles(e));
 
 
 
@@ -60,7 +64,54 @@ export default class CompaniesList extends Base {
 
 	}
 
-	initIsotope() {
+    ajaxComplete(e){
+        this.els._companiesCatalog.find('.more').click( (e) => this.getMoreArticles(e));
+    }
+
+    getMoreArticles(e){
+        e.preventDefault();
+
+        $.ajax({
+            url: $(e.target).attr('href'),
+            method: 'GET',
+            dataType: 'html',
+        }).done( (data) => {
+            if(this.els._companiesCatalog.find('.more')){
+                this.els._companiesCatalog.find('.more').remove();
+            }
+            this.els._companiesList.append(data);
+        }).fail( (e) => { });
+    }
+
+    getSortingData(e){
+        e.preventDefault();
+        let url = '/companies?page=all';
+        let sort_by = 'market_capitalization';
+        let sort_dir = 'DESC';
+
+        if($('.more').attr('href')){
+            url = $('.more').attr('href');
+        }
+
+        $.ajax({
+            url: url + '&sort_type=' + sort_by + '&sort_dir=' + sort_dir,
+            method: 'GET',
+            dataType: 'html',
+        }).done( (data) => {
+            this.els._companiesList.find('li').each(function () {
+                console.log($(this));
+                $(this).remove();
+            });
+
+            if(this.els._companiesCatalog.find('.more')){
+                this.els._companiesCatalog.find('.more').remove();
+            }
+
+            this.els._companiesList.append(data);
+        }).fail( (e) => { } );
+    }
+
+	/*initIsotope() {
 		var iso = new Isotope( '.companies__list', {
 			itemSelector: '.companies__item',
 			getSortData: {
@@ -98,7 +149,7 @@ export default class CompaniesList extends Base {
 				iso.arrange({ sortBy: 'original-order', sortAscending: true });
 				break;
 		}
-	}
+	}*/
 
 	dataAttrToggling(e) {
 		switch($(e.currentTarget).attr('data-sort-type')) {

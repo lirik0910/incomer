@@ -60,14 +60,19 @@ class PersonEloquent implements PersonRepository
         $items = $this->model->with(['fields', 'fields.field_type'])
             ->where('type_id', $type_id);
 
-        if (!empty($params['sortBy']) && !empty($params['sortDir'])){
-            $items->orderBy($params['sortBy'], $params['sortDir']);
+        if (!empty($params['sort_by']) && !empty($params['sort_dir'])){
+            $items->orderBy($params['sort_by'], $params['sort_dir']);
+
+//            if($page !== 'all'){
+//                $limit = ($page - 1) * $limit;
+//                $items->limit($limit);
+//            }
         } else{
-            $items->orderBy('name', 'ASC');
+            $items->orderBy('name', 'ASC')->offset(($page - 1) * $limit);
         }
 
-        return $items->get();
-        //return $items->offset(($page - 1) * $limit)->simplePaginate($limit);
+        //return $items->get();
+        return $items->simplePaginate($limit);
     }
 
     public function get($id)
