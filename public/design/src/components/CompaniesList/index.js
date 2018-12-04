@@ -20,31 +20,36 @@ export default class CompaniesList extends Base {
 		this.els._companiesSortLink.click((e) => this.toggleActiveClass(e));
 		//this.els._companiesSortLink.click((e) => this.getSortingData(e));
         this.els._companiesCatalog.find('.more').click((e) => this.getMoreArticles(e));
+        this.makeCharts();
+	}
 
+    ajaxComplete(e){
+        this.els._companiesCatalog.find('.more').click( (e) => this.getMoreArticles(e));
+        this.makeCharts();
+    }
 
+    makeCharts(){
+        Highcharts.Renderer.prototype.symbols.line = function(x, y, width, height) {
+            return ['M', x, y, 'L', x + height, y];
+        };
 
+        Highcharts.setOptions({
+            chart: {
+                height: 60,
+                width: 327
+            },
+            title: false,
+            legend: false,
+            xAxis: {
+                visible: false
+            },
 
-		Highcharts.Renderer.prototype.symbols.line = function(x, y, width, height) {
-		    return ['M', x, y, 'L', x + height, y];
-		};
-
-		Highcharts.setOptions({
-			chart: {
-		        height: 60,
-		        width: 327
-		    },
-		    title: false,
-			legend: false,
-		    xAxis: {
-		        visible: false
-		    },
-
-		    yAxis: {
-		        visible: false
-		    },
-		});
+            yAxis: {
+                visible: false
+            },
+        });
         $(".company_item_chart").each(function(){
-        	var data = $(this).attr('data-content') ? JSON.parse($(this).attr('data-content')) :[];
+            var data = $(this).attr('data-content') ? JSON.parse($(this).attr('data-content')) :[];
             console.log(data);
             console.log($(this));
             var chart = new Highcharts.Chart({
@@ -60,12 +65,7 @@ export default class CompaniesList extends Base {
                     }
                 }]
             });
-		});
-
-	}
-
-    ajaxComplete(e){
-        this.els._companiesCatalog.find('.more').click( (e) => this.getMoreArticles(e));
+        });
     }
 
     getMoreArticles(e){
