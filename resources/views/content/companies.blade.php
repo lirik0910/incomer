@@ -3,8 +3,8 @@
   <div class="container">
     <div class="wrap">
       <div class="companies">
-        <!--<div class="companies__sort">
-          <span class="companies__sort-title">Тип сортировки:</span>
+        <div class="companies__sort">
+        <!--<span class="companies__sort-title">Тип сортировки:</span>
           <ul class="companies__sort-list">
             <li class="companies__sort-item"> 
               <a class="companies__sort-link" href="#" data-sort-value="original-order" data-sort-type="original-order">Origin</a>
@@ -27,8 +27,8 @@
                 @include('svg.arrow')
               </a>
             </li>
-          </ul>
-        </div>-->
+          </ul>-->
+        </div>
         <div class="companies__catalog">
             <ul class="companies__list">
                 @include('components.companies.companies_list', ['items' => $companies])
