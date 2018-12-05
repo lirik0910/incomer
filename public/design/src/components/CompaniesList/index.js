@@ -10,21 +10,23 @@ export default class CompaniesList extends Base {
         	_companiesSortLink: $('.companies__sort-link'),
             _companiesCatalog: $('.companies__catalog'),
             _companiesList: $('.companies__list'),
+            _loader: $('.loader')
         }
     }
 
 	onDOMReady(e) {
 		//var iso = this.initIsotope();
 		//this.els._companiesSortLink.click((e) => this.sortingIsotop(e, iso));
-		this.els._companiesSortLink.click((e) => this.dataAttrToggling(e));
-		this.els._companiesSortLink.click((e) => this.toggleActiveClass(e));
 		//this.els._companiesSortLink.click((e) => this.getSortingData(e));
-        this.els._companiesCatalog.find('.more').click((e) => this.getMoreArticles(e));
         this.makeCharts();
+        this.els._companiesSortLink.click((e) => this.dataAttrToggling(e));
+        this.els._companiesSortLink.click((e) => this.toggleActiveClass(e));
+        this.els._companiesCatalog.find('.more').click((e) => this.showLoader(e));
+        this.els._companiesCatalog.find('.more').click((e) => this.getMoreCompanies(e));
 	}
 
     ajaxComplete(e){
-        this.els._companiesCatalog.find('.more').click( (e) => this.getMoreArticles(e));
+        this.els._companiesCatalog.find('.more').click((e) => this.getMoreCompanies(e));
         this.makeCharts();
     }
 
@@ -48,7 +50,8 @@ export default class CompaniesList extends Base {
                 visible: false
             },
         });
-        $(".company_item_chart").each(function(){
+
+        $('.company_item_chart').each(function() {
             var data = $(this).attr('data-content') ? JSON.parse($(this).attr('data-content')) :[];
             console.log(data);
             console.log($(this));
@@ -68,7 +71,7 @@ export default class CompaniesList extends Base {
         });
     }
 
-    getMoreArticles(e){
+    getMoreCompanies(e){
         e.preventDefault();
 
         $.ajax({
@@ -80,6 +83,7 @@ export default class CompaniesList extends Base {
                 this.els._companiesCatalog.find('.more').remove();
             }
             this.els._companiesList.append(data);
+            this.els._loader.fadeIn(400);
         }).fail( (e) => { });
     }
 
@@ -176,4 +180,10 @@ export default class CompaniesList extends Base {
 		$('.companies__sort-link:not(.companies__sort-link--active)')
 			.attr({'data-sort-type': 'original-order'})
 	}
+
+    showLoader(e) {
+        $(e.currentTarget).fadeOut(400, () => {
+            this.els._loader.fadeIn();
+        });
+    }
 }
