@@ -13,47 +13,48 @@ block main
 	//- 			include ../../components/Chart/index
 	//- 			include ../../components/CompanyNews/index
 
-	div.container
-		div.summary
-			include ../../components/Tags/index
-			div.tag
-				ul.tag__list
-					+tag('#', 'Bitcoin')
-					+tag('#', 'Ethereum')
-					+tag('#', 'MYRIG')
-					+tag('#', 'ASIC')
-					+tag('#', 'GPU майнинг')
-					+tag('#', 'AMD')
-			div.sort
-				ul.sort__list
-					li.sort__item
-						a.sort__link(href='#')
-							include ../../../img/view-list.svg
-					li.sort__item
-						a.sort__link.sort__link--active(href='#')
-							include ../../../img/view-thumbs.svg
+	main.main
+		div.container
+			div.summary
+				include ../../components/Tags/index
+				div.tag
+					ul.tag__list
+						+tag('#', 'Bitcoin')
+						+tag('#', 'Ethereum')
+						+tag('#', 'MYRIG')
+						+tag('#', 'ASIC')
+						+tag('#', 'GPU майнинг')
+						+tag('#', 'AMD')
+				div.sort
+					ul.sort__list
+						li.sort__item
+							a.sort__link(href='#')
+								include ../../../img/view-list.svg
+						li.sort__item
+							a.sort__link.sort__link--active(href='#')
+								include ../../../img/view-thumbs.svg
 
-		include ../../components/Card/index	
+			include ../../components/Card/index	
 
-		section.main-news
-			div.row
-				+card('#', 'img/man2.png', '', 1034, 537)(class='card--large')
-					p.card__subtitle Cрочно в номер!
-					p Tesla покупает 50% акций Bitmain на сумму $2 млрд
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-			div.row
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/man2.png', '', 1034, 537)(class='card--large')
-					p.card__subtitle Эксклюзив!
-					p Tesla покупает 50% акций Bitmain на сумму $2 млрд
-			div.row
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-			button.more Показать ещё
+			section.main-news
+				div.row
+					+card('#', 'img/man2.png', '', 1034, 537)(class='card--large')
+						p.card__subtitle Cрочно в номер!
+						p Tesla покупает 50% акций Bitmain на сумму $2 млрд
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				div.row
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/man2.png', '', 1034, 537)(class='card--large')
+						p.card__subtitle Эксклюзив!
+						p Tesla покупает 50% акций Bitmain на сумму $2 млрд
+				div.row
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+				button.more Показать ещё
 
 
 

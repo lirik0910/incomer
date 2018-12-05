@@ -27,17 +27,19 @@
     }
 }
 
+.main {
+    padding: 36px 0 0;
+}
+
 .sidebar-news {
-    margin: 36px 0 36px 24px;
+    margin-left: 24px;
     display: inline-block;
     vertical-align: top;
     width: 300px;
     &__title {
         @extend %title;
-        // font-size: 20px;
         letter-spacing: 0.3px;
         text-align: center;
-        // font-weight: 900;
         margin-bottom: 24px;
     }
     .card {

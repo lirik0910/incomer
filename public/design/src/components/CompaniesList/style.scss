@@ -1,8 +1,19 @@
 .companies {
 	width: 948px;
 	display: inline-block;
+	&__search {
+		width: 100%;
+		background-color: $light-color;
+		border-radius: 24px;
+		font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
+		letter-spacing: 0.4px;
+		// @extend %card;
+		border: none;
+		padding: 12px 24px; 
+		margin-bottom: 24px;
+	}
 	&__sort {
-		margin: 24px 0 12px 24px;
+		margin: 0 0 12px 24px;
 	}
 	&__sort-title {
 		vertical-align: middle;
@@ -206,7 +217,8 @@
 		@extend %btn;
 		font-size: 16px;
 		display: block;
-		margin: 24px auto 66px;
+		margin: 24px auto 0;
+		font-family: 'Museo Sans Cyrl', Arial, sans-serif;
 	}
 	.highcharts-tick,
 	.highcharts-credits {

@@ -5,16 +5,17 @@ block main
 	
 	include ../../components/Header/index
 	include ../../components/Auth/index
-
-	div.container
-		div.wrap
-			include ../../components/CompaniesList/index
-			include ../../components/Card/index
-			div.sidebar-news
-				p.sidebar-news__title Новости компаний
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
-				+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+	
+	main.main
+		div.container
+			div.wrap
+				include ../../components/CompaniesList/index
+				include ../../components/Card/index
+				div.sidebar-news
+					p.sidebar-news__title Новости компаний
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-dark.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
+					+card('#', 'img/photo-light.jpg', 'Facebook презентовал своё первое электронное устройство', 1034, 537)(class='card--square-full-img')
 
 	
 	include ../../components/Footer/index

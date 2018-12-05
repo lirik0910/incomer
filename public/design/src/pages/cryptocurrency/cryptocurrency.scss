@@ -47,10 +47,14 @@
     }
 }
 
+.main {
+	padding: 18px 0 0;
+}
+
 .strip {
 	padding: 40px 0;
 	&:last-of-type {
-		margin-bottom: 114px;
+		padding-bottom: 114px;
 	}
 	&--dark {
 		background-color: #e2e2e2;
@@ -93,7 +97,8 @@
 		&:hover,
 		&:focus,
 		&:active {
-			color: lighten(#121212, 30%);
+			color: $default-blue;
+			// color: lighten(#121212, 30%);
 			// &:before {
 			// 	transform: translate(-5px, -50%);
 			// }
@@ -118,6 +123,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 24px;
 	.tag {
 		display: inline-block;
 	}
@@ -183,6 +189,7 @@
 		color: $main-dark-grey-color;
 		letter-spacing: 0.2px;
 		line-height: 40px;
+		font-weight: 700;
 		@include transition(color);
 		&:hover,
 		&:focus,
