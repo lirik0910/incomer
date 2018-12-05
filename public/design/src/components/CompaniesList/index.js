@@ -7,7 +7,7 @@ Exporting(Highcharts);
 export default class CompaniesList extends Base {
 	initDOMElements(e) {
         this.els = {
-        	_companiesSortLink : $('.companies__sort-link'),
+        	_companiesSortLink: $('.companies__sort-link'),
             _companiesCatalog: $('.companies__catalog'),
             _companiesList: $('.companies__list'),
         }
