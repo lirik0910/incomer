@@ -35,11 +35,18 @@ class Person extends Model
     }
 
     /*
- * Get Rss news models
- * @return boolean
- */
+     * Get Rss news models
+    * @return boolean
+    */
     public function rss()
     {
-        return $this->hasManyThrough(RssNews::class, PersonRssCollection::class);
+        return $this->hasManyThrough(
+            RssNews::class,
+            PersonRssCollection::class,
+            'person_id',
+            'id',
+            'id',
+            'rss_id'
+        );
     }
 }

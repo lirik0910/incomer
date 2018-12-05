@@ -11,6 +11,10 @@ interface PersonRepository
 
     public function getForView($id);
 
+    public function personNews(int $id);
+
+    public function personRss(int $id);
+
     public function create(array $data);
 
     public function update($id, array $data);

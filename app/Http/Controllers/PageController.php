@@ -125,6 +125,8 @@ class PageController extends Controller
     public function oneCompany(Request $request, $id)
     {
         $company = $this->personModel->get($id);
+        $news = $this->personModel->personNews($id);
+        $rss = $this->personModel->personRss($id);
 
         $info = [];
         foreach ($company->fields as $field) {
@@ -132,11 +134,13 @@ class PageController extends Controller
         }
         $info['lastPrice'] = $this->chartModel->lastPrice($id)['close'];
 
-
         return view('content.company', [
             'view' => 'company',
             'company' => $company,
             'info' => $info,
+            'news' => $news,
+            'rss' => $rss,
+            'dateFormatter' => DateFormatter::class
         ]);
     }
 
