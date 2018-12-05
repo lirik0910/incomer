@@ -3,6 +3,8 @@ import Base from '../../Base.js';
 export default class CompanyNews extends Base {
 	initDOMElements(e) {
         this.els = {
+        	_news: $('.news'),
+        	_newsWrap: $('.news__wrap'),
         	_newsSources: $('.news__sources'),
         	_newsSourceLink: $('.news__source-link'),
         	_newsTab: $('.news__tab')
@@ -12,6 +14,8 @@ export default class CompanyNews extends Base {
 	onDOMReady(e) {
 		this.els._newsSources.on('click', 'a:not(.news__source-link--active)', 
 			(e) => this.sourceFilter(e));
+		this.els._newsSources.on('click', 'a:not(.news__source-link--active)', 
+			(e) => this.changeNewsView(e));
 	}
 
 	sourceFilter(e) {
@@ -22,5 +26,16 @@ export default class CompanyNews extends Base {
 		this.els._newsTab
 			.eq($(e.currentTarget).parent().index())
 			.addClass('news__tab--active');
+	}
+
+	changeNewsView(e) {
+		if ($(e.currentTarget).text() === 'Incomer Finance') {
+			$('.news').addClass('news--internal-news');
+			$('.news__wrap').addClass('news__wrap--internal-news');
+		}
+		else {
+			this.els._news.removeClass('news--internal-news');
+			this.els._newsWrap.removeClass('news__wrap--internal-news');	
+		}
 	}
 }

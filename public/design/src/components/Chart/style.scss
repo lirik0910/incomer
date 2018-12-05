@@ -64,21 +64,39 @@
 			display: block;
 		}
 		&:nth-of-type(3) {
-			p {
-				line-height: 24px;
+			p,
+			p span {
+				line-height: 24px !important;
+				font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+				color: $main-dark-grey-color !important;
+				font-size: 16px !important;
 				&:not(:last-of-type) {
-					margin-bottom: 12px;
+					margin-bottom: 12px !important;
 				}
 			}
-			a {
-				text-decoration: none;
-				color: $default-blue;
+			a,
+			p a,
+			a span {
+				text-decoration: none !important;
+				color: $default-blue !important;
+				font-weight: 700 !important;
 				@include transition(color);
 				&:hover,
 				&:focus,
 				&:active {
-					color: $darker-blue;
+					color: $darker-blue !important;
 				}
+			}
+			ol, ul {
+	    		margin-left: 24px !important;
+	    		li {
+	    			margin-left: 24px !important;
+	    			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+	    		}
+	    		li span {
+	    			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+	    			font-size: 16px !important;
+	    		}
 			}
 		}
 	}
@@ -102,5 +120,9 @@
 		.highcharts-navigator {
 			opacity: 0;
 		}
+		// .highcharts-container,
+		// .highcharts-root {
+		// 	overflow: visible !important;
+		// }
 	}
 }

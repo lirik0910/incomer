@@ -1,9 +1,19 @@
 .news {
 	@extend %card;
 	padding: 24px;
+	&--internal-news {
+		background-color: transparent;
+		padding: 0;
+	}
 	&__wrap {
  		border-bottom: 1px solid $light-grey-color;
  		padding-bottom: 24px;
+ 		border-radius: 12px;
+ 		&--internal-news {
+ 			padding: 24px;
+ 			background-color: $light-color;
+ 			border-bottom: none;
+ 		}
 	}
 	.block-title {
 		display: inline-block;
@@ -114,6 +124,16 @@
 		&:focus,
 		&:active {
 			background-color: $darker-blue;
+		}
+	}
+	.row {
+		margin: 24px 0;
+		.card {
+			display: inline-block;
+			font-size: 16px;
+			&:not(:last-of-type) {
+				margin-right: 24px;
+			}
 		}
 	}
 }
