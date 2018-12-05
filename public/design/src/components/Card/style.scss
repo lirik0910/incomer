@@ -80,7 +80,8 @@
 			max-height: 190px;
 			overflow: hidden;
 
-			p:not(.card__subtitle) {
+			p:not(.card__subtitle),
+			h3 {
 			    max-height: 166px;
 			    // max-height: 129px;
 			    overflow: hidden;
@@ -181,6 +182,9 @@
 	}
 	&__text {
 		line-height: 24px;
+		h3 {
+			font-size: 16px;
+		}
 	}
 	&__content {
 		padding: 18px 24px 24px 24px;
