@@ -21,7 +21,6 @@ export default class CompaniesList extends Base {
         this.makeCharts();
         this.els._companiesSortLink.click((e) => this.dataAttrToggling(e));
         this.els._companiesSortLink.click((e) => this.toggleActiveClass(e));
-        this.els._companiesCatalog.find('.more').click((e) => this.showLoader(e));
         this.els._companiesCatalog.find('.more').click((e) => this.getMoreCompanies(e));
 	}
 
@@ -81,9 +80,10 @@ export default class CompaniesList extends Base {
         }).done( (data) => {
             if(this.els._companiesCatalog.find('.more')){
                 this.els._companiesCatalog.find('.more').remove();
+                this.els._loader.fadeIn();
             }
             this.els._companiesList.append(data);
-            this.els._loader.fadeIn(400);
+            this.els._loader.fadeOut();
         }).fail( (e) => { });
     }
 

@@ -34,6 +34,7 @@
               <ul class="companies__list">
                   @include('components.companies.companies_list', ['items' => $companies])
               </ul>
+              <div class="loader"></div>
   {{--            @isset($companies)
                   {{ $companies->links() }}
               @endisset--}}
