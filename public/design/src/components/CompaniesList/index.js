@@ -26,7 +26,7 @@ export default class CompaniesList extends Base {
 	}
 
     ajaxComplete(e){
-        this.els._companiesCatalog.find('.more').click( (e) => this.getMoreCompanies(e));
+        this.els._companiesCatalog.find('.more').click((e) => this.getMoreCompanies(e));
         this.makeCharts();
     }
 

@@ -19,10 +19,6 @@ export default class Chart extends Base {
         this.els._chartFilterLink.click((e) => this.filterToggler(e));
         this.els._chartFilterLink.click((e) => this.chooseChartPreriod(e));
         $('.chart__filter-link.chart__filter-link--active').click();
-
-        // $('.chart__filter').on('click',
-        // 	'a:not(.chart__filter-link--active)',
-        // 	function() { console.log('hhhh') });
     }
 
     initChart() {
@@ -51,6 +47,7 @@ export default class Chart extends Base {
                 backgroundColor: null,
                 borderWidth: 0,
                 shadow: false,
+                outside: false,
                 formatter: function () {
                     var result = '$';
                     result += this.y;
@@ -100,7 +97,6 @@ export default class Chart extends Base {
 
     tabToggler(e) {
         e.preventDefault();
-
         this.els._chartTabLink.removeClass('chart__tab-link--active')
         $(e.currentTarget).addClass('chart__tab-link--active')
         this.els._chartTabContent.removeClass('chart__tab-content--active');
@@ -136,7 +132,6 @@ export default class Chart extends Base {
             data.sort((a,b) => a[0] - b[0] );
             this.updateChartOption(chart, {data});
         }).fail();
-
     }
 
 
