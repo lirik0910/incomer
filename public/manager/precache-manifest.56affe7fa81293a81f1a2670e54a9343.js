@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/js/4.b2482a49.chunk.js"
   },
   {
-    "revision": "674f50d287a8c48dc19ba404d20fe713",
-    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.674f50d2.eot"
+    "revision": "fee66e712a8a08eef5805a46892932ad",
+    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
     "revision": "4a7381ac53579eb2f60b",
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/js/11.a7ae36c4.chunk.js"
   },
   {
-    "revision": "af7ae505a9eed503f8b8e6982036873e",
-    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.af7ae505.woff2"
+    "revision": "674f50d287a8c48dc19ba404d20fe713",
+    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.674f50d2.eot"
   },
   {
     "revision": "42ce82c15a88ae9d5e90",
@@ -88,8 +88,8 @@ self.__precacheManifest = [
     "url": "http://95.179.128.38/manager/static/js/17.6bdb9662.chunk.js"
   },
   {
-    "revision": "fee66e712a8a08eef5805a46892932ad",
-    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.fee66e71.woff"
+    "revision": "af7ae505a9eed503f8b8e6982036873e",
+    "url": "http://95.179.128.38/manager/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
     "revision": "674f024bfca781279ba1",

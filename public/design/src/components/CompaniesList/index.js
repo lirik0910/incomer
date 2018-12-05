@@ -72,18 +72,20 @@ export default class CompaniesList extends Base {
 
     getMoreCompanies(e){
         e.preventDefault();
-        this.showLoader(e);
+
+        if(this.els._companiesCatalog.find('.more')){
+            this.els._companiesCatalog.find('.more').remove();
+        }
+
+        this.els._loader.fadeIn();
 
         $.ajax({
             url: $(e.target).attr('href'),
             method: 'GET',
             dataType: 'html',
         }).done( (data) => {
-            if(this.els._companiesCatalog.find('.more')){
-                this.els._companiesCatalog.find('.more').remove();
-            }
             this.els._companiesList.append(data);
-            this.els._loader.fadeIn(400);
+            this.els._loader.fadeOut();
         }).fail( (e) => { });
     }
 
