@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldsToPersonTable extends Migration
+class AddPersonsCollumns extends Migration
 {
     /**
      * Run the migrations.
@@ -27,8 +27,6 @@ class AddFieldsToPersonTable extends Migration
      */
     public function down()
     {
-        Schema::table('person', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

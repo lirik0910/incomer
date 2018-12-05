@@ -83,7 +83,11 @@
             @endif
 
         @endforeach
+                    @isset($currentNews)
+                        {{ $currentNews->links() }}
+                    @endisset
                 </div>
+
   <!--<div class="row">
         <a class="card card--large" href="#">
           <article class="card__article">

@@ -193,6 +193,7 @@
 }
 
 .main-news {
+    margin-bottom: 54px;
 	.row {
 		display: flex;
 		&:not(:first-of-type) {
@@ -206,4 +207,11 @@
 
 		}
 	}
+    .more {
+        @extend %btn;
+        font-size: 16px;
+        display: block;
+        margin: 24px auto 16px;
+    }
 }
+

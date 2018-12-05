@@ -149,14 +149,18 @@ class PageController extends Controller
         $params = $request->only(['page']);
         $params['categoryId'] = 3;
 
-        $current = $this->newsModel->current($params);
 
         if ($request->ajax()) {
+            $params['limit'] = 12;
+
+            $current = $this->newsModel->current($params);
+
             return view('components.cryptocurrencies.current_news_list', [
                 'items' => $current,
             ])->render();
         }
 
+        $current = $this->newsModel->current($params);
         $top = $this->newsModel->categoryTop($params['categoryId']);
 
         return view('content.cryptocurrency', [

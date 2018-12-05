@@ -103,7 +103,7 @@ class NewsTableSeeder extends Seeder
         ]);
 
         $titleNumbers = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять'];
-        //factory(\App\Model\News::class, 100)->create()->make();
+        factory(\App\Model\News::class, 100)->create()->make();
 //
 //        foreach ($titleNumbers as $number){
 //            App\Model\News::create([
