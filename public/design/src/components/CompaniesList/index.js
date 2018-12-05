@@ -21,7 +21,6 @@ export default class CompaniesList extends Base {
         this.makeCharts();
         this.els._companiesSortLink.click((e) => this.dataAttrToggling(e));
         this.els._companiesSortLink.click((e) => this.toggleActiveClass(e));
-        this.els._companiesCatalog.find('.more').click((e) => this.showLoader(e));
         this.els._companiesCatalog.find('.more').click((e) => this.getMoreCompanies(e));
 	}
 
@@ -73,6 +72,7 @@ export default class CompaniesList extends Base {
 
     getMoreCompanies(e){
         e.preventDefault();
+        this.showLoader(e);
 
         $.ajax({
             url: $(e.target).attr('href'),
