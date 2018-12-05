@@ -72,6 +72,7 @@ export default class CompaniesList extends Base {
 
     getMoreCompanies(e){
         e.preventDefault();
+        this.showLoader(e);
 
         $.ajax({
             url: $(e.target).attr('href'),
