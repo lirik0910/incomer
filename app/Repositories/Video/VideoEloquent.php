@@ -26,7 +26,7 @@ class VideoEloquent implements VideoRepository
     {
         $limit = 4;
 
-        $items = $this->model::where('on_index', true)->limit($limit);
+        $items = $this->model::where('on_index', true)->limit($limit)->orderBy('created_at', 'DESC');
         return $items->get();
     }
 
