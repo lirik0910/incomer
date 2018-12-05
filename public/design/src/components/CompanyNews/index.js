@@ -16,6 +16,7 @@ export default class CompanyNews extends Base {
 			(e) => this.sourceFilter(e));
 		this.els._newsSources.on('click', 'a:not(.news__source-link--active)', 
 			(e) => this.changeNewsView(e));
+		this.els._newsSources.click((e) => e.preventDefault());
 	}
 
 	sourceFilter(e) {
@@ -30,8 +31,8 @@ export default class CompanyNews extends Base {
 
 	changeNewsView(e) {
 		if ($(e.currentTarget).text() === 'Incomer Finance') {
-			$('.news').addClass('news--internal-news');
-			$('.news__wrap').addClass('news__wrap--internal-news');
+			this.els._news.addClass('news--internal-news');
+			this.els._newsWrap.addClass('news__wrap--internal-news');
 		}
 		else {
 			this.els._news.removeClass('news--internal-news');
