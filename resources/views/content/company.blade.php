@@ -119,7 +119,7 @@
             </ul>
           </div>
           <div class="chart__tab-content">
-            {{ $info['description'] ?? ''}}
+            {!! $company->bio ?? '' !!}
           </div>
         </div>
         <div class="news">

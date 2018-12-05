@@ -111,9 +111,9 @@ class NewsEditContainer extends React.Component {
         const {type_id} = this.props;
 
         if (this.state.data.id) {
-            editItem(this, this.state.data.id, {name: data.name, fields});
+            editItem(this, this.state.data.id, {name: data.name, bio: data.bio, fields});
         } else {
-            createItem(this, {name: data.name, fields, type_id});
+            createItem(this, {name: data.name, bio: data.bio, fields, type_id});
         }
     };
 
@@ -179,18 +179,21 @@ class NewsEditContainer extends React.Component {
                         <Typography
                             variant="label"
                             text="Краткая биография"/>
-                        <Input
-                            type="text"
-                            name="bio"
-                            defaultValue={data.bio}
-                            onChange={(e) => {
-                                data.bio = e.target.value;
-                                this.setState({data})
-                            }}
-                        />
+                        <div className={classes.textEditor}>
+                            <FieldDraftEditor
+                                defaultValue={data.bio}
+                                onChange={(e) => {
+                                    data.bio = e;
+                                    this.setState({data})
+                                    console.log(data);
+                                }}
+                            />
+                        </div>
                     </React.Fragment>
                     }
                     {fields.map((field, index) => {
+                        if( field.title === 'state'  || field.title === 'price'  || field.title === 'change'  || field.title === 'exchange' || field.title === 'description')
+                            return '';
                         if (field.content_type === 'text')
                             return <React.Fragment key={index}>
                                 <Typography
