@@ -15,7 +15,7 @@
             </div>
             <div class="info__stock info__stock--increase">
               {{--@include('svg.chevron')--}}
-              <span>{{$info['lastPrice'] ?? ''}}</span>
+              <span>${{$info['lastPrice'] ?? ''}}</span>
             </div>
           </div>
           <div class="info__detail">
