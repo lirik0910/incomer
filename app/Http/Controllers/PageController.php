@@ -96,8 +96,8 @@ class PageController extends Controller
             if(!empty($filteredChart[$company->id])){
                 $companies[$key]->chart = json_encode($filteredChart[$company->id]);
             }
-            if(!empty($filteredPrices[$company->id])){
-                if(!$filteredPrices[$company->id]){
+            if(!empty($filteredPrices[$company->id] == 0)){
+                if($filteredPrices[$company->id]){
                     $company->lastPrice = $this->chartModel->lastPrice($company->id);
                 } else{
                     $company->lastPrice = $filteredPrices[$company->id];
