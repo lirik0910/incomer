@@ -49,13 +49,14 @@ export default class Chart extends Base {
                 shadow: false,
                 split: false,
                 outside: false,
+                valueDecimals: 2,
                 useHTML: true,
                 style: {
 		            fontFamily: 'Museo Sans Cyrl',
 		        },
                 formatter: function () {
                     var result = '<div style="text-align:center;">' + '$';
-                    result += this.y + '<br>' + this.x + '</div>';
+                    result += Highcharts.numberFormat(this.y, 2) + '<br>' + this.x + '</div>';
                     return result;
                 },
                 positioner: function (boxWidth, boxHeight, point) {
@@ -87,6 +88,7 @@ export default class Chart extends Base {
                 gridLineWidth: 1,
             },
             series: [{
+            	data: [4.21111, 8.2333333],
             	color: '#5435d1',
                 marker: {
                     lineWidth: 2,
