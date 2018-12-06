@@ -124,19 +124,40 @@ class PageController extends Controller
     */
     public function oneCompany(Request $request, $id)
     {
-        $company = $this->personModel->get($id);
+        $params = $request->all();
 
+        if($request->ajax()){
+            if($params['type'] === 'news'){
+                $items = $this->personModel->personNews($id);
+            } elseif ($params['type'] === 'rss'){
+                $items = $rss = $this->personModel->personRss($id);
+            } else{
+                return false;
+            }
+
+            return view('components.company.site_news_list', [
+                'items' => $items,
+                'dateFormatter' => DateFormatter::class
+            ]);
+        }
+
+        $company = $this->personModel->get($id);
+        $news = $this->personModel->personNews($id);
+        //$rss = $this->personModel->personRss($id);
+//var_dump($rss); die;
         $info = [];
         foreach ($company->fields as $field) {
             $info[$field->field_type->title] = $field->value;
         }
         $info['lastPrice'] = $this->chartModel->lastPrice($id)['close'];
 
-
         return view('content.company', [
             'view' => 'company',
             'company' => $company,
             'info' => $info,
+            'news' => $news,
+            //'rss' => $rss,
+            'dateFormatter' => DateFormatter::class
         ]);
     }
 

@@ -23,6 +23,24 @@ class DateFormatter
 
         return $str;
     }
+
+    public static function day(string $date)
+    {
+        $res = '';
+        $date = Carbon::parse($date);
+
+        if($date->isToday()){
+            $res = 'today';
+        } elseif($date->isYesterday()){
+            $res = 'yesterday';
+        } elseif (($date->addDay())->isYesterday()){
+            $res = 'before_yesterday';
+        } else{
+            $res = 'old';
+        }
+
+        return $res;
+    }
 }
 
 

@@ -7,7 +7,9 @@ export default class CompanyNews extends Base {
         	_newsWrap: $('.news__wrap'),
         	_newsSources: $('.news__sources'),
         	_newsSourceLink: $('.news__source-link'),
-        	_newsTab: $('.news__tab')
+        	_newsTab: $('.news__tab'),
+            _newsRssTab: $('.rss-tab'),
+            _newsSiteTab: $('.news-tab')
         }
     }
 
@@ -17,7 +19,38 @@ export default class CompanyNews extends Base {
 		this.els._newsSources.on('click', 'a:not(.news__source-link--active)', 
 			(e) => this.changeNewsView(e));
 		this.els._newsSources.click((e) => e.preventDefault());
+        this.els._newsRssTab.find('.more').click((e) => this.getMoreArticles(e));
+        this.els._newsSiteTab.find('.more').click((e) => this.getMoreArticles(e));
 	}
+
+    ajaxComplete(e){
+        this.els._newsRssTab.find('.more').click((e) => this.getMoreArticles(e));
+        this.els._newsSiteTab.find('.more').click((e) => this.getMoreArticles(e));
+    }
+
+    getMoreArticles(e){
+        e.preventDefault();
+
+        let parentTab = $(e.target).parent('.news__tab');
+        let type = '';
+
+        if(parentTab.hasClass('news-tab')){
+            type = 'news';
+        } else{
+            type = 'rss';
+        }
+
+        $.ajax({
+            url: $(e.target).attr('href') + '&type=' + type,
+            method: 'GET',
+            dataType: 'html',
+        }).done( (data) => {
+            if(parentTab.find('.more')){
+                parentTab.find('.more').remove();
+            }
+            parentTab.append(data);
+        }).fail( (e) => { });
+    }
 
 	sourceFilter(e) {
 		e.preventDefault();

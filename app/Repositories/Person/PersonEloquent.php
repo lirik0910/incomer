@@ -7,6 +7,10 @@ use App\Model\PersonFieldContent;
 use App\Model\PersonType;
 use App\Model\PersonTypeField;
 use App\Repositories\Person\PersonRepository;
+use App\Helpers\DateFormatter;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 
 class PersonEloquent implements PersonRepository
 {
@@ -95,6 +99,48 @@ class PersonEloquent implements PersonRepository
 
         if (!$item) throw new \Exception('Person not found');
         return $item;
+    }
+
+    public function personNews(int $id, array $params = [])
+    {
+        $limit = 6;
+        $page = $params['page'] ?? 1;
+
+        $person = $this->model->find($id);
+        if (!$person) throw new \Exception('Person not found');
+
+        $tags = $person->tags()->get();
+
+        //$news = collect([]);
+        foreach ($tags as $tag){
+            $news = $tag->news()
+                ->where('published', true)
+                ->orderBy('publish_date', 'DESC')
+                ->limit($limit)->offset(($page - 1) * $limit)
+                ->simplePaginate($limit);
+        }
+
+        return $news;
+    }
+
+    public function personRss(int $id, array $params = [])
+    {
+        $limit = 24;
+        $page = $params['page'] ?? 1;
+
+        $person = $this->model->find($id);
+        if (!$person) throw new \Exception('Person not found');
+
+        $rss = $person->rss()
+            ->where('is_visible', true)
+            ->orderBy('pub_date', 'DESC')
+           // ->
+            ->groupBy('pub_date')
+            ->limit($limit)
+            ->offset(($page - 1) * $limit)
+            ->simplePaginate($limit);
+
+        return $rss;
     }
 
     public function create(array $data)
