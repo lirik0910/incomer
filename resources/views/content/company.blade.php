@@ -11,7 +11,7 @@
             <div class="info__text">
               <input type="hidden" id="person_id" value="{{$company->id}}">
               <p class="info__title">{{ $company->name }}</p>
-              <p class="info__subtitle">{{ $info['title'] }}: {{ $info['ticker'] ?? '' }}</p>
+              <p class="info__subtitle">@isset($info['title']){{ $info['title'] }} @endisset: {{ $info['ticker'] ?? '' }}</p>
             </div>
             <div class="info__stock info__stock--increase">
               {{--@include('svg.chevron')--}}
