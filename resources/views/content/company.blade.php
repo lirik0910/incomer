@@ -133,7 +133,7 @@
                 </div>
                 <div class="news__tabs">
                     <div class="news__tab rss-tab news__tab--active">
-                        @include('components.company.rss_list', ['items' => $rss])
+{{--                        @include('components.company.rss_list', ['items' => $rss])--}}
                         <!--<div class="news__day">
                             <p class="news__date">Сегодня, 4 ноября</p>
                             <ul class="news__list">
