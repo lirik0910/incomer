@@ -17,6 +17,7 @@ class ChartEloquent implements ChartRepository
         $lastPrice = $this->model
             ->select(['close', 'person_id'])
             ->where('person_id', $id)
+            ->where('close', '>', 0)
             ->orderBy('date', 'desc')
             ->orderBy('minute', 'desc')
             ->first();
@@ -30,6 +31,7 @@ class ChartEloquent implements ChartRepository
             ->whereIn('person_id', $ids)
             ->orderBy('date', 'desc')
             ->orderBy('minute', 'desc')
+            ->limit(count($ids))
             ->get();
 
         return $lastPrices;
