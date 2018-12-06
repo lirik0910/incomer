@@ -47,10 +47,10 @@
   "static/media/spinner.gif": "http://95.179.128.38/manager/static/media/spinner.e46d3467.gif",
   "static/media/font-awesome.min.css": "http://95.179.128.38/manager/static/media/fontawesome-webfont.af7ae505.woff2",
   "static/css/1.9806d272.chunk.css.map": "http://95.179.128.38/manager/static/css/1.9806d272.chunk.css.map",
-  "static/css/3.b087c2f0.chunk.css.map": "http://95.179.128.38/manager/static/css/3.b087c2f0.chunk.css.map",
-  "static/css/18.df405be9.chunk.css.map": "http://95.179.128.38/manager/static/css/18.df405be9.chunk.css.map",
-  "static/css/5.15621bd2.chunk.css.map": "http://95.179.128.38/manager/static/css/5.15621bd2.chunk.css.map",
   "static/css/4.15621bd2.chunk.css.map": "http://95.179.128.38/manager/static/css/4.15621bd2.chunk.css.map",
+  "static/css/18.df405be9.chunk.css.map": "http://95.179.128.38/manager/static/css/18.df405be9.chunk.css.map",
+  "static/css/3.b087c2f0.chunk.css.map": "http://95.179.128.38/manager/static/css/3.b087c2f0.chunk.css.map",
+  "static/css/5.15621bd2.chunk.css.map": "http://95.179.128.38/manager/static/css/5.15621bd2.chunk.css.map",
   "index.html": "http://95.179.128.38/manager/index.html",
   "precache-manifest.56affe7fa81293a81f1a2670e54a9343.js": "http://95.179.128.38/manager/precache-manifest.56affe7fa81293a81f1a2670e54a9343.js",
   "service-worker.js": "http://95.179.128.38/manager/service-worker.js"

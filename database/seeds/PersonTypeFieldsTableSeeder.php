@@ -14,7 +14,7 @@ class PersonTypeFieldsTableSeeder extends Seeder
         $persons = [
             'company' => [
                 'ticker' => 'text',
-                'subtitle' => 'text',
+                'stock' => 'text',
                 'logo' => 'image',
                 'state' => 'text',
                 'price' => 'text',
