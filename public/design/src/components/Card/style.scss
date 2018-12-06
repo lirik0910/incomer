@@ -5,6 +5,7 @@
 	display: block;
 	overflow: hidden;
 	box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+	// -webkit-mask-image: -webkit-radial-gradient(white, black);
 	&--square,
 	&--long {
 		.card__pic {
@@ -85,6 +86,11 @@
 			    max-height: 166px;
 			    // max-height: 129px;
 			    overflow: hidden;
+			}
+			h3 {
+				font-size: 36px;
+				line-height: 42px;
+				letter-spacing: 0.5px;
 			}
 		}
 		.card__statistic {
@@ -178,6 +184,7 @@
 		position: relative;
 		img {
 			position: absolute;
+			-webkit-mask-image: -webkit-radial-gradient(white, black);
 		}
 	}
 	&__text {
