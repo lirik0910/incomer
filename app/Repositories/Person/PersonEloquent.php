@@ -6,6 +6,7 @@ use App\Model\Person;
 use App\Model\PersonFieldContent;
 use App\Model\PersonType;
 use App\Model\PersonTypeField;
+use App\Model\Tag;
 use App\Repositories\Person\PersonRepository;
 use App\Helpers\DateFormatter;
 use Carbon\Carbon;
@@ -149,6 +150,14 @@ class PersonEloquent implements PersonRepository
         unset($data['fields']);
 
         $item = $this->model->create($data);
+
+        if(!empty($item)){
+            Tag::create([
+                'person_id' => $item['id'],
+                'value' => strtoupper($item['name'])
+            ]);
+        }
+
         $fieldsData = [];
         foreach ($fields as $key => $field){
             $fieldsData[] = [
