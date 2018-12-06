@@ -19,10 +19,14 @@
 				padding: 24px;
 			}
 			.card__text {
-
 				max-height: 164px;
 				p:not(.card__subtitle) {
 				    max-height: 140px;
+				}
+				h3 {
+					font-size: 30px;
+				    line-height: 35px;
+				    // letter-spacing: 0.5;
 				}
 			}
 		}

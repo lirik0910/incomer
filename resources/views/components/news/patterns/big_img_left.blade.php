@@ -20,7 +20,7 @@
         <div class="card__content">
             <div class="card__text">
                 <p class="card__subtitle">{{ $item->subtitle }}</p>
-                <p>{{ $item->title }}</p>
+                <h3>{{ $item->title }}</h3>
             </div>
             <div class="card__statistic">
                 <span class="views-post">{{ $item->views }}</span>
