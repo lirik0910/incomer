@@ -47,13 +47,17 @@ export default class Chart extends Base {
                 backgroundColor: null,
                 borderWidth: 0,
                 shadow: false,
+                split: false,
                 outside: false,
+                useHTML: true,
+                style: {
+		            fontFamily: 'Museo Sans Cyrl',
+		        },
                 formatter: function () {
-                    var result = '$';
-                    result += this.y;
+                    var result = '<div style="text-align:center;">' + '$';
+                    result += this.y + '<br>' + this.x + '</div>';
                     return result;
                 },
-                split: false,
                 positioner: function (boxWidth, boxHeight, point) {
                     return {
                         x: point.plotX + 15,
@@ -83,7 +87,7 @@ export default class Chart extends Base {
                 gridLineWidth: 1,
             },
             series: [{
-                color: '#5435d1',
+            	color: '#5435d1',
                 marker: {
                     lineWidth: 2,
                     radius: 4,
