@@ -156,7 +156,7 @@ class PageController extends Controller
             'company' => $company,
             'info' => $info,
             'news' => $news,
-            'rss' => $rss,
+            //'rss' => $rss,
             'dateFormatter' => DateFormatter::class
         ]);
     }
