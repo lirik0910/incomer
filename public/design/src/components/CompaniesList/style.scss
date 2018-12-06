@@ -2,6 +2,10 @@
 	width: 948px;
 	display: inline-block;
 	&__search {
+		position: relative;
+		margin-bottom: 24px;
+	}
+	&__search-input {
 		width: 100%;
 		background-color: $light-color;
 		border-radius: 24px;
@@ -9,8 +13,23 @@
 		letter-spacing: 0.4px;
 		// @extend %card;
 		border: none;
-		padding: 12px 24px; 
-		margin-bottom: 24px;
+		padding: 12px 24px 12px 54px; 
+		&::placeholder {
+			color: rgba(37, 37, 37, .6);
+			font-weight: 700;
+			font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+		}
+	}
+	&__search-btn {
+		width: 18px;
+		height: 18px;
+		position: absolute;
+		left: 24px;
+		top: 50%;
+		transform: translate(0, -50%);
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
 	}
 	&__sort {
 		margin: 0 0 12px 24px;

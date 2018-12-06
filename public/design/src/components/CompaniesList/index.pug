@@ -1,5 +1,8 @@
 div.companies
-	input(type='search' placeholder='Поиск по компаниям').companies__search
+	div.companies__search
+		input(type='search' placeholder='Поиск по компаниям').companies__search-input
+		button.companies__search-btn
+			include ../../../img/search.svg
 	div.companies__sort
 		span.companies__sort-title Тип сортировки:
 		ul.companies__sort-list
