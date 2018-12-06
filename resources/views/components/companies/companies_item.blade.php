@@ -30,7 +30,7 @@
             <div class="companies__chart company_item_chart" id="company_chart_{{$item->id}}" data-content="{{$item->chart}}"></div>
             <div class="companies__rating companies__rating--increase">
                 {{--@include('svg.arrow')--}}
-                <span class="companies__rating-value">${{ $item->lastPrice }}</span>
+                <span class="companies__rating-value">${{ number_format($item->lastPrice, 2, '.', '') }}</span>
             </div>
         </div>
     </a>

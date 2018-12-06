@@ -58,7 +58,7 @@ export default class CompaniesList extends Base {
                 chart: { renderTo: $(this).attr('id') },
                 series: [{
                     data: data,
-                    pointStart: Date.UTC(2010, 0, 1),
+                    pointStart: Date.UTC(2016, 0, 1),
                     pointInterval: 3600 * 1000, // one hour
                     marker: false,
                     color: '#252525',

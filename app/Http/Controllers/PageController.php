@@ -73,6 +73,12 @@ class PageController extends Controller
         $params['type_id'] = 2;
         $params['categoryId'] = 1;
 
+/*        $i = (float) 0;
+
+        if($i === 0){
+            var_dump('vfbf'); die;
+        }*/
+
         $companies = $this->personModel->sortList($params);
 
         $ids = [];
