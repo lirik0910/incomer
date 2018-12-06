@@ -8,8 +8,8 @@ export default class CompanyNews extends Base {
         	_newsSources: $('.news__sources'),
         	_newsSourceLink: $('.news__source-link'),
         	_newsTab: $('.news__tab'),
-            _newsRssTab: $('.news__tab .rss-tab'),
-            _newsSiteTab: $('.news__tab .news-tab')
+            _newsRssTab: $('.rss-tab'),
+            _newsSiteTab: $('.news-tab')
         }
     }
 
@@ -31,16 +31,24 @@ export default class CompanyNews extends Base {
     getMoreArticles(e){
         e.preventDefault();
 
-        console.log($(e.target).parent('.news-tab'));
+        let parentTab = $(e.target).parent('.news__tab');
+        let type = '';
+
+        if(parentTab.hasClass('news-tab')){
+            type = 'news';
+        } else{
+            type = 'rss';
+        }
+
         $.ajax({
-            url: $(e.target).attr('href'),
+            url: $(e.target).attr('href') + '&type=' + type,
             method: 'GET',
             dataType: 'html',
         }).done( (data) => {
-/*            if(this.els._news.find('.more')){
-                this.els._news.find('.more').remove();
+            if(parentTab.find('.more')){
+                parentTab.find('.more').remove();
             }
-            this.els._news.append(data);*/
+            parentTab.append(data);
         }).fail( (e) => { });
     }
 

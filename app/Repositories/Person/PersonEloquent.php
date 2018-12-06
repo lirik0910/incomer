@@ -9,6 +9,8 @@ use App\Model\PersonTypeField;
 use App\Repositories\Person\PersonRepository;
 use App\Helpers\DateFormatter;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 
 class PersonEloquent implements PersonRepository
 {
@@ -109,9 +111,13 @@ class PersonEloquent implements PersonRepository
 
         $tags = $person->tags()->get();
 
-        $news = collect([]);
+        //$news = collect([]);
         foreach ($tags as $tag){
-            $news = $tag->news()->where('published', true)->orderBy('publish_date', 'DESC')->limit($limit)->offset(($page - 1) * $limit)->simplePaginate($limit);
+            $news = $tag->news()
+                ->where('published', true)
+                ->orderBy('publish_date', 'DESC')
+                ->limit($limit)->offset(($page - 1) * $limit)
+                ->simplePaginate($limit);
         }
 
         return $news;
@@ -125,7 +131,14 @@ class PersonEloquent implements PersonRepository
         $person = $this->model->find($id);
         if (!$person) throw new \Exception('Person not found');
 
-        $rss = $person->rss()->where('is_visible', true)->orderBy('pub_date', 'DESC')->limit($limit)->offset(($page - 1) * $limit)->simplePaginate($limit);
+        $rss = $person->rss()
+            ->where('is_visible', true)
+            ->orderBy('pub_date', 'DESC')
+           // ->
+            ->groupBy('pub_date')
+            ->limit($limit)
+            ->offset(($page - 1) * $limit)
+            ->simplePaginate($limit);
 
         return $rss;
     }
