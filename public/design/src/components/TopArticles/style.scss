@@ -11,27 +11,13 @@
 		&--large,
 		&--post,
 		&--interview {
-			// .views-post {
-			// 	&:before {
-			// 		background-image: url('../../../img/eye-light.png');
-			// 	}
-			// }
-			// .comments-post {
-			// 	&:before {
-			// 		background-image: url('../../../img/comment-light.png');
-			// 	}
-			// }
+
 		}
 		&--large {
 			height: 240px;
-			// background-color: $default-blue;
-			// color: $light-color;
 			.card__content {
 				padding: 24px;
 			}
-			// .card__subtitle {
-			// 	color: $light-color;
-			// }
 			.card__text {
 
 				max-height: 164px;
@@ -41,8 +27,6 @@
 			}
 		}
 		&--square {
-			// background-color: $lighter-blue;
-			// color: $light-color;
 			display: inline-block;
 			font-size: 16px;
 			height: 240px;
@@ -50,9 +34,6 @@
 			&:not(:last-of-type) {
 				margin-right: 24px;
 			}
-			// .card__subtitle {
-			// 	color: $light-color;
-			// }
 			&.card--post {
 				overflow: visible;
 				.card__pic {
@@ -108,7 +89,8 @@
 						min-width: auto;
 						min-height: auto;
 					    bottom: 0;
-					    right: -20px;
+					    // right: -24px;
+					    right: -11px;
 					    max-height: calc(100% + 24px);
     					max-width: calc(100% + 50px);
 					}
