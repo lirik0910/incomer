@@ -15,7 +15,7 @@
             </div>
             <div class="info__stock info__stock--increase">
               {{--@include('svg.chevron')--}}
-              <span>${{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
+              <span>{{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
             </div>
           </div>
           <div class="info__detail">
@@ -128,7 +128,7 @@
                     <p class="block-title">Новости о компании</p>
                     <ul class="news__sources">
                         <li class="news__source"><a class="news__source-link news__source-link--active" href="#">В интернете</a></li>
-                        <li class="news__source"><a class="news__source-link" href="#">Incomer Finance</a></li>
+                        <li class="news__source"><a class="news__source-link"  href="#">Incomer Finance</a></li>
                     </ul>
                 </div>
                 <div class="news__tabs">
