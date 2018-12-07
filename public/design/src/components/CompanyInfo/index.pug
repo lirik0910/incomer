@@ -1,13 +1,22 @@
 div.info
 	div.info__main
+		//- div.info__pic
+		//- 	img(src='img/tesla.png')
+		//- div.info__text
+		//- 	p.info__title Tesla
+		//- 	p.info__subtitle NOSDAQ: TSLA
+		//- div.info__stock.info__stock--increase
+		//- 	//- include ../../../img/chevron.svg
+		//- 	span 314.86
+
+
+
 		div.info__pic
 			img(src='img/tesla.png')
 		div.info__text
 			p.info__title Tesla
-			p.info__subtitle NOSDAQ: TSLA
-		div.info__stock.info__stock--increase
-			include ../../../img/chevron.svg
-			span 314.86
+			span.info__exchange NOSDAQ: TSLA
+			span.info__stock.info__stock--increase 314.86
 
 	div.info__detail
 		ul.info__tabs

@@ -11,11 +11,8 @@
             <div class="info__text">
               <input type="hidden" id="person_id" value="{{$company->id}}">
               <p class="info__title">{{ $company->name }}</p>
-              <p class="info__subtitle">@isset($info['title']){{ $info['title'] }} @endisset: {{ $info['ticker'] ?? '' }}</p>
-            </div>
-            <div class="info__stock info__stock--increase">
-              {{--@include('svg.chevron')--}}
-              <span>{{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
+              <span class="info__exchange">@isset($info['title']){{ $info['title'] }} @endisset: {{ $info['ticker'] ?? '' }}</span>
+              <span class="info__stock info__stock--increase">${{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
             </div>
           </div>
           <div class="info__detail">
@@ -128,7 +125,7 @@
                     <p class="block-title">Новости о компании</p>
                     <ul class="news__sources">
                         <li class="news__source"><a class="news__source-link news__source-link--active" href="#">В интернете</a></li>
-                        <li class="news__source"><a class="news__source-link"  href="#">Incomer Finance</a></li>
+                        <li class="news__source"><a class="news__source-link" href="#">Incomer Finance</a></li>
                     </ul>
                 </div>
                 <div class="news__tabs">

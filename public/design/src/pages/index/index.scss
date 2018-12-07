@@ -25,9 +25,13 @@
     height: 288px;
     max-width: 276px;
     bottom: -24px;
-    // top: -24px;
-    top: -11px;
+    top: -24px;
     left: -24px;
+}
+
+.top .card--square.card--interview .card__pic img {
+    bottom: -20px;
+    right: -20px;
 }
 
 .top .card--square.card--post .card__pic img {
