@@ -133,7 +133,7 @@
 		position: relative;
 		overflow: hidden;
 		border-radius: 6px;
-		border: 1px solid #ededed;
+		// border: 1px solid #ededed;
 		margin-right: 12px;
 		// max-height: 72px;
 		img {
@@ -150,10 +150,12 @@
 	}
 	&__title {
 		display: block;
-		font-size: 20px;
+		// font-size: 20px;
+		font-size: 16px;
+		line-height: 18px;
 		font-weight: 700;
-		letter-spacing: 0.2px;
-		margin-bottom: 8px;
+		// letter-spacing: 0.2px;
+		// margin-bottom: 8px;
 		word-break: break-word;
     	max-height: 45px;
     	overflow: hidden;
