@@ -63,7 +63,7 @@ export default class Chart extends Base {
                 },
                 positioner: function (boxWidth, boxHeight, point) {
                     return {
-                        x: point.plotX + 15,
+                        x: point.plotX + 0,
                         y: point.plotY + 15
                     };
                 },
@@ -90,6 +90,14 @@ export default class Chart extends Base {
                 gridLineWidth: 1,
             },
             series: [{
+            	// data: [
+             //        [1368223200000, 171], 
+             //        [1368309600000, 182], 
+             //        [1368396000000, 120],  
+             //        [1368482400000, 63], 
+             //        [1368568800000, 182.6],
+             //        [1368655200000, 127.3]
+             //    ],
             	color: '#5435d1',
                 marker: {
                     lineWidth: 2,
