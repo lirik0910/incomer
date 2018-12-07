@@ -213,7 +213,7 @@
     		transform: translate(-100%, 0);
     		box-shadow: 0px 6px 18px 0px rgba(0, 0, 0, 0.03);
     		background-color: $light-color;
-    		border-radius: 0 0 12px 12px;
+    		// border-radius: 0 0 12px 12px;
     		z-index: 500;
 		}
 		&__category {
@@ -226,7 +226,7 @@
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: -42px;
+				bottom: -41px;
 				height: 40px;
 				border-radius: 0 0 12px 12px;
 				background-color: $light-color;
