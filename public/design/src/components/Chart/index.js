@@ -55,8 +55,10 @@ export default class Chart extends Base {
 		            fontFamily: 'Museo Sans Cyrl',
 		        },
                 formatter: function () {
-                    var result = '<div style="text-align:center;">' + '$';
-                    result += Highcharts.numberFormat(this.y, 2) + '<br>' + this.x + '</div>';
+                    var result = '<div style="text-align:center;">' + '$' + 
+                    	Highcharts.numberFormat(this.y, 2) + '<br>' + 
+                    	Highcharts.dateFormat('%e.%m.%Y', new Date(this.x)) + 
+                    	'</div>';
                     return result;
                 },
                 positioner: function (boxWidth, boxHeight, point) {
@@ -88,7 +90,6 @@ export default class Chart extends Base {
                 gridLineWidth: 1,
             },
             series: [{
-            	data: [4.21111, 8.2333333],
             	color: '#5435d1',
                 marker: {
                     lineWidth: 2,
