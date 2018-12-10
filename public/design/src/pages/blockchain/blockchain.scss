@@ -93,6 +93,12 @@
 
 .main-news {
     // margin-bottom: 54px;
+    .block {
+        display: inline-block;
+        &:not(:last-of-type) {
+            margin-right: 24px;
+        }
+    }
     .row {
         font-size: 0;
         &:not(:first-of-type) {

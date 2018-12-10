@@ -21,28 +21,15 @@
     letter-spacing: 0;
 }
 
-.card--large .card__pic img {
-    height: 288px;
-    max-width: 276px;
-    bottom: -24px;
-    top: -24px;
-    left: -24px;
-}
-
-.top .card--square.card--interview .card__pic img {
-    bottom: -20px;
-    right: -20px;
-}
-
-.top .card--square.card--post .card__pic img {
-    transform: translate(0);
-    top: -24px;
-    bottom: -24px;
-    left: -24px;
-    width: 348px;
-    height: auto;
-    //max-height: 100%;
-}
+// .top .card--square.card--post .card__pic img {
+//     transform: translate(0);
+//     top: -24px;
+//     bottom: -24px;
+//     left: -24px;
+//     width: 348px;
+//     height: auto;
+//     //max-height: 100%;
+// }
 
 .main {
     padding: 18px 0 54px;

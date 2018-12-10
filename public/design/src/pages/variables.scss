@@ -6,3 +6,7 @@ $dark-grey-color: #3a3a3a;
 $default-blue: #5435d1;
 $lighter-blue: #704ef1;
 $darker-blue: #381fb6;
+
+$cell: 6px;
+$grid-column: $cell*4;
+$grid-spacing: $cell*14;
