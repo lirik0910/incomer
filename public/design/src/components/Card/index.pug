@@ -2,7 +2,7 @@ mixin card(href, img, content, views, comments)
 	a.card(href=href)&attributes(attributes)
 		article.card__article
 			div.card__pic
-				img(src=img)
+				img(src=img alt='post-img' srcset=img + ' 2x')
 			div.card__content
 				div.card__text
 					if block
