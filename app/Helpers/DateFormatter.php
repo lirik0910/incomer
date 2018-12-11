@@ -36,7 +36,7 @@ class DateFormatter
         } elseif (($date->addDay())->isYesterday()){
             $res = 'before_yesterday';
         } else{
-            $res = 'old';
+            $res = $date->format('d F');
         }
 
         return $res;

@@ -3,6 +3,7 @@
         $day = $dateFormatter::day($item->pub_date);
     //    var_dump($date); die;
     @endphp
+
     @if($day === 'today')
 
     @elseif($day === 'yesterday')
