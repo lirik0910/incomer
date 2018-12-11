@@ -268,7 +268,7 @@ class PageController extends Controller
     public function userArea(Request $request)
     {
         if(!Auth::user()){
-            abort(404);
+            redirect('/');
         }
 
         $user = $this->userModel->get(Auth::user()->id);
