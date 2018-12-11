@@ -30,7 +30,7 @@
               <a class="profile__menu-link" href="#">Рассылки</a>
             </li>-->
           </ul>
-          <a class="profile__exit" href="{{ url('/logout') }}">Выйти</a>
+          <a class="profile__exit" href="{{ url('/auth/logout') }}">Выйти</a>
         </div>
         <div class="profile__detail">
           <form class="profile__detail-block profile__detail-block--personal">
