@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\RssNews;
 use App\Repositories\Chart\ChartRepository;
 use Illuminate\Http\Request;
 use App\Repositories\News\NewsRepository;
 use App\Repositories\Video\VideoRepository;
 use App\Repositories\Person\PersonRepository;
+use App\Repositories\User\UserRepository;
 use App\Helpers\DateFormatter;
+use App\Helpers\MonthDays;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -15,17 +19,20 @@ class PageController extends Controller
     private $videoModel;
     private $personModel;
     private $chartModel;
+    private $userModel;
 
     public function __construct(
         NewsRepository $newsModel,
         VideoRepository $videoModel,
         PersonRepository $personModel,
-        ChartRepository $chartModel)
+        ChartRepository $chartModel,
+        UserRepository $userModel)
     {
         $this->newsModel = $newsModel;
         $this->videoModel = $videoModel;
         $this->personModel = $personModel;
         $this->chartModel = $chartModel;
+        $this->userModel = $userModel;
     }
 
     /*
@@ -73,12 +80,6 @@ class PageController extends Controller
         $params['type_id'] = 2;
         $params['categoryId'] = 1;
 
-/*        $i = (float) 0;
-
-        if($i === 0){
-            var_dump('vfbf'); die;
-        }*/
-
         $companies = $this->personModel->sortList($params);
 
         $ids = [];
@@ -103,7 +104,7 @@ class PageController extends Controller
                 $companies[$key]->chart = json_encode($filteredChart[$company->id]);
             }
             if(!empty($filteredPrices[$company->id])){
-                if($filteredPrices[$company->id] == 0){
+                if((int)$filteredPrices[$company->id] < 1){
                     $company->lastPrice = $this->chartModel->lastPrice($company->id);
                 } else{
                     $company->lastPrice = $filteredPrices[$company->id];
@@ -141,6 +142,7 @@ class PageController extends Controller
                 $items = $this->personModel->personNews($id);
             } elseif ($params['type'] === 'rss'){
                 $items = $rss = $this->personModel->personRss($id);
+                //$prev = RssNews::orderBy('pub_date', 'DESC')->limit(1)->offset((($params['page'] - 1) * 24) - 1)->first();
             } else{
                 return false;
             }
@@ -153,8 +155,9 @@ class PageController extends Controller
 
         $company = $this->personModel->get($id);
         $news = $this->personModel->personNews($id);
-        //$rss = $this->personModel->personRss($id);
-//var_dump($rss); die;
+        $rss = $this->personModel->personRss($id);
+
+
         $info = [];
         foreach ($company->fields as $field) {
             $info[$field->field_type->title] = $field->value;
@@ -166,7 +169,7 @@ class PageController extends Controller
             'company' => $company,
             'info' => $info,
             'news' => $news,
-            //'rss' => $rss,
+            'rss' => $rss,
             'dateFormatter' => DateFormatter::class
         ]);
     }
@@ -264,7 +267,40 @@ class PageController extends Controller
     */
     public function userArea(Request $request)
     {
-        return view('content.user_private_area', ['view' => 'user_private_area']);
+        if(!Auth::user()){
+            abort(404);
+        }
+
+        $user = $this->userModel->get(Auth::user()->id);
+
+        if(!$user){
+            throw new \Exception('User was not found');
+        }
+
+        $month = MonthDays::getMonth();
+        $years = range(1940, (int)date('Y'));
+
+        $birthday['year'] = date('Y', strtotime($user->birthday));
+        $birthday['month'] = date('m', strtotime($user->birthday));
+        $birthday['day'] = date('d', strtotime($user->birthday));
+
+        $days = range(1, MonthDays::getDays($birthday['month'], $birthday['year']));
+
+        $countries = [
+            'Молдова', 'Украина', 'Россия', 'Беларусь',
+            'Узбекистан', 'Туркменистан', 'Грузия'
+        ];
+        $cities = [];
+
+        return view('content.user_private_area', [
+            'view' => 'user_private_area',
+            'user' => $user,
+            'days' => $days,
+            'month' => $month,
+            'years' => $years,
+            'birthday' => $birthday,
+            'countries' => $countries,
+        ]);
     }
 
     /*

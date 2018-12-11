@@ -36,7 +36,7 @@ class CreateRssNewsTable extends Migration
                 ->nullable(false)
                 ->comment('Date of publication');
             $table->boolean('is_visible')
-                ->default(false);
+                ->default(true);
             $table->boolean('is_used')
                 ->default(false);
             $table->timestamps();

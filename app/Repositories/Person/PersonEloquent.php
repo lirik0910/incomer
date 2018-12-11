@@ -135,8 +135,7 @@ class PersonEloquent implements PersonRepository
         $rss = $person->rss()
             ->where('is_visible', true)
             ->orderBy('pub_date', 'DESC')
-           // ->
-            ->groupBy('pub_date')
+            //->groupBy('pub_date')
             ->limit($limit)
             ->offset(($page - 1) * $limit)
             ->simplePaginate($limit);

@@ -23,11 +23,6 @@ export default class CompanyNews extends Base {
         this.els._newsSiteTab.find('.more').click((e) => this.getMoreArticles(e));
 	}
 
-    ajaxComplete(e){
-        this.els._newsRssTab.find('.more').click((e) => this.getMoreArticles(e));
-        this.els._newsSiteTab.find('.more').click((e) => this.getMoreArticles(e));
-    }
-
     getMoreArticles(e){
         e.preventDefault();
 
@@ -49,6 +44,12 @@ export default class CompanyNews extends Base {
                 parentTab.find('.more').remove();
             }
             parentTab.append(data);
+
+            if(parentTab.hasClass('news-tab')){
+                this.els._newsSiteTab.find('.more').click((e) => this.getMoreArticles(e));
+            } else{
+                this.els._newsRssTab.find('.more').click((e) => this.getMoreArticles(e));
+            }
         }).fail( (e) => { });
     }
 

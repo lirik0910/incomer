@@ -28,12 +28,14 @@
           </div>
           <button class="post__comment-btn">Читать комментарии</button>
         </article>
-        <div class="sidebar-news">
-          <p class="sidebar-news__title">Похожие новости</p>
+        @if(!empty($tagRel))
+          <div class="sidebar-news">
+            <p class="sidebar-news__title">Похожие новости</p>
             @foreach($tagRel as $relItem)
                 @include('components.index.hot_news_item', ['type' => 'short', 'item' => $relItem])
             @endforeach
-        </div>
+           </div>
+         @endif
       </div>
     </div>
     <div class="related">

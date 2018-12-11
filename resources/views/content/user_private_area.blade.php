@@ -1,23 +1,26 @@
 @extends('layouts.app')
 @section('content')
+    @php
+    //var_dump($user); die;
+    @endphp
   <main class="main">
     <div class="container">
       <div class="profile">
         <div class="profile__info">
           <form class="avatarUploader" runat="server">
-            <input type="file" id="avatarInput">
-            <img src="img/photo-dark.jpg" alt="avatar" id="avatar">
+            <input name="logo" type="file" id="avatarInput">
+            <img src="@if(!empty($user->logo)) {{ $user->logo }} @else img/photo-dark.jpg @endif" alt="avatar" id="avatar">
           </form>
-          <p class="profile__name">Example User 78</p>
+          <p class="profile__name">{{ $user->username }}</p>
           <p class="profile__role">Читатель</p>
           <ul class="profile__menu-list">
-            <li class="profile__menu-item">
-              <a class="profile__menu-link" href="#">Настройки профиля</a>
-            </li>
-            <li class="profile__menu-item">
-              <a class="profile__menu-link" href="#">Личная информация</a>
-            </li>
-            <li class="profile__menu-item">
+              <li class="profile__menu-item">
+                  <a class="profile__menu-link" href="#info">Личная информация</a>
+              </li>
+            <!--<li class="profile__menu-item">
+              <a class="profile__menu-link" href="#settings">Настройки профиля</a>
+            </li>-->
+            <!--<li class="profile__menu-item">
               <a class="profile__menu-link" href="#">Интересы</a>
             </li>
             <li class="profile__menu-item">
@@ -25,82 +28,85 @@
             </li>
             <li class="profile__menu-item">
               <a class="profile__menu-link" href="#">Рассылки</a>
-            </li>
+            </li>-->
           </ul>
-          <a class="profile__exit" href="#">Выйти</a>
+          <a class="profile__exit" href="{{ url('/logout') }}">Выйти</a>
         </div>
         <div class="profile__detail">
           <form class="profile__detail-block profile__detail-block--personal">
-            <p class="profile__title">Личная информация</p>
+            <p id="info" class="profile__title">Личная информация</p>
             <fieldset class="profile__fieldset profile__fieldset--fullname">
               <legend>Ф.И.О</legend>
               <div class="profile__field"><span class="profile__placeholder">Фамилия</span>
-                <input class="profile__input" type="text">
+                <input name="last_name" class="profile__input" value="{{ $user->last_name }}" type="text">
               </div>
               <div class="profile__field"><span class="profile__placeholder">Имя</span>
-                <input class="profile__input" type="text">
+                <input name="first_name" class="profile__input" value="{{ $user->first_name }}" type="text">
               </div>
               <div class="profile__field"><span class="profile__placeholder">Отчество</span>
-                <input class="profile__input" type="text">
+                <input name="patronymic" class="profile__input" value="{{ $user->patronymic }}" type="text">
               </div>
             </fieldset>
             <fieldset class="profile__fieldset profile__fieldset--birthday">
               <legend>Дата рождения</legend>
+                <div class="profile__field"><span class="profile__placeholder">Год</span>
+                    <select name="year" class="profile__select">
+                        @foreach($years as $year)
+                            @if($birthday['year'] == $year)
+                                <option selected value="{{ $year }}">{{ $year }}</option>
+                            @else
+                                <option value="{{ $year }}"> {{ $year }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div class="profile__field"><span class="profile__placeholder">Месяц</span>
+                    <select name="month" class="profile__select">
+                        @foreach($month as $key => $value)
+                            @if($birthday['month'] == $key)
+                                <option selected value="{{ $key }}">{{ $value }}</option>
+                            @else
+                                <option value="{{ $key }}">{{ $value }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
               <div class="profile__field"><span class="profile__placeholder">День</span>
-                <select class="profile__select">
-                  <option value="" selected></option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                <select name="day" class="profile__select">
+                    @foreach($days as $day)
+                        @if($birthday['day'] == $day)
+                            <option selected value="{{ $day }}"> {{ $day }}</option>
+                        @else
+                            <option value="{{ $day }}">{{ $day }}</option>
+                        @endif
+                    @endforeach
                 </select>
               </div>
-              <div class="profile__field"><span class="profile__placeholder">Месяц</span>
-                <select class="profile__select">
-                  <option value="" selected></option>
-                  <option value="1">Январь</option>
-                  <option value="2">Февраль</option>
-                  <option value="3">Март</option>
-                  <option value="4">Апрель</option>
-                </select>
-              </div>
-              <div class="profile__field"><span class="profile__placeholder">Год</span>
-                <select class="profile__select">
-                  <option value="" selected></option>
-                  <option value="2018">2018</option>
-                  <option value="2017">2017</option>
-                  <option value="2016">2016</option>
-                  <option value="2015">2015</option>
-                </select>
-              </div>
+
             </fieldset>
             <fieldset class="profile__fieldset profile__fieldset--living">
               <legend>Место проживания</legend>
               <div class="profile__field">
                 <span class="profile__placeholder">Страна</span>
-                <select class="profile__select" id="country">
-                  <option value="" selected></option>
-                  <option value="1">Украина</option>
-                  <option value="2">Россия</option>
-                  <option value="3">Беларусь</option>
-                  <option value="4">Греция</option>
+                <select name="country" class="profile__select" id="country">
+                    @foreach($countries as $country)
+                        @if($country == $user->country)
+                            <option selected value="{{ $country }}">{{ $country }}</option>
+                        @else
+                            <option value="{{ $country }}">{{ $country }}</option>
+                        @endif
+                    @endforeach
                 </select>
               </div>
               <div class="profile__field profile__field--block">
                 <span class="profile__placeholder">Город</span>
-                <select class="profile__select" id="city">
-                  <option value="" selected></option>
-                  <option value="1">Киев</option>
-                  <option value="2">Мариуполь</option>
-                  <option value="3">Керч</option>
-                  <option value="4">Полтава</option>
-                </select>
+                  <input name="city" class="profile__input" value="{{ $user->city }}" type="text">
               </div>
             </fieldset>
             <a class="profile__btn" href="#">Сохранить изменения</a>
           </form>
-          <form class="profile__detail-block profile__detail-block--settings">
-            <p class="profile__title">Настройки профиля</p>
+          <!--<form class="profile__detail-block profile__detail-block--settings">
+            <p id="settings" class="profile__title">Настройки профиля</p>
             <fieldset class="profile__fieldset">
               <legend>Смена электронной почты</legend>
               <div class="profile__field">
@@ -138,7 +144,7 @@
               </div>
               <a class="profile__btn" href="#">Изменить пароль</a>
             </fieldset>
-          </form>
+          </form>-->
         </div>
       </div>
     </div>

@@ -54,6 +54,7 @@ class UserEloquent implements UserRepository
     public function update($id, array $data)
     {
         $item = $this->model->find($id);
+        //var_dump($data); die;
         if(!$item) throw new \Exception('User not found');
         if(!empty($data['password'])) $data['password'] = Hash::make($data['password']);
 

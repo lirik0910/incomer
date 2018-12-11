@@ -28,7 +28,13 @@ Route::prefix('cryptocurrencies')->group(function (){
 
 Route::get('blockchain', 'PageController@blockchain');
 
-Route::get('/private_area', 'PageController@userArea');
+
+
+Route::prefix('private_area')->group(function (){
+    Route::get('/', 'PageController@userArea');
+    Route::post('/info', 'UserController@update');
+    Route::post('/logo', 'UserController@setLogo');
+});
 Route::get('/profile/{number}', 'PageController@user_personal_area');
 
 Route::get('/wiki/{url}', 'PageController@wikiPage');
