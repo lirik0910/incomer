@@ -36,6 +36,6 @@ class UserController extends Controller
     {
         $logo = $request->all();
 
-        //var_dump($logo); die;
+        var_dump($logo); die;
     }
 }

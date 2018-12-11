@@ -72,8 +72,11 @@ export default class UserProfile extends Base {
 		    }
 		    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 		}*/
+        let form = $(e.target).parent('form');
+        let data = new FormData(form);
         let logo = $(e.currentTarget)[0].files[0];
-        //console.log(logo);
+        data.append('logo', logo);
+        console.log(data);
 
 		$.ajax({
             url: '/private_area/logo',
@@ -81,7 +84,7 @@ export default class UserProfile extends Base {
             //dataType: 'text',
             contentType: false,
             processData: false,
-            data: {logo: logo},
+            data: data,
         }).done( (data) => {
         	console.log('done!');
 /*        	if ($(e.currentTarget)[0].files && $(e.currentTarget)[0].files[0]) {
