@@ -82,31 +82,12 @@
         display: flex;
         justify-content: space-between;
     }
-    &__btn {
-        margin: 24px auto 0;
+    &__btn,
+    .more {
+        margin: 24px auto 16px;
         display: block;
         @extend %btn;
         font-size: 16px;
+        font-family: 'Museo Sans Cyrl', Arial, sans-serif;
     }
 }
-
-.more {
-    @extend %btn;
-    font-size: 16px;
-    display: block;
-    margin: 24px auto 16px;
-}
-
-/* .sticky {
-    position: relative;
-}
-
-.sticky__wrap{
-    position: absolute;
-    top: 0;
-    right: 0;
-    overflow: hidden;
-    &:hover {
-        overflow-y: scroll;
-    }
-} */

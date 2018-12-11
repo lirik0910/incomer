@@ -108,6 +108,7 @@
 		}
 		.card__pic {
 			height: 100%;
+			-webkit-mask-image: -webkit-radial-gradient(white, black);
 			img {
                 max-block-size: -webkit-fill-available;
 				left: 50%;
