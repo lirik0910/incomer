@@ -28,6 +28,8 @@ export default class UserProfile extends Base {
 		this.els._saveNewPersonalInfo.click((e) => this.saveNewPersonalInfo(e));
 		this.els._saveNewEmail.click((e) => this.saveNewEmail(e));
 		this.els._saveNewPassword.click((e) => this.saveNewPassword(e));
+		this.isEmpty();
+		// this.els._profileSelect.change((e) => this.isEmpty());
 	}
 
 	focusinInputAnimation(e) {
@@ -60,6 +62,16 @@ export default class UserProfile extends Base {
 		} else {
 			this.els._profileSelectCity.parent().removeClass('profile__field--block');
 		}
+	}
+
+	isEmpty() {
+		for (var i = 0; i < this.els._profileInput.length; i++) {
+			$(this.els._profileInput[i]).parent().children().first()
+				.removeClass('profile__placeholder--active');
+		}
+		// for (var j = 0; j < this.els._profileSelect.length; j++) {
+		// 	console.log($(this.els._profileSelect[j]).is(':selected'))
+		// }
 	}
 
 	uploadAvatar(e) {

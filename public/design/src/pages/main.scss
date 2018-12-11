@@ -38,10 +38,13 @@
     font-style: normal;
 } */
 
+// @include import-font($font-name: 'Museo Sans Cyrl', $font-weight: 500, $font-style: null, $types: woff2 woff);
+// @include import-font($font-name: 'MuseoSansCyrl', $font-weight: 500, $font-style: null, $types: woff2 woff);
+
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
