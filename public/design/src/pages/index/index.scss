@@ -52,6 +52,7 @@
     display: inline-flex;
     margin-left: 24px;
     width: 300px;
+    position: relative;
 }
 
 .logo {
@@ -95,3 +96,17 @@
     display: block;
     margin: 24px auto 16px;
 }
+
+/* .sticky {
+    position: relative;
+}
+
+.sticky__wrap{
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    &:hover {
+        overflow-y: scroll;
+    }
+} */

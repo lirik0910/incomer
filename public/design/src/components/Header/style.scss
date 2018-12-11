@@ -128,7 +128,7 @@
 		color: $main-dark-grey-color;
 		@include transition(all);
 		&:hover {
-			color: lighten($main-dark-grey-color, 30%)
+			color: $default-blue;
 		}
 	}
 	/**

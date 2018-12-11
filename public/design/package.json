@@ -35,6 +35,7 @@
     "highcharts": "^6.2.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.2.1",
-    "normalize.css": "^6.0.0"
+    "normalize.css": "^6.0.0",
+    "sticky-sidebar": "^3.3.1"
   }
 }
