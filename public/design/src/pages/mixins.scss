@@ -1,3 +1,40 @@
 @mixin transition ($property) {
 	transition: $property 0.3s ease-in-out;
 }
+
+@mixin import-font($font-name, $font-weight: null, $font-style: null, $types: woff2 woff) {
+	$font-style-shorthand : 'n';
+
+	@if ($font-style == 'italic')
+	{
+		$font-style-shorthand : 'i';
+	}
+
+	$file-path : $dir-fonts + $font-name + "-" + $font-weight + $font-style-shorthand;
+	$src : null;
+
+	$extmods : (
+		eot: "?",
+		svg: "#" + str-replace($font-name, " ", "_")
+	);
+
+	$formats : (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $types
+	{
+		$extmod : if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format : if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src : append($src, url(quote($file-path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face
+	{
+		font-family : quote($font-name);
+		font-style  : $font-style;
+		font-weight : $font-weight;
+		src         : $src;
+	}
+}

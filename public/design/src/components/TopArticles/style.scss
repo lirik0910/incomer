@@ -25,7 +25,7 @@
 				}
 				h3 {
 					font-size: 30px;
-				    line-height: 35px;
+				    line-height: 36px;
 				    // letter-spacing: 0.5;
 				}
 			}
@@ -44,13 +44,13 @@
 					height: 120px;
 					overflow: visible;
 					img {
-						top: auto;
-						transform: translate(0, 0);
-						min-width: auto;
-						min-height: auto;
-					    bottom: 0;
-					    left: -10px;
-					    height: 105%;
+					    height: auto;
+					    width: 348px;
+					    top: -24px;
+					    left: -24px;
+					    // bottom: -24px;
+					    right: -24px;
+					    transform: translate(0);
 					}
 				}
 				.card__content {
@@ -87,16 +87,13 @@
 					height: 100%;
 					overflow: visible;
 					img {
+					    height: 288px;
+					    max-width: 276px;
+						top: -24px;
+					    right: -24px;
 						left: auto;
-						top: auto;
-						transform: translate(0, 0);
-						min-width: auto;
-						min-height: auto;
-					    bottom: 0;
-					    // right: -24px;
-					    right: -11px;
-					    max-height: calc(100% + 24px);
-    					max-width: calc(100% + 50px);
+						bottom: -24px;
+						transform: translate(0);
 					}
 				}
 				.card__subtitle {
@@ -127,11 +124,3 @@
 		}
 	}
 }
-
-/*
-.card--large .card__text {
-    font-size: 32px;
-    line-height: 36px;
-    letter-spacing: .5px;
-}
-*/
