@@ -133,7 +133,7 @@ class PersonEloquent implements PersonRepository
         if (!$person) throw new \Exception('Person not found');
 
         $rss = $person->rss()
-            ->where('is_visible', true)
+            //->where('is_visible', true)
             ->orderBy('pub_date', 'DESC')
             //->groupBy('pub_date')
             ->limit($limit)
