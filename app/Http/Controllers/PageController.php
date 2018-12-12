@@ -140,14 +140,15 @@ class PageController extends Controller
         if($request->ajax()){
             if($params['type'] === 'news'){
                 $items = $this->personModel->personNews($id);
+                $view = 'components.company.site_news_list';
             } elseif ($params['type'] === 'rss'){
                 $items = $rss = $this->personModel->personRss($id);
-                //$prev = RssNews::orderBy('pub_date', 'DESC')->limit(1)->offset((($params['page'] - 1) * 24) - 1)->first();
+                $view = 'components.company.rss_list';
             } else{
                 return false;
             }
 
-            return view('components.company.site_news_list', [
+            return view($view, [
                 'items' => $items,
                 'dateFormatter' => DateFormatter::class
             ]);
