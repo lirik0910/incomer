@@ -38,20 +38,22 @@
          @endif
 
           <div class="comments">
-              <div class="comments__strange">
-                  <div class="comments__title-wrap">
-                      <p class="comments__title">Комментарии читателей</p>
-                      <!--<ul class="comments__tabs">
-                          <li class="comments__tab"><a class="comments__tab-link comments__tab-link--active" href="#" data-sort-value="rating">По рейтингу</a></li>
-                          <li class="comments__tab"><a class="comments__tab-link" href="#" data-sort-value="relevance">По актуальности</a></li>
-                      </ul>-->
+              @if(count($item->comments) > 0)
+                  <div class="comments__strange">
+                      <div class="comments__title-wrap">
+                          <p class="comments__title">Комментарии читателей</p>
+                          <!--<ul class="comments__tabs">
+                              <li class="comments__tab"><a class="comments__tab-link comments__tab-link--active" href="#" data-sort-value="rating">По рейтингу</a></li>
+                              <li class="comments__tab"><a class="comments__tab-link" href="#" data-sort-value="relevance">По актуальности</a></li>
+                          </ul>-->
+                      </div>
+                      <div>
+                          <ul class="comments__list">
+                              @include('components.post.comments_list', ['items' => $item->comments])
+                          </ul>
+                      </div>
                   </div>
-                  <div>
-                      <ul class="comments__list">
-                          @include('components.post.comments_list', ['items' => $item->comments])
-                      </ul>
-                  </div>
-              </div>
+              @endif
               <div class="comments__own">
                   <div class="comments__title-wrap">
                       <p class="comments__title">Оставить свой комментарий</p>
