@@ -130,8 +130,8 @@
                 </div>
                 <div class="news__tabs">
                     <div class="news__tab rss-tab news__tab--active">
-                        {{--@include('components.company.rss_list', ['items' => $rss])--}}
-                        <div class="news__day">
+                        @include('components.company.rss_list', ['items' => $rss])
+                        <!-- <div class="news__day">
                             <p class="news__date">Сегодня, 4 ноября</p>
                             <ul class="news__list">
                                 <li class="news__item"><a class="news__link" href="#"><span class="news__time">14:35</span>
@@ -159,8 +159,8 @@
                                 <li class="news__item"><a class="news__link" href="#"><span class="news__time">09:42</span>
                                         <p class="news__content">Производство Tesla 3 достигло 6.000 единиц в сутки</p><span class="news__site">rbc.ru</span></a></li>
                             </ul>
-                        <!--</div>
-                        <div class="news__day">-->
+                        </div>
+                        <div class="news__day">
                             <p class="news__date">Вчера, 3 ноября</p>
                             <ul class="news__list">
                                 <li class="news__item"><a class="news__link" href="#"><span class="news__time">14:35</span>
@@ -189,7 +189,7 @@
                                         <p class="news__content">Производство Tesla 3 достигло 6.000 единиц в сутки</p><span class="news__site">rbc.ru</span></a></li>
                             </ul>
                         </div>
-                        <button class="news__continue">Показать ещё</button>
+                        <button class="news__continue">Показать ещё</button>-->
                     </div>
                     <div class="news__tab news-tab">
                         @include('components.company.site_news_list', ['items' => $news])
