@@ -14,6 +14,7 @@ export default class Comments extends Base {
 		var flag = { up: true, down: true };
 		this.els._commentsVoteArrows.click((e) => this.makeVoteArrowActive(e, flag));
         this.els._commentCreateBtn.click((e) => this.createComment(e));
+        $('.comments__strange').fadeOut();
 		// var iso = this.initIsotope();
 		// this.els._commentsTabLink.click((e) => this.sortingIsotop(e, iso));
 	}
@@ -25,12 +26,12 @@ export default class Comments extends Base {
 	    let post_id = location.pathname.split('/')[2];
 
         $.ajax({
-            url: '/create',
+            url: '/comments/create',
             method: 'POST',
             data: {value: value, commentable_id: post_id},
             //dataType: 'html',
         }).done( (data) => {
-            console.log(data);
+            location.reload();
         }).fail( (e) => { });
     }
 
