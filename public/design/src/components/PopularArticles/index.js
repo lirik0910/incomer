@@ -9,15 +9,15 @@ export default class PopularArticles extends Base {
     }
 
     onDOMReady(e) {
-        //var sidebar = this.initStickySidebar();
-        this.els._news.find('.more').click((e) => this.getMoreArticles(e));
+        var sidebar = this.initStickySidebar();
+        this.els._news.find('.more').click((e) => this.getMoreArticles(e, sidebar));
     }
 
     ajaxComplete(e) {
         this.els._news.find('.more').click( (e) => this.getMoreArticles(e));
     }
 
-    getMoreArticles(e) {
+    getMoreArticles(e, sidebar) {
         e.preventDefault();
 
         $.ajax({
@@ -31,9 +31,9 @@ export default class PopularArticles extends Base {
             this.els._news.append(data);
             
             // if the argument exist
-/*            if(sidebar !== underfined && sidebar !== '') {
+            if(sidebar != underfined && sidebar != '') {
                 sidebar.updateSticky();
-            }*/
+            }
         }).fail( (e) => { });
     }
 
