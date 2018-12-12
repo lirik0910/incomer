@@ -72,11 +72,12 @@ export default class UserProfile extends Base {
 		    }
 		    reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 		}*/
-        let form = $(e.target).parent('form');
-        let data = new FormData(form);
-        let logo = $(e.currentTarget)[0].files[0];
-        data.append('logo', logo);
-        console.log(data);
+
+
+        let data = {};
+        //data.append('logo', logo);
+        //console.log(logo);
+        data['logo'] = $(e.currentTarget)[0].files[0];
 
 		$.ajax({
             url: '/private_area/logo',

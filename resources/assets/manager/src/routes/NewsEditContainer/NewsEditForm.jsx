@@ -148,7 +148,6 @@ class NewsEditContainer extends React.Component {
         });
     };
 
-
     setSelectedImage = (image) => {
         const {changeDisplayFilesManagerAction} = this.props;
         changeDisplayFilesManagerAction(false);
