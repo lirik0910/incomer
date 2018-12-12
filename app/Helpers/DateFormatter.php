@@ -30,11 +30,11 @@ class DateFormatter
         $date = Carbon::parse($date);
 
         if($date->isToday()){
-            $res = 'today';
+            $res = 'Сегодня';
         } elseif($date->isYesterday()){
-            $res = 'yesterday';
+            $res = 'Вчера';
         } elseif (($date->addDay())->isYesterday()){
-            $res = 'before_yesterday';
+            $res = 'Позавчера';
         } else{
             $res = $date->format('d F');
         }
