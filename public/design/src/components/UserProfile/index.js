@@ -34,13 +34,13 @@ export default class UserProfile extends Base {
 	}
 
 	focusinInputAnimation(e) {
-		$(e.currentTarget.parentNode.children[0]).addClass('profile__placeholder--active');
+		//$(e.currentTarget.parentNode.children[0]).addClass('profile__placeholder--active');
 	}
 
 	focusoutInputAnimation(e) {
-		if (!e.currentTarget.value) {
+/*		if (!e.currentTarget.value) {
 			$(e.currentTarget.parentNode.children[0]).removeClass('profile__placeholder--active');
-		}
+		}*/
 	}
 
 	selectOption(e) {
