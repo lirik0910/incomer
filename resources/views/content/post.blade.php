@@ -39,7 +39,7 @@
 
           <div class="comments">
               @if(count($item->comments) > 0)
-              <div class="comments__strange">
+              <div class="comments__strange" style="display: none;">
                   <div class="comments__title-wrap">
                       <p class="comments__title">Комментарии читателей</p>
                       <!--<ul class="comments__tabs">
@@ -54,6 +54,7 @@
                   </div>
               </div>
               @endif
+              @auth
               <div class="comments__own">
                   <div class="comments__title-wrap">
                       <p class="comments__title">Оставить свой комментарий</p>
@@ -61,6 +62,7 @@
                   <textarea class="comments__textarea" rows="5"></textarea>
                   <button class="comments__btn">Комментировать</button>
               </div>
+              @endauth
           </div>
       </div>
     </div>

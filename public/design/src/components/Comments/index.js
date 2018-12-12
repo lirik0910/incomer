@@ -7,6 +7,7 @@ export default class Comments extends Base {
         	_commentsTabLink: $('.comments__tab-link'),
         	_commentsVoteArrows: $('.comments__vote-up, .comments__vote-down'),
             _commentCreateBtn: $('.comments__btn'),
+            _commentsReadBtn: $('.post__comment-btn'),
         }
     }
 
@@ -14,10 +15,17 @@ export default class Comments extends Base {
 		var flag = { up: true, down: true };
 		this.els._commentsVoteArrows.click((e) => this.makeVoteArrowActive(e, flag));
         this.els._commentCreateBtn.click((e) => this.createComment(e));
-        $('.comments__strange').fadeOut();
+        this.els._commentsReadBtn.click((e) => this.displayComments(e));
+/*        $('.comments__strange').fadeOut();*/
 		// var iso = this.initIsotope();
 		// this.els._commentsTabLink.click((e) => this.sortingIsotop(e, iso));
 	}
+
+	displayComments(e){
+	    e.preventDefault();
+
+	    $('.comments__strange').fadeIn();
+    }
 
 	createComment(e){
 	    e.preventDefault();
