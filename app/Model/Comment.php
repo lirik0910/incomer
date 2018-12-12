@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $table = 'comments';
+
+    protected $fillable = [
+        'value', 'creator_id', 'commentable_id', 'commentable_type'
+    ];
     /*
      * Get news model
      * @return boolean
