@@ -32,17 +32,33 @@
             @foreach($currentNews as $currentItem)
                 @if($loop->first)
                     <div class="row">
-                        @include('components.news.patterns.' . explode('.', $topNews->first()->preview_pattern)[1], ['item' => $topNews->first()])
+                        <div class="block">
+                            <div class="row">
+                                @include('components.news.patterns.' . explode('.', $topNews->first()->preview_pattern)[1], ['item' => $topNews->first()])
+                            </div>
+                            <div class="row">
+                                @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                @elseif($loop->iteration === 2)
                         @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
-                @elseif($loop->iteration === 2 || $loop->iteration === 12)
-                        @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                            </div>
+                        </div>
+                @elseif($loop->iteration === 12)
+                       @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
                     </div>
-                @elseif($loop->iteration === 3 || $loop->iteration === 9)
+                @elseif($loop->iteration === 3)
+                    <div class="block">
+                        <div class="row">
+                            @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                @elseif($loop->iteration === 9)
                     <div class="row">
-                        @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                         @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
                 @elseif($loop->iteration === 4)
                         @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
-                        @include('components.news.patterns.' . explode('.', $topNews->last()->preview_pattern)[1], ['item' => $topNews->last()])
+                    </div>
+                        <div class="row">
+                            @include('components.news.patterns.' . explode('.', $topNews->last()->preview_pattern)[1], ['item' => $topNews->last()])
+                        </div>
+                        </div>
                     </div>
                 @elseif($loop->iteration === 5)
                     <div class="row">
