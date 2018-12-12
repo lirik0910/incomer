@@ -25,7 +25,7 @@ class CommentController extends Controller
 
         $data['creator_id'] = Auth::user()->id;
 
-        var_dump($data); die;
+        //var_dump($data); die;
 
         $comment = $this->model->store($data);
 
