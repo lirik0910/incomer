@@ -37,13 +37,13 @@
             <p id="info" class="profile__title">Личная информация</p>
             <fieldset class="profile__fieldset profile__fieldset--fullname">
               <legend>Ф.И.О</legend>
-              <div class="profile__field"><span class="profile__placeholder @isset($user->last_name) profile__placeholder--active @endisset">Фамилия</span>
+              <div class="profile__field"><span class="profile__placeholder @if($user->last_name) profile__placeholder--active @endif">Фамилия</span>
                 <input name="last_name" class="profile__input" value="{{ $user->last_name }}" type="text">
               </div>
-              <div class="profile__field"><span class="profile__placeholder @isset($user->first_name) profile__placeholder--active @endisset">Имя</span>
+              <div class="profile__field"><span class="profile__placeholder @if($user->first_name) profile__placeholder--active @endif">Имя</span>
                 <input name="first_name" class="profile__input" value="{{ $user->first_name }}" type="text">
               </div>
-              <div class="profile__field"><span class="profile__placeholder @isset($user->patronymic) profile__placeholder--active @endisset">Отчество</span>
+              <div class="profile__field"><span class="profile__placeholder @if($user->patronymic) profile__placeholder--active @endif">Отчество</span>
                 <input name="patronymic" class="profile__input" value="{{ $user->patronymic }}" type="text">
               </div>
             </fieldset>
@@ -98,7 +98,7 @@
                     @endforeach
                 </select>
               </div>
-              <div class="profile__field profile__field--block">
+              <div class="profile__field">
                 <span class="profile__placeholder @isset($user->city) profile__placeholder--active @endisset">Город</span>
                   <input name="city" class="profile__input" value="{{ $user->city }}" type="text">
               </div>
