@@ -26,7 +26,7 @@
           <div class="post__text">
               {!! $item->description !!}
           </div>
-          <button class="post__comment-btn">Читать комментарии</button>
+          <button class="post__comment-btn">Читать комментарии ({{ count($item->comments) }})</button>
         </article>
         @if(!empty($tagRel))
           <div class="sidebar-news">

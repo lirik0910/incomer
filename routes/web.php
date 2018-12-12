@@ -41,6 +41,8 @@ Route::get('/wiki/{url}', 'PageController@wikiPage');
 
 Route::get('/search', 'PageController@search');
 
+Route::post('/comment/create', 'CommentController@create');
+
 //Route::get('/manager', 'PageController@manager');
 //Route::get('/manager/{any}', 'PageController@manager');
 

@@ -5,17 +5,33 @@ export default class Comments extends Base {
 	initDOMElements(e) {
         this.els = {
         	_commentsTabLink: $('.comments__tab-link'),
-        	_commentsVoteArrows: $('.comments__vote-up, .comments__vote-down')
+        	_commentsVoteArrows: $('.comments__vote-up, .comments__vote-down'),
+            _commentCreateBtn: $('.comments__btn'),
         }
     }
 
 	onDOMReady(e) {
 		var flag = { up: true, down: true };
 		this.els._commentsVoteArrows.click((e) => this.makeVoteArrowActive(e, flag));
-
+        this.els._commentCreateBtn.click((e) => this.createComment(e));
 		// var iso = this.initIsotope();
 		// this.els._commentsTabLink.click((e) => this.sortingIsotop(e, iso));
 	}
+
+	createComment(e){
+	    e.preventDefault();
+
+	    let value = $('.comments__own').find('textarea').val();
+
+        $.ajax({
+            url: '/comment/create',
+            method: 'POST',
+            data: {value: value},
+            //dataType: 'html',
+        }).done( (data) => {
+            console.log(data);
+        }).fail( (e) => { });
+    }
 
 	makeVoteArrowActive(e, flag) {
 		e.preventDefault();
