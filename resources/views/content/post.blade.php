@@ -38,9 +38,8 @@
          @endif
 
           <div class="comments">
-
+              @if(count($item->comments) > 0)
               <div class="comments__strange">
-                  @if(count($item->comments) > 0)
                   <div class="comments__title-wrap">
                       <p class="comments__title">Комментарии читателей</p>
                       <!--<ul class="comments__tabs">
@@ -53,8 +52,8 @@
                           @include('components.post.comments_list', ['items' => $item->comments])
                       </ul>
                   </div>
-                  @endif
               </div>
+              @endif
               <div class="comments__own">
                   <div class="comments__title-wrap">
                       <p class="comments__title">Оставить свой комментарий</p>
