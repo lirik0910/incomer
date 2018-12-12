@@ -37,7 +37,7 @@
             <p id="info" class="profile__title">Личная информация</p>
             <fieldset class="profile__fieldset profile__fieldset--fullname">
               <legend>Ф.И.О</legend>
-              <div class="profile__field"><span class="profile__placeholder @if($user->last_name !== '') profile__placeholder--active @endif">Фамилия</span>
+              <div class="profile__field"><span class="profile__placeholder @if(gettype($user->last_name) === 'string') profile__placeholder--active @endif">Фамилия</span>
                 <input name="last_name" class="profile__input" value="{{ $user->last_name }}" type="text">
               </div>
               <div class="profile__field"><span class="profile__placeholder @if($user->first_name !== '') profile__placeholder--active @endif">Имя</span>
