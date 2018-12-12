@@ -139,10 +139,10 @@ export default class Auth extends Base {
             this.els._loginEmail.val('');
             this.els._loginPassword.val('');
         }).fail(function (e) {
-            console.log(e);
+            //console.log(e);
             // $('html').css({ 'overflow': 'hidden' });
             $('.modal__header').text('Ошибка');
-            $('.modal__body').text();
+            $('.modal__body').text('Вы ввели неправильный логин или пароль');
             $('.modal').fadeIn('400', function() {
                 $('.modal__content').slideDown();
             });
