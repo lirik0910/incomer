@@ -22,11 +22,12 @@ export default class Comments extends Base {
 	    e.preventDefault();
 
 	    let value = $('.comments__own').find('textarea').val();
+	    let post_id = location.pathname.split('/')[2];
 
         $.ajax({
             url: '/comment/create',
             method: 'POST',
-            data: {value: value},
+            data: {value: value, commentable_id: post_id},
             //dataType: 'html',
         }).done( (data) => {
             console.log(data);

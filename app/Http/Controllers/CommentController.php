@@ -17,12 +17,15 @@ class CommentController extends Controller
 
     public function create(Request $request)
     {
-        $data['value'] = $request->get('content');
+        $data['value'] = $request->get('value');
+        $data['commentable_id'] = $request->get('commentable_id');
         $data['commentable_type'] = 'news';
 
-        var_dump($_SERVER); die;
+
 
         $data['creator_id'] = Auth::user()->id;
+
+        var_dump($data); die;
 
         $comment = $this->model->store($data);
 
