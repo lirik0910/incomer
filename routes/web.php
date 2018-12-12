@@ -41,8 +41,12 @@ Route::get('/wiki/{url}', 'PageController@wikiPage');
 
 Route::get('/search', 'PageController@search');
 
-Route::post('/comment/create', 'CommentController@create');
 
+
+Route::prefix('comments')->group(function (){
+    Route::post('/create', 'CommentController@create');
+    Route::get('/get', 'CommentController@all');
+});
 //Route::get('/manager', 'PageController@manager');
 //Route::get('/manager/{any}', 'PageController@manager');
 

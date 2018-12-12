@@ -25,7 +25,7 @@ export default class Comments extends Base {
 	    let post_id = location.pathname.split('/')[2];
 
         $.ajax({
-            url: '/comment/create',
+            url: '/create',
             method: 'POST',
             data: {value: value, commentable_id: post_id},
             //dataType: 'html',
