@@ -24,5 +24,8 @@ class Comment extends Model
         return $this->morphedByMany(News::class, 'commentable');
     }
 
-
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
 }
