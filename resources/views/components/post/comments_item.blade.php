@@ -5,7 +5,7 @@
     <div class="comments__content">
         <div class="comments__info"><a class="comments__author" href="#">{{ $item->user->username }}</a>
             <div class="comments__date"><span>{{ $dateFormatter::day($item->created_at) }}</span>
-                <time>{{ date('H:i', $item->created_at) }}</time>
+                <time>{{ date('H:i', strtotime($item->created_at)) }}</time>
             </div>
         </div>
         <div class="comments__text">
