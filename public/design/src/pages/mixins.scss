@@ -2,7 +2,7 @@
 	transition: $property 0.3s ease-in-out;
 }
 
-@mixin import-font($font-name, $font-weight: null, $font-style: null, $types: woff2 woff) {
+/* @mixin import-font($font-name, $font-weight: null, $font-style: null, $types: woff2 woff) {
 	$font-style-shorthand : 'n';
 
 	@if ($font-style == 'italic')
@@ -11,6 +11,7 @@
 	}
 
 	$file-path : $dir-fonts + $font-name + "-" + $font-weight + $font-style-shorthand;
+	// $file-path : '../../../fonts/MuseoSansCyrl' + "-" + $font-weight;
 	$src : null;
 
 	$extmods : (
@@ -37,4 +38,4 @@
 		font-weight : $font-weight;
 		src         : $src;
 	}
-}
+} */

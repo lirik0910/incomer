@@ -30,6 +30,7 @@ export default class UserProfile extends Base {
 		this.els._saveNewEmail.click((e) => this.saveNewEmail(e));
 		this.els._saveNewPassword.click((e) => this.saveNewPassword(e));
 		this.els._infoSaveBtn.click((e) => this.saveInfo(e));
+		this.isEmpty();
 	}
 
 	focusinInputAnimation(e) {
@@ -61,6 +62,21 @@ export default class UserProfile extends Base {
 			this.els._profileSelectCity.parent().addClass('profile__field--block');
 		} else {
 			this.els._profileSelectCity.parent().removeClass('profile__field--block');
+		}
+	}
+
+	isEmpty() {
+		for (var i = 0; i < this.els._profileInput.length; i++) {
+			$(this.els._profileInput[i]).parent().children().first()
+				.removeClass('profile__placeholder--active');
+		}
+		for (var j = 0; j < this.els._profileSelect.length; j++) {
+			if ($(this.els._profileSelect[j].children[0]).is(':selected')) {
+				$(this.els._profileSelect[j]).removeClass('profile__select--filled');
+			}
+			else {
+				$(this.els._profileSelect[j]).addClass('profile__select--filled');
+			}
 		}
 	}
 

@@ -14,7 +14,8 @@
 @import '../../components/Socials/style.scss';
 @import '../../components/Modal/style.scss';
 
-.card--large .card__text {
+.card--large .card__text,
+.card--large .card__text h3 {
     font-size: 30px;
     line-height: 36px;
     letter-spacing: 0;
