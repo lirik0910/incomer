@@ -32,6 +32,7 @@ export default class Chart extends Base {
             rangeSelector: false,
             yAxis: [{
                 gridLineWidth: 0,
+                lineWidth: 1,
                 crosshair: {
                     dashStyle: 'dot',
                     color: '#5435d1'
