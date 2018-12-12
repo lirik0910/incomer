@@ -15,9 +15,14 @@ class Comment extends Model
      * Get news model
      * @return boolean
      */
-    public function news()
+/*    public function news()
     {
         return $this->morphTo();
+    }*/
+
+    public function news()
+    {
+        return $this->belongsTo(News::class);
     }
 
     /*

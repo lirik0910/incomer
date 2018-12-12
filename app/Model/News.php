@@ -64,9 +64,16 @@ class News extends Model
      * Get comments models
      * @return boolean
      */
-    public function comments()
+/*    public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'DESC');
+    }*/
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,
+            'commentable_id')
+            ->orderBy('created_at', 'DESC');
     }
 
     /*
