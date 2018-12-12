@@ -45,14 +45,15 @@
             </div>
           </div>
         </div>
-        <div class="sidebar-wrap">
-          <div class="preview">
-            <ul class="preview__list">
-                @foreach($videos as $video)
-                    @include('components.index.sidebar_video_item', ['item' => $video])
-                @endforeach
-            </ul>
-          </div>
+        <div class="sidebar-wrap" id="sidebar">
+            <div class="sidebar sidebar__inner">
+              <div class="preview">
+                <ul class="preview__list">
+                    @foreach($videos as $video)
+                        @include('components.index.sidebar_video_item', ['item' => $video])
+                    @endforeach
+                </ul>
+              </div>
           <!--<div class="rating">
             <p class="block__title">Рейтинг компаний</p>
             <ul class="rating__term-list">
@@ -186,6 +187,7 @@
               </a>
             </div>
           </div>-->
+            </div>
         </div>
       </div>
     </div>

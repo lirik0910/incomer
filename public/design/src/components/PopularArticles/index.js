@@ -31,9 +31,9 @@ export default class PopularArticles extends Base {
             this.els._news.append(data);
             
             // if the argument exist
-/*            if(sidebar != underfined && sidebar != '') {
+            if(sidebar !== underfined && sidebar !== '') {
                 sidebar.updateSticky();
-            }*/
+            }
         }).fail( (e) => { });
     }
 
