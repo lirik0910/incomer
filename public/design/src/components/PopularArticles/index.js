@@ -17,7 +17,7 @@ export default class PopularArticles extends Base {
         this.els._news.find('.more').click( (e) => this.getMoreArticles(e));
     }
 
-    getMoreArticles(e, sidebar) {
+    getMoreArticles(e, sidebar = null) {
         e.preventDefault();
 
         $.ajax({
@@ -30,19 +30,20 @@ export default class PopularArticles extends Base {
             }
             this.els._news.append(data);
             
-            // if the argument exist
-            if(sidebar !== underfined && sidebar !== '') {
+            // recalculate sidebar position
+            if (sidebar != null) {
                 sidebar.updateSticky();
             }
         }).fail( (e) => { });
     }
 
     initStickySidebar() {
-        var sidebar = new StickySidebar('#sidebar', {
+        var sidebar = new StickySidebar('.sidebar-wrap', {
             containerSelector: '.wrap',
-            innerWrapperSelector: '.sidebar__inner',
+            innerWrapperSelector: '.sidebar',
             topSpacing: 24,
-            bottomSpacing: 24
+            bottomSpacing: 24,
+            // resizeSensor: true
         });
         return sidebar;
     }

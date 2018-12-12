@@ -45,8 +45,8 @@
             </div>
           </div>
         </div>
-        <div class="sidebar-wrap" id="sidebar">
-            <div class="sidebar sidebar__inner">
+        <div class="sidebar-wrap">
+            <div class="sidebar">
               <div class="preview">
                 <ul class="preview__list">
                     @foreach($videos as $video)
