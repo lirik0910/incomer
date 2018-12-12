@@ -48,5 +48,6 @@
     @extend %btn;
     font-size: 16px;
     display: block;
-    margin: $grid-column auto 16px;
+    margin: $grid-column auto 0;
+    // margin: $grid-column auto 16px;
 }

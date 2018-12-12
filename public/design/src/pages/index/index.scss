@@ -84,10 +84,9 @@
     }
     &__btn,
     .more {
-        margin: $grid-column auto 16px;
-        display: block;
         @extend %btn;
+        display: block;
         font-size: 16px;
-        font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+        margin: $grid-column auto 16px;
     }
 }

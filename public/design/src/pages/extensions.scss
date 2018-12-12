@@ -31,6 +31,7 @@
 	letter-spacing: 0.2px;
 	cursor: pointer;
 	padding: 8px 24px;
+	font-family: 'Museo Sans Cyrl', Arial, sans-serif;
 	@include transition(background-color);
 	&:hover,
 	&:focus,

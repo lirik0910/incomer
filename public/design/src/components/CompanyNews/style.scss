@@ -8,12 +8,11 @@
 	&__wrap {
  		border-bottom: 1px solid $light-grey-color;
  		padding-bottom: 24px;
- 		border-radius: 12px;
  		&--internal-news {
  			padding: 24px;
  			background-color: $light-color;
  			border-bottom: none;
- 			border-radius: 12px 12px 0 0;
+ 			border-radius: 12px;
  		}
 	}
 	.block-title {
@@ -110,7 +109,7 @@
 		display: inline-block;
 		vertical-align: top;
 	}
-	&__continue {
+	/* &__continue {
 		background-color: $default-blue;
 		padding: 8px 24px;
 		border: none;
@@ -119,14 +118,14 @@
 		cursor: pointer;
 		font: 700 16px 'Museo Sans Cyrl', Arial, sans-serif;
 		display: block;
-    	margin: 24px auto 0;
+	    	margin: 24px auto 0;
 		@include transition(background-color);
 		&:hover,
 		&:focus,
 		&:active {
 			background-color: $darker-blue;
 		}
-	}
+	} */
 	.row {
 		margin: 24px 0;
 		.card {
