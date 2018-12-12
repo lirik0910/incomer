@@ -25,6 +25,8 @@ use App\Repositories\News\NewsEloquent;
 use App\Repositories\News\NewsRepository;
 use App\Repositories\Tag\TagEloquent;
 use App\Repositories\Tag\TagRepository;
+use App\Repositories\Comment\CommentEloquent;
+use App\Repositories\Comment\CommentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -59,6 +61,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PersonTypeRepository::class, PersonTypeEloquent::class);
         $this->app->singleton(ChartRepository::class, ChartEloquent::class);
         $this->app->singleton(RSSNewsRepository::class, RSSNewsEloquent::class);
+        $this->app->singleton(CommentRepository::class, CommentEloquent::class);
 
     }
 }
