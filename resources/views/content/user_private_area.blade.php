@@ -8,8 +8,8 @@
       <div class="profile">
         <div class="profile__info">
           <form class="avatarUploader" runat="server">
-            <input name="logo" type="file" id="avatarInput">
-            <img src="@if(!empty($user->logo)) {{ $user->logo }} @else img/photo-dark.jpg @endif" alt="avatar" id="avatar">
+            <!--<input name="logo" type="file" id="avatarInput">-->
+            <img src="@if(!empty($user->logo)) {{ $user->logo }} @else img/default-user.png @endif" alt="avatar" id="avatar">
           </form>
           <p class="profile__name">{{ $user->username }}</p>
           <p class="profile__role">Читатель</p>
