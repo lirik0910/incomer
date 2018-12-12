@@ -37,19 +37,19 @@
             <p id="info" class="profile__title">Личная информация</p>
             <fieldset class="profile__fieldset profile__fieldset--fullname">
               <legend>Ф.И.О</legend>
-              <div class="profile__field"><span class="profile__placeholder">Фамилия</span>
+              <div class="profile__field"><span class="profile__placeholder @isset($user->last_name) profile__placeholder--active @endisset">Фамилия</span>
                 <input name="last_name" class="profile__input" value="{{ $user->last_name }}" type="text">
               </div>
-              <div class="profile__field"><span class="profile__placeholder">Имя</span>
+              <div class="profile__field"><span class="profile__placeholder @isset($user->first_name) profile__placeholder--active @endisset">Имя</span>
                 <input name="first_name" class="profile__input" value="{{ $user->first_name }}" type="text">
               </div>
-              <div class="profile__field"><span class="profile__placeholder">Отчество</span>
+              <div class="profile__field"><span class="profile__placeholder @isset($user->patronymic) profile__placeholder--active @endisset">Отчество</span>
                 <input name="patronymic" class="profile__input" value="{{ $user->patronymic }}" type="text">
               </div>
             </fieldset>
             <fieldset class="profile__fieldset profile__fieldset--birthday">
               <legend>Дата рождения</legend>
-                <div class="profile__field"><span class="profile__placeholder">Год</span>
+                <div class="profile__field"><span class="profile__placeholder @isset($birthday['year']) profile__placeholder--active @endisset">Год</span>
                     <select name="year" class="profile__select">
                         @foreach($years as $year)
                             @if($birthday['year'] == $year)
@@ -60,7 +60,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="profile__field"><span class="profile__placeholder">Месяц</span>
+                <div class="profile__field"><span class="profile__placeholder @isset($birthday['month']) profile__placeholder--active @endisset">Месяц</span>
                     <select name="month" class="profile__select">
                         @foreach($month as $key => $value)
                             @if($birthday['month'] == $key)
@@ -71,7 +71,7 @@
                         @endforeach
                     </select>
                 </div>
-              <div class="profile__field"><span class="profile__placeholder">День</span>
+              <div class="profile__field"><span class="profile__placeholder @isset($birthday['day']) profile__placeholder--active @endisset">День</span>
                 <select name="day" class="profile__select">
                     @foreach($days as $day)
                         @if($birthday['day'] == $day)
@@ -87,7 +87,7 @@
             <fieldset class="profile__fieldset profile__fieldset--living">
               <legend>Место проживания</legend>
               <div class="profile__field">
-                <span class="profile__placeholder">Страна</span>
+                <span class="profile__placeholder @isset($user->country) profile__placeholder--active @endisset">Страна</span>
                 <select name="country" class="profile__select" id="country">
                     @foreach($countries as $country)
                         @if($country == $user->country)
@@ -99,7 +99,7 @@
                 </select>
               </div>
               <div class="profile__field profile__field--block">
-                <span class="profile__placeholder">Город</span>
+                <span class="profile__placeholder @isset($user->city) profile__placeholder--active @endisset">Город</span>
                   <input name="city" class="profile__input" value="{{ $user->city }}" type="text">
               </div>
             </fieldset>
