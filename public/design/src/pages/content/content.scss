@@ -69,7 +69,7 @@
         img {
             width: 70%;
             display: block;
-            // margin: 24px auto;
+            // margin: $grid-column auto;
         }
         a {
             text-decoration: none;
@@ -87,7 +87,7 @@
             font-size: 18px;
             line-height: 30px;
             background-color: $main-light-grey-color;
-            padding: 24px 36px;
+            padding: $grid-column 36px;
             border-radius: 12px;
             position: relative;
             &:before,
@@ -99,13 +99,13 @@
             &:before {
                 content: '«';
                 left: 0;
-                top: 24px;
+                top: $grid-column;
                 transform: translate(-50%, 0);
             }
             &:after {
                 content: '»';
                 right: 0;
-                bottom: 24px;
+                bottom: $grid-column;
                 transform: translate(50%, 0);
             }
         }
@@ -119,7 +119,7 @@
             &:before {
                 content: '—';
                 margin-right: 5px;
-                margin-left: 24px;
+                margin-left: $grid-column;
             }
         }
     }

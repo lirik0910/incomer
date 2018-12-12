@@ -7,9 +7,6 @@
 @import '../../components/Auth/style.scss';
 @import '../../components/Tags/style.scss';
 @import '../../components/Card/style.scss';
-// @import '../../components/CompanyInfo/style.scss';
-// @import '../../components/Chart/style.scss';
-// @import '../../components/CompanyNews/style.scss';
 @import '../../components/Footer/style.scss';
 @import '../../components/Socials/style.scss';
 @import '../../components/Modal/style.scss';
@@ -19,23 +16,6 @@
     font-size: 30px;
     line-height: 36px;
     letter-spacing: 0;
-}
-
-.card--large .card__pic img {
-    height: 288px;
-    max-width: 276px;
-    bottom: 0;
-    // top: -24px;
-    left: -24px;
-}
-
-.top .card--square.card--post .card__pic img {
-    transform: translate(0);
-    top: -24px;
-    bottom: 0;
-    left: -24px;
-    width: 348px;
-    height: auto;
 }
 
 .logo {
@@ -56,7 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: $grid-column;
     .sort {
         display: inline-block;
         &__list {
@@ -97,45 +77,27 @@
     .block {
         display: inline-block;
         &:not(:last-of-type) {
-            margin-right: 24px;
+            margin-right: $grid-column;
         }
     }
     .row {
         font-size: 0;
         &:not(:first-of-type) {
-            margin-top: 24px;
+            margin-top: $grid-column;
         }
     }
     .card {
         font-size: 16px;
         display: inline-block;
         &:not(:last-of-type) {
-            margin-right: 24px;
-        }
-        &--large {
-            // background-color: #121212;
-            // color: $light-color;
-            // color: $main-dark-grey-color;
-            // .card__subtitle {
-            //     color: rgba(255, 255, 255, 0.6);
-            // }
-            // .views-post {
-            //     &:before {
-            //         background-image: url('../../../img/eye-light.png');
-            //     }
-            // }
-            // .comments-post {
-            //     &:before {
-            //         background-image: url('../../../img/comment-light.png');
-            //     }
-            // }
+            margin-right: $grid-column;
         }
     }
     .more {
         @extend %btn;
         font-size: 16px;
         display: block;
-        margin: 24px auto 0;
+        margin: $grid-column auto 0;
         font-family: 'Museo Sans Cyrl', Arial, sans-serif;
     }
 }

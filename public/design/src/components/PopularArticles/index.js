@@ -42,8 +42,7 @@ export default class PopularArticles extends Base {
             containerSelector: '.wrap',
             innerWrapperSelector: '.sidebar',
             topSpacing: 24,
-            bottomSpacing: 24,
-            // resizeSensor: true
+            bottomSpacing: 24
         });
         return sidebar;
     }

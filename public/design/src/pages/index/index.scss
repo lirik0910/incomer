@@ -50,7 +50,7 @@
     flex-direction: column;
     vertical-align: top;
     display: inline-flex;
-    margin-left: 24px;
+    margin-left: $grid-column;
     width: 300px;
     position: relative;
 }
@@ -67,24 +67,24 @@
 
 .block__title {
     @extend %title;
-    margin-bottom: 24px;
+    margin-bottom: $grid-column;
 }
 
 .tag {
-    margin-bottom: 24px;
+    margin-bottom: $grid-column;
 }
 
 .news {
     font-size: 16px;
-    line-height: 24px;
+    line-height: $grid-column;
     .row {
-        margin-top: 24px;
+        margin-top: $grid-column;
         display: flex;
         justify-content: space-between;
     }
     &__btn,
     .more {
-        margin: 24px auto 16px;
+        margin: $grid-column auto 16px;
         display: block;
         @extend %btn;
         font-size: 16px;

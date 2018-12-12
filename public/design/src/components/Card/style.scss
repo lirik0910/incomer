@@ -86,7 +86,8 @@
 
 			p:not(.card__subtitle),
 			h3 {
-			    max-height: 166px;
+			    max-height: 144px;
+			    // max-height: 166px;
 			    // max-height: 129px;
 			    overflow: hidden;
 			}
@@ -165,9 +166,6 @@
 	}
 	&--square-full-img {
 		@extend %square;
-		.card__content {
-			padding-top: 170px;
-		}
 		.card__text {
 			max-height: 72px;
 			overflow: hidden;
@@ -201,7 +199,8 @@
 		}
 	}
 	&__content {
-		padding: 18px 24px 24px 24px;
+		padding: 18px;
+		// padding: 18px 24px 24px 24px;
 		font-weight: 700;
 	}
 	&__subtitle {

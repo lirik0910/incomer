@@ -55,21 +55,32 @@
 		font-size: 14px;
 		font-weight: 700;
 		display: inline-block;
+		svg {
+			height: 12px;
+			stroke-width: 2;
+			vertical-align: middle;
+		}
 		&--increase {
-			color: #29852f;
+			color: #20a735;
+			// color: #29852f;
 			// color: #77c249;
-		// 	svg {
-		// 		transform: rotate(-90deg);
+			svg {
+				transform: rotate(-90deg);
+				path {
+					stroke: #20a735;
+					fill: #20a735;
+				}
 			}
-		// }
+		}
 		&--reduce {
 			color: #c25149;
-		// 	svg {
-		// 		transform: rotate(90deg);
-		// 	}
-		}
-		&:before {
-			content: '$';
+			svg {
+				transform: rotate(90deg);
+				path {
+					fill: #c25149;
+					stroke: #c25149;
+				}
+			}
 		}
 		// svg {
 		// 	width: 15px;
@@ -81,6 +92,12 @@
 		// 	// font-size: 18px;
 		// 	letter-spacing: 0.5px;
 		// }
+	}
+	&__stock-value {
+		vertical-align: middle;
+		&:before {
+			content: '$';
+		}
 	}
 	&__detail {
 		@extend %card;
