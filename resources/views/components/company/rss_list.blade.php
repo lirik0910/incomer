@@ -3,5 +3,5 @@
 @endforeach
 
 @isset($items)
-    {{ $rss->links() }}
+    {{ $items->links() }}
 @endisset
