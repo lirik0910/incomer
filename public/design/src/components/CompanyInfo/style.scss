@@ -1,18 +1,14 @@
 .info {
-	// width: calc(25% - 24px);
 	width: 300px;
 	margin-right: 24px;
 	font-size: 16px;
 	display: inline-block;
 	&__main {
 		@extend %card;
-		// font-size: 0;
-		// padding: 24px 14px;
-		padding: 24px;
+		padding: $grid-column;
 		display: flex;
-    	// justify-content: space-between;
     	align-items: center;
-    	margin-bottom: 24px;
+    	margin-bottom: $grid-column;
 	}
 	&__pic {
     	width: 64px;
@@ -101,7 +97,7 @@
 	}
 	&__detail {
 		@extend %card;
-		padding: 24px;
+		padding: $grid-column;
 	}
 	&__tabs {
 		padding-bottom: 20px;
@@ -129,7 +125,7 @@
 		
 	}
 	&__tab-content {
-		margin-top: 24px;
+		margin-top: $grid-column;
 		display: none;
 		&--active {
 			display: block;

@@ -2,9 +2,9 @@
 	@extend %card;
 	width: 948px;
 	font-size: 16px;
-	margin-bottom: 24px;
+	margin-bottom: $grid-column;
 	overflow: hidden;
-	padding: 24px;
+	padding: $grid-column;
 	.block-title {
 		display: inline-block;
 	}
@@ -33,7 +33,7 @@
 	}
 	&__wrap {
 		border-bottom: 1px solid $light-grey-color;
-    	padding-bottom: 24px;
+    	padding-bottom: $grid-column;
     	margin-bottom: 36px;
 	}
 	&__tab-list {
@@ -67,7 +67,7 @@
 			p,
 			p span {
 				line-height: 24px !important;
-				font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+				font-family: $main-font-family !important;
 				color: $main-dark-grey-color !important;
 				font-size: 16px !important;
 				&:not(:last-of-type) {
@@ -88,13 +88,13 @@
 				}
 			}
 			ol, ul {
-	    		margin-left: 24px !important;
+	    		margin-left: $grid-column !important;
 	    		li {
-	    			margin-left: 24px !important;
-	    			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+	    			margin-left: $grid-column !important;
+	    			font-family: $main-font-family !important;
 	    		}
 	    		li span {
-	    			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+	    			font-family: $main-font-family !important;
 	    			font-size: 16px !important;
 	    		}
 			}
@@ -107,12 +107,12 @@
 		    display: none;
 		}
 		.highcharts-tooltip {
-			font: 900 10px 'Museo Sans Cyrl', Arial, sans-serif;
+			font: 900 10px $main-font-family;
 		}
 		.highcharts-axis-labels {
 			text {
 				font-size: 10px !important;
-				font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+				font-family: $main-font-family;
 				letter-spacing: 0.2px;
 			}
 		}

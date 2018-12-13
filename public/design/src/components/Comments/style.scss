@@ -225,13 +225,13 @@
 		background-color: $main-light-grey-color;
 		border: none;
 		border-radius: 6px;
-		font: 500 16px/24px 'Museo Sans Cyrl', Arial, sans-serif;
+		font: 500 16px/24px $main-font-family;
 	}
 	&__btn {
 		@extend %btn;
 		font-size: 16px;
 		margin-top: 24px;
-		font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+		font-family: $main-font-family;
 	}
 }
 
