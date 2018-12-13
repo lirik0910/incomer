@@ -166,7 +166,7 @@ class PageController extends Controller
         foreach ($company->fields as $field) {
             $info[$field->field_type->title] = $field->value;
         }
-        $info['lastPrice'] = $this->chartModel->lastPrice($id)['close'];
+        $info['lastPrice'] = $this->chartModel->lastPrice($id)->first()['close'];
 
         return view('content.company', [
             'view' => 'company',
