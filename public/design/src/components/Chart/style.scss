@@ -2,9 +2,9 @@
 	@extend %card;
 	width: 948px;
 	font-size: 16px;
-	margin-bottom: 24px;
+	margin-bottom: $grid-column;
 	overflow: hidden;
-	padding: 24px;
+	padding: $grid-column;
 	.block-title {
 		display: inline-block;
 	}
@@ -33,7 +33,7 @@
 	}
 	&__wrap {
 		border-bottom: 1px solid $light-grey-color;
-    	padding-bottom: 24px;
+    	padding-bottom: $grid-column;
     	margin-bottom: 36px;
 	}
 	&__tab-list {
@@ -88,9 +88,9 @@
 				}
 			}
 			ol, ul {
-	    		margin-left: 24px !important;
+	    		margin-left: $grid-column !important;
 	    		li {
-	    			margin-left: 24px !important;
+	    			margin-left: $grid-column !important;
 	    			font-family: $main-font-family !important;
 	    		}
 	    		li span {

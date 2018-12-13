@@ -94,7 +94,7 @@
 	}
 	&__field {
 		position: relative;
-		margin-bottom: 24px;
+		margin-bottom: $grid-column;
 	}
 	&__placeholder {
 		pointer-events: none;

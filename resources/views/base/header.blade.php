@@ -1,6 +1,7 @@
 <header class="header">
     <div class="container"><a class="logo" href="/">
-            @include('svg.logo')
+            @include('svg.logo-2')
+            <!-- @include('svg.logo') -->
         </a>
         <nav class="header__nav">
             <ul class="header__nav-list">
