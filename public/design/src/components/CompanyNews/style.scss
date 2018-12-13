@@ -109,23 +109,6 @@
 		display: inline-block;
 		vertical-align: top;
 	}
-	/* &__continue {
-		background-color: $default-blue;
-		padding: 8px 24px;
-		border: none;
-		border-radius: 18px;
-		color: $light-color;
-		cursor: pointer;
-		font: 700 16px 'Museo Sans Cyrl', Arial, sans-serif;
-		display: block;
-	    	margin: 24px auto 0;
-		@include transition(background-color);
-		&:hover,
-		&:focus,
-		&:active {
-			background-color: $darker-blue;
-		}
-	} */
 	.row {
 		margin: 24px 0;
 		.card {

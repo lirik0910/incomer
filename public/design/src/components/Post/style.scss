@@ -3,9 +3,6 @@
 	background-color: $light-color;
 	border-radius: 12px;
 	padding: 45px 36px 66px;
-	// margin: 36px 0 0;
-	// width: 75%;
-	// width: calc(100% - 330px);
 	width: 948px;
 	display: inline-block;
 	vertical-align: top;
@@ -50,7 +47,7 @@
 		}
 	}
 	&__text {
-		font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+		font-family: $main-font-family !important;
         overflow-wrap: break-word !important;
 		line-height: 36px !important;
 		&:last-of-type {
@@ -58,11 +55,11 @@
 			border-bottom: 1px solid $main-light-grey-color !important;
 		}
 		span {
-			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+			font-family: $main-font-family !important;
 		}
 		p,
 		& p span {
-			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+			font-family: $main-font-family !important;
 			overflow-wrap: break-word !important;
 			line-height: 36px !important;
 			color: $main-dark-grey-color !important;
@@ -161,10 +158,10 @@
     		margin-left: 24px !important;
     		li {
     			margin-left: 24px !important;
-    			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+    			font-family: $main-font-family !important;
     		}
     		li span {
-    			font-family: 'Museo Sans Cyrl', Arial, sans-serif !important;
+    			font-family: $main-font-family !important;
     			font-size: 20px !important;
     		}
 		}
@@ -262,6 +259,6 @@
 		padding: 12px 24px;
 		border-radius: 30px;
 		margin-top: 24px;
-		font: 700 16px'Museo Sans Cyrl', Arial, sans-serif;
+		font: 700 16px $main-font-family;
 	}
 }

@@ -116,7 +116,7 @@
 		border-radius: 12px;
 		width: 100%;
 		border: none;
-		font: 700 16px 'Museo Sans Cyrl', Arial, sans-serif;
+		font: 700 16px $main-font-family;
 		color: $dark-grey-color;
 		&:nth-of-type(2) {
 			position: relative;
@@ -156,7 +156,7 @@
 		padding: 9px 22px;
 		background-color: $default-blue;
 		border-radius: 20px;
-		font: 700 16px 'Museo Sans Cyrl', Arial, sans-serif;
+		font: 700 16px $main-font-family;
 		color: $light-color;
 		cursor: pointer;
 		@include transition(background-color);
@@ -178,7 +178,7 @@
 		background-color: transparent;
 		vertical-align: middle;
 		color: $dark-grey-color;
-		font: 500 12px 'Museo Sans Cyrl', Arial, sans-serif;
+		font: 500 12px $main-font-family;
 		margin-left: 15px;
 		cursor: pointer;
 		@include transition(border);

@@ -1,3 +1,6 @@
+/* 
+ * COLORS
+ */
 $light-color: #ffffff;
 $main-light-grey-color: #ededed;
 $main-dark-grey-color: #252525;
@@ -6,6 +9,12 @@ $dark-grey-color: #3a3a3a;
 $default-blue: #5435d1;
 $lighter-blue: #704ef1;
 $darker-blue: #381fb6;
+
+/* 
+ * FONTS
+ */
+$main-font-title: 'Museo Sans Cyrl';
+$main-font-family: $main-font-title, Arial, sans-serif;
 
 $cell: 6px;
 $grid-column: $cell*4;

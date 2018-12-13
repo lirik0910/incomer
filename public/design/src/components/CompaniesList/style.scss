@@ -8,16 +8,15 @@
 	&__search-input {
 		width: 100%;
 		background-color: $light-color;
+		font: 700 14px $main-font-family;
 		border-radius: 24px;
-		font: 700 14px 'Museo Sans Cyrl', Arial, sans-serif;
 		letter-spacing: 0.4px;
-		// @extend %card;
 		border: none;
 		padding: 12px 24px 12px 54px; 
 		&::placeholder {
 			color: rgba(37, 37, 37, .6);
 			font-weight: 700;
-			font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+			font-family: $main-font-family;
 		}
 	}
 	&__search-btn {
@@ -241,7 +240,7 @@
 		font-size: 16px;
 		display: block;
 		margin: 24px auto 0;
-		font-family: 'Museo Sans Cyrl', Arial, sans-serif;
+		font-family: $main-font-family;
 	}
 	.highcharts-tick,
 	.highcharts-credits {
