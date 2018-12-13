@@ -111,7 +111,7 @@ class PageController extends Controller
                     $company->beforeLastPrice = $companyLastPrices->last()->close;
                 } else{
                     $company->lastPrice = $filteredPrices[$company->id];
-                    $company->beforeLastPrice = $this->chartModel->beforeLastPrice($company->id);
+                    $company->beforeLastPrice = $this->chartModel->beforeLastPrice($company->id)->close;
                 }
             } else{
                 $companyLastPrices = $this->chartModel->lastPrice($company->id);
