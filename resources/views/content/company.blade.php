@@ -12,7 +12,7 @@
               <input type="hidden" id="person_id" value="{{$company->id}}">
               <p class="info__title">{{ $company->name }}</p>
               <span class="info__exchange">@isset($info['title']){{ $info['title'] }} @endisset: {{ $info['ticker'] ?? '' }}</span>
-              <span class="info__stock info__stock--increase">{{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
+              <span class="info__stock info__stock--increase">${{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
             </div>
           </div>
           <div class="info__detail">

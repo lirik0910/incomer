@@ -22,9 +22,9 @@
         </div>
         <div class="companies__stock">
             <span class="companies__stock-description">Капитализация</span>
-            <span class="companies__stock-value companies__stock-value--sort">$@if($item->fields->where('field_type.title', 'market_capitalization')->first()){{ $item->fields->where('field_type.title', 'market_capitalization')->first()->value }} @endif</span>
+            <span class="companies__stock-value companies__stock-value--sort">${{ $item->capitalize }}</span>
             <span class="companies__stock-description">Акции в обращении</span>
-            <span class="companies__stock-value">@if($item->fields->where('field_type.title', 'shares_in_circulation')->first())${{ $item->fields->where('field_type.title', 'shares_in_circulation')->first()->value }} @endif</span>
+            <span class="companies__stock-value">@if($item->fields->where('field_type.title', 'shares_in_circulation')->first()){{ $item->fields->where('field_type.title', 'shares_in_circulation')->first()->value }} @endif</span>
         </div>
         <div class="companies__visualisation">
             <div class="companies__chart company_item_chart" id="company_chart_{{$item->id}}" data-content="{{$item->chart}}"></div>
