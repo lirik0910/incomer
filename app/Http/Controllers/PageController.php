@@ -105,12 +105,12 @@ class PageController extends Controller
             }
             if(!empty($filteredPrices[$company->id])){
                 if((int)$filteredPrices[$company->id] < 1){
-                    $company->lastPrice = $this->chartModel->lastPrice($company->id)->close;
+                    $company->lastPrice = $this->chartModel->lastPrice($company->id)->first()->close;
                 } else{
                     $company->lastPrice = $filteredPrices[$company->id];
                 }
             } else{
-                $company->lastPrice = $this->chartModel->lastPrice($company->id)->close;
+                $company->lastPrice = $this->chartModel->lastPrice($company->id)->first()->close;
             }
 
             $company->capitalize = $company->lastPrice * (int)str_replace('.', '', $company->fields->where('field_type.title', 'shares_in_circulation')->first()->value);

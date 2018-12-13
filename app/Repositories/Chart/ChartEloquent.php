@@ -20,7 +20,8 @@ class ChartEloquent implements ChartRepository
             ->where('close', '>', 0)
             ->orderBy('date', 'desc')
             ->orderBy('minute', 'desc')
-            ->first();
+            ->limit(2)
+            ->get();
 
         return $lastPrice;
     }
