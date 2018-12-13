@@ -39,7 +39,7 @@
                   </div>
                   <p class="info__caption">Рыночная капитализация</p>
                   <div class="info__description"> 
-                    <p>${{ $info['market_capitalization'] ?? ''}}</p>
+                    <p>${{ $info['capitalize'] ?? ''}}</p>
                   </div>
                   <p class="info__caption">Акции в обращении</p>
                   <div class="info__description"> 
