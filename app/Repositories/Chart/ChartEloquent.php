@@ -32,7 +32,7 @@ class ChartEloquent implements ChartRepository
             ->whereIn('person_id', $ids)
             ->orderBy('date', 'desc')
             ->orderBy('minute', 'desc')
-            ->limit(count($ids))
+            ->limit(count($ids) * 2)
             ->get();
 
         return $lastPrices;
