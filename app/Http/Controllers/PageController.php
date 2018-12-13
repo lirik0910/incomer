@@ -122,9 +122,9 @@ class PageController extends Controller
             $company->capitalize = $company->lastPrice * (int)str_replace('.', '', $company->fields->where('field_type.title', 'shares_in_circulation')->first()->value);
 
             if((float)$company->lastPrice > (float)$company->beforeLastPrice){
-                $company->chevron = 'up';
+                $company->chevrone = 'up';
             } else{
-                $company->chevron = 'down';
+                $company->chevrone = 'down';
             }
         }
 
