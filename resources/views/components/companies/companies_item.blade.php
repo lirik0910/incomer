@@ -22,7 +22,7 @@
         </div>
         <div class="companies__stock">
             <span class="companies__stock-description">Капитализация</span>
-            <span class="companies__stock-value companies__stock-value--sort">${{ $item->capitalize }}</span>
+            <span class="companies__stock-value companies__stock-value--sort">${{ number_format($item->capitalize, 0, '.', ',') }}</span>
             <span class="companies__stock-description">Акции в обращении</span>
             <span class="companies__stock-value">@if($item->fields->where('field_type.title', 'shares_in_circulation')->first()){{ $item->fields->where('field_type.title', 'shares_in_circulation')->first()->value }} @endif</span>
         </div>

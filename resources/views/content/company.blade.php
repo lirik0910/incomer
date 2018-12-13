@@ -13,7 +13,7 @@
               <p class="info__title">{{ $company->name }}</p>
               <p class="info__exchange">@isset($info['title']){{ $info['title'] }} @endisset: {{ $info['ticker'] ?? '' }}</p>
               <div class="info__stock info__stock--increase">
-                <span class="info__stock-value">{{ number_format($info['lastPrice'], 0, '.', ',')  ?? ''}}</span>
+                <span class="info__stock-value">{{ number_format($info['lastPrice'], 2, '.', '')  ?? ''}}</span>
               </div>
             </div>
           </div>
