@@ -58,8 +58,8 @@ class ChartEloquent implements ChartRepository
             ->whereIn('person_id', $ids)
             ->whereRaw('(date_part(\'hour\', minute))::integer = 0')
             ->whereRaw('(date_part(\'dow\', date))::integer % 7 = 5')
-            ->limit(1000)
-            ->orderBy('date', 'asc');
+            ->limit(800)
+            ->orderBy('date', 'desc');
 
         return $items->get();
     }
