@@ -112,6 +112,7 @@ class PageController extends Controller
             } else{
                 $company->lastPrice = $this->chartModel->lastPrice($company->id);
             }
+
             $company->capitalize = $company->lastPrice * (int)str_replace('.', '', $company->fields->where('field_type.title', 'shares_in_circulation')->first()->value);
         }
 
