@@ -26,13 +26,26 @@ class ChartEloquent implements ChartRepository
         return $lastPrice;
     }
 
+    public function beforeLastPrice($id){
+        $lastPrice = $this->model
+            ->select(['close', 'person_id'])
+            ->where('person_id', $id)
+            ->where('close', '>', 0)
+            ->orderBy('date', 'desc')
+            ->orderBy('minute', 'desc')
+            ->offset(1)
+            ->first();
+
+        return $lastPrice;
+    }
+
     public function lastPrices(array $ids = []){
         $lastPrices = $this->model
             ->select(['close', 'person_id'])
             ->whereIn('person_id', $ids)
             ->orderBy('date', 'desc')
             ->orderBy('minute', 'desc')
-            ->limit(count($ids) * 2)
+            ->limit(count($ids))
             ->get();
 
         return $lastPrices;
