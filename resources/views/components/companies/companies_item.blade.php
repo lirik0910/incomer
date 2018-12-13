@@ -28,8 +28,8 @@
         </div>
         <div class="companies__visualisation">
             <div class="companies__chart company_item_chart" id="company_chart_{{$item->id}}" data-content="{{$item->chart}}"></div>
-            <div class="companies__rating companies__rating--increase">
-                {{--@include('svg.arrow')--}}
+            <div class="companies__rating companies__rating--@if($company->chevrone === 'up')increase @else reduce@endif">
+                {@include('svg.arrow')
                 <span class="companies__rating-value">${{ number_format($item->lastPrice, 2, '.', '') }}</span>
             </div>
         </div>
