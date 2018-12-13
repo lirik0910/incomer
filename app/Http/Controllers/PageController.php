@@ -179,6 +179,13 @@ class PageController extends Controller
             $info[$field->field_type->title] = $field->value;
         }
         $info['lastPrice'] = $this->chartModel->lastPrice($id)->first()['close'];
+        $info['beforeLastPrice'] = $this->chartModel->beforeLastPrice($company->id)->close;
+
+        if((float)$info['lastPrice'] > (float)$info['beforeLastPrice']){
+            $company->chevrone = 'up';
+        } else{
+            $company->chevrone = 'down';
+        }
 
         return view('content.company', [
             'view' => 'company',
