@@ -179,9 +179,9 @@ class PageController extends Controller
             $info[$field->field_type->title] = $field->value;
         }
 
-        $info['capitalize'] = $company->lastPrice * (int)str_replace('.', '', $info['shares_in_circulation']);
         $info['lastPrice'] = $this->chartModel->lastPrice($id)->first()['close'];
         $info['beforeLastPrice'] = $this->chartModel->beforeLastPrice($company->id)->close;
+        $info['capitalize'] = $info['lastPrice'] * (int)str_replace('.', '', $info['shares_in_circulation']);
 
         if((float)$info['lastPrice'] > (float)$info['beforeLastPrice']){
             $company->chevrone = 'up';
