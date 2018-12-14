@@ -62,6 +62,8 @@ export default class Header extends Base {
 			this.els._authTabContent.eq(1).height()) {
 			this.els._authContent.height(this.els._authTabContent.eq(0).height())
 		}
+
+		$('#login-email').focus();
 	}
 
 	logoutProfile(e) {
