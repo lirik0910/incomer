@@ -66,11 +66,17 @@ export default class UserProfile extends Base {
 	}
 
 	isEmpty() {
-		// console.log($(this.els._profileInput[0]).prev())
+		// check inputs' filling
 		for (var i = 0; i < this.els._profileInput.length; i++) {
-			$(this.els._profileInput[i]).prev().addClass('profile__placeholder--active');
+			if ($(this.els._profileInput[i]).val()) {
+				$(this.els._profileInput[i]).prev().addClass('profile__placeholder--active');	
+			}
+			else {
+				$(this.els._profileInput[i]).prev().removeClass('profile__placeholder--active');	
+			}
 		}
 
+		// check selects' filling
 		for (var j = 0; j < this.els._profileSelect.length; j++) {
 			if ($('.profile__select option').is(':selected')) {
 				$(this.els._profileSelect[j]).addClass('profile__select--filled');

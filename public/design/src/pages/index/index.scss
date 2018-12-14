@@ -87,6 +87,6 @@
         @extend %btn;
         display: block;
         font-size: 16px;
-        margin: $grid-column auto 16px;
+        margin: $grid-column auto 0;
     }
 }

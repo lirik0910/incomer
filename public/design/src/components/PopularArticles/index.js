@@ -20,7 +20,9 @@ export default class PopularArticles extends Base {
     getMoreArticles(e, sidebar = null) {
         e.preventDefault();
 
-        $.ajax({
+        $('.news').append('<div style="background-color:green; height: 100px;"></div>')
+        
+        /*$.ajax({
             url: $(e.target).attr('href'),
             method: 'GET',
             dataType: 'html',
@@ -34,7 +36,11 @@ export default class PopularArticles extends Base {
             if (sidebar != null) {
                 sidebar.updateSticky();
             }
-        }).fail( (e) => { });
+        }).fail( (e) => { });*/
+        
+        if (sidebar != null) {
+            sidebar.updateSticky();
+        }
     }
 
     initStickySidebar() {
