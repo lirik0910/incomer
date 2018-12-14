@@ -2,7 +2,8 @@
   <div class="container">
     <div class="footer__column">
       <a class="logo" href="{{ url('/') }}">
-      @include('svg.logo')
+      @include('svg.logo-2')
+      <!-- @include('svg.logo') -->
       </a>
       <span class="footer__copyright">© «Incomer Finance», 2018 г.</span>
       <ul class="social">
