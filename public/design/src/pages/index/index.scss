@@ -22,7 +22,8 @@
 }
 
 .main {
-    padding: 18px 0 54px;
+    padding: 18px 0 114px;
+    // padding: 18px 0 54px;
 }
 
 .wrap {
@@ -77,6 +78,7 @@
 .news {
     font-size: 16px;
     line-height: $grid-column;
+    position: relative;
     .row {
         margin-top: $grid-column;
         display: flex;
@@ -88,5 +90,8 @@
         display: block;
         font-size: 16px;
         margin: $grid-column auto 0;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
     }
 }
