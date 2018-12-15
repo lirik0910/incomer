@@ -66,16 +66,25 @@ export default class UserProfile extends Base {
 	}
 
 	isEmpty() {
-/*		for (var i = 0; i < this.els._profileInput.length; i++) {
-			$(this.els._profileInput[i]).parent().children().first()
-				.removeClass('profile__placeholder--active');
-		}*/
-		for (var j = 0; j < this.els._profileSelect.length; j++) {
-			if ($(this.els._profileSelect[j].children[0]).is(':selected')) {
-				$(this.els._profileSelect[j]).removeClass('profile__select--filled');
+		// check inputs' filling
+		for (var i = 0; i < this.els._profileInput.length; i++) {
+			if ($(this.els._profileInput[i]).val()) {
+				$(this.els._profileInput[i]).prev().addClass('profile__placeholder--active');	
 			}
 			else {
+				$(this.els._profileInput[i]).prev().removeClass('profile__placeholder--active');	
+			}
+		}
+
+		// check selects' filling
+		for (var j = 0; j < this.els._profileSelect.length; j++) {
+			if ($('.profile__select option').is(':selected')) {
 				$(this.els._profileSelect[j]).addClass('profile__select--filled');
+				$(this.els._profileSelect[j]).prev().addClass('profile__placeholder--active');
+			}
+			else {	
+				$(this.els._profileSelect[j]).removeClass('profile__select--filled');
+				$(this.els._profileSelect[j]).prev().removeClass('profile__placeholder--active');
 			}
 		}
 	}
@@ -91,8 +100,6 @@ export default class UserProfile extends Base {
 
 
         let data = {};
-        //data.append('logo', logo);
-        //console.log(logo);
         data['logo'] = $(e.currentTarget)[0].files[0];
 
 		$.ajax({

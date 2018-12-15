@@ -23,6 +23,7 @@ export default class Auth extends Base {
         	_registerPassword: $('#register-password'),
         	_registerSend: $('#register-send'),
         	_headerProfile: $('.header__profile'),
+        	_headerProfileWrap: $('.header__profile-wrap'),
         	_headerProfileTitle: $('.header__profile-title')
         }
     }
@@ -32,13 +33,14 @@ export default class Auth extends Base {
 		this.els._passwordToggler.click((e) => this.togglePasswordVisibility(e));
 		this.els._authInput.focusin((e) => this.focusinInputAnimation(e));
 		this.els._authInput.focusout((e) => this.focusoutInputAnimation(e));
+		this.els._headerProfileWrap.click((e) => this.openPopup(e));
 		this.els._authClose.click((e) => this.closePopup(e));
 		this.els._auth.click((e) => this.closePopupByLosingFocus(e));
 		this.els._loginSend.click((e) => this.authSubmit(e));
 		this.els._registerSend.click((e) => this.registerSubmit(e));
 		this.els._authRestore.click((e) => this.authRestore(e));
-		$('#login-email, #login-password').on('input', (e) => this.loginFilling(e))
-		$('#register-email, #register-login, #register-password').on('input', (e) => this.registerFilling(e))
+		$('#login-email, #login-password').on('input', (e) => this.loginFilling(e));
+		$('#register-email, #register-login, #register-password').on('input', (e) => this.registerFilling(e));
 	}
 
 	tabNavigation(e) {
@@ -113,17 +115,11 @@ export default class Auth extends Base {
 		if (this.els._loginEmail.val() !== undefined) data.email = this.els._loginEmail.val();
 		if (this.els._loginPassword.val() !== undefined) data.password = this.els._loginPassword.val();
 
-		/*this.els._authPopup.slideUp();
-		this.els._auth.fadeOut();
-		this.els._headerProfileTitle.text('exampleuser@gmail.com');
-		this.els._headerProfile.addClass('header__profile--login');*/
-
 		$.ajax({
             url: '/auth/login',
             method: 'POST',
             dataType: 'json',
-            data: data,
-
+            data: data
         }).done( (data) => {
             if (data.auth) {
                 this.els._authPopup.slideUp();
@@ -135,12 +131,9 @@ export default class Auth extends Base {
                 $('.modal__header').text('Ошибка');
                 $('.modal__body').text('Извините, попробуйте позже');
             }
-
             this.els._loginEmail.val('');
             this.els._loginPassword.val('');
         }).fail(function (e) {
-            //console.log(e);
-            // $('html').css({ 'overflow': 'hidden' });
             $('.modal__header').text('Ошибка');
             $('.modal__body').text('Вы ввели неправильный логин или пароль');
             $('.modal').fadeIn('400', function() {
@@ -179,8 +172,6 @@ export default class Auth extends Base {
 		if (this.els._registerPassword.val() !== undefined)
 			data.password = this.els._registerPassword.val();
 
-		console.log(data)
-
 		$.ajax({
             url: '/auth/register',
             method: 'POST',
@@ -197,7 +188,6 @@ export default class Auth extends Base {
                 $('.modal__header').text('Ошибка');
                 $('.modal__body').text('Извините, попробуйте позже');
             }
-
             this.els._registerEmail.val('');
             this.els._registerLogin.val('');
             this.els._registerPassword.val('');
@@ -208,5 +198,29 @@ export default class Auth extends Base {
                 $('.modal__content').slideDown();
             });
         })
+	}
+
+	openPopup(e) {
+		if ($('.auth').css('display') === 'block') {
+			// pressing Enter key
+			$('html').on('keydown', (e) => {
+				if (e.keyCode === 13) {
+					// login tab
+					if ($('.auth__tab').index('.auth__tab--active') === 0 &&
+						$('#login-send').prop('disabled') === false) {
+						this.authSubmit(e);
+					}
+					// register tab
+					else if ($('.auth__tab').index('.auth__tab--active') === -1 &&
+						$('#register-send').prop('disabled') === false) {
+						this.registerSubmit(e);
+					}
+					// prevent closing popup
+					else {
+						e.preventDefault();
+					}
+				}
+			})
+		}
 	}
 }
