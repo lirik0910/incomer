@@ -39,7 +39,7 @@
                   </div>
                   <p class="info__caption">Рыночная капитализация</p>
                   <div class="info__description"> 
-                    <p>${{ isset($info['capitalize'] ? number_format($info['capitalize'], 0, '.', ',') : ''}}</p>
+                    <p>${{ isset($info['capitalize']) ? number_format($info['capitalize'], 0, '.', ',') : ''}}</p>
                   </div>
                   <p class="info__caption">Акции в обращении</p>
                   <div class="info__description"> 
