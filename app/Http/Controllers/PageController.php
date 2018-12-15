@@ -111,21 +111,29 @@ class PageController extends Controller
                     $company->beforeLastPrice = $companyLastPrices->last()->close;
                 } else{
                     $company->lastPrice = $filteredPrices[$company->id];
-                    $company->beforeLastPrice = $this->chartModel->beforeLastPrice($company->id)->close;
+
+                    if(!empty($this->chartModel->beforeLastPrice($company->id))){
+                        $company->beforeLastPrice = $this->chartModel->beforeLastPrice($company->id)->close;
+                    }
                 }
             } else{
                 $companyLastPrices = $this->chartModel->lastPrice($company->id);
+
                 $company->lastPrice = $companyLastPrices->first()->close;
                 $company->beforeLastPrice = $companyLastPrices->last()->close;
             }
 
-            $company->capitalize = $company->lastPrice * (int)str_replace('.', '', $company->fields->where('field_type.title', 'shares_in_circulation')->first()->value);
+            if(!empty($company->lastPrice) && !empty($company->beforeLastPrice)){
+                $company->capitalize = $company->lastPrice * (int)str_replace('.', '', $company->fields->where('field_type.title', 'shares_in_circulation')->first()->value);
 
-            if((float)$company->lastPrice > (float)$company->beforeLastPrice){
-                $company->chevrone = 'up';
-            } else{
-                $company->chevrone = 'down';
+                if((float)$company->lastPrice > (float)$company->beforeLastPrice){
+                    $company->chevrone = 'up';
+                } else{
+                    $company->chevrone = 'down';
+                }
             }
+
+
         }
 
         if($request->ajax()){
@@ -180,8 +188,12 @@ class PageController extends Controller
         }
 
         $info['lastPrice'] = $this->chartModel->lastPrice($id)->first()['close'];
-        $info['beforeLastPrice'] = $this->chartModel->beforeLastPrice($company->id)->close;
-        $info['capitalize'] = $info['lastPrice'] * (int)str_replace('.', '', $info['shares_in_circulation']);
+        $info['beforeLastPrice'] = $this->chartModel->beforeLastPrice($company->id)['close'];
+
+        if(isset($info['shares_in_circulation'])){
+            $info['capitalize'] = $info['lastPrice'] * (int)str_replace('.', '', $info['shares_in_circulation']);
+        }
+
 
         if((float)$info['lastPrice'] > (float)$info['beforeLastPrice']){
             $company->chevrone = 'up';
