@@ -10,7 +10,7 @@ div.auth
 				div.auth__tab-content
 					div.auth__field
 						span.auth__placeholder Электронная почта
-						input.auth__input(type='email' required)#login-email
+						input.auth__input(type='email' name='email' autocomplete='on' required)#login-email
 					
 					div.auth__field.auth__pass
 						span.auth__placeholder Пароль
@@ -43,7 +43,7 @@ div.auth
 
 					div.auth__field
 						span.auth__placeholder Электронная почта
-						input.auth__input(type='email')#register-email
+						input.auth__input(type='email' name='email' autocomplete='on')#register-email
 							
 					div.auth__field
 						span.auth__placeholder Логин

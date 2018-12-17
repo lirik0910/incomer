@@ -62,11 +62,11 @@ div.profile
 				div.profile__field
 					span.profile__placeholder Страна
 					select.profile__select#country
-						option(value='1' selected) Украина
+						option(value='1') Украина
 						option(value='2') Россия
 						option(value='3') Беларусь
 						option(value='4') Греция
-				//- div.profile__field.profile__field--block
+				//- div.profile__field.profile__field--blocked
 					span.profile__placeholder Город
 					select.profile__select#city
 						option(value='' selected)
@@ -74,9 +74,9 @@ div.profile
 						option(value='2') Мариуполь
 						option(value='3') Керч
 						option(value='4') Полтава
-				div.profile__field
+				div.profile__field.profile__field--blocked
 					span.profile__placeholder Город
-					input.profile__input(type='text')
+					input.profile__input(type='text')#city
 
 			a.profile__btn(href='#')#saveNewPersonalInfo Сохранить изменения
 

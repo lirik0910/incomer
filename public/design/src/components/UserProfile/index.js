@@ -30,6 +30,7 @@ export default class UserProfile extends Base {
 		this.els._saveNewEmail.click((e) => this.saveNewEmail(e));
 		this.els._saveNewPassword.click((e) => this.saveNewPassword(e));
 		this.els._infoSaveBtn.click((e) => this.saveInfo(e));
+		this.toggleSelectVisibility();
 		this.isEmpty();
 	}
 
@@ -58,10 +59,10 @@ export default class UserProfile extends Base {
 	}
 
 	toggleSelectVisibility(e) {
-		if ($($(e.currentTarget.children[0])).is(':selected')) {
-			this.els._profileSelectCity.parent().addClass('profile__field--block');
+		if ($('#country option').is(':selected')) {
+			this.els._profileSelectCity.parent().removeClass('profile__field--blocked');
 		} else {
-			this.els._profileSelectCity.parent().removeClass('profile__field--block');
+			this.els._profileSelectCity.parent().addClass('profile__field--blocked');
 		}
 	}
 

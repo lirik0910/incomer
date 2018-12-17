@@ -20,6 +20,12 @@ export default class PopularArticles extends Base {
     getMoreArticles(e, sidebar = null) {
         e.preventDefault();
 
+        // $('.news').append('<div style="width: 100%;height: 624px; background-color: green; margin-top: 24px"></div>')
+        
+        // if (sidebar != null) {
+        //     sidebar.updateSticky();
+        // }
+
         $.ajax({
             url: $(e.target).attr('href'),
             method: 'GET',
