@@ -93,37 +93,40 @@ export default class Header extends Base {
             	this.els._searchResult.find('.search__info').remove();
             }
             this.els._searchResult.append(data);
-        }).fail( (e) => { });
 
-        switch($('.search__category-link--active').parent().index()) {
-			case 0:
-				$('.header .search__info-list.all')
-					.addClass('search__info-list--active');
-				break;
-			case 1:
-				$('.header .search__info-list.news')
-					.addClass('search__info-list--active');
-				break;
-			case 2:
-				$('.header .search__info-list.companies')
-					.addClass('search__info-list--active');
-				break;
-			case 3:
-				$('.header .search__info-list.people')
-					.addClass('search__info-list--active');
-				break;
-			case 4:
-				$('.header .search__info-list.products')
-					.addClass('search__info-list--active');
-				break;
-			default:
-				$('.header .search__info-list.all')
-					.addClass('search__info-list--active');
-		}
-        
-		// this.checkSearchResultFilling();
-		this.setResultsItems();
+
+            switch($('.search__category-link--active').parent().index()) {
+                case 0:
+                    $('.header .search__info-list.all')
+                        .addClass('search__info-list--active');
+                    break;
+                case 1:
+                    $('.header .search__info-list.news')
+                        .addClass('search__info-list--active');
+                    break;
+                case 2:
+                    $('.header .search__info-list.companies')
+                        .addClass('search__info-list--active');
+                    break;
+                case 3:
+                    $('.header .search__info-list.people')
+                        .addClass('search__info-list--active');
+                    break;
+                case 4:
+                    $('.header .search__info-list.products')
+                        .addClass('search__info-list--active');
+                    break;
+                default:
+                    $('.header .search__info-list.all')
+                        .addClass('search__info-list--active');
+            }
+
+
+            this.checkSearchResultFilling();
+            this.setResultsItems();
+        }).fail( (e) => { });
 	}
+
 
 	checkSearchResultFilling() {
 		for (var i = 0; i < $('.header .search__category-count').length; i++) {

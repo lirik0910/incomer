@@ -24,12 +24,14 @@
                 <div class="search__results">
                     <div class="search__category">
                         <ul class="search__category-list">
-                            <li class="search__category-item"><a
+                            <li class="search__category-item all">
+                                <a
                                         class="search__category-link search__category-link--active"
-                                        href="#">Всё</a><span class="search__category-count">0</span></li>
-                            <li class="search__category-item"><a class="search__category-link" href="#">Новости</a><span
+                                        href="#">Всё</a>
+                                <span class="search__category-count">0</span></li>
+                            <li class="search__category-item news"><a class="search__category-link" href="#">Новости</a><span
                                         class="search__category-count">0</span></li>
-                            <li class="search__category-item"><a class="search__category-link"
+                            <li class="search__category-item companies"><a class="search__category-link"
                                                                  href="#">Компании</a><span
                                         class="search__category-count">0</span></li>
                             <!--<li class="search__category-item"><a class="search__category-link" href="#">Люди</a><span

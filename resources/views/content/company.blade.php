@@ -99,13 +99,13 @@
               <div id="diagram"></div>
               <ul class="chart__filter">
                 <li class="chart__filter-item">
-                  <a class="chart__filter-link" href="#" data-period="1minute">Минута</a>
+                  <a class="chart__filter-link" href="#" data-period="1minute">30 минут</a>
                 </li>
                 <li class="chart__filter-item">
-                  <a class="chart__filter-link" href="#" data-period="5minute">5 Минут</a>
+                  <a class="chart__filter-link" href="#" data-period="5minute">1 час</a>
                 </li>
                 <li class="chart__filter-item">
-                  <a class="chart__filter-link" href="#" data-period="10minute">10 Минут</a>
+                  <a class="chart__filter-link" href="#" data-period="10minute">4 часа</a>
                 </li>
                 <li class="chart__filter-item">
                   <a class="chart__filter-link chart__filter-link--active" href="#" data-period="1day">День</a>
