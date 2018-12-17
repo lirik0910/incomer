@@ -213,13 +213,14 @@
     		transform: translate(-100%, 0);
     		box-shadow: 0px 6px 18px 0px rgba(0, 0, 0, 0.03);
     		background-color: $light-color;
-    		// border-radius: 0 0 12px 12px;
+    		border-radius: 0 0 12px 12px;
     		z-index: 500;
 		}
 		&__category {
 			padding: 10px 25px 0 25px;
 			border-bottom: 1px solid $main-light-grey-color;
 			position: relative;
+			background-color: $light-color;
 			&:after {
 				content: '';
 				display: block;
@@ -338,7 +339,8 @@
 		    top: 50%;
 		    transform: translate(-50%, -50%);
 			overflow: hidden;
-		    width: 120%;
+		    // width: 120%;
+		    height: 100%;
 		}
 		&__info-detail {
 			display: inline-block;

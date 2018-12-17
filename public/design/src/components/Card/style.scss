@@ -112,7 +112,7 @@
 		}
 		.card__pic {
 			height: 100%;
-			-webkit-mask-image: -webkit-radial-gradient(white, black);
+			// -webkit-mask-image: -webkit-radial-gradient(white, black);
 			img {
                 max-block-size: -webkit-fill-available;
 				left: 50%;
@@ -120,6 +120,7 @@
 				transform: translate(-50%, -50%);
 				min-width: 100%;
 				min-height: 100%;
+				// height: 100%;
 			}
 		}
 		.card__content {
@@ -164,8 +165,12 @@
 			}
 			.card__pic {
 				img {
+					// transition: height 8s linear;
+					// transition: scale 8s linear;
 					transition: transform 8s linear;
 					transform: translate(-50%, -50%) scale(1.2);
+					// transform: scale(1.2);
+					// height: 120%;
 				}
 			}
 		}
