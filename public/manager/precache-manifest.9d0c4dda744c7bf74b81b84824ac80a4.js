@@ -16,24 +16,24 @@ self.__precacheManifest = [
     "url": "http://108.61.99.188/manager/static/js/2.a4e403fe.chunk.js"
   },
   {
-    "revision": "fee66e712a8a08eef5805a46892932ad",
-    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.fee66e71.woff"
+    "revision": "912ec66d7572ff821749319396470bde",
+    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
     "revision": "a6d91af15dfbf5136609",
     "url": "http://108.61.99.188/manager/static/js/3.a6d91af1.chunk.js"
   },
   {
-    "revision": "912ec66d7572ff821749319396470bde",
-    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.912ec66d.svg"
+    "revision": "b06871f281fee6b241d60582ae9369b9",
+    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
     "revision": "32d1da5d8b47054bf740",
     "url": "http://108.61.99.188/manager/static/js/4.32d1da5d.chunk.js"
   },
   {
-    "revision": "674f50d287a8c48dc19ba404d20fe713",
-    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.674f50d2.eot"
+    "revision": "fee66e712a8a08eef5805a46892932ad",
+    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
     "revision": "11c19445b6703b17e9f8",
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "http://108.61.99.188/manager/static/js/11.d61d205d.chunk.js"
   },
   {
-    "revision": "b06871f281fee6b241d60582ae9369b9",
-    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.b06871f2.ttf"
+    "revision": "af7ae505a9eed503f8b8e6982036873e",
+    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
     "revision": "e846ebdc930ac176a1cf",
@@ -88,8 +88,8 @@ self.__precacheManifest = [
     "url": "http://108.61.99.188/manager/static/js/17.dfa7566c.chunk.js"
   },
   {
-    "revision": "af7ae505a9eed503f8b8e6982036873e",
-    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.af7ae505.woff2"
+    "revision": "674f50d287a8c48dc19ba404d20fe713",
+    "url": "http://108.61.99.188/manager/static/media/fontawesome-webfont.674f50d2.eot"
   },
   {
     "revision": "f0597863ff32150b3ae3",

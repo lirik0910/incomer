@@ -45,13 +45,13 @@
   "runtime~main.js": "http://108.61.99.188/manager/static/js/runtime~main.7cd928ad.js",
   "runtime~main.js.map": "http://108.61.99.188/manager/static/js/runtime~main.7cd928ad.js.map",
   "static/media/spinner.gif": "http://108.61.99.188/manager/static/media/spinner.e46d3467.gif",
-  "static/media/font-awesome.min.css": "http://108.61.99.188/manager/static/media/fontawesome-webfont.af7ae505.woff2",
+  "static/media/font-awesome.min.css": "http://108.61.99.188/manager/static/media/fontawesome-webfont.674f50d2.eot",
+  "static/css/1.9806d272.chunk.css.map": "http://108.61.99.188/manager/static/css/1.9806d272.chunk.css.map",
+  "static/css/3.b087c2f0.chunk.css.map": "http://108.61.99.188/manager/static/css/3.b087c2f0.chunk.css.map",
   "static/css/4.15621bd2.chunk.css.map": "http://108.61.99.188/manager/static/css/4.15621bd2.chunk.css.map",
   "static/css/5.15621bd2.chunk.css.map": "http://108.61.99.188/manager/static/css/5.15621bd2.chunk.css.map",
-  "static/css/1.9806d272.chunk.css.map": "http://108.61.99.188/manager/static/css/1.9806d272.chunk.css.map",
   "static/css/18.98dfad78.chunk.css.map": "http://108.61.99.188/manager/static/css/18.98dfad78.chunk.css.map",
-  "static/css/3.b087c2f0.chunk.css.map": "http://108.61.99.188/manager/static/css/3.b087c2f0.chunk.css.map",
   "index.html": "http://108.61.99.188/manager/index.html",
-  "precache-manifest.492362ceccbe6a97508ef7602bca1420.js": "http://108.61.99.188/manager/precache-manifest.492362ceccbe6a97508ef7602bca1420.js",
+  "precache-manifest.9d0c4dda744c7bf74b81b84824ac80a4.js": "http://108.61.99.188/manager/precache-manifest.9d0c4dda744c7bf74b81b84824ac80a4.js",
   "service-worker.js": "http://108.61.99.188/manager/service-worker.js"
 }
