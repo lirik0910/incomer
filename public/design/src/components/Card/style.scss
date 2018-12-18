@@ -122,6 +122,8 @@
 		}
 		.card__pic {
 			height: 100%;
+				transition: transform .5s ease-in-out;
+				transform: rotate(0.01deg);
 			// -webkit-mask-image: -webkit-radial-gradient(white, black);
 			img {
 				// transition: transform .5s ease-in-out;
@@ -176,11 +178,13 @@
 				border-radius: 12px !important;
 			}
 			.card__pic {
+					transform: scale(1.2);
+					transition: transform 5s linear;
 				img {
 					// transition: height 8s linear;
 					// transition: scale 8s linear;
-					transition: transform 8s linear;
-					transform: translate(-50%, -50%) scale(1.2);
+					// transition: transform 8s linear;
+					// transform: translate(-50%, -50%) scale(1.2);
 					// transform: rotate(0.01deg);
 					// transform: translate(-50%, -50%);
 					// transform: scale(1.2);
