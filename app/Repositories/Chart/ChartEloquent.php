@@ -76,6 +76,8 @@ class ChartEloquent implements ChartRepository
                 $items
                     ->select(['date', 'minute', 'close'])
                     ->limit(100)
+                    ->whereRaw('(date_part(\'minute\', minute))::integer = 30')
+                    //->orWhereRaw('(date_part(\'hour\', minute))::integer % 1 = 0')
                     ->orderBy('date', 'desc')
                     ->orderBy('minute', 'desc');
                 break;
@@ -83,7 +85,7 @@ class ChartEloquent implements ChartRepository
                 $items
                     ->limit(100)
                     ->select(['date', 'minute', 'close'])
-                    ->whereRaw('(date_part(\'minute\', minute))::integer % 5  = 0')
+                    ->whereRaw('(date_part(\'hour\', minute))::integer % 1  = 0')
                     ->orderBy('date', 'desc')
                     ->orderBy('minute', 'desc');
                 break;
@@ -91,7 +93,7 @@ class ChartEloquent implements ChartRepository
                 $items
                     ->select(['date', 'minute', 'close'])
                     ->limit(100)
-                    ->whereRaw('(date_part(\'minute\', minute))::integer % 10  = 0')
+                    ->whereRaw('(date_part(\'hour\', minute))::integer % 4  = 0')
                     ->orderBy('date', 'desc')
                     ->orderBy('minute', 'desc');
                 break;
