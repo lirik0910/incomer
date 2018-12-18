@@ -50,6 +50,7 @@
  	}
  	&__tab {
  		display: none;
+ 		margin-top: 24px;
  		&--active {
 			display: block;
  		}
@@ -104,7 +105,9 @@
 		color: rgba(36, 36, 36, 0.6);
 	}
 	&__time, &__site, &__content {
-		line-height: 36px;
+		margin: 6px 0;
+		line-height: 24px;
+		// line-height: 36px;
 		letter-spacing: 0.2px;
 		display: inline-block;
 		vertical-align: top;

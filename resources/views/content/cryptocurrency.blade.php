@@ -70,6 +70,21 @@
                               <li class="faq__item">
                                   <a class="faq__link" href="#">Где потратить?</a>
                               </li>
+                              <li class="faq__item">
+                                  <a class="faq__link" href="#">Что такое криптовалюта?</a>
+                              </li>
+                              <li class="faq__item">
+                                  <a class="faq__link" href="#">Где и как ее хранить?</a>
+                              </li>
+                              <li class="faq__item">
+                                  <a class="faq__link" href="#">Как и где купить?</a>
+                              </li>
+                              <li class="faq__item">
+                                  <a class="faq__link" href="#">Как на этом заработать?</a>
+                              </li>
+                              <li class="faq__item">
+                                  <a class="faq__link" href="#">Где потратить?</a>
+                              </li>
                           </ul>
                       </div>
                   </div>
