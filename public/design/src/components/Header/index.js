@@ -94,7 +94,6 @@ export default class Header extends Base {
             }
             this.els._searchResult.append(data);
 
-
             switch($('.search__category-link--active').parent().index()) {
                 case 0:
                     $('.header .search__info-list.all')
@@ -120,8 +119,6 @@ export default class Header extends Base {
                     $('.header .search__info-list.all')
                         .addClass('search__info-list--active');
             }
-
-
             this.checkSearchResultFilling();
             this.setResultsItems();
         }).fail( (e) => { });
@@ -130,7 +127,8 @@ export default class Header extends Base {
 
 	checkSearchResultFilling() {
 		for (var i = 0; i < $('.header .search__category-count').length; i++) {
-			if ($($('.header .search__category-count')[i]).text() === '0') {
+			if ($($('.header .search__category-count')[i]).text() === '0' &&
+				$('.search__info-list')[i] === undefined) {
 				$($('.header .search__category-count')[i])
 					.prev()
 					.addClass('search__category-link--light');
@@ -197,7 +195,8 @@ export default class Header extends Base {
 	}
 
 	setResultsItems() {
-		for (var i = 0; i < $('.search__info-list').length; i++) {
+		// for (var i = 0; i < $('.search__info-list').length; i++) {
+		for (var i = 0; i < $('.header .search__category-count').length; i++) {
 			var itemNum = $($('.search__info-list')[i]).children().length;
 			$($('.search__category-count')[i]).text(itemNum);
 		}

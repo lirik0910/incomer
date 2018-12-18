@@ -5,9 +5,13 @@
 	display: block;
 	overflow: hidden;
 	box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
-	// -webkit-mask-image: -webkit-radial-gradient(white, black);
 	&--square,
 	&--long {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+		-webkit-backface-visibility: hidden;
+	       -moz-backface-visibility: hidden;
+	    -webkit-transform: translate3d(0, 0, 0);
+	       -moz-transform: translate3d(0, 0, 0);
 		.card__pic {
 			width: 100%;
 			overflow: hidden;
@@ -106,20 +110,30 @@
 	}
 	&--square-full-img,
 	&--long-full-img {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+		-webkit-backface-visibility: hidden;
+	       -moz-backface-visibility: hidden;
+	    -webkit-transform: translate3d(0, 0, 0);
+	       -moz-transform: translate3d(0, 0, 0);
+	    // transition: transform .5s ease-in-out;
 		.card__article {
 			height: 100%;
 			position: relative;
 		}
 		.card__pic {
 			height: 100%;
+				transition: transform .5s ease-in-out;
+				transform: rotate(0.01deg);
 			// -webkit-mask-image: -webkit-radial-gradient(white, black);
 			img {
+				// transition: transform .5s ease-in-out;
                 max-block-size: -webkit-fill-available;
 				left: 50%;
 				top: 50%;
 				transform: translate(-50%, -50%);
 				min-width: 100%;
 				min-height: 100%;
+				// height: 300px;
 				// height: 100%;
 			}
 		}
@@ -164,13 +178,19 @@
 				border-radius: 12px !important;
 			}
 			.card__pic {
+					transform: scale(1.2);
+					transition: transform 5s linear;
 				img {
 					// transition: height 8s linear;
 					// transition: scale 8s linear;
-					transition: transform 8s linear;
-					transform: translate(-50%, -50%) scale(1.2);
+					// transition: transform 8s linear;
+					// transform: translate(-50%, -50%) scale(1.2);
+					// transform: rotate(0.01deg);
+					// transform: translate(-50%, -50%);
 					// transform: scale(1.2);
+					// height: 350px;
 					// height: 120%;
+					// animation: imageZooming 8s infinite;
 				}
 			}
 		}
@@ -261,4 +281,9 @@
     &:before {
         background-image: url('../../../img/comment@2x.png');
     }
+}
+
+@keyframes imageZooming {
+	0%   { height: 300px; }
+	100% { height: 350px; }
 }

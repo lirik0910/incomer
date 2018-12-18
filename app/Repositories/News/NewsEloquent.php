@@ -103,7 +103,7 @@ class NewsEloquent implements NewsRepository
 
             return $news;
         } elseif ($params['categoryId'] === 3) {
-            $limit = $params['limit'] ?? 9;
+            $limit = $params['limit'] ?? 8;
 
             $news = $this->model::where(['published' => true, 'category_id' => $params['categoryId']])
                 ->whereIn('type', ['normal', 'hot'])
