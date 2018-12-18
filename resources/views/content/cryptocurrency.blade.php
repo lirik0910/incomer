@@ -48,10 +48,26 @@
       </div>
       <section class="main-news">
           @foreach($currentNews as $currentItem)
+              @php
+                echo $loop->iteration; //die;
+              @endphp
               @if($loop->first)
                   <div class="row">
-                      @include('components.news.patterns.' . explode('.', $topNews->first()->preview_pattern)[1], ['item' => $topNews->first()])
+                      <div class="block">
+                          <div class="row">
+                              @include('components.news.patterns.' . explode('.', $topNews->first()->preview_pattern)[1], ['item' => $topNews->first()])
+{{--                      @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])--}}
+                           </div>
+                  <div class="row">
+                  @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+              @elseif($loop->iteration === 2)
                       @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                        </div>
+                  </div>
+               @elseif($loop->iteration === 3)
+                   <div class="block">
+                       <div class="row">
+
                       <div class="faq">
                           <p class="faq__title">ЧАВО для чайников</p>
                           <ul class="faq__list">
@@ -88,12 +104,21 @@
                           </ul>
                       </div>
                   </div>
-              @elseif($loop->last || $loop->iteration === 5)
-                      @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short', 'margin' => false])
-                  </div>
-              @elseif($loop->iteration === 2 || $loop->iteration === 6)
                   <div class="row">
                       @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+              @elseif($loop->iteration === 4)
+                      @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                  </div>
+                   </div>
+                  </div>
+              @elseif($loop->iteration === 5)
+                <div class="row">
+                      @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+              @elseif($loop->last || $loop->iteration === 8)
+                      @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
+                </div>
+              @elseif($loop->iteration === 6)
+            @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
               @else
                   @include('components.index.hot_news_item', ['item' => $currentItem, 'type' => 'short'])
               @endif
