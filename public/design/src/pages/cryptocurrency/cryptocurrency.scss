@@ -150,7 +150,8 @@
 	@extend %card;
 	// @extend %square;
 	width: 624px;
-	height: 300px;
+	height: 240px;
+	// height: 300px;
 	display: inline-block;
 	vertical-align: top;
 	padding: 30px $grid-column;
@@ -163,7 +164,8 @@
 		margin-bottom: 16px;
 	}
 	&__list {
-		max-height: 200px;
+		max-height: 160px;
+		// max-height: 200px;
 		// max-height: calc(16px * 2.5 * 5);
     	overflow: hidden;
     	column-count: 2;
