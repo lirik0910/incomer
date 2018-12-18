@@ -115,6 +115,7 @@
 	       -moz-backface-visibility: hidden;
 	    -webkit-transform: translate3d(0, 0, 0);
 	       -moz-transform: translate3d(0, 0, 0);
+	    // transition: transform .5s ease-in-out;
 		.card__article {
 			height: 100%;
 			position: relative;
@@ -123,6 +124,7 @@
 			height: 100%;
 			// -webkit-mask-image: -webkit-radial-gradient(white, black);
 			img {
+				// transition: transform .5s ease-in-out;
                 max-block-size: -webkit-fill-available;
 				left: 50%;
 				top: 50%;
