@@ -19,12 +19,12 @@
         </div>
         <div class="card__content">
             <div class="card__text">
-                <p class="card__subtitle">{{ $item->subtitle }}</p>
+                @if(!empty($item->subtitle))<p class="card__subtitle">{{ $item->subtitle }}</p>@endif
                 <h3>{{ $item->title }}</h3>
             </div>
             <div class="card__statistic">
                 <span class="views-post">{{ $item->views }}</span>
-                <span class="comments-post">{{ $item->comments_count }}</span>
+                @if(!empty($item->comments_count))<span class="comments-post">{{ $item->comments_count }}</span>@endif
             </div>
         </div>
     </article>

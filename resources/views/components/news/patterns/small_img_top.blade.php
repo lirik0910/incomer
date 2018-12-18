@@ -22,7 +22,7 @@
             </div>
             <div class="card__statistic">
                 <span class="views-post">{{ $item->views }}</span>
-                <span class="comments-post">{{ $item->comments_count }}</span>
+                @if(!empty($item->comments_count))<span class="comments-post">{{ $item->comments_count }}</span>@endif
             </div>
         </div>
     </article>
