@@ -89,6 +89,7 @@
               <div class="profile__field">
                 <span class="profile__placeholder @isset($user->country) profile__placeholder--active @endisset">Страна</span>
                 <select name="country" class="profile__select" id="country">
+                    <option value=""></option>
                     @foreach($countries as $country)
                         @if($country == $user->country)
                             <option selected value="{{ $country }}">{{ $country }}</option>

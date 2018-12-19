@@ -17,7 +17,7 @@ class NewsController extends Controller
     public function getCompaniesCurrent(Request $request)
     {
         $params = $request->all();
-        $params['category_id'] = 1;
+        $params['categoryId'] = 1;
 
         $news = $this->model->current($params);
 

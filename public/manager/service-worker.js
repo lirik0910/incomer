@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "http://incomerfinance.com/manager/precache-manifest.606faff34f8b6364990af7ce15866701.js"
+  "http://incomerfinance.com/manager/precache-manifest.d6c3219bda43f9bde49a20e9f5fff22c.js"
 );
 
 workbox.clientsClaim();

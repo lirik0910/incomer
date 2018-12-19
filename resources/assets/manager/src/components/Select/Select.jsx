@@ -16,7 +16,8 @@ export default withStyles(({ Select }) => ({
 		{...properties}
 		ref={getRef}
 		className={classes[variant] +' '+ className}>
-		
+
+        <option>{}</option>
 		{options.map((item, i) => (
 			<option 
 				key={i}
