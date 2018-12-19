@@ -14,6 +14,7 @@ export default class PopularArticles extends Base {
     }
 
     ajaxComplete(e) {
+        var sidebar = this.initStickySidebar();
         this.els._news.find('.more').click((e) => this.getMoreArticles(e, sidebar));
     }
 
