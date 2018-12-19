@@ -190,10 +190,10 @@ export default class Header extends Base {
 				$('.search__input, .search__btn').toggleClass('search--active');
 				this.els._headerNav.css({'opacity': 1})
 				this.els._searchResult.fadeOut();
+                this.els._searchInput.val('');
 			}
 		}
 
-		this.els._searchInput.val('');
 	}
 
 	setResultsItems() {
