@@ -18,7 +18,8 @@ class NewsController extends Controller
     {
         $params = $request->all();
         $params['categoryId'] = 1;
-        $params['limit'] = 4;
+        (int)$params['page'] % 2 == 0 ? $params['limit'] = 4 : $params['limit'] = 3;
+        //$params['limit'] = 4;
 
         $news = $this->model->current($params);
 
