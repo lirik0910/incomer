@@ -2,6 +2,15 @@
     if($name === 'news' || $key === 'news'){
         $img = $item->images->where('pivot.type', 'preview')->first();
     }
+    if($name === 'companies' || $key === 'companies'){
+        $img = $item->fields->where('field_type.title', 'logo')->first();
+
+        if($img !== NULL && File::exists(public_path($img->url))){
+            $img = $img->value;
+        } else{
+            $img = asset('img/placeholder.png');
+        }
+    }
 @endphp
 
 @if($name === 'news' || $key === 'news')
@@ -20,7 +29,7 @@
 @elseif($name === 'companies' || $key === 'companies')
     <li class="search__info-item"><a class="search__info-link" href="{{ url('/companies/' . $item->id) }}">
             <div class="search__info-pic">
-                <img class="search__info-img" src="@if(isset($img)) {{ $img->url }} @else /img/placeholder.png @endif">
+                <img class="search__info-img" src="{{ $img }}">
             </div>
             <div class="search__info-detail"><span class="search__info-category">Компании</span>
                 <div class="search__info-text">
