@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "http://108.61.99.188/manager/precache-manifest.9d0c4dda744c7bf74b81b84824ac80a4.js"
+  "http://incomerfinance.com/manager/precache-manifest.606faff34f8b6364990af7ce15866701.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("http://108.61.99.188/manager/index.html", {
+workbox.routing.registerNavigationRoute("http://incomerfinance.com/manager/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
