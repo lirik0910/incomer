@@ -123,7 +123,7 @@ class NewsEloquent implements NewsRepository
                 ->with('category', 'section')
                 ->withCount('comments')
                 ->limit($limit)
-                //->offset($limit * ($page - 1))
+                ->offset($limit * ($page - 1))
                 ->orderBy('publish_date', 'DESC');
                 //->simplePaginate($limit);
         }
@@ -163,7 +163,7 @@ class NewsEloquent implements NewsRepository
     {
         $text = $params['searchText'] ?? '';
 
-        $news = $this->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->get();
+        $news = $this->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->where('published', true)->get();
 
         return $news;
     }

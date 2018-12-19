@@ -107,8 +107,13 @@ class PageController extends Controller
                 if((int)$filteredPrices[$company->id] < 1){
                     $companyLastPrices = $this->chartModel->lastPrice($company->id);
 
-                    $company->lastPrice = $companyLastPrices->first()->close;
-                    $company->beforeLastPrice = $companyLastPrices->last()->close;
+                    if($company->lastPrice){
+                        $company->lastPrice = $companyLastPrices->first()->close;
+                    }
+
+                    if($company->beforeLastPrice){
+                        $company->beforeLastPrice = $companyLastPrices->last()->close;
+                    }
                 } else{
                     $company->lastPrice = $filteredPrices[$company->id];
 
@@ -119,8 +124,13 @@ class PageController extends Controller
             } else{
                 $companyLastPrices = $this->chartModel->lastPrice($company->id);
 
-                $company->lastPrice = $companyLastPrices->first()->close;
-                $company->beforeLastPrice = $companyLastPrices->last()->close;
+                if($company->lastPrice){
+                    $company->lastPrice = $companyLastPrices->first()->close;
+                }
+
+                if($company->beforeLastPrice){
+                    $company->beforeLastPrice = $companyLastPrices->last()->close;
+                }
             }
 
             if(!empty($company->lastPrice) && !empty($company->beforeLastPrice)){
@@ -137,6 +147,7 @@ class PageController extends Controller
         }
 
         if($request->ajax()){
+
             return view('components.companies.companies_list', [
                 'items' => $companies,
             ]);

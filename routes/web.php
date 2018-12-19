@@ -20,6 +20,7 @@ Route::get('chart/{id}', 'ChartController@index');
 Route::prefix('companies')->group(function(){
     Route::get('/', 'PageController@companies');
     Route::get('/{id}', 'PageController@oneCompany');
+    Route::get('/news', 'NewsController@getCompaniesCurrent');
 });
 
 Route::prefix('cryptocurrencies')->group(function (){

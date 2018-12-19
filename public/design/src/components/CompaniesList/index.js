@@ -10,7 +10,8 @@ export default class CompaniesList extends Base {
         	_companiesSortLink: $('.companies__sort-link'),
             _companiesCatalog: $('.companies__catalog'),
             _companiesList: $('.companies__list'),
-            _loader: $('.loader')
+            _loader: $('.loader'),
+            _newsSidebar: $('.sidebar-news'),
         }
     }
 
@@ -79,6 +80,10 @@ export default class CompaniesList extends Base {
 
         this.els._loader.fadeIn();
 
+        let page = $(e.target).attr('href').split('=')[1];
+
+        //console.log(page);
+
         $.ajax({
             url: $(e.target).attr('href'),
             method: 'GET',
@@ -86,6 +91,15 @@ export default class CompaniesList extends Base {
         }).done( (data) => {
             this.els._companiesList.append(data);
             this.els._loader.fadeOut();
+        }).fail( (e) => { });
+
+        $.ajax({
+            url: 'companies/news?page=' + page,
+            method: 'GET',
+            dataType: 'html',
+        }).done( (data) => {
+            this.els._newsSidebar.append(data);
+            //this.els._loader.fadeOut();
         }).fail( (e) => { });
     }
 
@@ -105,7 +119,7 @@ export default class CompaniesList extends Base {
             dataType: 'html',
         }).done( (data) => {
             this.els._companiesList.find('li').each(function () {
-                console.log($(this));
+                //console.log($(this));
                 $(this).remove();
             });
 
