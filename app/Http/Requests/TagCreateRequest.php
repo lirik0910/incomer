@@ -24,7 +24,7 @@ class TagCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'person_id' => 'required|integer',
+          //  'person_id' => 'required|integer',
             'value' => 'required|string'
         ];
     }
