@@ -192,6 +192,8 @@ export default class Header extends Base {
 				this.els._searchResult.fadeOut();
 			}
 		}
+
+		this.els._searchInput.val('');
 	}
 
 	setResultsItems() {

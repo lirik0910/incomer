@@ -338,23 +338,18 @@ class NewsEloquent implements NewsRepository
 
         foreach ($tags as $tag){
 
-            $relatedNews->push(
-                $tag->news()
-                    ->where('published', true)
-                    ->whereNotIn('news.id', [$id])
-                    ->orderBy('publish_date', 'DESC')
-                    ->limit(3)
-                    ->get()
-            );
+            $new = $tag->news()
+                ->where('published', true)
+                ->whereNotIn('news.id', [$id])
+                ->orderBy('publish_date', 'DESC')
+                ->limit(3)
+                ->get();
+            foreach ($new as $it){
+                $relatedNews->push($it);
+            }
         }
 
-
-/*        $relatedNews = $tags->news()
-            ->where('published', true)
-            ->whereNotIn('news.id', [$id])
-            ->orderBy('publish_date', 'DESC')
-            ->limit(3)
-            ->get();*/
+        $relatedNews->sortByDesc('publish_date')->take(3);
 
         return $relatedNews;
     }
