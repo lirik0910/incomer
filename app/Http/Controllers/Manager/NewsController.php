@@ -78,8 +78,6 @@ class NewsController extends Controller
                 $data['publisher_id'] = Auth::user()->id;
             }
 
-
-
             $result = $this->model->update($id, $data);
 
             return response()->json($result);

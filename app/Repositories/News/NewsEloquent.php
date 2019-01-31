@@ -72,7 +72,6 @@ class NewsEloquent implements NewsRepository
             ->with(['images'])
             ->withCount('comments')
             ->offset($limit * ($page - 1))
-            //->limit(4)
             ->orderBy('publish_date', 'DESC')
             ->simplePaginate($limit);
 
@@ -87,7 +86,6 @@ class NewsEloquent implements NewsRepository
             $limit = 4;
 
             $news = $this->model::where(['published' => true])
-                //->where('publish_date', '!=', null)
                 ->whereIn('type', ['normal', 'hot'])
                 ->orderBy('publish_date', 'DESC')->limit($limit);
         } elseif ($params['categoryId'] === 2){
@@ -124,20 +122,24 @@ class NewsEloquent implements NewsRepository
                 ->limit($limit)
                 ->offset($limit * ($page - 1))
                 ->orderBy('publish_date', 'DESC');
-                //->simplePaginate($limit);
         }
+
         return $news->get();
     }
 
     public function indexTop()
     {
-        $news = $this->model::where(['published' => true, 'type' => 'top'])->withCount('comments')->orderBy('preview_pattern', 'ASC');
+        $news = $this->model::where(['published' => true, 'type' => 'top'])
+		->withCount('comments')
+		->orderBy('preview_pattern', 'ASC');
         return $news->get();
     }
 
     public function categoryTop(int $categoryId)
     {
-        $news = $this->model::where(['category_id' => $categoryId, 'type' => 'category_top'])->withCount('comments')->orderBy('preview_pattern', 'ASC');
+        $news = $this->model::where(['category_id' => $categoryId, 'type' => 'category_top'])
+		->withCount('comments')
+		->orderBy('preview_pattern', 'ASC');
         return $news->get();
     }
 
@@ -149,7 +151,9 @@ class NewsEloquent implements NewsRepository
 
     public function one(int $id)
     {
-        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])->withCount('comments')->find($id);
+        $news = $this->model->with(['category', 'section', 'videos', 'images', 'comments', 'tags'])
+		->withCount('comments')
+		->find($id);
 
         if (!$news) {
             throw new \Exception('News was not found');
@@ -162,7 +166,9 @@ class NewsEloquent implements NewsRepository
     {
         $text = $params['searchText'] ?? '';
 
-        $news = $this->model::where('title', 'ilike', '%' . $text . '%')->orWhere('description', 'ilike', '%' . $text . '%')->where('published', true)->get();
+        $news = $this->model::where('title', 'ilike', '%' . $text . '%')
+		->orWhere('description', 'ilike', '%' . $text . '%')
+		->where('published', true)->get();
 
         return $news;
     }
@@ -204,15 +210,14 @@ class NewsEloquent implements NewsRepository
 
         if (!empty($videos)) {
             foreach ($videos as $video) {
-
                 ImageNewsCollection::create([
                     'video_id' => (int)$video,
                     'news_id' => (int)$news['id']
                 ]);
             }
         }
-        if (!empty($tags)) {
 
+        if (!empty($tags)) {
             foreach ($tags as $tag) {
                 $data = [
                     'tag_id' => (int)$tag,

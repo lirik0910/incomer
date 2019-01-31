@@ -51,9 +51,7 @@ class PageController extends Controller
                 'dateFormatter' => DateFormatter::class
             ])->render();
         } else {
-            //var_dump($params); die;
             $current = $this->newsModel->current($params);
-            //var_dump; die;
             $top = $this->newsModel->indexTop();
             $videos = $this->videoModel->index();
 
